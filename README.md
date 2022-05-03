@@ -20,6 +20,7 @@ display it to the user. The tool will support multiple graphing functions and gr
 ## Recorded Demo
 
 ## Omolemo Mashigo - Team Leader
+![Image](https://drive.google.com/file/d/11b_xiSVjkIN8HU6Mw9GrSy4yZm0hV21B/view?usp=sharing)
 I pride myself with being an all-rounder, who’s a very fast learner. I am well-organized and dedicated and I am willing to learn whatever language or framework needed to meet any project requirements. I aspire to be a decent full-stack developer, but I am currently more skilled in back-end development.
 
 ## Emmanuel Khoza
