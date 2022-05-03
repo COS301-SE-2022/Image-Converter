@@ -15,6 +15,10 @@ display it to the user. The tool will support multiple graphing functions and gr
 ## Project Board
 [Project Board](https://github.com/COS301-SE-2022/Image-Converter/projects/1)
 
+## Functional Requirements
+
+## Recorded Demo
+
 ## Omolemo Mashigo - Team Leader
 I pride myself with being an all-rounder, who’s a very fast learner. I am well-organized and dedicated and I am willing to learn whatever language or framework needed to meet any project requirements. I aspire to be a decent full-stack developer, but I am currently more skilled in back-end development.
 
