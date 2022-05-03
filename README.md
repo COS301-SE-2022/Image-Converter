@@ -28,8 +28,9 @@ display it to the user. The tool will support multiple graphing functions and gr
 
 ## Omolemo Mashigo - Team Leader
 <img src="https://user-images.githubusercontent.com/73942516/166416196-4030f700-6c32-4d43-a7fb-d6c06667a9fa.jpg" width="250" height="300">
-[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/omolemo-mashigo-890250177)
-&nbsp;
+<a href="https://www.linkedin.com/in/omolemo-mashigo-890250177" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
+  </a> &nbsp; 
 
 <details><summary>Profile Description</summary>
 <p>
