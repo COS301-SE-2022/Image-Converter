@@ -31,6 +31,9 @@ display it to the user. The tool will support multiple graphing functions and gr
 <a href="https://www.linkedin.com/in/omolemo-mashigo-890250177" rel="nofollow noreferrer">
     <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
   </a> &nbsp; 
+  <a href="https://github.com/OmolemoMashigo" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+  </a>
 
 <details><summary>Profile Description</summary>
 <p>
