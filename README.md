@@ -63,6 +63,12 @@ I am currently working as a junior software engineer, that will benefit the team
 
 ## Mohammed Moola
 <img src="https://user-images.githubusercontent.com/73942516/166416308-2a9ed507-7aee-4b50-bc67-206cd030d9e3.jpg" width="250" height="300">
+<a href ="https://www.linkedin.com/in/mohammed-moola-604679149">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/MoeMoola3">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
+</a>
 
 <details><summary>Profile Description</summary>
 <p>
