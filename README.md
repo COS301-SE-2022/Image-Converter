@@ -54,6 +54,12 @@ I am currently working as a junior software developer therefore working in a tea
 
 ## Phadimane Lethabo Lerefolo
 <img src="https://user-images.githubusercontent.com/73942516/166416260-56a5ec3d-cafd-423b-ba10-eed66304f2f1.jpeg" width="250" height="300">
+<a href="https://www.linkedin.com/in/phadimane-lerefolo-9388ab1a9/" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
+  </a> &nbsp; 
+  <a href="https://github.com/OmolemoMashigo" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+  </a>
 
 <details><summary>Profile Description</summary>
 <p>
@@ -78,6 +84,13 @@ I am a hardworking, ambitious student who is passionate about the field I am in.
 
 ## Neo Seefane
 <img src="https://user-images.githubusercontent.com/73942516/166416330-ee1187a0-dbd9-4bd9-8c8b-b64095684716.jpeg" width="250" height="300">
+<img src="https://user-images.githubusercontent.com/73942516/166416260-56a5ec3d-cafd-423b-ba10-eed66304f2f1.jpeg" width="250" height="300">
+<a href="http://www.linkedin.com/in/neo-seefane-68b8a8239" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
+  </a> &nbsp; 
+  <a href="https://github.com/neoseefane" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+  </a>
 
 <details><summary>Profile Description</summary>
 <p>
