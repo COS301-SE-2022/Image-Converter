@@ -57,7 +57,7 @@ I am currently working as a junior software developer therefore working in a tea
 <a href="https://www.linkedin.com/in/phadimane-lerefolo-9388ab1a9/" rel="nofollow noreferrer">
     <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
   </a> &nbsp; 
-  <a href="https://github.com/OmolemoMashigo" rel="nofollow noreferrer">
+  <a href="https://github.com/phadimanelerefolo" rel="nofollow noreferrer">
     <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
   </a>
 
