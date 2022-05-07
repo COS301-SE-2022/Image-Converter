@@ -45,8 +45,8 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
   
 ## Emmanuel Khoza
 <img src="https://user-images.githubusercontent.com/73942516/166416128-de040471-6c6b-469f-b6c8-584a83f79822.jpg" width="250" height="300">
-<a href="https://www.linkedin.com/in/omolemo-mashigo-890250177" rel="nofollow noreferrer">
-    <img src="https://www.linkedin.com/in/emmanuel-khoza-04b27b168/" alt="linkedin"> LinkedIn
+<a href="https://www.linkedin.com/in/emmanuel-khoza-04b27b168/" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
 </a> &nbsp; 
 <a href="https://github.com/Thuso-Khoza" rel="nofollow noreferrer">
     <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
