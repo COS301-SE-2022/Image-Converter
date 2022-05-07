@@ -45,7 +45,13 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
   
 ## Emmanuel Khoza
 <img src="https://user-images.githubusercontent.com/73942516/166416128-de040471-6c6b-469f-b6c8-584a83f79822.jpg" width="250" height="300">
-
+<a href="https://www.linkedin.com/in/omolemo-mashigo-890250177" rel="nofollow noreferrer">
+    <img src="https://www.linkedin.com/in/emmanuel-khoza-04b27b168/" alt="linkedin"> LinkedIn
+</a> &nbsp; 
+<a href="https://github.com/Thuso-Khoza" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+</a>
+  
 <details><summary>Profile Description</summary>
 <p>
 I am currently working as a junior software developer therefore working in a team is something I am familiar with. I have worked with angular and similar frameworks such as ionic. I have not worked with python and PostGreSQL before but I am a fast learner and I am used to being around an environment of self learning.
