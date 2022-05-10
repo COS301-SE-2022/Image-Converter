@@ -1,17 +1,26 @@
-from flask import Flask
+from flask import Flask,json,jsonify
 from flask import Response
 import base64
 
 
 app = Flask(__name__)
 
-@app.route('/picture')
-def index(picture):
-    if picture is not None:
-        # convert picture to base64
-        picture = picture.decode('utf-8')
+@app.route('/picture' ,methods =['POST'])
+def upload_image():
 
-        return 'Hello World!'
+    # convert picture to base64
+    with open("images/image1.jpg", "rb") as img_file:
+        b64picture = base64.b64encode(img_file.read())
+    print(b64picture)
+
+    return jsonify({'msg': str(b64picture)})
+
+    
+@app.route('/')
+def index():
+    return "Hello World!"
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
