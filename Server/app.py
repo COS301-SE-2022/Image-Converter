@@ -11,9 +11,9 @@ def upload_image():
     # convert picture to base64
     with open("images/image1.jpg", "rb") as img_file:
         b64picture = base64.b64encode(img_file.read())
-    print(b64picture)
+    # print(b64picture)
 
-    return jsonify({'msg': str(b64picture)})
+    return jsonify({'response': str(b64picture)})
 
     
 @app.route('/')
