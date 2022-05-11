@@ -1,34 +1,28 @@
 <p>converter works!</p>
-<mat-card class="card">
+<mat-card class="card" draggable="true" ngClass="{{ dragAreaClass }}">
     <!--<mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      -->
-      <mat-card-content>
-        <div draggable="true" ngClass="{{ dragAreaClass }}">
-            <div class="row">
-              <div class="col-md-12 text-center">
-                Drag files here
+      </mat-card-header>-->
+       Drag files here
                 <a href="javascript:void(0)" (click)="file.click()"> or click to open </a>
+      <mat-card-content>
+               
                 <input
                   type="file"
                   #file
                   [multiple]="false"
                   (change)="onFileChange($event)"
                   style="display:none"
-                />
-                <div class="dragged-files-wrapper" *ngIf="draggedFiles">
-                  <div class="file" *ngFor="let file of draggedFiles">
-                    {{ file }}
+                /><br>
+
+                <div class="dragged-files-wrapper" ><!--*ngIf="draggedFiles">-->
+                  <!--<div class="file" *ngFor="let file of draggedFiles">
                     <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
-                  </div>
+                  </div>-->
+                  <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
                 </div>
-              </div>
-            </div>
-          </div>
         </mat-card-content>
     <mat-card-actions>
       <button  [disabled]="isDisabled">Upload</button>

@@ -15,13 +15,28 @@ export class ConverterComponent implements OnInit {
   error: String='';
   dragAreaClass: String='';
   draggedFiles: any;
+  
   //upload button bool
   isDisabled = true;
 
-  displayImg: String='../../assets/drag.png';// url of img displayed on upload
-  onFileChange(event: any) {
+  displayImg: any='../../assets/drag.png';// url of img displayed on upload
+  onFileChange(event: any) {// when uploaded using button not drag
     let files: FileList = event.target.files;
     this.saveFiles(files);
+    const mimeType = files[0].type;
+      if (mimeType.match(/image\/*/) == null) {
+        //this.message = "Only images are supported.";
+        return;
+    }
+
+    const reader = new FileReader();
+    let imagePath = files;
+    let url;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+        this.displayImg = reader.result; 
+    }
+    this.isDisabled = false;
   }
   ngOnInit() {
     this.dragAreaClass = 'dragarea';
@@ -52,16 +67,30 @@ export class ConverterComponent implements OnInit {
     event.stopPropagation();
     if (event.dataTransfer.files) {
       let files: FileList = event.dataTransfer.files;
+      
+      const mimeType = files[0].type;
+      if (mimeType.match(/image\/*/) == null) {
+        //this.message = "Only images are supported.";
+        return;
+    }
+
+    const reader = new FileReader();
+    let imagePath = files;
+    let url;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+        this.displayImg = reader.result; 
+    }
       this.saveFiles(files);
-      this.displayImg
-      let url:any=URL.createObjectURL(files[0]);
-      console.log("url: "+url.blob);
-      var image:any = document.getElementById('uploadedImg');
-      image.src = URL.createObjectURL(files[0]);
       this.isDisabled = false;
     }
   }
 
+  //check if uploaded file is an image
+  checkifImg()
+  {
+    //to implement
+  }
   saveFiles(files: FileList) {
     if (files.length > 1) this.error = 'Only one file at time allow';
     else {
