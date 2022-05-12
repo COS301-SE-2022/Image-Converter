@@ -11,7 +11,9 @@ export class ConverterService {
   constructor(private httpclient: HttpClient) { }
 
    // postImg sends request to back end to upload img
+
    postImg(data: string) {
+     
      /* for future use
     var auth;
     if(localStorage.getItem('rememberMe')=="true"){
@@ -26,11 +28,14 @@ export class ConverterService {
         Authorization: 'Bearer '+auth
       })
     };*/
+
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
       'http://localhost:5000/picture',
       pic
+
     );
   }
+  
 }

@@ -116,6 +116,7 @@ export class ConverterComponent implements OnInit {
   saveFiles() {
     if(this.saveFile!=''){
       console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
+
       console.log("Lee  "+this.saveFile[0].name);
       this.convertToBase64(this.saveFile[0]);
       this.myimage?.subscribe(data => {

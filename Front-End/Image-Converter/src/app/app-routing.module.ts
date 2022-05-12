@@ -14,3 +14,8 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+declare global{
+  interface Navigator{
+     msSaveBlob:(blob: Blob,fileName:string) => boolean
+     }
+  }
