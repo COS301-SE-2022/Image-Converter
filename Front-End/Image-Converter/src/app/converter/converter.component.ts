@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {ConverterService} from './../shared/converter.service';
+import { Observable, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-converter',
@@ -16,9 +17,10 @@ export class ConverterComponent implements OnInit {
   error: String='';
   dragAreaClass: String='';
   draggedFiles: any;
-  
-  saveFile:any='';//used in saveFiles method to save image 
+  myimage?: Observable<any>;
 
+  saveFile:any='';//used in saveFiles method to save image 
+  base64Picture: string ="";
   isDisabled = true;//upload button bool
 
   displayImg: any='../../assets/drag.png';// url of img displayed on upload
@@ -114,14 +116,36 @@ export class ConverterComponent implements OnInit {
   saveFiles() {
     if(this.saveFile!=''){
       console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
-      this.imgService.postImg(this.saveFile[0]).subscribe(
-        data =>{
-          console.log('done');
-          //Image.value = null;
-          //this.imageUrl = "/assets/img/default-image.png";
-        }
-      );
+      console.log("Lee  "+this.saveFile[0].name);
+      this.convertToBase64(this.saveFile[0]);
+      this.myimage?.subscribe(data => {
+        this.imgService.postImg(data).subscribe(
+          data =>{
+            console.log('done');
+          }
+        );
+      });
     }
+  }
+
+  convertToBase64(file: File) {
+    this.myimage = new Observable((subscriber: Subscriber<any>) => {
+      this.readFile(file, subscriber);
+    });
+  }
+
+  readFile(file: File, subscriber: Subscriber<any>) {
+    const filereader = new FileReader();
+    filereader.readAsDataURL(file);
+
+    filereader.onload = () => {
+      subscriber.next(filereader.result);
+      subscriber.complete();
+    };
+    filereader.onerror = (error) => {
+      subscriber.error(error);
+      subscriber.complete();
+    };
   }
 
 }
