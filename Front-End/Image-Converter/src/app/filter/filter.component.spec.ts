@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+
 import { FilterComponent } from './filter.component';
 
 describe('FilterComponent', () => {
@@ -22,4 +23,14 @@ describe('FilterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("testing title",()=>{
+    expect(component.componentName).toBe("user")
+  })
+
+
+
 });
+
+
+
