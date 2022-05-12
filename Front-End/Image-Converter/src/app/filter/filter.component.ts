@@ -37,4 +37,13 @@ export class FilterComponent implements OnInit {
     x.style.filter = "hue-rotate(90deg)"
   }
 
+  //downloadFile is used to download an image
+  downloadFile(data:any) {
+    var a = document.createElement('a');
+  a.href = data;
+  a.download = "output.png";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  }
 }
