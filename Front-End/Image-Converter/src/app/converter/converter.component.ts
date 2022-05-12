@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import {ConverterService} from './../shared/converter.service';
 
 @Component({
   selector: 'app-converter',
@@ -7,7 +8,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class ConverterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private imgService: ConverterService) { }
 
   
 
@@ -16,27 +17,34 @@ export class ConverterComponent implements OnInit {
   dragAreaClass: String='';
   draggedFiles: any;
   
-  //upload button bool
-  isDisabled = true;
+  saveFile:any='';//used in saveFiles method to save image 
+
+  isDisabled = true;//upload button bool
 
   displayImg: any='../../assets/drag.png';// url of img displayed on upload
   onFileChange(event: any) {// when uploaded using button not drag
     let files: FileList = event.target.files;
-    this.saveFiles(files);
-    const mimeType = files[0].type;
+   // this.saveFiles(files);
+    
+    this.checkifImg(files);
+      if(this.error == '')
+      {
+        const mimeType = files[0].type;
       if (mimeType.match(/image\/*/) == null) {
-        //this.message = "Only images are supported.";
+        this.error = "Only images are supported.";
         return;
-    }
+      }
 
-    const reader = new FileReader();
-    let imagePath = files;
-    let url;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-        this.displayImg = reader.result; 
-    }
-    this.isDisabled = false;
+      const reader = new FileReader();
+      let imagePath = files;
+      let url;
+      reader.readAsDataURL(files[0]); 
+      reader.onload = (_event) => { 
+          this.displayImg = reader.result; 
+      }
+        this.isDisabled = false;
+        this.saveFile=files;
+      }
   }
   ngOnInit() {
     this.dragAreaClass = 'dragarea';
@@ -68,36 +76,51 @@ export class ConverterComponent implements OnInit {
     if (event.dataTransfer.files) {
       let files: FileList = event.dataTransfer.files;
       
-      const mimeType = files[0].type;
+      
+      this.checkifImg(files);
+      if(this.error == '')
+      {
+        const mimeType = files[0].type;
       if (mimeType.match(/image\/*/) == null) {
-        //this.message = "Only images are supported.";
+        this.error = "Only images are supported.";
         return;
-    }
+      }
 
-    const reader = new FileReader();
-    let imagePath = files;
-    let url;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-        this.displayImg = reader.result; 
-    }
-      this.saveFiles(files);
-      this.isDisabled = false;
+      const reader = new FileReader();
+      let imagePath = files;
+      let url;
+      reader.readAsDataURL(files[0]); 
+      reader.onload = (_event) => { 
+          this.displayImg = reader.result; 
+      }
+        this.isDisabled = false;
+         this.saveFile=files;
+      }
     }
   }
 
   //check if uploaded file is an image
-  checkifImg()
+  checkifImg(files: FileList)
   {
     //to implement
-  }
-  saveFiles(files: FileList) {
-    if (files.length > 1) this.error = 'Only one file at time allow';
+    if (files.length > 1) this.error = 'Only one image a at time allow';
     else {
       this.error = '';
       console.log(files[0].size, files[0].name, files[0].type);
       this.draggedFiles = files;
       console.log(files);
+    }
+  }
+  saveFiles() {
+    if(this.saveFile!=''){
+      console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
+      this.imgService.postImg(this.saveFile[0]).subscribe(
+        data =>{
+          console.log('done');
+          //Image.value = null;
+          //this.imageUrl = "/assets/img/default-image.png";
+        }
+      );
     }
   }
 
