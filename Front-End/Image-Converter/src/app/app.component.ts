@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Image-Converter';
+
+// constructor(public sanatizer: DomSanitizer) {}
+
+// ngOnInit(): void {}
+
+  // w3_open() {
+  //   document.getElementById("mySidebar").style.display = "block";
+  //   document.getElementById("myOverlay").style.display = "block";
+  // }
+   
+  // w3_close() {
+  //   document.getElementById("mySidebar").style.display = "none";
+  //   document.getElementById("myOverlay").style.display = "none";
+  // }
 }
