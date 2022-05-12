@@ -7,7 +7,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-  componentName="user"
   constructor(public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
