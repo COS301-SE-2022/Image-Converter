@@ -102,13 +102,31 @@ body {font-size:16px;}
     <hr style="width:50px;border:5px solid black" class="w3-round">
 
       <div>
-      <img id="imgLink" src="https://www.mindtools.com/media/Diagrams/Charts-and-Graphs-8.jpg" alt="" width="400" height="400">
           
-        <button (click)="original()">Original</button>
-        <button (click)="grayScale()">Grayscale</button>
-        <button (click)="sepia()">Sepia</button>
-        <button (click)="contrast()">Contrast</button>
-        <button (click)="hueRotate()">Hue Rotate</button>
+        <div class="w3-container w3-cell">
+            <img id="imgLink" src="https://www.mindtools.com/media/Diagrams/Charts-and-Graphs-8.jpg" alt="" width="400" height="400">
+          </div>
+          
+          <div class="w3-container w3-cell">
+            <div class="w3-panel" style="width:100%">
+                <button class="w3-button w3-block w3-blue" (click)="original()">Original</button>
+              </div>
+              <div class="w3-panel" style="width:100%">
+                <button class="w3-button w3-block w3-blue" (click)="grayScale()">Grayscale</button>
+              </div>
+              <div class="w3-panel" style="width:100%">
+                <button class="w3-button w3-block w3-blue" (click)="sepia()">Sepia</button>
+            </div>
+            <div class="w3-panel" style="width:100%">
+                <button class="w3-button w3-block w3-blue" (click)="contrast()">Contrast</button>
+            </div>
+            <div class="w3-panel" style="width:100%">
+                <button class="w3-button w3-block w3-blue" (click)="hueRotate()">Hue Rotate</button>
+            </div>
+          </div>
+
+
+
       </div> 
   </div>
 
