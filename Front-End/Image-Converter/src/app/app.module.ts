@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConverterComponent } from './converter/converter.component';
 import { MaterialModule } from './material/material.module';
 import {ConverterService} from './shared/converter.service';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConverterComponent
+    FilterComponent
   ],
   imports: [
     BrowserModule,
