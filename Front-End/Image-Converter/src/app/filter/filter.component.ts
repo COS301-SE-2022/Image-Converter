@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ComponentCommunicationService } from './../shared/component-communication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-filter',
@@ -7,9 +9,20 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-  constructor(public sanitizer: DomSanitizer) { }
+
+  //these variables are used for the communication between converter and filter components
+  message!: string;
+  subscription!: Subscription;
+  
+  constructor(public sanitizer: DomSanitizer,private imgData: ComponentCommunicationService) { }
 
   ngOnInit(): void {
+    //subscribe for communication between components
+    this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   original(){
@@ -20,6 +33,7 @@ export class FilterComponent implements OnInit {
   grayScale(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "grayscale(100%)"
+    
   }
 
   sepia(){
