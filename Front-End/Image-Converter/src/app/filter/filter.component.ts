@@ -52,9 +52,9 @@ export class FilterComponent implements OnInit {
   }
 
   //downloadFile is used to download an image
-  downloadFile(data:any) {
+  downloadFile() {
     var a = document.createElement('a');
-  a.href = data;
+  a.href = this.message;
   a.download = "output.png";
   document.body.appendChild(a);
   a.click();
