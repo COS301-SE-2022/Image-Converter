@@ -116,7 +116,7 @@ export class ConverterComponent implements OnInit {
       console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
       this.imgService.postImg(this.saveFile[0]).subscribe(
         data =>{
-          console.log('done');
+          console.log('done:'+JSON.stringify(data));
           //Image.value = null;
           //this.imageUrl = "/assets/img/default-image.png";
         }
