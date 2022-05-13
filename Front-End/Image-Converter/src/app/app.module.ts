@@ -9,6 +9,7 @@ import { ConverterComponent } from './converter/converter.component';
 import { MaterialModule } from './material/material.module';
 import {ConverterService} from './shared/converter.service';
 import { FilterComponent } from './filter/filter.component';
+import { ComponentCommunicationService } from './shared/component-communication.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { FilterComponent } from './filter/filter.component';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [ConverterService],
+  providers: [ConverterService,ComponentCommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

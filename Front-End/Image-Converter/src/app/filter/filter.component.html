@@ -13,7 +13,7 @@ body {font-size:16px;}
 .w3-half img:hover{opacity:1}
 </style>
 </head>
-<body>
+<body *ngIf=dispBool>
   
   <!-- Image Filters -->
   <div class="w3-container" id="imageFilters" style="margin-top:75px">
@@ -21,7 +21,7 @@ body {font-size:16px;}
     <hr style="width:50px;border:5px solid black" class="w3-round">
       <div>  
         <div class="w3-container w3-cell">
-            <img id="imgLink" src="./../assets/purple.jpg" alt="" width="400" height="400">
+            <img id="imgLink" src={{message}} alt="response img" width="400" height="400">
           </div>
           
           <div class="w3-container w3-cell">
@@ -43,7 +43,7 @@ body {font-size:16px;}
           </div>
       </div> 
       <div class="w3-panel" style="width:15%">
-        <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile('./../assets/purple.jpg')">Download</button>
+        <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile()">Download</button>
       </div>
   </div>
 

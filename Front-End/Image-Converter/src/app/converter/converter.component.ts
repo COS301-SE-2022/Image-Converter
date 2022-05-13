@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {ConverterService} from './../shared/converter.service';
 import { Observable, Subscriber } from 'rxjs';
+import { ComponentCommunicationService } from './../shared/component-communication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-converter',
@@ -9,9 +11,12 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class ConverterComponent implements OnInit {
 
-  constructor(private imgService: ConverterService) { }
-
+  //these variables are used for the communication between converter and filter components
+  message!: string;
+  dispBool!: boolean;
+  subscription!: Subscription;
   
+  constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService) { }
 
   // variables for file upload
   error: String='';
@@ -19,6 +24,7 @@ export class ConverterComponent implements OnInit {
   draggedFiles: any;
   myimage?: Observable<any>;
 
+  respsonseBase64!:{image:string};
   saveFile:any='';//used in saveFiles method to save image 
   base64Picture: string ="";
   isDisabled = true;//upload button bool
@@ -48,8 +54,17 @@ export class ConverterComponent implements OnInit {
         this.saveFile=files;
       }
   }
+
   ngOnInit() {
     this.dragAreaClass = 'dragarea';
+    //subscribe for communication between components
+    this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
+    this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
+
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   @HostListener('dragover', ['$event']) onDragOver(event: any) {
@@ -121,8 +136,12 @@ export class ConverterComponent implements OnInit {
       this.convertToBase64(this.saveFile[0]);
       this.myimage?.subscribe(data => {
         this.imgService.postImg(data).subscribe(
-          data =>{
-            console.log('done');
+          responseData =>{
+            
+            this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
+            console.log(this.respsonseBase64.image);
+            this.imgData.changeMessage(this.respsonseBase64.image);
+            this.imgData.changBool(true);
           }
         );
       });
