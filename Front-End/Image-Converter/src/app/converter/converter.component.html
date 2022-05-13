@@ -1,0 +1,32 @@
+
+<mat-card class="card" draggable="true" ngClass="{{ dragAreaClass }}">
+    <!--<mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>-->
+       Drag files here
+                <a href="javascript:void(0)" (click)="file.click()"> or click to open </a>
+      <mat-card-content>
+               
+                <input
+                  type="file"
+                  #file
+                  [multiple]="false"
+                  (change)="onFileChange($event)"
+                  style="display:none"
+                /><br>
+
+                <div class="dragged-files-wrapper" ><!--*ngIf="draggedFiles">-->
+                  <!--<div class="file" *ngFor="let file of draggedFiles">
+                    <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
+                  </div>-->
+                  <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
+                </div>
+                
+        </mat-card-content>
+        <div class="error" *ngIf="error" style = "color:red;">{{error}}</div>
+    <mat-card-actions>
+      <button  [disabled]="isDisabled" (click)="saveFiles()">Upload</button>
+    </mat-card-actions>
+  </mat-card>
