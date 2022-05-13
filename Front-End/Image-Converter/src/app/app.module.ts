@@ -13,7 +13,7 @@ import { FilterComponent } from './filter/filter.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ConverterComponent
+    ConverterComponent,
     FilterComponent
   ],
   imports: [
