@@ -12,6 +12,7 @@ export class FilterComponent implements OnInit {
 
   //these variables are used for the communication between converter and filter components
   message!: string;
+  dispBool!: boolean;
   subscription!: Subscription;
   
   constructor(public sanitizer: DomSanitizer,private imgData: ComponentCommunicationService) { }
@@ -19,6 +20,8 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
     //subscribe for communication between components
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
+    this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
+
   }
 
   ngOnDestroy() {

@@ -13,6 +13,7 @@ export class ConverterComponent implements OnInit {
 
   //these variables are used for the communication between converter and filter components
   message!: string;
+  dispBool!: boolean;
   subscription!: Subscription;
   
   constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService) { }
@@ -58,6 +59,8 @@ export class ConverterComponent implements OnInit {
     this.dragAreaClass = 'dragarea';
     //subscribe for communication between components
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
+    this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
+
   }
 
   ngOnDestroy() {
@@ -138,6 +141,7 @@ export class ConverterComponent implements OnInit {
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
             console.log(this.respsonseBase64.image);
             this.imgData.changeMessage(this.respsonseBase64.image);
+            this.imgData.changBool(true);
           }
         );
       });
