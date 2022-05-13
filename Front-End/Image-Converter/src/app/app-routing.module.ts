@@ -4,7 +4,7 @@ import {ConverterComponent} from './converter/converter.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'converter',
     component: ConverterComponent
   }
 ];
