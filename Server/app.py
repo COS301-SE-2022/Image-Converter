@@ -12,10 +12,10 @@ CORS(app)
 def upload_image():
     picture = request.json['picture']
     if picture is not None:
-        print(picture)
+        print("picture is not None")
         with open("images/image1.jpg", "rb") as img_file:
             b64picture = base64.b64encode(img_file.read())
-        print(b64picture)
+        print("b64picture")
 
     return jsonify({'image': str(picture)})
 
