@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
+import { image } from 'html2canvas/dist/types/css/types/image';
+
+declare const myTest:any;
+declare const uploadImage:any;
+
 
 @Component({
   selector: 'app-filter',
@@ -56,11 +61,23 @@ export class FilterComponent implements OnInit {
 
   //downloadFile is used to download an image
   downloadFile() {
-    var a = document.createElement('a');
-  a.href = this.message;
-  a.download = "output.png";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  //   var a = document.createElement('a');
+  // a.href = this.message;
+  // a.download = "output.png";
+  // document.body.appendChild(a);
+  // a.click();
+  // document.body.removeChild(a);
+
+  myTest();
+  // alert(myTest);
+
   }
+
+ upload(){
+  //  uploadImage(window.event);
+  myTest();
+ }
+
+
+
 }
