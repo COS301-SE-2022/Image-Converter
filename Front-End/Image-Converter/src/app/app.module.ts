@@ -10,19 +10,24 @@ import { MaterialModule } from './material/material.module';
 import {ConverterService} from './shared/converter.service';
 import { FilterComponent } from './filter/filter.component';
 import { ComponentCommunicationService } from './shared/component-communication.service';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConverterComponent,
-    FilterComponent
+    FilterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [ConverterService,ComponentCommunicationService],
   bootstrap: [AppComponent]
