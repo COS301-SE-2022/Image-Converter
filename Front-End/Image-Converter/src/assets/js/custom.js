@@ -1,9 +1,8 @@
-function myTest(){
+function myTest(imgBckend,filterVar){
 var img = new Image();
 img.crossOrigin = ""; 
 img.onload = draw; 
-img.src = "https://image.shutterstock.com/image-photo/bright-purple-pink-sky-beautiful-260nw-1704295576.jpg";
-
+img.src = imgBckend;
 
 function  draw() {
   var canvas = document.querySelector("canvas"),
@@ -14,10 +13,14 @@ function  draw() {
   
   // filter
   if (typeof ctx.filter !== "undefined") {
-    ctx.filter = "sepia(0.8)";
-    ctx.drawImage(this, 0, 0);
+    if(filterVar==="grayscale"){
+      ctx.filter = "grayscale(1.0)";
+      ctx.drawImage(this, 0, 0);
+
+    }
   }
   else {
+    console.log("else")
     // ctx.drawImage(this, 0, 0);
     // TODO: manually apply filter here.
   }
