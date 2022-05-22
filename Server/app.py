@@ -29,6 +29,9 @@ def index():
 def login():
     db = app.config['DATABASE']
     
-
+@app.route('/register', methods=["POST"])
+def register():
+    db = app.config['DATABASE']
+    
 if __name__ == '__main__':
     app.run(debug=True)
