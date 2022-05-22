@@ -59,3 +59,10 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+    def getUserWithEmail(self, email):
+        sql = "SELECT * FROM users where email=%s;"
+        self.cur.execute(sql, (email,))
+        db_user = self.cur.fetchone()
+        self.conn.commit()
+        return db_user
