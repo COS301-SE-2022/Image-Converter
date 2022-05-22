@@ -1,4 +1,5 @@
 from flask import Flask,json,jsonify, request
+from database.database import User
 from flask import Response
 from flask_cors import CORS
 import base64
@@ -37,6 +38,9 @@ def register():
         surname = str(request.json["surname"])
         email = str(request.json["email"])
         password = str(request.json["password"])
-        
+        if(db.register(name, surname, email, password)):
+            return {'response': 'registered'}, 200
+        else:
+            return {'response': 'failed'}, 400
 if __name__ == '__main__':
     app.run(debug=True)
