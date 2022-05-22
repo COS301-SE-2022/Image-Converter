@@ -65,6 +65,9 @@ def token(f):
     def decorated(*args, **kwargs):
         user=None
         token= None
-        
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+        if not token:
+            return jsonify({'result': 'Token is not found or invalid!'}), 401
 if __name__ == '__main__':
     app.run(debug=True)
