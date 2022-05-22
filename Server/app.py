@@ -70,6 +70,15 @@ def token(f):
         if not token:
             return jsonify({'result': 'Token is not found or invalid!'}), 401
         
+        try:
+            db = User()
+            data = jwt.decode(token, 'secret', "HS256")
+            user = db.getUserWithEmail(data['email'])
+        except Exception as e:
+            return jsonify({'result': str(e)}), 401
+        return f(user, *args, **kwargs)
+
+    return decorated
 
 
 if __name__ == '__main__':
