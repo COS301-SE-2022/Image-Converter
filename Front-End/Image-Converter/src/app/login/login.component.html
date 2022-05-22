@@ -1,1 +1,40 @@
-<p>login works!</p>
+
+<div id="loginForm">
+    <h1 id="logo">Image converter</h1>
+    <div id="formContent">
+        <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field color="accent" class="field" appearance="outline" >
+            <mat-label>email</mat-label>
+            <input formControlName="username" matInput required>
+            <!-- mat-error is for validation -->
+            <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+                email is <strong>required</strong>
+            </mat-error>
+            </mat-form-field>
+        <br/>
+            <mat-form-field color="accent" class="field" appearance="outline" >
+            <mat-label>password</mat-label>
+            <input formControlName="password" matInput required [type]="hide ? 'password' : 'text'">
+            <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+                Password is <strong>required</strong>
+            </mat-error>
+            
+            <button id="pbutton"  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon id="pIcon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            
+            </mat-form-field>
+            <br/>
+            <a href="#" id="forgot">Forgot your password?</a>
+        <div class="form-group" >
+            <button id="loginbtn" class="btn btn-primary"  [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit"  >Login</button><br><br>
+            <p *ngIf="buttonLogin != '' && !_match" class="alert alert-danger"> 
+            Invalid Username or Password !              
+            </p> 
+        <p id="accountLink">don't have an account? <a id="registerlink" href="#"  (click)="register()">register</a></p> 
+        </div>
+        
+        </form>
+        </div>
+</div>
+
