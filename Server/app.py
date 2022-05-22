@@ -28,11 +28,13 @@ def index():
 
 @app.route('/login', methods=["POST"])
 def login():
-    db = app.config['DATABASE']
+    db = User()
+    if(db!=None)
+
     
 @app.route('/register', methods=["POST"])
 def register():
-    db = app.config['DATABASE']
+    db = User()
     if(db != None):
         name = str(request.json["name"])
         surname = str(request.json["surname"])
@@ -41,6 +43,8 @@ def register():
         if(db.register(name, surname, email, password)):
             return {'response': 'registered'}, 200
         else:
+            return {'response': 'failed'}, 400
+    else:
             return {'response': 'failed'}, 400
 if __name__ == '__main__':
     app.run(debug=True)
