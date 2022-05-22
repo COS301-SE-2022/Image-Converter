@@ -19,7 +19,16 @@ def upload_image():
 
     return jsonify({'image': str(picture)})
 
-    
+
+@app.route('/login' ,methods =['POST'])
+def auth_login():
+    username = request.json['email']
+    password = request.json['password']
+    if username is not None and password is not None and username != "" and password:
+        return jsonify({'Auth': '1'})
+    else:
+        return jsonify({'Auth': '0'})
+
 @app.route('/')
 def index():
     return "Hello World!"
