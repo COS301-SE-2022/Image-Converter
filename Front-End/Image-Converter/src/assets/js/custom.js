@@ -10,6 +10,7 @@ function  draw() {
 
   canvas.width = this.width;
   canvas.height = this.height;
+  console.log(filterVar);
   
   // filter
   if (typeof ctx.filter !== "undefined") {
@@ -29,15 +30,14 @@ function  draw() {
       ctx.filter = "hue-rotate(90deg)";
       ctx.drawImage(this, 0, 0);
     }
-    else if(filterVar==="revert"){
+    else if(filterVar==="revert" || filterVar==undefined){
       ctx.filter = "revert";
       ctx.drawImage(this, 0, 0);
     }
+    
   }
   else {
-    console.log("else")
-    // ctx.drawImage(this, 0, 0);
-    // TODO: manually apply filter here.
+    
   }
   var dataURL = canvas.toDataURL();
 
