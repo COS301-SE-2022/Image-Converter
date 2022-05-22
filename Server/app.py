@@ -25,6 +25,10 @@ def upload_image():
 def index():
     return "Hello World!"
 
+@app.route('/login', methods=["POST"])
+def login():
+    db = app.config['DATABASE']
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
