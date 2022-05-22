@@ -1,3 +1,5 @@
+import datetime
+import jwt
 from flask import Flask,json,jsonify, request
 from database.database import User
 from flask import Response
@@ -8,6 +10,10 @@ import base64
 app = Flask(__name__)
 
 CORS(app)
+
+@app.route('/')
+def index():
+    return "Hello World!"
 
 @app.route('/picture' ,methods =['POST'])
 def upload_image():
@@ -24,21 +30,19 @@ def upload_image():
 
 @app.route('/login' ,methods =['POST'])
 def auth_login():
-    username = request.json['email']
-    password = request.json['password']
-    if username is not None and password is not None and username != "" and password:
-        return jsonify({'Auth': '1'})
+    db=User()
+    if(db!=None):
+        username = str(request.json['email'])
+        password = str(request.json['password'])
+        if(db.login(username,password)):
+            token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
+            ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+            return jsonify({'result': 'success','token':token})
+        else:
+            return jsonify({'result': 'failed'})
     else:
-        return jsonify({'Auth': '0'})
+            return {'response': 'failed'}, 400
 
-@app.route('/')
-def index():
-    return "Hello World!"
-
-@app.route('/login', methods=["POST"])
-def login():
-    db = User()
-    if(db!=None)
 
     
 @app.route('/register', methods=["POST"])
