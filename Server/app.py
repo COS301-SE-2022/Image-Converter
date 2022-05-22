@@ -1,4 +1,5 @@
 import datetime
+from functools import wraps
 import jwt
 from flask import Flask,json,jsonify, request
 from database.database import User
@@ -11,19 +12,49 @@ app = Flask(__name__)
 
 CORS(app)
 
+def token(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        user=None
+        token= None
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+        if not token:
+            print(token)
+            return jsonify({'result': 'Token is not found or invalid!'}), 401
+        
+        try:
+            db = User()
+            data = jwt.decode(token, 'secret', "HS256")
+            user = db.getUserWithEmail(data['email'])
+        except Exception as e:
+            return jsonify({'result': str(e)}), 401
+        return f(user, *args, **kwargs)
+
+    return decorated
+
+
 @app.route('/')
 def index():
     return "Hello World!"
 
+@app.route('/test', methods=['POST'])
+@token
+def test(user):
+    username = str(request.json['email'])
+    print(user)
+    return jsonify({'result': username})
+
 @app.route('/picture' ,methods =['POST'])
+# @token
 def upload_image():
     picture = request.json['picture']
     if picture is not None:
-        print("picture is not None")
+        # print("picture is not None")
         imageReturned = "data:image/png;base64,"
         with open("images/image1.jpg", "rb") as img_file:
             b64picture = base64.b64encode(img_file.read())
-        print("b64picture")
+        # print("b64picture")
 
     return jsonify({'image': str(imageReturned+ b64picture.decode('UTF-8'))})
 
@@ -60,25 +91,6 @@ def register():
     else:
             return {'response': 'failed'}, 400
 
-def token(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        user=None
-        token= None
-        if 'x-access-token' in request.headers:
-            token = request.headers['x-access-token']
-        if not token:
-            return jsonify({'result': 'Token is not found or invalid!'}), 401
-        
-        try:
-            db = User()
-            data = jwt.decode(token, 'secret', "HS256")
-            user = db.getUserWithEmail(data['email'])
-        except Exception as e:
-            return jsonify({'result': str(e)}), 401
-        return f(user, *args, **kwargs)
-
-    return decorated
 
 
 if __name__ == '__main__':
