@@ -32,6 +32,11 @@ def login():
 @app.route('/register', methods=["POST"])
 def register():
     db = app.config['DATABASE']
-    
+    if(db != None):
+        name = str(request.json["name"])
+        surname = str(request.json["surname"])
+        email = str(request.json["email"])
+        password = str(request.json["password"])
+        
 if __name__ == '__main__':
     app.run(debug=True)
