@@ -59,5 +59,12 @@ def register():
             return {'response': 'failed'}, 400
     else:
             return {'response': 'failed'}, 400
+
+def token(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        user=None
+        token= None
+        
 if __name__ == '__main__':
     app.run(debug=True)
