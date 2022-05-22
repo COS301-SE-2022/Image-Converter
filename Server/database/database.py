@@ -49,3 +49,6 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+    def login(self, email, password):
+        
