@@ -44,6 +44,8 @@ class User:
             encrypted_password = encrypted_password.decode('UTF-8')
             sql = "INSERT INTO users (name,surname,password,email) VALUES(%s,%s,%s,%s)"
             self.cur.execute(sql, (name, surname, encrypted_password, email))
+            self.conn.commit()
+            return True
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
