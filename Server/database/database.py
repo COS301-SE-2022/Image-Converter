@@ -51,4 +51,9 @@ class User:
             return False
 
     def login(self, email, password):
-        
+        try:
+            sql = "SELECT password FROM users where email=%s;"
+
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
