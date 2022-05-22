@@ -35,13 +35,15 @@ class User:
         except:
             return None
 
-    def register(self, firstname, lastname, email, password):
+    def register(self, name, surname, password, email):
         try:
             encoded_password = bytes(password, encoding='utf-8')
             encrypted_password = bcrypt.hashpw(
                 encoded_password, bcrypt.gensalt())
             # print(type(encrypted_password))
             encrypted_password = encrypted_password.decode('UTF-8')
+            sql = "INSERT INTO users (name,surname,password,email) VALUES(%s,%s,%s,%s)"
+            self.cur.execute(sql, (name, surname, encrypted_password, email))
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
