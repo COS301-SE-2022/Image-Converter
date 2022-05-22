@@ -2,3 +2,18 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-form-field-required-marker { color: #0f0101 }
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #a6a6a6;
+}
+
+.mat-form-field-label{
+    color: #0f0101;
+}
+
+.md-button.md-raised.md-primary.formPage:not(.disabledclassname) {
+    position: right !important;
+    color: #FFFFFF;
+    background-color:#008cba;    
+}
