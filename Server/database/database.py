@@ -56,7 +56,11 @@ class User:
             self.cur.execute(sql, (email,))
             db_password = self.cur.fetchone()
             self.conn.commit()
-
+            if db_password != None:
+                if bcrypt.checkpw(password.encode('UTF-8'), db_password[0].encode('UTF-8')):
+                    return True
+                else:
+                    return False
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
