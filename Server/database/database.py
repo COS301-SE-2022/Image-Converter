@@ -53,6 +53,9 @@ class User:
     def login(self, email, password):
         try:
             sql = "SELECT password FROM users where email=%s;"
+            self.cur.execute(sql, (email,))
+            db_password = self.cur.fetchone()
+            self.conn.commit()
 
         except Exception as e:
             print(f"Database connection error: {e}")
