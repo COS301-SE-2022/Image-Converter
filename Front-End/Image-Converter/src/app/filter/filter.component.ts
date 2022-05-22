@@ -40,6 +40,8 @@ export class FilterComponent implements OnInit {
   original(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "revert"
+    this.globalFilterVar = "revert";
+
   }
 
   grayScale(){
@@ -52,17 +54,20 @@ export class FilterComponent implements OnInit {
   sepia(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "sepia(100%)"
-    this.globalFilterVar = "grayscale";
+    this.globalFilterVar = "sepia";
   }
 
   contrast(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "contrast(200%)"
+    this.globalFilterVar = "contrast";
   }
 
   hueRotate(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "hue-rotate(90deg)"
+    this.globalFilterVar = "hueRotate";
+
   }
 
   //downloadFile is used to download an image
@@ -78,6 +83,18 @@ var filterVar;
 // console.log(temp);
   if(this.globalFilterVar == "grayscale"){
     filterVar = "grayscale";
+  }
+  else if(this.globalFilterVar == "sepia"){
+    filterVar = "sepia";
+  }
+  else if(this.globalFilterVar == "contrast"){
+    filterVar = "contrast";
+  }
+  else if(this.globalFilterVar == "hueRotate"){
+    filterVar = "hueRotate";
+  }
+  else if(this.globalFilterVar == "revert"){
+    filterVar = "revert";
   }
 
   myTest(imgBckend,filterVar);

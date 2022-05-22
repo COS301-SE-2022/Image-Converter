@@ -16,7 +16,22 @@ function  draw() {
     if(filterVar==="grayscale"){
       ctx.filter = "grayscale(1.0)";
       ctx.drawImage(this, 0, 0);
-
+    }
+    else if(filterVar==="sepia"){
+      ctx.filter = "sepia(1.0)";
+      ctx.drawImage(this, 0, 0);
+    }
+    else if(filterVar==="contrast"){
+      ctx.filter = "contrast(2.0)";
+      ctx.drawImage(this, 0, 0);
+    }
+    else if(filterVar==="hueRotate"){
+      ctx.filter = "hue-rotate(90deg)";
+      ctx.drawImage(this, 0, 0);
+    }
+    else if(filterVar==="revert"){
+      ctx.filter = "revert";
+      ctx.drawImage(this, 0, 0);
     }
   }
   else {
