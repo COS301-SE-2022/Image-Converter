@@ -34,3 +34,14 @@ class User:
             self.cur = self.conn.cursor()
         except:
             return None
+
+    def register(self, firstname, lastname, email, password):
+        try:
+            encoded_password = bytes(password, encoding='utf-8')
+            encrypted_password = bcrypt.hashpw(
+                encoded_password, bcrypt.gensalt())
+            # print(type(encrypted_password))
+            encrypted_password = encrypted_password.decode('UTF-8')
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
