@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Login } from '../classes/Login';
+import { Register } from '../classes/Register';
 // import { stringify } from 'querystring';
 
 @Injectable({
@@ -18,6 +19,12 @@ export class ConverterService {
   login(formData: Login): Observable<any> {
     return this.httpclient.post(
       'http://localhost:5000/login',
+      formData,{observe:'response'}
+    );
+  }
+  register(formData: Register) : Observable<any> {
+    return this.httpclient.post(
+      'http://localhost:5000/register',
       formData,{observe:'response'}
     );
   }
