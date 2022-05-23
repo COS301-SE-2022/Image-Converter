@@ -19,7 +19,8 @@
 	margin-top: 20px;
 }
 
-#canvas {
-	max-height: 420px;
-	object-fit: contain;
+#myCanvas {
+	width: 400px;
+	height: 400px;
+	display: none;
 }
