@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@ body {font-size:16px;}
 </head>
 <body *ngIf=dispBool>
   
-  <!-- Image Filters -->
+  <!--Image Filters-->  
   <div class="w3-container" id="imageFilters" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-black"><b>Image Filters</b></h1>
     <hr style="width:50px;border:5px solid black" class="w3-round">
@@ -43,10 +44,24 @@ body {font-size:16px;}
           </div>
       </div> 
       <div class="w3-panel" style="width:15%">
+        <a id='dwnldLnk' download='output.png' style="display:none;" ></a>
         <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile()">Download</button>
+        <div >
+          <canvas id="myCanvas" ></canvas>
+        </div>
       </div>
-  </div>
+      
+	  <!-- <div class="large-7 left">
+		<img id="image1" src={{message}}/><br>
+    <a id='dwnldLnk' download='output.png' style="display:none;" ></a> 
+		<button class="w3-button w3-round w3-block w3-black" (click)="downloadFile()">Download</button>
+		<canvas id="myCanvas"></canvas>
+	</div> -->
+   </div>
+  <script src="assets/js/custom.js"></script>
 
 
-</body>
+</body> 
 </html>
+
+

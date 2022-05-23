@@ -139,7 +139,7 @@ export class ConverterComponent implements OnInit {
           responseData =>{
             
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-            console.log(this.respsonseBase64.image);
+            // console.log(this.respsonseBase64.image);
             this.imgData.changeMessage(this.respsonseBase64.image);
             this.imgData.changBool(true);
           }
