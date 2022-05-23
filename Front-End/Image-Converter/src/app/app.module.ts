@@ -12,13 +12,25 @@ import { FilterComponent } from './filter/filter.component';
 import { ComponentCommunicationService } from './shared/component-communication.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { ConversionComponent } from './conversion/conversion.component';
+import { UploadHistoryComponent } from './upload-history/upload-history.component';
+import { ContactComponent } from './contact/contact.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConverterComponent,
     FilterComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    SideBarComponent,
+    ConversionComponent,
+    UploadHistoryComponent,
+    ContactComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
