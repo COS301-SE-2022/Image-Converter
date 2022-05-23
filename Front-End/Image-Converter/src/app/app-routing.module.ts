@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import {ConverterComponent} from './converter/converter.component'
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'converter',
-    component: ConverterComponent
+    path: 'dashboard',
+    component: DashboardComponent
   },
   {
     path: '',
