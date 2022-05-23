@@ -4,7 +4,7 @@ import { ComponentCommunicationService } from './../shared/component-communicati
 import { Subscription } from 'rxjs';
 import { image } from 'html2canvas/dist/types/css/types/image';
 import { ReturnStatement } from '@angular/compiler';
-import {GlobalVariable} from './global'
+import {GlobalVariable} from './global';
 
 declare const myTest:any;
 declare const uploadImage:any;
