@@ -52,7 +52,7 @@ def upload_image():
     if picture is not None:
         # print("picture is not None")
         imageReturned = "data:image/png;base64,"
-        with open("images/image1.jpg", "rb") as img_file:
+        with open("images/download.png", "rb") as img_file:
             b64picture = base64.b64encode(img_file.read())
         # print("b64picture")
 
@@ -68,7 +68,8 @@ def auth_login():
         if(db.login(username,password)):
             token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
             ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
-            return jsonify({'result': 'success','token':token})
+            result = "success"
+            return jsonify({'result': result,'token':str(token)})
         else:
             return jsonify({'result': 'failed'})
     else:

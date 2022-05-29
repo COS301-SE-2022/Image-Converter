@@ -46,8 +46,11 @@ body {font-size:16px;}
       <div class="w3-panel" style="width:15%">
         <a id='dwnldLnk' download='output.png' style="display:none;" ></a>
         <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile()">Download</button>
-        <canvas id="myCanvas"></canvas>
+        <div >
+          <canvas id="myCanvas" ></canvas>
+        </div>
       </div>
+      
 	  <!-- <div class="large-7 left">
 		<img id="image1" src={{message}}/><br>
     <a id='dwnldLnk' download='output.png' style="display:none;" ></a> 
