@@ -32,13 +32,14 @@ export class ConverterService {
   }
    postImg(data: string) {
      
-    var auth=sessionStorage.getItem('token');
-    
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+    console.log(tok);
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
-      headers: new HttpHeaders({
-        Authorization:auth!
-      })
+      headers: headers
     };
+    console.log(httpOptions);
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
