@@ -6,7 +6,7 @@
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
               <div class="mb-3">
                 <label for="registerUsername" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" formControlName="name" class ="form-control is-invalid" placeholder="Enter Name">
+                <input type="text" class="form-control" id="name" formControlName="registerUsername" class ="form-control is-invalid" placeholder="Enter Name">
                 <div class="invalid-feedback">
                   Username Required
                 </div>
@@ -15,7 +15,7 @@
   
               <div class="mb-3">
                 <label for="Surname" class="form-label">Surname</label>
-                <input type="text" class="form-control" id="surname" formControlName="surname" class ="form-control is-invalid" placeholder="Enter Surame">
+                <input type="text" class="form-control" id="surname" formControlName="Surname" class ="form-control is-invalid" placeholder="Enter Surame">
                 <div class="invalid-feedback" >
                   
                   Surname Required
@@ -24,7 +24,7 @@
   
               <div class="mb-3">
                 <label for="registerEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" formControlName="email" class ="form-control is-invalid"  placeholder="Enter email">
+                <input type="email" class="form-control" id="email" formControlName="registerEmail" class ="form-control is-invalid"  placeholder="Enter email">
                 <div class="invalid-feedback">
                   Email Required
                 </div>
@@ -32,7 +32,7 @@
   
               <div class="mb-3">
                   <label for="registerPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="registerPassword" formControlName="password" class ="form-control is-invalid" placeholder="Password">
+                  <input type="password" class="form-control" id="registerPassword" formControlName="registerPassword" class ="form-control is-invalid" placeholder="Password">
                   <div class="invalid-feedback">
                     Password Required
                   </div>
