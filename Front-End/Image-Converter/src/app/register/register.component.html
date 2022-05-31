@@ -1,0 +1,33 @@
+<div class="row">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+      <div class="col-md-6 offset-md-3 mt-4">
+          <h3>Register New User</h3>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="registerUsername" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter Name">
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+  
+              <div class="mb-3">
+                <label for="Surname" class="form-label">Surname</label>
+                <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Enter Surame">
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+  
+              <div class="mb-3">
+                <label for="registerEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+              </div>
+  
+              <div class="mb-3">
+                  <label for="registerPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="registerPassword" formControlName="password" placeholder="Password">
+                </div>
+  
+              <button type="submit" class="btn btn-primary" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit">Register<i class="fas fa-sign-in-alt"></i></button>
+            </form>
+      </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

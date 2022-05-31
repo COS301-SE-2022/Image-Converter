@@ -137,9 +137,9 @@ export class ConverterComponent implements OnInit {
       this.myimage?.subscribe(data => {
         this.imgService.postImg(data).subscribe(
           responseData =>{
-            
+            // console.log(responseData);
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-            // console.log(this.respsonseBase64.image);
+            // console.log(this.respsonseBase64);
             this.imgData.changeMessage(this.respsonseBase64.image);
             this.imgData.changBool(true);
           }

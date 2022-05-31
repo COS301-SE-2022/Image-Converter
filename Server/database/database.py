@@ -27,16 +27,16 @@ class User:
             self.conn = psycopg2.connect(
                 dbname=self.DB_NAME, user=self.DB_USER, password=self.DB_PASS, host=self.DB_HOST)
             self.cur = self.conn.cursor()
+            print("Database connection successful")
         except:
             return None
 
-    def register(self, name, surname, password, email):
+    def register(self, name, surname, email, password):
         try:
             encoded_password = bytes(password, encoding='utf-8')
-            encrypted_password = bcrypt.hashpw(
-                encoded_password, bcrypt.gensalt())
-            # print(type(encrypted_password))
+            encrypted_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
             encrypted_password = encrypted_password.decode('UTF-8')
+            # print(encrypted_password)
             sql = "INSERT INTO users (name,surname,password,email) VALUES(%s,%s,%s,%s)"
             self.cur.execute(sql, (name, surname, encrypted_password, email))
             self.conn.commit()
@@ -59,3 +59,10 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+    def getUserWithEmail(self, email):
+        sql = "SELECT * FROM users where email=%s;"
+        self.cur.execute(sql, (email,))
+        db_user = self.cur.fetchone()
+        self.conn.commit()
+        return db_user
