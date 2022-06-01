@@ -53,7 +53,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <script src = "bootstrap-validate.js"></script> -->
 
-
+<!-- 
 
   <div class="row">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -62,7 +62,7 @@
       <!-- <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
-    </div> -->
+    </div> 
       <h2 id="logo">New User Register</h2>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -110,7 +110,7 @@
             <div *ngIf="registerForm.controls.cpassword.errors.required">Enter password again</div>
             <div *ngIf="registerForm.controls.cpassword.errors.minlength">Password must be at least 8 characters</div>
             <div *ngIf="registerForm.controls.cpassword.errors.MustMatch">Password entered is not the same</div>
-            <!-- <div *ngIf="registerForm.controls.cpassword.errors.required">Enter password again</div> -->
+            <!-- <div *ngIf="registerForm.controls.cpassword.errors.required">Enter password again</div> 
                    
           </div>
     </div>
@@ -124,4 +124,95 @@
   </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+     -->
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      
+        <title></title>
+     
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
     
+    
+    </head>
+    <body>
+        <div id="loginForm">
+            <div id="formContent">
+                <div class="background">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <table>
+                        
+                            <h3 id="logo">Register</h3>
+                        <tr>   
+                            <td> 
+                                <label for="FName">First Name</label>
+                                <input  formControlName= "name" class="form-control" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.name.errors }" />
+                                <div *ngIf="submitted && registerForm.controls.name.errors" class="text-danger">
+                                  <div *ngIf="registerForm.controls.name.errors.required">First Name is required</div>
+                                  <div *ngIf="registerForm.controls.name.errors.minlength">First Name must be at least 2 characters</div>
+                                </div>
+                            </td>
+                            <td>
+                              <label for="surname">Surname</label>
+                              <input type="text" formControlName="surname" class="form-control" placeholder="Surname"  [ngClass]="{ 'is-invalid': submitted && registerForm.controls.surname.errors }" />
+                              <div *ngIf="submitted && registerForm.controls.surname.errors" class="text-danger">
+                                <div *ngIf="registerForm.controls.surname.errors.required">Last Name is required</div>
+                                <div *ngIf="registerForm.controls.surname.errors.minlength">Last Name must be at least 2 characters</div>
+                          </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label for="password">Password</label>
+                            <input type="password" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }"  />
+                            <div *ngIf="submitted && registerForm.controls.password.errors" class="text-danger">
+                              <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+                                     <div *ngIf="registerForm.controls.password.errors.minlength">Password must be at least 8 characters</div>
+                            </div>
+                        </td>
+
+                        <td>
+                          <label for="Email">Email</label>
+                          <input type="text" formControlName="email" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }" />
+                          <div *ngIf="submitted && registerForm.controls.email.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+                             <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address</div>
+                          </div>
+                      </td>  
+              
+                        </tr>
+    
+                        <tr>
+                            
+                            <td>
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" formControlName="cpassword" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.cpassword.errors }"  />
+                                <div *ngIf="submitted && registerForm.controls.cpassword.errors" class="text-danger">
+                                  <div *ngIf="registerForm.controls.cpassword.errors.required">Enter password again</div>
+                                  <div *ngIf="registerForm.controls.cpassword.errors.minlength">Password must be at least 8 characters</div>
+                                  <div *ngIf="registerForm.controls.cpassword.errors.MustMatch">Password entered is not the same</div>                                         
+                                </div>
+                            </td>
+                        </tr>                    
+                        
+                    </table> 
+                    
+                    <button id="loginbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit">Register</button>
+                            
+                </form>
+            </div>
+        </div>
+    </body>
+
+    </html>

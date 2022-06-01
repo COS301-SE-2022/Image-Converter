@@ -3,7 +3,7 @@ import {FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
 import { Register } from '../classes/Register';
 import { CustomValidationService } from '../services/custom-validation.service';
 import { ConverterService } from '../shared/converter.service';
-
+import { Login } from '../classes/Login';
 
 @Component({
   selector: 'app-register',
@@ -66,6 +66,10 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   reactiveForm!: FormGroup;
   submitted = false;
+
+  hide = true;
+  _match!: boolean;
+  buttonLogin = "";
  
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder) {}
  
@@ -83,6 +87,12 @@ export class RegisterComponent implements OnInit {
       validators: this.MustMatch('password','cpassword')
     })
   }
+
+  form = new FormGroup({  
+    username: new FormControl('', Validators.required),  
+    password: new FormControl('', Validators.required),
+    // submit: new FormControl()
+  });
 
 
   get name() {  
