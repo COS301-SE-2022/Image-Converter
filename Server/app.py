@@ -86,7 +86,10 @@ def register():
         email = str(request.json["email"])
         password = str(request.json["password"])
         if(db.register(name, surname, email, password)):
-            return {'response': 'registered'}, 200
+            token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
+            ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+            result = "success"
+            return jsonify({'result': result,'token':str(token)})
         else:
             return {'response': 'failed'}, 400
     else:

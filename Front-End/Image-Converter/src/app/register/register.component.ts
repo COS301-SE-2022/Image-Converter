@@ -3,7 +3,11 @@ import {FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
 import { Register } from '../classes/Register';
 import { CustomValidationService } from '../services/custom-validation.service';
 import { ConverterService } from '../shared/converter.service';
+<<<<<<< HEAD
 import { Login } from '../classes/Login';
+=======
+import { Router } from '@angular/router';
+>>>>>>> 8a3f235ed3354549b0d8823104a853288af619e8
 
 @Component({
   selector: 'app-register',
@@ -66,12 +70,17 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   reactiveForm!: FormGroup;
   submitted = false;
+<<<<<<< HEAD
 
   hide = true;
   _match!: boolean;
   buttonLogin = "";
  
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder) {}
+=======
+  response!:{result:string,token:string};
+  constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
+>>>>>>> 8a3f235ed3354549b0d8823104a853288af619e8
  
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -148,6 +157,12 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(authDetails).subscribe(
       responseData=>{
         console.log(responseData);
+        this.response = JSON.parse(JSON.stringify(responseData));
+
+        if(responseData.body.result == "registered"){
+          localStorage.setItem('token', responseData.body.token);
+          this._router.navigateByUrl('/dashboard');
+        }
       });
  
     // stop the process here if form is invalid
@@ -155,6 +170,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
  
-    alert('Registered successfully!');
+   // alert('Registered successfully!');
   }
 }
