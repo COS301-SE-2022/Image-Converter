@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Login } from '../classes/Login';
 import { Register } from '../classes/Register';
 import { CustomValidationService } from '../services/custom-validation.service';
 import { ConverterService } from '../shared/converter.service';
-<<<<<<< HEAD
-import { Login } from '../classes/Login';
-=======
 import { Router } from '@angular/router';
->>>>>>> 8a3f235ed3354549b0d8823104a853288af619e8
 
 @Component({
   selector: 'app-register',
@@ -15,73 +12,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  loginService: any;
 
-  // constructor(private registerService: ConverterService, private customValidator: CustomValidationService) { }
 
-  // ngOnInit(): void {
-  // }
-  // form = new FormGroup({  
-  //   name: new FormControl('', Validators.required),  
-  //   surname: new FormControl('', Validators.required),  
-  //   email: new FormControl('', Validators.required),  
-  //   password: new FormControl('', Validators.required),
-  //   confirmpassword: new FormControl('', Validators.required),
-  //   // submit: new FormControl()
-  // });
-
-  // get name() {  
-  //   return this.form.get('name');  
-  // } 
-  // get password() {  
-  //   return this.form.get('password');  
-  // } 
-  // get confirmPassword() {  
-  //   return this.form.get('confirmPassword');  
-  // } 
-  // get surname() {  
-  //   return this.form.get('surname');  
-  // } 
-  // get email() {  
-  //   return this.form.get('email');  
-  // } 
-
-  // register()
-  // {
-  //   //intentionally left blank
-  // }
-  // onSubmit()
-  // {
-  //   let authDetails:Register = {
-  //     name: this.form.get('name')!.value,
-  //     surname: this.form.get('surname')!.value,
-  //     email: this.form.get('email')!.value,
-  //     password: this.form.get('password')!.value,
-  //     confirmPassword: this.form.get('confirmPassword')!.value,
-  //   } 
-
-  //   this.registerService.register(authDetails).subscribe(
-  //     responseData=>{
-  //       console.log(responseData);
-  //     });
-  //     }
-
+  hide = true;
+  _match!: boolean;
+  buttonLogin = "";
 
   title = 'reactiveformproject';
   registerForm!: FormGroup;
   reactiveForm!: FormGroup;
   submitted = false;
-<<<<<<< HEAD
-
-  hide = true;
-  _match!: boolean;
-  buttonLogin = "";
- 
-  constructor(private registerService: ConverterService, private formBuilder: FormBuilder) {}
-=======
   response!:{result:string,token:string};
+
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
->>>>>>> 8a3f235ed3354549b0d8823104a853288af619e8
- 
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       surname: ['', [Validators.required, Validators.minLength(2)]],
@@ -119,7 +64,8 @@ export class RegisterComponent implements OnInit {
   get confirmPassword() {  
     return this.registerForm.get('cpassword');  
   } 
- 
+
+
   MustMatch(controlName: string, matchingControl: string)
   {
     return(formGroup: FormGroup)=>{
@@ -170,6 +116,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
  
-   // alert('Registered successfully!');
+    alert('Registered successfully!');
   }
 }
+
