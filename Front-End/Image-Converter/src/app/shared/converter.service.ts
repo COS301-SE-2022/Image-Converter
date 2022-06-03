@@ -17,11 +17,13 @@ export class ConverterService {
   
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
+    console.log(formData);
     return this.httpclient.post(
       'http://localhost:5000/login',
       formData,{observe:'response'}
     );
   }
+  
   register(formData: Register) : Observable<any> {
     return this.httpclient.post(
       'http://localhost:5000/register',
@@ -30,27 +32,19 @@ export class ConverterService {
   }
    postImg(data: string) {
      
-     /* for future use
-    var auth;
-    if(localStorage.getItem('rememberMe')=="true"){
-      auth=localStorage.getItem('token');
-    }else{
-      auth=sessionStorage.getItem('token');
-    }
-
-    
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer '+auth
-      })
-    };*/
-
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+    console.log(tok);
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    console.log(httpOptions);
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
       'http://localhost:5000/picture',
-      pic
-
+      pic,httpOptions
     );
   }
   
