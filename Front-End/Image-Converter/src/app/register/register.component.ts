@@ -151,6 +151,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
  
-    alert('Registered successfully!');
+   // alert('Registered successfully!');
   }
 }
