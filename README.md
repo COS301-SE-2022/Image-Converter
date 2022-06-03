@@ -25,6 +25,13 @@ display it to the user. The tool will support multiple graphing functions and gr
 • The system shall support more than one function on a graph <br/>
 
 ## Recorded Demo
+<a href="#" target="_blank">
+  ➛ Demo 1<br>
+</a> 
+
+<a href="#" target="_blank">
+  ➛ Demo 2<br>
+</a>
 
 ## Omolemo Mashigo - Team Leader
 <img src="https://user-images.githubusercontent.com/73942516/166416196-4030f700-6c32-4d43-a7fb-d6c06667a9fa.jpg" width="250" height="300">
