@@ -46,8 +46,8 @@ def test(user):
     return jsonify({'result': username})
 
 @app.route('/picture' ,methods =['POST'])
-# @token
-def upload_image():
+@token
+def upload_image(user):
     picture = request.json['picture']
     if picture is not None:
         # print("picture is not None")
