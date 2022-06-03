@@ -42,11 +42,11 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  // form = new FormGroup({  
-  //   username: new FormControl('', Validators.required),  
-  //   password: new FormControl('', Validators.required),
-  //   // submit: new FormControl()
-  // });
+  form = new FormGroup({  
+    username: new FormControl('', Validators.required),  
+    password: new FormControl('', Validators.required),
+    // submit: new FormControl()
+  });
 
 
   get name() {  
