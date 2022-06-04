@@ -169,7 +169,8 @@
                                 <input  formControlName= "name" class="form-control" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.name.errors }" />
                                 <div *ngIf="submitted && registerForm.controls.name.errors" class="text-danger">
                                   <div *ngIf="registerForm.controls.name.errors.required">First Name is required</div>
-                                  <div *ngIf="registerForm.controls.name.errors.minlength">First Name must be at least 2 characters</div>
+                                  <div *ngIf="registerForm.controls.name.errors.minlength">First Name must be </div>
+                                  <div *ngIf="registerForm.controls.name.errors.minlength">at least 2 characters</div>
                                 </div>
                             </td>
                             <td>
@@ -177,7 +178,8 @@
                               <input type="text" formControlName="surname" class="form-control" placeholder="Surname"  [ngClass]="{ 'is-invalid': submitted && registerForm.controls.surname.errors }" />
                               <div *ngIf="submitted && registerForm.controls.surname.errors" class="text-danger">
                                 <div *ngIf="registerForm.controls.surname.errors.required">Last Name is required</div>
-                                <div *ngIf="registerForm.controls.surname.errors.minlength">Last Name must be at least 2 characters</div>
+                                <div *ngIf="registerForm.controls.surname.errors.minlength">Last Name must be </div>
+                                <div *ngIf="registerForm.controls.surname.errors.minlength">at least 2 characters</div>
                           </div>
                           </td>
                         </tr>
@@ -187,7 +189,8 @@
                             <input type="password" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }"  />
                             <div *ngIf="submitted && registerForm.controls.password.errors" class="text-danger">
                               <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
-                                     <div *ngIf="registerForm.controls.password.errors.minlength">Password must be at least 8 characters</div>
+                                     <div *ngIf="registerForm.controls.password.errors.minlength">Password must be </div>
+                                     <div *ngIf="registerForm.controls.password.errors.minlength">at least 8 characters</div>
                             </div>
                         </td>
 
@@ -196,7 +199,7 @@
                           <input type="text" formControlName="email" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }" />
                           <div *ngIf="submitted && registerForm.controls.email.errors" class="text-danger">
                             <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
-                             <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address</div>
+                             <div *ngIf="registerForm.controls.email.errors.email"> Invalid email address</div>
                           </div>
                       </td>  
               
@@ -209,8 +212,9 @@
                                 <input type="password" formControlName="cpassword" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.cpassword.errors }"  />
                                 <div *ngIf="submitted && registerForm.controls.cpassword.errors" class="text-danger">
                                   <div *ngIf="registerForm.controls.cpassword.errors.required">Enter password again</div>
-                                  <div *ngIf="registerForm.controls.cpassword.errors.minlength">Password must be at least 8 characters</div>
-                                  <div *ngIf="registerForm.controls.cpassword.errors.MustMatch">Password entered is not the same</div>                                         
+                                  <div *ngIf="registerForm.controls.cpassword.errors.minlength">Password must be </div>
+                                  <div *ngIf="registerForm.controls.cpassword.errors.minlength">at least 8 characters</div>
+                                  <div *ngIf="registerForm.controls.cpassword.errors.MustMatch">Password is not the same</div>                                         
                                 </div>
                             </td>
                         </tr>                    
@@ -218,10 +222,12 @@
                     </table> 
                     <div class="form-group">
                       <button id="loginbtn" class="btn btn-primary">Register</button>
-                  </div>       
+                  </div>      
+                  <!-- <p id="accountLink">Already registered? <a routerLink="/login"  (click)="register()">Login</a></p>   -->
                 </form>
             </div>
         </div>
     </body>
 
     </html> 
+  

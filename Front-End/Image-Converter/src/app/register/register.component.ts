@@ -48,6 +48,10 @@ export class RegisterComponent implements OnInit {
   //   // submit: new FormControl()
   // });
 
+  login()
+  {
+    //intentionally left blank
+  }
  
   get name() {  
     return this.registerForm.get('name');  
