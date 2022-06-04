@@ -15,6 +15,19 @@ display it to the user. The tool will support multiple graphing functions and gr
 ## Project Board
 [Project Board](https://github.com/COS301-SE-2022/Image-Converter/projects/1)&nbsp;
 
+
+## Project Branch Structure
+    .
+    ├── main                    
+    │   ├── develop              
+    │   |   ├── feature/set-up-workflows              
+    │   |   ├── feature/config-tets            
+    │   |   ├── feature/intergration 
+    |   |   ├── feature/filter
+    │   |   └── ...                 
+    |   └── ...
+    └── ...
+
 ## Functional Requirements
 
 • The system shall allow the user to login using their email address and password <br/>
