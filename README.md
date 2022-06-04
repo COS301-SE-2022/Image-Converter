@@ -12,8 +12,7 @@ The tool that we will build will convert the image of a graph into a standardize
 so, we will be able to easily interpret the data. It will also extract the function of the graph and
 display it to the user. The tool will support multiple graphing functions and graph representations.
 
-## Project Board
-[Project Board](https://github.com/COS301-SE-2022/Image-Converter/projects/1)&nbsp;
+## [Project Board](https://github.com/COS301-SE-2022/Image-Converter/projects/1)
 
 ## [System Requirements Specification](https://github.com/COS301-SE-2022/Image-Converter/wiki/System-Requirements-Specification)
 
@@ -29,15 +28,6 @@ display it to the user. The tool will support multiple graphing functions and gr
     │   |   └── ...                 
     |   └── ...
     └── ...
-
-## Functional Requirements
-
-• The system shall allow the user to login using their email address and password <br/>
-• The system shall allow the user to upload images from their mobile devices or laptops <br/>
-• The system shall take the uploaded image of the graph and redraw it into a standardised form <br/>
-• The system shall have a database storing templates for how these standard graphs should look like <br/>
-• The system shall allow the admin user to upload training material for the AI subsystem for it to recognize the different graphs <br/>
-• The system shall support more than one function on a graph <br/>
 
 ## Recorded Demo
 <a href="#" target="_blank">
