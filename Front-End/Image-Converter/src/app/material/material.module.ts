@@ -9,6 +9,9 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule } from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -18,14 +21,20 @@ import {MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatGridListModule,
+    MatDialogModule
   ],
   exports: [
     cardModule.MatCardModule,
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatGridListModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }
