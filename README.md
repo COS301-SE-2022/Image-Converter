@@ -41,7 +41,7 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
 </p>
 </details>
   
-  
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=OmolemoMashigo&theme=highcontrast)
   
 ## Emmanuel Khoza
 <img src="https://user-images.githubusercontent.com/73942516/166416128-de040471-6c6b-469f-b6c8-584a83f79822.jpg" width="250" height="300">
@@ -57,6 +57,8 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
 I am currently working as a junior software developer therefore working in a team is something I am familiar with. I have worked with angular and similar frameworks such as ionic. I have not worked with python and PostGreSQL before but I am a fast learner and I am used to being around an environment of self learning.
 </p>
 </details>
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Thuso-Khoza&theme=highcontrast)
 
 ## Phadimane Lethabo Lerefolo
 <img src="https://user-images.githubusercontent.com/73942516/166416260-56a5ec3d-cafd-423b-ba10-eed66304f2f1.jpeg" width="250" height="300">
@@ -90,6 +92,8 @@ I am a hardworking, ambitious student who is passionate about the field I am in.
 </p>
 </details>
 
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MoeMoola3&theme=highcontrast)
+
 ## Neo Seefane
 <img src="https://user-images.githubusercontent.com/73942516/166416330-ee1187a0-dbd9-4bd9-8c8b-b64095684716.jpeg" width="250" height="300">
 <a href="http://www.linkedin.com/in/neo-seefane-68b8a8239" rel="nofollow noreferrer">
@@ -105,3 +109,4 @@ I am an inquisitive learner and a creative team player with excellent interperso
 </p>
 </details>
 
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=neoseefane&theme=highcontrast)
