@@ -72,6 +72,7 @@ I am currently working as a junior software developer therefore working in a tea
 I am currently working as a junior software engineer, that will benefit the team since I have an experience with how most things work. I have a knack for learning new programming technologies. I am flexible and I can learn new things fast. I am familiar with technologies that we are planning on using, I have worked different projects with Angular and 1 project with python specifically the flask framework.
 </p>
 </details>
+
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=phadimanelerefolo&theme=highcontrast)
 
 ## Mohammed Moola
