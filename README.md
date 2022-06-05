@@ -61,7 +61,7 @@ I am currently working as a junior software developer therefore working in a tea
 ## Phadimane Lethabo Lerefolo
 <img src="https://user-images.githubusercontent.com/73942516/166416260-56a5ec3d-cafd-423b-ba10-eed66304f2f1.jpeg" width="250" height="300">
 <a href="https://www.linkedin.com/in/phadimane-lerefolo-9388ab1a9/" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
   </a> &nbsp; 
   <a href="https://github.com/phadimanelerefolo" rel="nofollow noreferrer">
     <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
