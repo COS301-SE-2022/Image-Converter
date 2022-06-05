@@ -64,7 +64,7 @@ I am currently working as a junior software developer therefore working in a tea
     <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
   </a> &nbsp; 
   <a href="https://github.com/phadimanelerefolo" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
   </a>
 
 <details><summary>Profile Description</summary>
@@ -72,6 +72,7 @@ I am currently working as a junior software developer therefore working in a tea
 I am currently working as a junior software engineer, that will benefit the team since I have an experience with how most things work. I have a knack for learning new programming technologies. I am flexible and I can learn new things fast. I am familiar with technologies that we are planning on using, I have worked different projects with Angular and 1 project with python specifically the flask framework.
 </p>
 </details>
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=phadimanelerefolo&theme=highcontrast)
 
 ## Mohammed Moola
 <img src="https://user-images.githubusercontent.com/73942516/166416308-2a9ed507-7aee-4b50-bc67-206cd030d9e3.jpg" width="250" height="300">
