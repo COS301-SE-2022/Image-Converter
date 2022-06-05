@@ -48,15 +48,25 @@ def test(user):
 @app.route('/picture' ,methods =['POST'])
 @token
 def upload_image(user):
-    picture = request.json['picture']
-    if picture is not None:
-        # print("picture is not None")
-        imageReturned = "data:image/png;base64,"
-        with open("images/download.png", "rb") as img_file:
-            b64picture = base64.b64encode(img_file.read())
-        # print("b64picture")
+    db=User()
+    if(db!=None):
+        picture = request.json['picture']
+        if picture is not None:
 
-    return jsonify({'image': str(imageReturned+ b64picture.decode('UTF-8'))})
+            base64_picture=base64.b64encode((bytes(picture[picture.find(",")+1:].encode('utf-8'))))
+            imageReturned = "data:image/png;base64,"
+            with open("images/download.png", "rb") as img_file:
+                b64picture = base64.b64encode(img_file.read())
+            image_converted = bytearray(b64picture)
+            image_uploaded = bytearray(base64_picture)
+            if(db.insert_image(picture, image_converted, user[0])):
+                print("Image inserted")
+
+            db_image = db.get_image(user[0])
+
+        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
+    else:
+        return {'response': 'failed'}, 400
 
 
 @app.route('/login' ,methods =['POST'])
@@ -65,6 +75,7 @@ def auth_login():
     if(db!=None):
         username = str(request.json['email'])
         password = str(request.json['password'])
+        print(db.getUserWithEmail(username)[0])
         if(db.login(username,password)):
             token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
             ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")

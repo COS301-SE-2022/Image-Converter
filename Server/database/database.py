@@ -66,3 +66,25 @@ class User:
         db_user = self.cur.fetchone()
         self.conn.commit()
         return db_user
+
+    def insert_image(self, image_uploaded,image_converted, id):
+        try: 
+            sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
+            self.cur.execute(sql, ('straight line', id, image_uploaded,image_converted))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+    
+    def get_image(self, id):
+        try:
+            sql = "SELECT * FROM history where user_id=%s;"
+            self.cur.execute(sql, ([id]))
+            db_history = self.cur.fetchone()
+            self.conn.commit()
+            print(db_history)
+            return db_history
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
