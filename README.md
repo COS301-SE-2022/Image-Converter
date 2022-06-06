@@ -98,7 +98,7 @@ I am a hardworking, ambitious student who is passionate about the field I am in.
 ## Neo Seefane
 <img src="https://user-images.githubusercontent.com/73942516/166416330-ee1187a0-dbd9-4bd9-8c8b-b64095684716.jpeg" width="250" height="300">
 <a href="http://www.linkedin.com/in/neo-seefane-68b8a8239" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
   </a> &nbsp; 
   <a href="https://github.com/neoseefane" rel="nofollow noreferrer">
     <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
