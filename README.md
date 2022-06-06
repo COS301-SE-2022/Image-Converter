@@ -16,25 +16,47 @@ display it to the user. The tool will support multiple graphing functions and gr
 [Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
 [Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
-## Functional Requirements
+## System Requirements Specification
+[SRS Document](https://drive.google.com/file/d/1U9F_26MrSpzSXQTy3dMCx2aimPu4sqxk/view?usp=sharing)
 
-• The system shall allow the user to login using their email address and password <br/>
-• The system shall allow the user to upload images from their mobile devices or laptops <br/>
-• The system shall take the uploaded image of the graph and redraw it into a standardised form <br/>
-• The system shall have a database storing templates for how these standard graphs should look like <br/>
-• The system shall allow the admin user to upload training material for the AI subsystem for it to recognize the different graphs <br/>
-• The system shall support more than one function on a graph <br/>
+## User Manual
+[Manual](https://drive.google.com/file/d/19B97rhvUiVP9hpCJZbqR2vG2E7nSSVPV/view?usp=sharing)
+
+## Coding Standards
+[Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
+
+
+## Project Branch Structure
+    .
+    ├── main                    
+    │   ├── develop              
+    │   |   ├── feature/set-up-workflows              
+    │   |   ├── feature/config-tets            
+    │   |   ├── feature/intergration 
+    |   |   ├── feature/filter
+    │   |   └── ...                 
+    |   └── ...
+    └── ...
 
 ## Recorded Demo
+<a href="#" target="_blank">
+  ➛ Demo 1<br>
+</a> 
+
+<a href="#" target="_blank">
+  ➛ Demo 2<br>
+</a>
 
 ## Omolemo Mashigo - Team Leader
 <img src="https://user-images.githubusercontent.com/73942516/166416196-4030f700-6c32-4d43-a7fb-d6c06667a9fa.jpg" width="250" height="300">
-<a href="https://www.linkedin.com/in/omolemo-mashigo-890250177" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
-  </a> &nbsp; 
-  <a href="https://github.com/OmolemoMashigo" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
-  </a>
+<a href ="https://www.linkedin.com/in/omolemo-mashigo-890250177">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/OmolemoMashigo">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
+</a>
+  
+
 
 <details><summary>Profile Description</summary>
 <p>
@@ -42,15 +64,15 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
 </p>
 </details>
   
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=OmolemoMashigo&theme=highcontrast)
+  
   
 ## Emmanuel Khoza
 <img src="https://user-images.githubusercontent.com/73942516/166416128-de040471-6c6b-469f-b6c8-584a83f79822.jpg" width="250" height="300">
-<a href="https://www.linkedin.com/in/emmanuel-khoza-04b27b168/" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
-</a> &nbsp; 
-<a href="https://github.com/Thuso-Khoza" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+<a href ="https://www.linkedin.com/in/emmanuel-khoza-04b27b168/">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/Thuso-Khoza">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
 </a>
   
 <details><summary>Profile Description</summary>
@@ -59,24 +81,21 @@ I am currently working as a junior software developer therefore working in a tea
 </p>
 </details>
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Thuso-Khoza&theme=highcontrast)
-
 ## Phadimane Lethabo Lerefolo
 <img src="https://user-images.githubusercontent.com/73942516/166416260-56a5ec3d-cafd-423b-ba10-eed66304f2f1.jpeg" width="250" height="300">
-<a href="https://www.linkedin.com/in/phadimane-lerefolo-9388ab1a9/" rel="nofollow noreferrer">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
-  </a> &nbsp; 
-  <a href="https://github.com/phadimanelerefolo" rel="nofollow noreferrer">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
-  </a>
+<a href ="https://www.linkedin.com/in/phadimane-lerefolo-9388ab1a9/">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/phadimanelerefolo">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
+</a>
+  
 
 <details><summary>Profile Description</summary>
 <p>
 I am currently working as a junior software engineer, that will benefit the team since I have an experience with how most things work. I have a knack for learning new programming technologies. I am flexible and I can learn new things fast. I am familiar with technologies that we are planning on using, I have worked different projects with Angular and 1 project with python specifically the flask framework.
 </p>
 </details>
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=phadimanelerefolo&theme=highcontrast)
 
 ## Mohammed Moola
 <img src="https://user-images.githubusercontent.com/73942516/166416308-2a9ed507-7aee-4b50-bc67-206cd030d9e3.jpg" width="250" height="300">
@@ -93,16 +112,14 @@ I am a hardworking, ambitious student who is passionate about the field I am in.
 </p>
 </details>
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MoeMoola3&theme=highcontrast)
-
 ## Neo Seefane
 <img src="https://user-images.githubusercontent.com/73942516/166416330-ee1187a0-dbd9-4bd9-8c8b-b64095684716.jpeg" width="250" height="300">
-<a href="http://www.linkedin.com/in/neo-seefane-68b8a8239" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
-  </a> &nbsp; 
-  <a href="https://github.com/neoseefane" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
-  </a>
+<a href ="http://www.linkedin.com/in/neo-seefane-68b8a8239">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/neoseefane">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
+</a>
 
 <details><summary>Profile Description</summary>
 <p>
@@ -110,4 +127,3 @@ I am an inquisitive learner and a creative team player with excellent interperso
 </p>
 </details>
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=neoseefane&theme=highcontrast)
