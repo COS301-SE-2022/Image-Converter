@@ -12,7 +12,9 @@ The tool that we will build will convert the image of a graph into a standardize
 so, we will be able to easily interpret the data. It will also extract the function of the graph and
 display it to the user. The tool will support multiple graphing functions and graph representations.
 
-## [Project Board](https://github.com/COS301-SE-2022/Image-Converter/projects/1)
+## Project Board
+[Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
+[Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
 ## [System Requirements Specification](https://github.com/COS301-SE-2022/Image-Converter/wiki/System-Requirements-Specification)
 
