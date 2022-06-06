@@ -17,7 +17,13 @@ display it to the user. The tool will support multiple graphing functions and gr
 [Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
 ## System Requirements Specification
-[Overleaf Document](https://www.overleaf.com/project/626fd37dbc21867502e8f8d3)
+[SRS Document](https://drive.google.com/file/d/1U9F_26MrSpzSXQTy3dMCx2aimPu4sqxk/view?usp=sharing)
+
+## User Manual
+[Manual](https://drive.google.com/file/d/19B97rhvUiVP9hpCJZbqR2vG2E7nSSVPV/view?usp=sharing)
+
+## Coding Standards
+[Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
 
 
 ## Project Branch Structure
