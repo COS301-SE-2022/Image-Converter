@@ -16,7 +16,8 @@ display it to the user. The tool will support multiple graphing functions and gr
 [Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
 [Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
-## [System Requirements Specification](https://github.com/COS301-SE-2022/Image-Converter/wiki/System-Requirements-Specification)
+## System Requirements Specification
+[Overleaf Document](https://www.overleaf.com/project/626fd37dbc21867502e8f8d3)
 
 
 ## Project Branch Structure
