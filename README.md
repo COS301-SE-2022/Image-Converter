@@ -43,12 +43,14 @@ display it to the user. The tool will support multiple graphing functions and gr
 
 ## Omolemo Mashigo - Team Leader
 <img src="https://user-images.githubusercontent.com/73942516/166416196-4030f700-6c32-4d43-a7fb-d6c06667a9fa.jpg" width="250" height="300">
-<a href="https://www.linkedin.com/in/omolemo-mashigo-890250177" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
-  </a> &nbsp; 
-  <a href="https://github.com/OmolemoMashigo" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
-  </a>
+<a href ="https://www.linkedin.com/in/omolemo-mashigo-890250177">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/OmolemoMashigo">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
+</a>
+  
+
 
 <details><summary>Profile Description</summary>
 <p>
@@ -60,11 +62,11 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
   
 ## Emmanuel Khoza
 <img src="https://user-images.githubusercontent.com/73942516/166416128-de040471-6c6b-469f-b6c8-584a83f79822.jpg" width="250" height="300">
-<a href="https://www.linkedin.com/in/emmanuel-khoza-04b27b168/" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
-</a> &nbsp; 
-<a href="https://github.com/Thuso-Khoza" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+<a href ="https://www.linkedin.com/in/emmanuel-khoza-04b27b168/">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/Thuso-Khoza">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
 </a>
   
 <details><summary>Profile Description</summary>
@@ -75,12 +77,13 @@ I am currently working as a junior software developer therefore working in a tea
 
 ## Phadimane Lethabo Lerefolo
 <img src="https://user-images.githubusercontent.com/73942516/166416260-56a5ec3d-cafd-423b-ba10-eed66304f2f1.jpeg" width="250" height="300">
-<a href="https://www.linkedin.com/in/phadimane-lerefolo-9388ab1a9/" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
-  </a> &nbsp; 
-  <a href="https://github.com/phadimanelerefolo" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
-  </a>
+<a href ="https://www.linkedin.com/in/phadimane-lerefolo-9388ab1a9/">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/phadimanelerefolo">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
+</a>
+  
 
 <details><summary>Profile Description</summary>
 <p>
@@ -105,12 +108,12 @@ I am a hardworking, ambitious student who is passionate about the field I am in.
 
 ## Neo Seefane
 <img src="https://user-images.githubusercontent.com/73942516/166416330-ee1187a0-dbd9-4bd9-8c8b-b64095684716.jpeg" width="250" height="300">
-<a href="http://www.linkedin.com/in/neo-seefane-68b8a8239" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
-  </a> &nbsp; 
-  <a href="https://github.com/neoseefane" rel="nofollow noreferrer">
-    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
-  </a>
+<a href ="http://www.linkedin.com/in/neo-seefane-68b8a8239">
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+</a>&nbsp;
+<a href ="https://github.com/neoseefane">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
+</a>
 
 <details><summary>Profile Description</summary>
 <p>
