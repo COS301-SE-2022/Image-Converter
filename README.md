@@ -20,7 +20,7 @@ display it to the user. The tool will support multiple graphing functions and gr
 [SRS Document](https://drive.google.com/file/d/1U9F_26MrSpzSXQTy3dMCx2aimPu4sqxk/view?usp=sharing)
 
 ## Architectural Requirements
-[Requirements]
+[Requirements]()
 
 ## User Manual
 [Manual](https://drive.google.com/file/d/19B97rhvUiVP9hpCJZbqR2vG2E7nSSVPV/view?usp=sharing)
