@@ -13,7 +13,8 @@ so, we will be able to easily interpret the data. It will also extract the funct
 display it to the user. The tool will support multiple graphing functions and graph representations.
 
 ## Project Board
-[Project Board](https://github.com/COS301-SE-2022/Image-Converter/projects/1)&nbsp;
+[Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
+[Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
 ## Functional Requirements
 
