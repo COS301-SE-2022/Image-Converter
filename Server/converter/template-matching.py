@@ -3,8 +3,8 @@ import cv2
 
 # img = cv2.resize(cv2.imread('assets/barchart.jpg', 0), (0, 0), fx=0.6, fy=0.6)        #grayscale images
 # img = cv2.resize(cv2.imread('assets/line-graph.jpg', 0), (0, 0), fx=0.6, fy=0.6) 
-img = cv2.resize(cv2.imread('assets/line-graph.jpg', 0), (0, 0), fx=0.6, fy=0.6)
-template = cv2.resize(cv2.imread('assets/line-graph-copy.jpg', 0), (0, 0), fx=0.6, fy=0.6)
+img = cv2.resize(cv2.imread('../assets/line-graph.jpg', 0), (0, 0), fx=0.6, fy=0.6)
+template = cv2.resize(cv2.imread('../assets/line-graph-copy.jpg', 0), (0, 0), fx=0.6, fy=0.6)
 
 # img = cv2.imread('assets/download.png', 0)       #grayscale images
 # template = cv2.imread('assets/line-graph-copy.jpg', 0)
