@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 # read image
-img = cv2.imread('draw.jpeg')
+img = cv2.imread('../draw.jpeg')
 
 # blur
 blur = cv2.medianBlur(img, 5)
@@ -44,8 +44,8 @@ cv2.imshow("IMAGE", img)
 # cv2.imshow("OTSU", otsu)
 # cv2.imshow("OTSU_RESULT", otsu_result)
 cv2.imshow("IMAGE_RESULT", img_result)
-cv2.imwrite("images/original/Graph.png", img_result)
-image = cv2.imread('images/original/Graph.png')
+cv2.imwrite("../images/original/Graph.png", img_result)
+image = cv2.imread('../images/original/Graph.png')
 image[np.where((image==[0, 0, 0]).all(axis=2))] = [0, 0, 255]
 cv2.imshow("Original to red", image)
 cv2.waitKey(0)
