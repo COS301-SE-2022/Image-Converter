@@ -29,11 +29,11 @@ class smoothing:
 
         # display it
         # cv2.imshow("IMAGE", self.img)
-        print("printing image")
-        cv2.imshow("IMAGE_RESULT", img_result)
-        # cv2.imwrite("images/original/Graph.png", img_result)
-        # image = cv2.imread('images/original/Graph.png')
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-        return img_result
+        # print("printing image")
+        # cv2.imshow("IMAGE_RESULT", img_result)
+        cv2.imwrite("images/original/Graph.png", img_result)
+        image = cv2.imread('images/original/Graph.png')
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+        return image
 

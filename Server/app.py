@@ -61,23 +61,14 @@ def upload_image(user):
         imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
         img = Image.open(io.BytesIO(imgdata))
         opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
-        # bytes = readimage(picture)
-        # image = Image.open(io.BytesIO(bytearray(base64_picture) ))
-        cv2.imshow("IMAGE_RESULT", opencv_img)
         print(type(opencv_img))
         imageCleaner = smoothing(opencv_img)
-        cleaned_image = imageCleaner.clean_noise()
-        # cv2.imshow("IMAGE_RESULT", opencv_img)
-        # cv2.waitKey(0)
-        # cv2.destroyAllWindows()
-        b64picture = base64.b64encode(cleaned_image.tobytes())
-        print(type(b64picture))
-        # print(b64picture)
-        # with open("images/download.png", "rb") as img_file:
-        #     b64picture = base64.b64encode(img_file.read())
+        imageCleaner.clean_noise()
+        with open("images/original/Graph.png", "rb") as img_file:
+            b64picture = base64.b64encode(img_file.read())
         # print("b64picture")
 
-    return jsonify({'image': str(imageReturned+ cleaned_image.tobytes().decode('UTF-8'))})
+    return jsonify({'image': str(imageReturned+ b64picture.decode('UTF-8'))})
 
 
 @app.route('/login' ,methods =['POST'])
