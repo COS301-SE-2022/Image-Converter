@@ -1,7 +1,7 @@
 import datetime
 from functools import wraps
 import jwt
-from flask import Flask,json,jsonify, request
+from flask import Flask,json,jsonify, render_template, request
 from database.database import User
 from flask import Response
 from flask_cors import CORS
@@ -91,6 +91,10 @@ def register():
             return {'response': 'failed'}, 400
     else:
             return {'response': 'failed'}, 400
+
+@app.route('/template')
+def img():
+    return render_template('index.html', images = True)
 
 
 

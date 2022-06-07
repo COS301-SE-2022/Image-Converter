@@ -18,6 +18,7 @@ import { ConversionComponent } from './conversion/conversion.component';
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ConversionComponent,
     UploadHistoryComponent,
     ContactComponent,
-    DashboardComponent
+    DashboardComponent,
+    TemplateMatchingComponent
   ],
   imports: [
     BrowserModule,
