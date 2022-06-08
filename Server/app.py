@@ -110,39 +110,34 @@ def uploadhistory(user):
     
     db = User()
     if(db != None):
-        # print(user)
-        db_image = db.get_image(user[0])
-        # print("imgg")
         imageReturned = "data:image/png;base64,"
         db_image_array=db.get_image_history(user[0])
         OriginalImagelist=[]
         IndexArray=[]
         proccesedImagelist=[]
-        # print(db_image_array)
         for x in db_image_array:
-            # print(x)
             IndexArray.append(x[0])
             OriginalImagelist.append(str( bytes(x[3]).decode('UTF-8'))) 
             proccesedImagelist.append(str(imageReturned+ bytes(x[4]).decode('UTF-8'))) 
-            # imagelist.append( {'origImage':db_image_array[x][3],'procImage':db_image_array[x][4] } )
 
-        #print(OriginalImagelist)
 
         return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
     else:
         return {'response': 'failed'}, 400
 
-@app.route('/picture' ,methods =['POST'])
+@app.route('/deletehistory' ,methods =['POST'])
 @token
-def upload_image(user):
+def delete_user_history(user):
     db=User()
     if(db!=None):
         index = request.json['index']
         if index is not None:
-
-            db_image = db.get_image(user[0])
-
-        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
+            if db.delete_history(index) is True:
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
     else:
         return {'response': 'failed'}, 400
 
