@@ -15,4 +15,4 @@ jobs:
     - run: npm ci --prefix  Front-End/Image-Converter/
     - run: npm fund --prefix  Front-End/Image-Converter/
     - run: npm run build --if-present --prefix  Front-End/Image-Converter/
-    - run: npm test --prefix  Front-End/Image-Converter/ --browsers Front-End/Image-Converter/PhantomJS
+    - run: npm test --prefix  Front-End/Image-Converter/
