@@ -105,3 +105,14 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+    def delete_history(self,id):
+        try:
+            sql = "DELETE FROM history2 WHERE user_id=%s;"
+            self.cur.execute(sql, ([id]))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+            
