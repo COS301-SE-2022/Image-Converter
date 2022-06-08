@@ -47,5 +47,22 @@ export class ConverterService {
       pic,httpOptions
     );
   }
+
+  //fetches users image upload history
+  getUploadHistory(){
+
+    let token = localStorage.getItem('token');
+    console.log("history: "+token);
+
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    let data = {data: ''};
+    return this.httpclient.post(
+      'http://localhost:5000/uploadhistory',
+      data ,httpOptions
+    );
+  }
   
 }
