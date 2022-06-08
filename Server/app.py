@@ -104,6 +104,16 @@ def register():
             return {'response': 'failed'}, 400
 
 
-
+@app.route('/uploadhistory', methods=["POST"])
+@token
+def uploadhistory(user):
+    db = User()
+    if(db != None):
+        db_image = db.get_image(user[0])
+        imageReturned = "data:image/png;base64,"
+        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
+    else:
+        return {'response': 'failed'}, 400
+        
 if __name__ == '__main__':
     app.run(debug=True)
