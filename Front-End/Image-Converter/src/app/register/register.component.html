@@ -221,7 +221,7 @@
                         
                     </table> 
                     <div class="form-group">
-                      <button id="loginbtn" class="btn btn-primary">Register</button>
+                      <button [disabled]="registerForm.invalid" id="loginbtn" class="btn btn-primary">Register</button>
                   </div>      
                   <!-- <p id="accountLink">Already registered? <a routerLink="/login"  (click)="register()">Login</a></p>   -->
                 </form>
