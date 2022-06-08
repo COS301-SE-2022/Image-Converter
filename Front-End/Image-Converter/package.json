@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "preinstall":"cd $(pwd)"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "html2canvas": "^1.4.1",
     "jquery": "^3.6.0",
     "rxjs": "~7.5.0",
+    "socket.io": "^4.5.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
