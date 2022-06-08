@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
+import {ConverterService} from './../shared/converter.service';
 
 @Component({
   selector: 'app-upload-history',
@@ -9,9 +10,18 @@ import { ImagePopupComponent } from '../image-popup/image-popup.component';
 })
 export class UploadHistoryComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog,private imgService: ConverterService) { }
 
   ngOnInit(): void {
+    let respsonseBase64;
+      this.imgService.getUploadHistory().subscribe(
+        responseData =>{
+          console.log("response");
+           console.log("response: "+responseData);
+          respsonseBase64 = JSON.parse(JSON.stringify(responseData));
+          
+        }
+      );
   }
 
   uploadedImg: string[] = ['../../assets/purple.jpg', '../../assets/drag.png','../../assets/purple.jpg'];
