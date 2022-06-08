@@ -4,15 +4,15 @@ import matplotlib.pyplot as plt
 
 graphType = ""
 # Line Graph
-# img1 = cv.imread('assets/line-graph-copy.jpg',cv.IMREAD_GRAYSCALE)          # queryImage
+# img1 = cv.imread('assets/line-graph.jpg',cv.IMREAD_GRAYSCALE)          # queryImage
 # img1 = cv.imread('assets/line-graph2.webp',cv.IMREAD_GRAYSCALE)          # queryImage
 
 # Bar Graph
 # img1 = cv.imread('assets/bargraph.png',cv.IMREAD_GRAYSCALE)          # queryImage
-img1 = cv.imread('assets/barchart.jpg',cv.IMREAD_GRAYSCALE)          # queryImage
+# img1 = cv.imread('assets/barchart.jpg',cv.IMREAD_GRAYSCALE)          # queryImage
 
 # Pie Chart
-# img1 = cv.imread('assets/piechart1.jpg',cv.IMREAD_GRAYSCALE)          # queryImage
+img1 = cv.imread('assets/piechart1.jpg',cv.IMREAD_GRAYSCALE)          # queryImage
 
 # Parabola
 # img1 = cv.imread('assets/parabola1.jpg',cv.IMREAD_GRAYSCALE)          # queryImage
@@ -49,14 +49,13 @@ def line_graph():
                     matchesMask = matchesMask,
                     flags = cv.DrawMatchesFlags_DEFAULT)
     img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,matches,None,**draw_params)
-    print("Linegraph")
-    print("Number of Matches: ",goodMatches)
-    print()
+    # print("Linegraph")
+    # print("Number of Matches: ",goodMatches)
+    # print()
 
     if(goodMatches > 5 ):
-        graphType = "linegraph"
-        # print(graphType)
-
+        graphType="linegraph"
+        print("Graph is a "+ graphType)
 
     # plt.imshow(img3),plt.show()
 
@@ -91,12 +90,13 @@ def barchart():
                     matchesMask = matchesMask,
                     flags = cv.DrawMatchesFlags_DEFAULT)
     img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,matches,None,**draw_params)
-    print("Barchart")
-    print("Number of Matches: ",goodMatches)
-    print()
+    # print("Barchart")
+    # print("Number of Matches: ",goodMatches)
+    # print()
 
     if(goodMatches > 5 ):
         graphType = "barchart"
+        print("Graph is a "+ graphType)
 
     # plt.imshow(img3),plt.show()
 
@@ -131,13 +131,13 @@ def pie_chart():
                     matchesMask = matchesMask,
                     flags = cv.DrawMatchesFlags_DEFAULT)
     img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,matches,None,**draw_params)
-    print("Piechart")
-    print("Number of Matches: ",goodMatches)
-    print()
+    # print("Piechart")
+    # print("Number of Matches: ",goodMatches)
+    # print()
 
     if(goodMatches > 5 ):
         graphType = "piechart"
-        # print(graphType)
+        print("Graph is a "+ graphType)
 
 
     # plt.imshow(img3),plt.show()
@@ -172,13 +172,13 @@ def parabola():
                     matchesMask = matchesMask,
                     flags = cv.DrawMatchesFlags_DEFAULT)
     img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,matches,None,**draw_params)
-    print("Parabola")
-    print("Number of Matches: ",goodMatches)
-    print()
+    # print("Parabola")
+    # print("Number of Matches: ",goodMatches)
+    # print()
 
     if(goodMatches > 5 ):
         graphType = "parabola"
-        # print(graphType)
+        print("Graph is a "+ graphType)
 
 
     # plt.imshow(img3),plt.show()
@@ -191,3 +191,4 @@ if __name__ == "__main__":
     barchart()
     pie_chart()
     parabola()
+    # print(graphType)
