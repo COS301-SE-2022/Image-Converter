@@ -1,7 +1,7 @@
 import datetime
 from functools import wraps
 import jwt
-from flask import Flask,json,jsonify, request
+from flask import Flask, json, jsonify, request
 from database.database import User
 from flask import Response
 from flask_cors import CORS
@@ -12,17 +12,18 @@ app = Flask(__name__)
 
 CORS(app)
 
+
 def token(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        user=None
-        token= None
+        user = None
+        token = None
         if 'x-access-token' in request.headers:
             token = request.headers['x-access-token']
         if not token:
             print(token)
             return jsonify({'result': 'Token is not found or invalid!'}), 401
-        
+
         try:
             db = User()
             data = jwt.decode(token, 'secret', "HS256")
@@ -38,6 +39,7 @@ def token(f):
 def index():
     return "Hello World!"
 
+
 @app.route('/test', methods=['POST'])
 @token
 def test(user):
@@ -45,7 +47,8 @@ def test(user):
     print(user)
     return jsonify({'result': username})
 
-@app.route('/picture' ,methods =['POST'])
+
+@app.route('/picture', methods=['POST'])
 @token
 def upload_image(user):
     picture = request.json['picture']
@@ -56,27 +59,26 @@ def upload_image(user):
             b64picture = base64.b64encode(img_file.read())
         # print("b64picture")
 
-    return jsonify({'image': str(imageReturned+ b64picture.decode('UTF-8'))})
+    return jsonify({'image': str(imageReturned + b64picture.decode('UTF-8'))})
 
 
-@app.route('/login' ,methods =['POST'])
+@app.route('/login', methods=['POST'])
 def auth_login():
-    db=User()
-    if(db!=None):
+    db = User()
+    if(db != None):
         username = str(request.json['email'])
         password = str(request.json['password'])
-        if(db.login(username,password)):
+        if(db.login(username, password)):
             token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
             ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
             result = "success"
-            return jsonify({'result': result,'token':str(token)})
+            return jsonify({'result': result, 'token': str(token)})
         else:
             return jsonify({'result': 'failed'})
     else:
-            return {'response': 'failed'}, 400
+        return {'response': 'failed'}, 400
 
 
-    
 @app.route('/register', methods=["POST"])
 def register():
     db = User()
@@ -86,12 +88,14 @@ def register():
         email = str(request.json["email"])
         password = str(request.json["password"])
         if(db.register(name, surname, email, password)):
-            return {'response': 'registered'}, 200
+            token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
+            ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+            result = "success"
+            return jsonify({'result': result, 'token': str(token)})
         else:
             return {'response': 'failed'}, 400
     else:
-            return {'response': 'failed'}, 400
-
+        return {'response': 'failed'}, 400
 
 
 if __name__ == '__main__':
