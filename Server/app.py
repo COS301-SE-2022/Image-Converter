@@ -107,10 +107,19 @@ def register():
 @app.route('/uploadhistory', methods=["POST"])
 @token
 def uploadhistory(user):
+    
     db = User()
     if(db != None):
+        print(user)
         db_image = db.get_image(user[0])
+        print("imgg")
         imageReturned = "data:image/png;base64,"
+        db_image_array=db.get_image_history(user[0])
+        imagelist=[]
+        
+        for x in db_image_array:
+            imagelist.append( {'origImage':db_image_array[x][3],'procImage':db_image_array[x][4] } )
+
         return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
     else:
         return {'response': 'failed'}, 400
