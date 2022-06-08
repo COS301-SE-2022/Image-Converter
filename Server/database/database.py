@@ -85,7 +85,7 @@ class User:
             self.cur.execute(sql, ([id]))
             db_history = self.cur.fetchone()
             self.conn.commit()
-            print(db_history)
+            # print(db_history)
             return db_history
         except Exception as e:
             print(f"Database connection error: {e}")
@@ -98,9 +98,9 @@ class User:
             self.cur.execute(sql, ([id]))
             db_history = self.cur.fetchall()
             self.conn.commit()
-            print("hist: ",db_history)
-            print("len: ",len(db_history))
-            print("hist: ",db_history[0][4])
+            # print("hist: ",db_history)
+            # print("len: ",len(db_history))
+            # print("hist: ",db_history[0][4])
             return db_history
         except Exception as e:
             print(f"Database connection error: {e}")

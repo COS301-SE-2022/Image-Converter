@@ -17,7 +17,7 @@ export class UploadHistoryComponent implements OnInit {
       this.imgService.getUploadHistory().subscribe(
         responseData =>{
           console.log("response");
-           console.log("response: "+responseData);
+           console.log("response here: "+responseData);
           respsonseBase64 = JSON.parse(JSON.stringify(responseData));
           
         }

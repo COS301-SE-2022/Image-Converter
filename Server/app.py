@@ -59,8 +59,8 @@ def upload_image(user):
                 b64picture = base64.b64encode(img_file.read())
             image_converted = bytearray(b64picture)
             image_uploaded = bytearray(base64_picture)
-            if(db.insert_image(picture, image_converted, user[0])):
-                print("Image inserted")
+            # if(db.insert_image(picture, image_converted, user[0])):
+            #     print("Image inserted")
 
             db_image = db.get_image(user[0])
 
@@ -104,23 +104,29 @@ def register():
             return {'response': 'failed'}, 400
 
 
-@app.route('/uploadhistory', methods=["POST"])
+@app.route('/uploadhistory', methods=["GET"])
 @token
 def uploadhistory(user):
     
     db = User()
     if(db != None):
-        print(user)
+        # print(user)
         db_image = db.get_image(user[0])
-        print("imgg")
+        # print("imgg")
         imageReturned = "data:image/png;base64,"
         db_image_array=db.get_image_history(user[0])
-        imagelist=[]
-        
+        OriginalImagelist=[]
+        proccesedImagelist=[]
+        # print(db_image_array)
         for x in db_image_array:
-            imagelist.append( {'origImage':db_image_array[x][3],'procImage':db_image_array[x][4] } )
+            # print(x)
+            OriginalImagelist.append(str(imageReturned+ bytes(x[3]).decode('UTF-8'))) 
+            proccesedImagelist.append(str(imageReturned+ bytes(x[4]).decode('UTF-8'))) 
+            # imagelist.append( {'origImage':db_image_array[x][3],'procImage':db_image_array[x][4] } )
 
-        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
+        # print(OriginalImagelist)
+
+        return jsonify({'OriginalImage': OriginalImagelist},{'OrignalImage': proccesedImagelist})
     else:
         return {'response': 'failed'}, 400
         

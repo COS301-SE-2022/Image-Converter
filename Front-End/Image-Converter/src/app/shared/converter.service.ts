@@ -59,9 +59,9 @@ export class ConverterService {
       headers: headers
     };
     let data = {data: ''};
-    return this.httpclient.post(
+    return this.httpclient.get(
       'http://localhost:5000/uploadhistory',
-      data ,httpOptions
+      httpOptions
     );
   }
   
