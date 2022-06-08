@@ -64,5 +64,8 @@ export class ConverterService {
       httpOptions
     );
   }
-  
+
+  deleteImage(){
+    
+  }
 }
