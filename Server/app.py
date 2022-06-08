@@ -65,6 +65,7 @@ def upload_image(user):
         print(type(opencv_img))
         templateMatch = Matching(opencv_img)
         print(templateMatch.graphType)
+        print(templateMatch.perfectMatch)
         imageCleaner = smoothing(opencv_img)
         imageCleaner.clean_noise()
         with open("images/original/Graph.png", "rb") as img_file:

@@ -6,9 +6,9 @@ class Matching:
     def __init__(self,uploaded_image):
         # read image
         # self.img = cv2.imread('draw.jpeg')
-        cv.imshow('user_image',uploaded_image)
-        cv.waitKey(0)
-        cv.destroyAllWindows()
+        # cv.imshow('user_image',uploaded_image)
+        # cv.waitKey(0)
+        # cv.destroyAllWindows()
         self.uploaded_image = uploaded_image
         self.perfectMatch = 0
         self.graphType = ""
@@ -30,10 +30,10 @@ class Matching:
     # uploaded_image = cv.imread('../assets/scatterplot1.webp',cv.IMREAD_GRAYSCALE)          # queryImage
 
     def match(self):
-        self.line_graph()
-        self.barchart()
-        self.pie_chart()
-        self.scatterplot()
+        print(self.line_graph())
+        print(self.barchart())
+        # print(self.pie_chart())
+        print(self.scatterplot())
 
     def line_graph(self):
         img2 = cv.imread('assets/line-graph-copy.jpg',cv.IMREAD_GRAYSCALE)
@@ -70,7 +70,7 @@ class Matching:
 
 
     def barchart(self):
-        img2 = cv.imread('../assets/barchart-template.jpg',cv.IMREAD_GRAYSCALE) 
+        img2 = cv.imread('assets/barchart-template.jpg',cv.IMREAD_GRAYSCALE) 
 
         sift = cv.SIFT_create()
 
@@ -101,7 +101,7 @@ class Matching:
 
 
     def pie_chart(self):
-        img2 = cv.imread('../assets/piechart-template.jpg',cv.IMREAD_GRAYSCALE) 
+        img2 = cv.imread('assets/piechart-template.jpg',cv.IMREAD_GRAYSCALE) 
 
         sift = cv.SIFT_create()
 
@@ -131,7 +131,7 @@ class Matching:
 
 
     def scatterplot(self):
-        img2 = cv.imread('../assets/scatterplot-template.png',cv.IMREAD_GRAYSCALE) 
+        img2 = cv.imread('assets/scatterplot-template.png',cv.IMREAD_GRAYSCALE) 
     
         sift = cv.SIFT_create()
 
@@ -162,12 +162,12 @@ class Matching:
 
 
 
-if __name__ == "__main__": 
-    user_image = cv.imread('../assets/scatterplot1.webp',cv.IMREAD_GRAYSCALE)          # queryImage
-    # cv.imshow('user_image',user_image)
-    # cv.waitKey(0)
-    # cv.destroyAllWindows()
-    tempMatch = Matching(user_image)
-    tempMatch.match()
-    print(tempMatch.perfectMatch)
-    print(tempMatch.graphType)
+# if __name__ == "__main__": 
+#     user_image = cv.imread('../assets/scatterplot1.webp',cv.IMREAD_GRAYSCALE)          # queryImage
+#     # cv.imshow('user_image',user_image)
+#     # cv.waitKey(0)
+#     # cv.destroyAllWindows()
+#     tempMatch = Matching(user_image)
+#     tempMatch.match()
+#     print(tempMatch.perfectMatch)
+#     print(tempMatch.graphType)
