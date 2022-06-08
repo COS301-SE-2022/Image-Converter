@@ -2,3 +2,4 @@
 Server/__pycache__/app.cpython-310.pyc
 Server/.env
 *.pyc
+*.pyc

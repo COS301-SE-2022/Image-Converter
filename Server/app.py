@@ -3,6 +3,7 @@ from functools import wraps
 import jwt
 from flask import Flask,json,jsonify, render_template, request
 from converter.smoothing import smoothing
+from converter.templateMatching import Matching
 from database.database import User
 from flask import Response
 from flask_cors import CORS
@@ -62,6 +63,8 @@ def upload_image(user):
         img = Image.open(io.BytesIO(imgdata))
         opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
         print(type(opencv_img))
+        templateMatch = Matching(opencv_img)
+        print(templateMatch.graphType)
         imageCleaner = smoothing(opencv_img)
         imageCleaner.clean_noise()
         with open("images/original/Graph.png", "rb") as img_file:
