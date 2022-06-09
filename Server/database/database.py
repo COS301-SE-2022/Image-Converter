@@ -119,7 +119,7 @@ class User:
 
     def insert_feedback(self, id, feedback):
         try:
-            sql = "INSERT INTO feedback (use_id,feedback) VALUES(%s,%s)"
+            sql = "INSERT INTO feedback (user_id,feedback) VALUES(%s,%s)"
             self.cur.execute(sql, (id, feedback))
             self.conn.commit()
             return True

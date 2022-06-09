@@ -175,7 +175,6 @@ def user_feedback(user):
     db=User()
     if(db!=None):
         feedback = request.json['feedback']
-        print(feedback)
         if feedback is not None:
             if db.insert_feedback(user[0],feedback) is True:
                 print("feedback inserted")
