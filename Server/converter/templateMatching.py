@@ -10,10 +10,10 @@ class Matching:
         self.match()
 
     def match(self):
-        print(self.line_graph())
-        print(self.barchart())
-        # print(self.pie_chart())
-        print(self.scatterplot())
+        # print(self.line_graph())
+        # print(self.barchart())
+        # # print(self.pie_chart())
+        # print(self.scatterplot())
 
         img2 = cv.imread('assets/line-graph-copy.jpg', cv.IMREAD_GRAYSCALE)
 

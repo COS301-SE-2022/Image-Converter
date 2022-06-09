@@ -46,14 +46,6 @@ def index():
     return "Hello World!"
 
 
-@app.route('/test', methods=['POST'])
-@token
-def test(user):
-    username = str(request.json['email'])
-    print(user)
-    return jsonify({'result': username})
-
-
 @app.route('/picture', methods=['POST'])
 @token
 def upload_image(user):
