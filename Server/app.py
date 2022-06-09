@@ -120,13 +120,13 @@ def uploadhistory(user):
         # print(db_image_array)
         for x in db_image_array:
             # print(x)
-            OriginalImagelist.append(str(imageReturned+ bytes(x[3]).decode('UTF-8'))) 
+            OriginalImagelist.append(str( bytes(x[3]).decode('UTF-8'))) 
             proccesedImagelist.append(str(imageReturned+ bytes(x[4]).decode('UTF-8'))) 
             # imagelist.append( {'origImage':db_image_array[x][3],'procImage':db_image_array[x][4] } )
 
-        # print(OriginalImagelist)
+        #print(OriginalImagelist)
 
-        return jsonify({'OriginalImage': OriginalImagelist},{'OrignalImage': proccesedImagelist})
+        return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist})
     else:
         return {'response': 'failed'}, 400
         
