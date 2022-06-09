@@ -95,13 +95,10 @@ class User:
     #fetches previously uploaded images
     def get_image_history(self, id):
         try:
-            sql = "SELECT * FROM history where user_id=%s;"
+            sql = "SELECT * FROM history where user_id=%s ORDER BY id DESC"
             self.cur.execute(sql, ([id]))
-            db_history = self.cur.fetchall()
+            db_history = self.cur.fetchmany(6)
             self.conn.commit()
-            # print("hist: ",db_history)
-            # print("len: ",len(db_history))
-            # print("hist: ",db_history[0][4])
             return db_history
         except Exception as e:
             print(f"Database connection error: {e}")
