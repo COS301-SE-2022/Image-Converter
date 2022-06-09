@@ -6,3 +6,4 @@ Server/.env
 Server/.pytest_cache
 Server/.tox
 Server/.coverage
+.idea/workspace.xml

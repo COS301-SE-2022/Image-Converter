@@ -1,7 +1,7 @@
 import datetime
 from functools import wraps
 import jwt
-from flask import Flask,json,jsonify, render_template, request
+from flask import Flask, json, jsonify, render_template, request
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
 from database.database import User
