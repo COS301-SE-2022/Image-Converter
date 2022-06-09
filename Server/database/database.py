@@ -82,7 +82,7 @@ class User:
     def get_image(self, id):
         try:
             #sql = "SELECT * FROM history where user_id=%s;"
-            sql = "SELECT * FROM history where user_id=%s;"
+            sql = "SELECT * FROM history where user_id=%s ORDER BY id DESC LIMIT 1;"
             self.cur.execute(sql, ([id]))
             db_history = self.cur.fetchone()
             self.conn.commit()
