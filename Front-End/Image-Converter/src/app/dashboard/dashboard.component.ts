@@ -21,10 +21,10 @@ export class DashboardComponent implements OnInit {
     var x = document.getElementById("imageUpload") as HTMLLinkElement
     x.scrollIntoView();
   }
-  toImageFilter(){
-    var x = document.getElementById("imageFilter") as HTMLLinkElement
-    x.scrollIntoView();
-  }
+  // toImageFilter(){
+  //   var x = document.getElementById("imageFilter") as HTMLLinkElement
+  //   x.scrollIntoView();
+  // }
   toConversionFormat(){
     var x = document.getElementById("conversionFormat") as HTMLLinkElement
     x.scrollIntoView();
