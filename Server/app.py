@@ -131,8 +131,10 @@ def delete_user_history(user):
     db=User()
     if(db!=None):
         index = request.json['index']
+        print(index)
         if index is not None:
             if db.delete_history(index) is True:
+                print("Image deleted")
                 return jsonify({'response': 'success'})
             else:
                 return jsonify({'response': 'failed'})

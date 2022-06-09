@@ -108,7 +108,7 @@ class User:
 
     def delete_history(self,id):
         try:
-            sql = "DELETE FROM history2 WHERE user_id=%s;"
+            sql = "DELETE FROM history2 WHERE id=%s;"
             self.cur.execute(sql, ([id]))
             self.conn.commit()
             return True
