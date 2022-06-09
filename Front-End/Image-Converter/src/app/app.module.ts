@@ -20,6 +20,7 @@ import { UploadHistoryComponent } from './upload-history/upload-history.componen
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
+import { ImagePopupComponent } from './image-popup/image-popup.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TemplateMatchingComponent } from './template-matching/template-matching
     UploadHistoryComponent,
     ContactComponent,
     DashboardComponent,
-    TemplateMatchingComponent
+    TemplateMatchingComponent,
+    ImagePopupComponent
   ],
   imports: [
     BrowserModule,
