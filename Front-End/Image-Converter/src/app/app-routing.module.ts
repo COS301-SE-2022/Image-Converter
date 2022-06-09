@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
+import { UploadHistoryComponent } from './upload-history/upload-history.component';
 
 const routes: Routes = [
   {
@@ -20,8 +21,8 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'template',
-    component: TemplateMatchingComponent 
+    path: 'uploadHistory',
+    component: UploadHistoryComponent
   }
 
 ];

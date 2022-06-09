@@ -47,5 +47,37 @@ export class ConverterService {
       pic,httpOptions
     );
   }
+
+  //fetches users image upload history
+  getUploadHistory(){
+
+    let token = localStorage.getItem('token');
+    console.log("history: "+token);
+
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    let data = {data: ''};
+    return this.httpclient.get(
+      'http://localhost:5000/uploadhistory',
+      httpOptions
+    );
+  }
+
+  deleteImage(id:any){
+
+    var tok = localStorage.getItem('token');
   
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    console.log(httpOptions);
+    let pic = {index: id};
+    return this.httpclient.post(
+      'http://localhost:5000/deletehistory',
+      pic,httpOptions
+    );
+  }
 }
