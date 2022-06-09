@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f6f4fc19-3657-4926-a287-73fc58ec7577" name="Changes" comment=":green_heart: (CI/CD) back-end workflow try no 2">
+      <change afterPath="$PROJECT_DIR$/Server/assets/barchart-template.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/bargraph.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/line-graph3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/line-graph3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/line-graph4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/parabola-template-resized.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/parabola-template.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/parabola1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/piechart-template.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/piechart1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/scatterplot-template.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/assets/scatterplot1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/templateMatching.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/test/test_templatematching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/converter/template-matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/converter/template-matching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/test/test_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/test/test_routes.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2AC2kDlB0xcZsb3FwYD9A4VIoGG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Server/images/original" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Image-Converter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../../Image-Converter/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Server" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Server/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6f4fc19-3657-4926-a287-73fc58ec7577" name="Changes" comment="" />
+      <created>1654499389569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654499389569</updated>
+      <workItem from="1654499393386" duration="6099000" />
+      <workItem from="1654511786685" duration="599000" />
+      <workItem from="1654527169911" duration="68000" />
+      <workItem from="1654527316764" duration="4189000" />
+      <workItem from="1654537474020" duration="9316000" />
+      <workItem from="1654614617376" duration="2292000" />
+      <workItem from="1654619375586" duration="11740000" />
+      <workItem from="1654641561136" duration="2000" />
+      <workItem from="1654641575190" duration="1316000" />
+      <workItem from="1654679969578" duration="12338000" />
+      <workItem from="1654696844402" duration="779000" />
+      <workItem from="1654697635397" duration="191000" />
+      <workItem from="1654697836349" duration="476000" />
+      <workItem from="1654698323139" duration="24906000" />
+      <workItem from="1654762509947" duration="2184000" />
+    </task>
+    <task id="LOCAL-00001" summary=":sparkles: (back-end) image smoothing">
+      <created>1654622796726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654622796726</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":construction: (CI/CD) front-end github actions">
+      <created>1654680767683</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654680767683</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":construction: (CI/CD) front-end github actions trail 2">
+      <created>1654681178255</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654681178255</updated>
+    </task>
+    <task id="LOCAL-00004" summary=":construction: (CI/CD) front-end github actions try no 3">
+      <created>1654686762119</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654686762119</updated>
+    </task>
+    <task id="LOCAL-00005" summary=":construction: (CI/CD) front-end github actions try no 4">
+      <created>1654687118208</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654687118208</updated>
+    </task>
+    <task id="LOCAL-00006" summary=":wastebasket: (Server) add a black mask for the image">
+      <created>1654694246660</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654694246660</updated>
+    </task>
+    <task id="LOCAL-00007" summary=":boom: (Back-end) image smoothing unit tests">
+      <created>1654713716709</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654713716709</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":recycle: (Back-end) add requirements.txt and fix test_smoothing.py">
+      <created>1654716030722</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1654716030722</updated>
+    </task>
+    <task id="LOCAL-00009" summary=":wastebasket: (Back-end) remove the python src folder">
+      <created>1654716460267</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1654716460267</updated>
+    </task>
+    <task id="LOCAL-00010" summary=":green_heart: (CI/CD) back-end workflow try no 1">
+      <created>1654732636254</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654732636254</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":sparkles: (back-end) image smoothing" />
+    <MESSAGE value=":construction: (CI/CD) front-end github actions" />
+    <MESSAGE value=":construction: (CI/CD) front-end github actions trail 2" />
+    <MESSAGE value=":construction: (CI/CD) front-end github actions try no 3" />
+    <MESSAGE value=":construction: (CI/CD) front-end github actions try no 4" />
+    <MESSAGE value=":wastebasket: (Server) add a black mask for the image" />
+    <MESSAGE value=":boom: (Back-end) image smoothing unit tests" />
+    <MESSAGE value=":recycle: (Back-end) add requirements.txt and fix test_smoothing.py" />
+    <MESSAGE value=":wastebasket: (Back-end) remove the python src folder" />
+    <MESSAGE value=":green_heart: (CI/CD) back-end workflow try no 1" />
+    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: (CI/CD) back-end workflow try no 1" />
+  </component>
+</project>
