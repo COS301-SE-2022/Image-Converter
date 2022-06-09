@@ -35,6 +35,7 @@ export class UploadHistoryComponent implements OnInit {
 
               this.uploadedImg.push(respsonseBase64.OriginalImage[i]);
               this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
+              console.log("index: "+respsonseBase64.Index[i]);
               this.uuid.push(respsonseBase64.Index[i]);
           }
         }

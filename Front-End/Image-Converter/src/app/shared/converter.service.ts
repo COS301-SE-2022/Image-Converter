@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Login } from '../classes/Login';
 import { Register } from '../classes/Register';
+import { Message } from '../classes/Message';
 // import { stringify } from 'querystring';
 
 @Injectable({
@@ -65,6 +66,7 @@ export class ConverterService {
     );
   }
 
+  //sends request to delete images
   deleteImage(id:any){
 
     var tok = localStorage.getItem('token');
@@ -78,6 +80,21 @@ export class ConverterService {
     return this.httpclient.post(
       'http://localhost:5000/deletehistory',
       pic,httpOptions
+    );
+  }
+
+  //sends users message
+  sendMessage(messageDetails:Message){
+
+    var token = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    return this.httpclient.post(
+      'http://localhost:5000/feedback',
+      messageDetails,httpOptions
     );
   }
 }
