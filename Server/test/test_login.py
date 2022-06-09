@@ -3,7 +3,7 @@ from database.database import User
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 
-def test_RegisterUser_GivenANewUser_ShouldReturnTrue():
+def test_LoginUser_GivenAnExistingUser_ShouldReturnTrue():
     #Prepare
     try :
         now = datetime.now()
@@ -12,15 +12,20 @@ def test_RegisterUser_GivenANewUser_ShouldReturnTrue():
         surname= "surname "+current_time
         email= "email "+current_time
         password= "password "+current_time
-        #Act
+
         db = User()
         if(db != None):
-            result = db.register(name, surname, email, password)
-            
+            db.register(name, surname, email, password)
+
+            #Act
+            result = db.login(email, password)
+
             #Assert
             assert result == True
         else:
             assert False
+        
+        
     except Exception as e:
         print(f"Test Error : {e}")
         assert False
