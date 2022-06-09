@@ -17,10 +17,15 @@ export class UploadHistoryComponent implements OnInit {
   //holds unprocessed images
   uploadedImgProcessed: string[] = [];
 
+  //used for loadig spinner
+  loading=false;
+
   ngOnInit(): void {
+    this.loading = true;
     let respsonseBase64:any;
       this.imgService.getUploadHistory().subscribe(
         responseData =>{
+          this.loading = false;
            respsonseBase64 = JSON.parse(JSON.stringify(responseData));
 
          //console.log("response here: "+JSON.stringify(responseData));
@@ -37,13 +42,13 @@ export class UploadHistoryComponent implements OnInit {
   //sends clicked image to popup
   imageClick(index:any, arrayToUse:String){
 
-    let image;
+   /* let image;
     if(arrayToUse=="uploaded"){
       image=this.uploadedImg[index];
     }
     else{
       image=this.uploadedImgProcessed[index];
-    }
+    }*/
     
     const configDialog = new MatDialogConfig();
 
@@ -51,7 +56,27 @@ export class UploadHistoryComponent implements OnInit {
     const dialogRef = this.dialog.open(ImagePopupComponent, {
       width: '40%',
       height: '80%',
-      data: { img: image },
+      data: { img: this.uploadedImg[index],imgProcessed:this.uploadedImgProcessed[index] },
     });
+
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data != undefined) {
+        //returned message
+        console.log('returned message:'+data.request);
+        this.loading = true;
+        /*this.imgService.deleteImage(id).subscribe(
+          responseData =>{
+
+            }
+          }
+        );*/
+        this.uploadedImg=[];
+        this.uploadedImgProcessed=[];
+        this.ngOnInit();
+      } else {
+        console.log('returned empty:');
+      } //dialog closed
+    });
+
   }
 }
