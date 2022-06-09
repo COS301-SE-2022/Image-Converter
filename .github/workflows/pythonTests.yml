@@ -21,4 +21,4 @@ jobs:
         run: |
           pip install pytest
           export PYTHONPATH=Server/
-          pytest --cov
+          python -m pytest --cov
