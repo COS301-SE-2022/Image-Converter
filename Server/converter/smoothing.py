@@ -3,8 +3,6 @@ import numpy as np
 
 class smoothing:
     def __init__(self,uploaded_image):
-        # read image
-        # self.img = cv2.imread('draw.jpeg')
         self.img = uploaded_image
 
 
@@ -33,7 +31,5 @@ class smoothing:
         # cv2.imshow("IMAGE_RESULT", img_result)
         cv2.imwrite("images/original/Graph.png", img_result)
         image = cv2.imread('images/original/Graph.png')
-        # cv2.waitKey(0)
-        # cv2.destroyAllWindows()
         return image
 

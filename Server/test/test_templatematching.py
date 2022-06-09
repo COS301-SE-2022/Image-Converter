@@ -1,12 +1,10 @@
-from templateMatching import Matching
-
+from converter.templateMatching import Matching
 import numpy as np
 import cv2 as cv
-import matplotlib.pyplot as plt
 
 
 def test_template():
-    image = cv.imread('assets/linegraph.jpg')
+    image = cv.imread('assets/line-graph.jpg')
     object = Matching(image)
     tempImg = object.line_graph()
     assert tempImg == 50
