@@ -3,5 +3,7 @@ export class Register {
     surname!: string;
     email!: string;
     password!: string;
+    cpassword!: string;
+
   }
   

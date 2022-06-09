@@ -135,9 +135,10 @@ export class ConverterComponent implements OnInit {
       console.log("Lee  "+this.saveFile[0].name);
       this.convertToBase64(this.saveFile[0]);
       this.myimage?.subscribe(data => {
+        // console.log(data);
         this.imgService.postImg(data).subscribe(
           responseData =>{
-            // console.log(responseData);
+            console.log(responseData);
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
             // console.log(this.respsonseBase64);
             this.imgData.changeMessage(this.respsonseBase64.image);
