@@ -17,6 +17,7 @@ export class UploadHistoryComponent implements OnInit {
   //holds unprocessed images
   uploadedImgProcessed: string[] = [];
 
+  uuid:BigInteger[]=[];
   //used for loadig spinner
   loading=false;
 
@@ -34,6 +35,7 @@ export class UploadHistoryComponent implements OnInit {
 
               this.uploadedImg.push(respsonseBase64.OriginalImage[i]);
               this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
+              this.uuid.push(respsonseBase64.Index[i]);
           }
         }
       );
@@ -64,12 +66,11 @@ export class UploadHistoryComponent implements OnInit {
         //returned message
         console.log('returned message:'+data.request);
         this.loading = true;
-        /*this.imgService.deleteImage(id).subscribe(
+        this.imgService.deleteImage(this.uuid[index]).subscribe(
           responseData =>{
-
+                //response
             }
-          }
-        );*/
+        );
         this.uploadedImg=[];
         this.uploadedImgProcessed=[];
         this.ngOnInit();

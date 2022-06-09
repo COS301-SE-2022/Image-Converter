@@ -65,7 +65,19 @@ export class ConverterService {
     );
   }
 
-  deleteImage(){
-    
+  deleteImage(id:any){
+
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    console.log(httpOptions);
+    let pic = {index: id};
+    return this.httpclient.post(
+      'http://localhost:5000/deletehistory',
+      pic,httpOptions
+    );
   }
 }
