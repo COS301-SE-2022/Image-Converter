@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6f4fc19-3657-4926-a287-73fc58ec7577" name="Changes" comment=":green_heart: (CI/CD) back-end workflow try no 2">
-      <change afterPath="$PROJECT_DIR$/Server/assets/barchart-template.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/bargraph.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/line-graph3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/line-graph3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/line-graph4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/parabola-template-resized.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/parabola-template.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/parabola1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/piechart-template.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/piechart1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/scatterplot-template.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/assets/scatterplot1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/templateMatching.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/test/test_templatematching.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/converter/template-matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/converter/template-matching.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/test/test_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server/test/test_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/pythonTests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/converter/template-matching.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/templateMatching.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +61,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -158,7 +147,8 @@
       <workItem from="1654697635397" duration="191000" />
       <workItem from="1654697836349" duration="476000" />
       <workItem from="1654698323139" duration="24906000" />
-      <workItem from="1654762509947" duration="2184000" />
+      <workItem from="1654762509947" duration="3091000" />
+      <workItem from="1654773802385" duration="2552000" />
     </task>
     <task id="LOCAL-00001" summary=":sparkles: (back-end) image smoothing">
       <created>1654622796726</created>
@@ -230,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654732636254</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary=":green_heart: (CI/CD) back-end workflow try no 3">
+      <created>1654776044109</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654776044109</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +258,7 @@
     <MESSAGE value=":recycle: (Back-end) add requirements.txt and fix test_smoothing.py" />
     <MESSAGE value=":wastebasket: (Back-end) remove the python src folder" />
     <MESSAGE value=":green_heart: (CI/CD) back-end workflow try no 1" />
-    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: (CI/CD) back-end workflow try no 1" />
+    <MESSAGE value=":green_heart: (CI/CD) back-end workflow try no 3" />
+    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: (CI/CD) back-end workflow try no 3" />
   </component>
 </project>
