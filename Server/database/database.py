@@ -117,10 +117,10 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    def insert_feedback(self, feedback, id):
+    def insert_feedback(self, id, feedback):
         try:
             sql = "INSERT INTO feedback (use_id,feedback) VALUES(%s,%s)"
-            self.cur.execute(sql, (feedback, id))
+            self.cur.execute(sql, (id, feedback))
             self.conn.commit()
             return True
         except Exception as e:
