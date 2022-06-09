@@ -12,32 +12,46 @@ export class UploadHistoryComponent implements OnInit {
 
   constructor(private dialog: MatDialog,private imgService: ConverterService) { }
 
+  //holds unprocessed images
+  uploadedImg: string[] = [];
+  //holds unprocessed images
+  uploadedImgProcessed: string[] = [];
+
   ngOnInit(): void {
-    let respsonseBase64;
+    let respsonseBase64:any;
       this.imgService.getUploadHistory().subscribe(
         responseData =>{
-          console.log("response");
-           console.log("response here: "+responseData);
-          respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-          console.log("response here: "+JSON.stringify(responseData));
+           respsonseBase64 = JSON.parse(JSON.stringify(responseData));
+
+         //console.log("response here: "+JSON.stringify(responseData));
+         
+          for(let i=0;i<respsonseBase64.OriginalImage.length;i++){
+
+              this.uploadedImg.push(respsonseBase64.OriginalImage[i]);
+              this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
+          }
         }
       );
   }
 
-  uploadedImg: string[] = ['../../assets/purple.jpg', '../../assets/drag.png','../../assets/purple.jpg'];
+  //sends clicked image to popup
+  imageClick(index:any, arrayToUse:String){
 
-  //code
-  imageClick(image:any){
-
-    console.log("click");
-    //
+    let image;
+    if(arrayToUse=="uploaded"){
+      image=this.uploadedImg[index];
+    }
+    else{
+      image=this.uploadedImgProcessed[index];
+    }
+    
     const configDialog = new MatDialogConfig();
 
     //send the processed version of the image (parameter)
     const dialogRef = this.dialog.open(ImagePopupComponent, {
       width: '40%',
       height: '80%',
-      data: { img: image.image },
+      data: { img: image },
     });
   }
 }
