@@ -116,4 +116,14 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+    def insert_feedback(self, feedback, id):
+        try:
+            sql = "INSERT INTO feedback (use_id,feedback) VALUES(%s,%s)"
+            self.cur.execute(sql, (feedback, id))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
             
