@@ -19,7 +19,7 @@ export class UploadHistoryComponent implements OnInit {
           console.log("response");
            console.log("response here: "+responseData);
           respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-          
+          console.log("response here: "+JSON.stringify(responseData));
         }
       );
   }
