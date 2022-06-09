@@ -4,6 +4,7 @@ import {ConverterComponent} from './converter/converter.component'
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
 
 const routes: Routes = [
