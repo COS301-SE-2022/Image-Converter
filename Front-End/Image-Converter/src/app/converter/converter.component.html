@@ -1,5 +1,5 @@
-
-<mat-card class="card" draggable="true" ngClass="{{ dragAreaClass }}">
+<img *ngIf="loading" src="assets/loading.gif" width="400" />
+<mat-card *ngIf="!loading" class="card" draggable="true" ngClass="{{ dragAreaClass }}">
     <!--<mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>Shiba Inu</mat-card-title>
