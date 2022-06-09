@@ -3,11 +3,21 @@
     <hr style="width:50px;border:5px solid black" class="w3-round">
 
     <h1>Recent Uploads</h1>
-      <div>
-        <mat-grid-list cols="1" rowHeight="4:1" *ngFor="let image of uploadedImg" >
-            <mat-grid-tile>
-                <button (click)="imageClick({image})"><img id="imgLink" src={{image}} alt="response img" width="400" ></button>
-            </mat-grid-tile>
-        </mat-grid-list> 
-      </div>
+    <div>
+      <mat-grid-list cols="2" rowHeight="4:1" *ngFor="let image of uploadedImg;let pImage of uploadedImgProcessed;index as i;" >
+        <mat-grid-tile id="uploaded">
+            <button (click)="imageClick(i,'uploaded')">
+              <img id="imgLink" src={{uploadedImg[i]}} alt="response img" width="400" >
+            </button>
+            <br/>
+        </mat-grid-tile>
+        
+        <mat-grid-tile id="processed">
+          <button (click)="imageClick(i,'processed')">
+            <img id="imgLi" src={{uploadedImgProcessed[i]}} alt="response img" width="400" >
+          </button>
+          <br/>
+        </mat-grid-tile>
+      </mat-grid-list> 
+    </div>
 </div>
