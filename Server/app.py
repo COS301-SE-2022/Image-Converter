@@ -67,21 +67,23 @@ def upload_image(user):
             imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
             img = Image.open(io.BytesIO(imgdata))
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
-            image_converted = bytearray(opencv_img)
+            
             image_uploaded = bytearray(base64_picture)
-            if(db.insert_image(picture, image_converted, user[0])):
-                print("Image inserted")
+            
             print(type(opencv_img))
             templateMatch = Matching(opencv_img)
             print(templateMatch.graphType)
             print(templateMatch.perfectMatch)
             imageCleaner = smoothing(opencv_img)
             imageCleaner.clean_noise()
-            # with open("images/original/Graph.png", "rb") as img_file:
-            #     b64picture = base64.b64encode(img_file.read())
-            # print("b64picture")
+            with open("images/original/Graph.png", "rb") as img_file:
+                b64picture = base64.b64encode(img_file.read())
+            print("b64picture")
+            image_converted = bytearray(b64picture)
+            if(db.insert_image(picture, image_converted, user[0])):
+                print("Image inserted")
             db_image = db.get_image(user[0])
-
+            print(db_image)
         return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
     else:
         return {'response': 'failed'}, 400

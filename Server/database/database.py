@@ -70,7 +70,8 @@ class User:
     def insert_image(self, image_uploaded,image_converted, id):
         try: 
             #sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
-            sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
+            sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
+            print("Executing")
             self.cur.execute(sql, ('straight line', id, image_uploaded,image_converted))
             self.conn.commit()
             return True
@@ -81,7 +82,7 @@ class User:
     def get_image(self, id):
         try:
             #sql = "SELECT * FROM history where user_id=%s;"
-            sql = "SELECT * FROM history2 where user_id=%s;"
+            sql = "SELECT * FROM history where user_id=%s;"
             self.cur.execute(sql, ([id]))
             db_history = self.cur.fetchone()
             self.conn.commit()
@@ -94,7 +95,7 @@ class User:
     #fetches previously uploaded images
     def get_image_history(self, id):
         try:
-            sql = "SELECT * FROM history2 where user_id=%s;"
+            sql = "SELECT * FROM history where user_id=%s;"
             self.cur.execute(sql, ([id]))
             db_history = self.cur.fetchall()
             self.conn.commit()
@@ -108,7 +109,7 @@ class User:
 
     def delete_history(self,id):
         try:
-            sql = "DELETE FROM history2 WHERE id=%s;"
+            sql = "DELETE FROM history WHERE id=%s;"
             self.cur.execute(sql, ([id]))
             self.conn.commit()
             return True
