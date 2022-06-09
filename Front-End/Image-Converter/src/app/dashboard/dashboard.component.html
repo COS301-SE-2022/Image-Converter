@@ -15,30 +15,36 @@ body {font-size:16px;}
 </head>
 <body>
 
+  <nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <div class="w3-container">
+      <h3 class="w3-padding-64"><b>Image<br>Converter</b></h3>
+    </div>
+    <div class="w3-bar-block">
+      <a (click)="toHome()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+      <a (click)="toImageUpload()"  class="w3-bar-item w3-button w3-hover-white">Image Upload</a> 
+      <a (click)="toImageFilter()" class="w3-bar-item w3-button w3-hover-white">Image Filters</a> 
+      <a (click)="toConversionFormat()"  class="w3-bar-item w3-button w3-hover-white">Conversion Formats</a> 
+      <a (click)="toUploadHistory()"  class="w3-bar-item w3-button w3-hover-white">Upload History</a> 
+      <a (click)="toContact()"  class="w3-bar-item w3-button w3-hover-white">Contact</a>
+    </div>
+  </nav>
+
+
+
 <!-- Sidebar/menu -->
 <app-side-bar></app-side-bar>
-
-<!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
-  <span>Image Converter</span>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="home">
-    <!-- <h1 class="w3-jumbo"><b>Interior Design</b></h1> -->
     <h1 class="w3-xxxlarge w3-text-black"><b>Home</b></h1>
     <hr style="width:50px;border:5px solid black" class="w3-round">
   </div>
   
   <div class="w3-row-padding">
-    <div class="w3-">
+    <div class="w3-" id="home">
       <p>With our current climate of easy access to information, we are faced with the problem of information overload. Therefore it is important 
           that we are able to view data in a concise format. This will allow us to understand the data in a comprehensive manner without getting 
           distracted by unnecessary information. 
@@ -64,17 +70,21 @@ body {font-size:16px;}
   </div>
   
     <!-- Image Filters -->
-    <app-filter></app-filter>
-
+    <div id="imageFilter">
+      <app-filter></app-filter>
+    </div>
   <!-- Conversion Formats -->
-  <app-conversion></app-conversion>
-
+  <div id="conversionFormat">
+    <app-conversion></app-conversion>
+  </div>
 <!-- Upload History-->
+  <div id="uploadHistory">
     <app-upload-history></app-upload-history>
-  
+  </div>
   <!-- Contact -->
-  <app-contact></app-contact>
-
+  <div id="contact">
+    <app-contact></app-contact>
+  </div>
 <!-- End page content -->
 </div>
 
