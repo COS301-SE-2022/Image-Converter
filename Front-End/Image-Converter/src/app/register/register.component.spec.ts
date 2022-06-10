@@ -22,4 +22,12 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("testing function",()=>{
+    expect(component.MustMatch("123456789","123456789")).toBe(true);
+  })
+
+  it("submitted variable",()=>{
+    expect(component.submitted).toBe(false);
+  })
 });

@@ -22,4 +22,9 @@ describe('UploadHistoryComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("loading variable",()=>{
+    expect(component.loading).toBe(false);
+  })
+
 });

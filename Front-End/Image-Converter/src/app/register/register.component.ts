@@ -20,39 +20,35 @@ export class RegisterComponent implements OnInit {
   buttonLogin = "";
 
   title = 'reactiveformproject';
-  registerForm!: FormGroup;
+  registerForm!: FormGroup; /*initialiting form type*/
   reactiveForm!: FormGroup;
   submitted = false;
   response!:{result:string,token:string};
 
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() { /*form validation*/
     this.registerForm = this.formBuilder.group({
-      surname: ['', [Validators.required, Validators.minLength(2)]],
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      surname: ['', [Validators.required, Validators.minLength(2)]], /*minimum surname length*/
+      name: ['', [Validators.required, Validators.minLength(2)]], /*minimum username length*/
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8)]], /*validation for password*/
       // cpassword: ['', [Validators.required, Validators.minLength(8)]],
-      cpassword: new FormControl(null, [Validators.required, Validators.minLength(8)])
+      cpassword: new FormControl(null, [Validators.required, Validators.minLength(8)]) /*validation for confirmed password*/
 
     },
     {
-      validators: this.MustMatch('password','cpassword')
+      validators: this.MustMatch('password','cpassword') /*function for password validation, takes in password and 2nd entered password and compares the two*/
     })
   }
 
-  // form = new FormGroup({  
-  //   username: new FormControl('', Validators.required),  
-  //   password: new FormControl('', Validators.required),
-  //   // submit: new FormControl()
-  // });
-
+  
   login()
   {
     //intentionally left blank
   }
  
+  // getters for user credentials
   get name() {  
     return this.registerForm.get('name');  
   } 
@@ -70,7 +66,7 @@ export class RegisterComponent implements OnInit {
   } 
 
 
-  MustMatch(controlName: string, matchingControl: string)
+  MustMatch(controlName: string, matchingControl: string) /*function for password validation, takes in password and 2nd entered password and compares the two*/
   {
     return(formGroup: FormGroup)=>{
       const control = formGroup.controls[controlName];
@@ -82,7 +78,7 @@ export class RegisterComponent implements OnInit {
 
       if(control.value !== matchingCont.value)
       {
-        matchingCont.setErrors({MustMatch:true});
+        matchingCont.setErrors({MustMatch:true}); //return true is passwords match
       }
 
       else{
@@ -91,7 +87,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  
+  //submission of form
   onSubmit() {
     this.submitted = true;
 
@@ -111,7 +107,7 @@ export class RegisterComponent implements OnInit {
 
         if(responseData.body.result == "success"){
           localStorage.setItem('token', responseData.body.token);
-          this._router.navigateByUrl('/dashboard');
+          this._router.navigateByUrl('/dashboard'); //navigate to dashboard on successful login
         }
       });
  
@@ -120,7 +116,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
  
-    alert('Registered successfully!');
+    // alert('Registered successfully!');
   }
 }
 

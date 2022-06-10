@@ -22,4 +22,17 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("hide variable ",()=>{
+    expect(component.hide).toBe(true);
+  })
+
+  it("buttonLogin variable ",()=>{
+    expect(component.buttonLogin).toBe("");
+  })
+
+  it("username ",()=>{
+    expect(component.buttonLogin).toBe("");
+  })
+
 });
