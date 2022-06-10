@@ -22,9 +22,9 @@ body {font-size:16px;}
     <hr style="width:50px;border:5px solid black" class="w3-round">
       <div>  
         <div class="w3-container w3-cell">
-            <img id="imgLink" src={{message}} alt="response img" width="400" height="400">
-          </div>
-          
+            <img id="imgLink" src={{message.image}} alt="response img" width="400" height="400"><br/>
+            <p>{{message.graphType}}</p>
+        </div>
           <div class="w3-container w3-cell">
             <div class="w3-panel" style="width:100%">
                 <button class="w3-button w3-block w3-blue" (click)="original()">Original</button>
