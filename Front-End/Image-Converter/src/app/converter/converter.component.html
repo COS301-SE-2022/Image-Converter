@@ -27,6 +27,8 @@
         </mat-card-content>
         <div class="error" *ngIf="error" style = "color:red;">{{error}}</div>
     <mat-card-actions>
-      <button  [disabled]="isDisabled" (click)="saveFiles()">Upload</button>
+      <button  [disabled]="isDisabled" (click)="saveFiles()" class="w3-button w3-block w3-padding-large w3-blue w3-margin-bottom">
+        Upload
+      </button>
     </mat-card-actions>
   </mat-card>
