@@ -1,9 +1,9 @@
 import os
-from database.database import User
+from database.mockDatabase import User
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 
-def test_InsertImage_GivenNewImages_ShouldReturnTrue():
+def test_GetImage_GivenNewImages_ShouldReturnHistoryRecord():
     #Prepare
     try :
         now = datetime.now()

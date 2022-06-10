@@ -1,5 +1,5 @@
 import os
-from database.database import User
+from database.mockDatabase import User
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 

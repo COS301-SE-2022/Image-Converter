@@ -1,9 +1,9 @@
 import os
-from database.database import User
+from database.mockDatabase import User
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 
-def test_DeleteHistoryRecord_GivenAnExistingHistorRecord_ShouldReturnHistoryRecord():
+def test_DeleteHistoryRecord_GivenAnExistingHistorRecord_ShouldReturnTrue():
     #Prepare
     try :
         now = datetime.now()
@@ -21,7 +21,7 @@ def test_DeleteHistoryRecord_GivenAnExistingHistorRecord_ShouldReturnHistoryReco
             arr2 = bytearray(surname, 'utf-8')
             db.insert_image(arr,arr2,person[0])
             history = db.get_image(person[0])
-
+            print(history)
             #Act
             
             result = db.delete_history(history[0])
