@@ -29,6 +29,9 @@ export class ConverterComponent implements OnInit {
   base64Picture: string ="";
   isDisabled = true;//upload button bool
 
+  //used for loadig spinner
+  loading=false;
+
   displayImg: any='../../assets/drag.png';// url of img displayed on upload
   onFileChange(event: any) {// when uploaded using button not drag
     let files: FileList = event.target.files;
@@ -129,6 +132,7 @@ export class ConverterComponent implements OnInit {
     }
   }
   saveFiles() {
+    this.loading = true;
     if(this.saveFile!=''){
       console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
 
@@ -136,12 +140,14 @@ export class ConverterComponent implements OnInit {
       this.convertToBase64(this.saveFile[0]);
       this.myimage?.subscribe(data => {
         // console.log(data);
+        
         this.imgService.postImg(data).subscribe(
           responseData =>{
+            this.loading = false;
             console.log(responseData);
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-            // console.log(this.respsonseBase64);
-            this.imgData.changeMessage(this.respsonseBase64.image);
+             console.log(this.respsonseBase64);
+            this.imgData.changeMessage(this.respsonseBase64);
             this.imgData.changBool(true);
           }
         );

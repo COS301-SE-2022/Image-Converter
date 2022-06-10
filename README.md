@@ -1,3 +1,13 @@
+![GitHub issues](https://img.shields.io/github/issues/COS301-SE-2022/Image-Converter)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/COS301-SE-2022/Image-Converter)
+<a href = "https://github.com/COS301-SE-2022/Image-Converter/commits">
+  <img alt="Commit Activity" src="https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Image-Converter?color=green&style=flat-square">
+</a>
+<a href = "https://libraries.io/github/Image-Converter/Slip-Snapper">
+  <img alt="GitHub Issues" src="https://img.shields.io/librariesio/github/COS301-SE-2022/Image-Converter">
+</a>
+
+
 # HardCode Image-Converter
 
 ## Description

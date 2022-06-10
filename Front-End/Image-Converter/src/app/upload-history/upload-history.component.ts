@@ -23,7 +23,7 @@ export class UploadHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    let respsonseBase64:any;
+    let respsonseBase64:any="";
       this.imgService.getUploadHistory().subscribe(
         responseData =>{
           this.loading = false;
@@ -35,6 +35,7 @@ export class UploadHistoryComponent implements OnInit {
 
               this.uploadedImg.push(respsonseBase64.OriginalImage[i]);
               this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
+              console.log("index: "+respsonseBase64.Index[i]);
               this.uuid.push(respsonseBase64.Index[i]);
           }
         }
@@ -69,11 +70,12 @@ export class UploadHistoryComponent implements OnInit {
         this.imgService.deleteImage(this.uuid[index]).subscribe(
           responseData =>{
                 //response
+                this.uploadedImg=[];
+                this.uploadedImgProcessed=[];
+                this.ngOnInit();
             }
         );
-        this.uploadedImg=[];
-        this.uploadedImgProcessed=[];
-        this.ngOnInit();
+      
       } else {
         console.log('returned empty:');
       } //dialog closed

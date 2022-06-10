@@ -95,13 +95,10 @@ class User:
     #fetches previously uploaded images
     def get_image_history(self, id):
         try:
-            sql = "SELECT * FROM history where user_id=%s;"
+            sql = "SELECT * FROM history where user_id=%s ORDER BY id DESC"
             self.cur.execute(sql, ([id]))
-            db_history = self.cur.fetchall()
+            db_history = self.cur.fetchmany(6)
             self.conn.commit()
-            # print("hist: ",db_history)
-            # print("len: ",len(db_history))
-            # print("hist: ",db_history[0][4])
             return db_history
         except Exception as e:
             print(f"Database connection error: {e}")
@@ -111,6 +108,16 @@ class User:
         try:
             sql = "DELETE FROM history WHERE id=%s;"
             self.cur.execute(sql, ([id]))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+
+    def insert_feedback(self, id, feedback):
+        try:
+            sql = "INSERT INTO feedback (user_id,feedback) VALUES(%s,%s)"
+            self.cur.execute(sql, (id, feedback))
             self.conn.commit()
             return True
         except Exception as e:
