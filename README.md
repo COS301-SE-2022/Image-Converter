@@ -34,7 +34,7 @@ display it to the user. The tool will support multiple graphing functions and gr
 [Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
 
 ## User Manual
-[Manual](https://drive.google.com/file/d/1l6HxlCZIPMnvjEwP6GMHtGoG3iaP30AW/view?usp=sharing)
+[Manual](https://drive.google.com/file/d/1_Y0_HrOpQP24oJWBdDtAn01b9TpFvAfO/view?usp=sharing)
 
 ## Coding Standards
 [Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
