@@ -1,7 +1,7 @@
 import datetime
 from functools import wraps
 import jwt
-from flask import Flask,json,jsonify, render_template, request
+from flask import Flask, json, jsonify, render_template, request
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
 from database.database import User
@@ -44,14 +44,6 @@ def token(f):
 @app.route('/')
 def index():
     return "Hello World!"
-
-
-@app.route('/test', methods=['POST'])
-@token
-def test(user):
-    username = str(request.json['email'])
-    print(user)
-    return jsonify({'result': username})
 
 
 @app.route('/picture', methods=['POST'])
