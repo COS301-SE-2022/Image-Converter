@@ -7,6 +7,8 @@ import jwt
 from database.database import User
 from datetime import datetime, timedelta
 
+app.config.from_object('config_default.Config')
+db = app.config['DATABASE']
 client = app.test_client()
 
 def test_BasePath_GivenAGETRequest_ShouldReturnTheStringHelloWorld():

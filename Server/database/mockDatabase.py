@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 load_dotenv()
 
-class User:
+class mockDatabase:
     """
     Constructor:
         Connects to the database.

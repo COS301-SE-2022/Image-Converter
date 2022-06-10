@@ -1,5 +1,5 @@
 import os
-from database.mockDatabase import User
+from database.mockDatabase import mockDatabase
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 
@@ -13,7 +13,7 @@ def test_DeleteHistoryRecord_GivenAnExistingHistorRecord_ShouldReturnTrue():
         email= "email "+current_time
         password= "password "+current_time
         
-        db = User()
+        db = mockDatabase()
         if(db != None):
             db.register(name, surname, email, password)
             person = db.getUserWithEmail(email)
