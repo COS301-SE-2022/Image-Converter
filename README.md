@@ -28,13 +28,13 @@ display it to the user. The tool will support multiple graphing functions and gr
 
 
 ## System Requirements Specification
-[SRS Document](https://drive.google.com/file/d/1U9F_26MrSpzSXQTy3dMCx2aimPu4sqxk/view?usp=sharing)
+[SRS Document](https://drive.google.com/file/d/17HnvjJIGHGOmh0mwlA_B81uC_S_EcNAU/view?usp=sharing)
 
 ## Architectural Requirements
-[Requirements]()
+[Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
 
 ## User Manual
-[Manual](https://drive.google.com/file/d/19B97rhvUiVP9hpCJZbqR2vG2E7nSSVPV/view?usp=sharing)
+[Manual](https://drive.google.com/file/d/1l6HxlCZIPMnvjEwP6GMHtGoG3iaP30AW/view?usp=sharing)
 
 ## Coding Standards
 [Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
@@ -57,7 +57,7 @@ display it to the user. The tool will support multiple graphing functions and gr
   ➛ Demo 1<br>
 </a> 
 
-<a href="#" target="_blank">
+<a href="https://drive.google.com/file/d/1x7NEmJd97rNSyF2K_QLNUmPYAlGTXEG_/view?usp=sharing" target="_blank">
   ➛ Demo 2<br>
 </a>
 
