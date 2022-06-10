@@ -1,3 +1,13 @@
+![GitHub issues](https://img.shields.io/github/issues/COS301-SE-2022/Image-Converter)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/COS301-SE-2022/Image-Converter)
+<a href = "https://github.com/COS301-SE-2022/Image-Converter/commits">
+  <img alt="Commit Activity" src="https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Image-Converter?color=green&style=flat-square">
+</a>
+<a href = "https://libraries.io/github/Image-Converter/Slip-Snapper">
+  <img alt="GitHub Issues" src="https://img.shields.io/librariesio/github/COS301-SE-2022/Image-Converter">
+</a>
+
+
 # HardCode Image-Converter
 
 ## Description
@@ -16,8 +26,12 @@ display it to the user. The tool will support multiple graphing functions and gr
 [Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
 [Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
+
 ## System Requirements Specification
 [SRS Document](https://drive.google.com/file/d/1U9F_26MrSpzSXQTy3dMCx2aimPu4sqxk/view?usp=sharing)
+
+## Architectural Requirements
+[Requirements]()
 
 ## User Manual
 [Manual](https://drive.google.com/file/d/19B97rhvUiVP9hpCJZbqR2vG2E7nSSVPV/view?usp=sharing)
@@ -64,7 +78,7 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
 </p>
 </details>
   
-  
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=OmolemoMashigo&theme=highcontrast)  
   
 ## Emmanuel Khoza
 <img src="https://user-images.githubusercontent.com/73942516/166416128-de040471-6c6b-469f-b6c8-584a83f79822.jpg" width="250" height="300">
@@ -80,6 +94,8 @@ I pride myself with being an all-rounder, who’s a very fast learner. I am well
 I am currently working as a junior software developer therefore working in a team is something I am familiar with. I have worked with angular and similar frameworks such as ionic. I have not worked with python and PostGreSQL before but I am a fast learner and I am used to being around an environment of self learning.
 </p>
 </details>
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Thuso-Khoza&theme=highcontrast)
 
 ## Phadimane Lethabo Lerefolo
 <img src="https://user-images.githubusercontent.com/73942516/166416260-56a5ec3d-cafd-423b-ba10-eed66304f2f1.jpeg" width="250" height="300">
@@ -97,6 +113,8 @@ I am currently working as a junior software engineer, that will benefit the team
 </p>
 </details>
 
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=phadimanelerefolo&theme=highcontrast)
+
 ## Mohammed Moola
 <img src="https://user-images.githubusercontent.com/73942516/166416308-2a9ed507-7aee-4b50-bc67-206cd030d9e3.jpg" width="250" height="300">
 <a href ="https://www.linkedin.com/in/mohammed-moola-604679149">
@@ -112,18 +130,23 @@ I am a hardworking, ambitious student who is passionate about the field I am in.
 </p>
 </details>
 
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MoeMoola3&theme=highcontrast)
+
 ## Neo Seefane
 <img src="https://user-images.githubusercontent.com/73942516/166416330-ee1187a0-dbd9-4bd9-8c8b-b64095684716.jpeg" width="250" height="300">
-<a href ="http://www.linkedin.com/in/neo-seefane-68b8a8239">
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
-</a>&nbsp;
-<a href ="https://github.com/neoseefane">
-<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" height="30" width="100" >
-</a>
+
+<a href="http://www.linkedin.com/in/neo-seefane-68b8a8239" rel="nofollow noreferrer">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" >
+  </a> &nbsp; 
+  <a href="https://github.com/neoseefane" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
+  </a>
 
 <details><summary>Profile Description</summary>
 <p>
 I am an inquisitive learner and a creative team player with excellent interpersonal and analytical skills. I have extensive experience with back-end, data structures, and development tools, with a focus on product-oriented designs. I am looking for a position in a growing company where I can apply my extensive knowledge of software design and development to meet the needs of clients while also gaining professional experience.
 </p>
 </details>
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=neoseefane&theme=highcontrast)
 

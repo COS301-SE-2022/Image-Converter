@@ -1,3 +1,9 @@
-
 Server/__pycache__/app.cpython-310.pyc
 Server/.env
+*.pyc
+.idea
+.pytest_cache
+Server/.pytest_cache
+Server/.tox
+Server/.coverage
+.idea/workspace.xml
