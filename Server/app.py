@@ -52,6 +52,7 @@ def upload_image(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
+        print(picture)
         if picture is not None:
             # print("picture is not None")
             base64_picture=base64.b64encode((bytes(picture[picture.find(",")+1:].encode('utf-8'))))
