@@ -3,10 +3,20 @@ import numpy as np
 import cv2 as cv
 
 
-def test_template():
+def test_TemplateMatching_GivenASmoothedImage_ShouldReturnMatchPercentage():
+    #Prepare
     image = cv.imread('assets/line-graph.jpg')
+
+    #Act
     object = Matching(image)
-    tempImg = object.line_graph()
-    assert tempImg == 50
-    tempImg = object.pie_chart()
-    assert tempImg == 50
+    lineGraph = object.line_graph()
+    pieChart = object.pie_chart()
+    barChart = object.barchart()
+    scatterPlot = object.scatterplot()
+
+    #Assert
+    assert lineGraph == 102
+    assert pieChart == 0
+    assert barChart == 6
+    assert scatterPlot == 17
+
