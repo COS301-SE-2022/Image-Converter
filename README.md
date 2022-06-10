@@ -44,10 +44,11 @@ display it to the user. The tool will support multiple graphing functions and gr
     .
     ├── main                    
     │   ├── develop              
-    │   |   ├── feature/set-up-workflows              
-    │   |   ├── feature/config-tets            
-    │   |   ├── feature/intergration 
-    |   |   ├── feature/filter
+    │   |   ├── feature/automate-tests             
+    │   |   ├── feature/back-end-github-actions            
+    │   |   ├── feature/front-end-workflows 
+    |   |   ├── feature/smoothing-template-matching
+    |   |   ├── feature/database-tests
     │   |   └── ...                 
     |   └── ...
     └── ...
