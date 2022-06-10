@@ -92,11 +92,9 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
-    console.log(httpOptions);
-    let container = {feedback: messageDetails};
     return this.httpclient.post(
       'http://localhost:5000/feedback',
-      container,httpOptions
+      messageDetails,httpOptions
     );
   }
 }

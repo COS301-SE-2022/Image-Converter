@@ -32,7 +32,7 @@ export class ContactComponent implements OnInit {
       this.loading = true;
 
       let messageDetails:Message = {
-        message : this.form.get('message')!.value
+        feedback : this.form.get('message')!.value
       } 
       let response;
       this.sendMessageService.sendMessage(messageDetails).subscribe(
@@ -40,11 +40,11 @@ export class ContactComponent implements OnInit {
           this.loading = false;
 
           response = JSON.parse(JSON.stringify(responseData));
-          console.log("response: "+response)
-          // console.log(responseData.body.token);
-          /*if(responseData.body.result == "success"){
+          
+           console.log(response);
+          if(response.response == "success"){
             alert("Message successfully sent")
-          }*/
+          }
          
         });
 
