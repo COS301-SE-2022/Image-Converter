@@ -53,8 +53,7 @@ export class ConverterService {
   getUploadHistory(){
 
     let token = localStorage.getItem('token');
-    console.log("in history: ");
-
+    
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
     const httpOptions:Object = {
       headers: headers
@@ -75,7 +74,7 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
-    console.log("in delete");
+    
     let pic = {index: id};
     return this.httpclient.post(
       'http://localhost:5000/deletehistory',
