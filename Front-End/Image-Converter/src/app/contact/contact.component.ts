@@ -34,18 +34,18 @@ export class ContactComponent implements OnInit {
       let messageDetails:Message = {
         message : this.form.get('message')!.value
       } 
-
+      let response;
       this.sendMessageService.sendMessage(messageDetails).subscribe(
         responseData=>{
-          this.loading = true;
+          this.loading = false;
 
-          /*this.response = JSON.parse(JSON.stringify(responseData));
+          response = JSON.parse(JSON.stringify(responseData));
+          console.log("response: "+response)
           // console.log(responseData.body.token);
-          if(responseData.body.result == "success"){
-            
+          /*if(responseData.body.result == "success"){
+            alert("Message successfully sent")
           }*/
-          //if success
-          alert("Message successfully sent")
+         
         });
 
   }
