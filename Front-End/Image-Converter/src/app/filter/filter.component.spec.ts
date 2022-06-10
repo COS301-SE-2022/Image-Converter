@@ -24,12 +24,6 @@ describe('FilterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it("testing title",()=>{
-    expect(component.componentName).toBe("user")
-  })
-
-
-
 });
 
 

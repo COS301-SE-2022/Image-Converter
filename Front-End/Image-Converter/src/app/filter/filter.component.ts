@@ -19,7 +19,7 @@ declare const uploadImage:any;
 export class FilterComponent implements OnInit {
 
   //these variables are used for the communication between converter and filter components
-  message!: string;
+  message!: any;
   dispBool!: boolean;
   subscription!: Subscription;
   private globalFilterVar = GlobalVariable.globalVar;
@@ -73,7 +73,7 @@ export class FilterComponent implements OnInit {
   //downloadFile is used to download an image
   downloadFile() {
     var a = document.createElement('a');
-    a.href = this.message;
+    a.href = this.message.image;
     var imgBckend = a.href;
   // a.download = "output.png";
   // document.body.appendChild(a);

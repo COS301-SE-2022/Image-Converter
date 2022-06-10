@@ -76,7 +76,12 @@ def upload_image(user):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             print(db_image)
-        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
+            graphType = "This graph is"
+            if(templateMatch.perfectMatch>5):
+                graphType = graphType + " a "+templateMatch.graphType
+            else:
+                graphType= graphType + " not recognized by the system"
+        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8')), 'graphType': graphType})
     else:
         return {'response': 'failed'}, 400
 
