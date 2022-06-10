@@ -1,23 +1,9 @@
 <div class="w3-container" id="contact" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-black"><b>Contact.</b></h1>
+    <h1 class="w3-xxxlarge w3-text-black"><b>User Feedback.</b></h1>
     <hr style="width:50px;border:5px solid black" class="w3-round">
-    <p>User Feedback </p>
+    <p>Get in touch with the development team.</p>
     <img *ngIf="loading" src="assets/loading.gif" width="400" />
     <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()" target="_blank">
-     <!-- <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" formControlName="Name" name="Name" required>
-      </div>-->
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" formControlName="email" name="Email" required>
-        <mat-error *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')">
-          Please enter a valid email address
-        </mat-error>
-        <mat-error *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">
-          email is <strong>required</strong>
-        </mat-error>
-      </div>
       <div class="w3-section">
         <label>Message</label>
         <input class="w3-input w3-border" type="text" formControlName="message" name="Message" required>
@@ -25,7 +11,7 @@
           message is <strong>required</strong>
         </mat-error>
       </div>
-      <button [disabled]="form.get('email')?.invalid || form.get('message')?.invalid" type="submit" class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom">
+      <button [disabled]="form.get('message')?.invalid" type="submit" class="w3-button w3-block w3-padding-large w3-black w3-margin-bottom">
         Send Message
       </button>
     </form>  

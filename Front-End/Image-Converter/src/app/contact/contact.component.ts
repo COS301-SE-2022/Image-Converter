@@ -32,7 +32,6 @@ export class ContactComponent implements OnInit {
       this.loading = true;
 
       let messageDetails:Message = {
-        email : this.form.get('email')!.value,
         message : this.form.get('message')!.value
       } 
 
