@@ -95,7 +95,7 @@ export class ConverterService {
     console.log(httpOptions);
     let container = {message: messageDetails};
     return this.httpclient.post(
-      'http://localhost:5000/deletehistory',
+      'http://localhost:5000/feedback',
       container,httpOptions
     );
   }

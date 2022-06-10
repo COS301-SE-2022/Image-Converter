@@ -140,6 +140,7 @@ export class ConverterComponent implements OnInit {
       this.convertToBase64(this.saveFile[0]);
       this.myimage?.subscribe(data => {
         // console.log(data);
+        this.loading = false;
         this.imgService.postImg(data).subscribe(
           responseData =>{
             console.log(responseData);
