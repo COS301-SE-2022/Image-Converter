@@ -7,7 +7,7 @@ import jwt
 from database.database import User
 from datetime import datetime, timedelta
 
-app.config.from_object('config_default.Config')
+app.config.from_object('config_default.TestingConfig')
 db = app.config['DATABASE']
 client = app.test_client()
 
