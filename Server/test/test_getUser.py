@@ -1,6 +1,6 @@
 import os
 import bcrypt
-from database.mockDatabase import User
+from database.mockDatabase import mockDatabase
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 
@@ -14,7 +14,7 @@ def test_GetUserByEmail_GivenAnExistingUser_ShouldReturnTheUser():
         email= "email "+current_time
         password= "password "+current_time
 
-        db = User()
+        db = mockDatabase()
         if(db != None):
             db.register(name, surname, email, password)
 

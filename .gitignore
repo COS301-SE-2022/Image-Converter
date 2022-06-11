@@ -8,3 +8,6 @@ Server/.tox
 Server/.coverage
 .idea/workspace.xml
 *.pyc
+*.pyc
+*.pyc
+Server/test/__pycache__/test_routes.cpython-310-pytest-7.1.2.pyc
