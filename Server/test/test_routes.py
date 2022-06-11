@@ -3,6 +3,7 @@ from app import app
 import pytest
 import jwt
 from datetime import datetime, timedelta
+from flask_jwt_extended import create_access_token
 
 client = app.test_client()
 
@@ -76,3 +77,18 @@ def test_TemplatePath_GivenAGETRequest_ShouldReturnTheindexHtmlPage():
 
     #Assert
     assert res.status_code == 200
+
+def test_UploadUserHistory_GivenAGETRequest_ShouldReturn():
+    with app.app_context():
+        #Prepare Data
+        url = '/uploadhistory'
+        accessToken = create_access_token('test-user-upload')
+        header = {
+            'Authorization': 'Bearer {}'.format(accessToken)
+        }
+
+        #Act
+        res = client.post(url, headers=header)
+
+        #Assert
+        assert res.status_code == 200
