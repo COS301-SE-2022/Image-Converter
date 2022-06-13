@@ -6,7 +6,7 @@ import base64
 import jwt
 from database.database import User
 from datetime import datetime, timedelta
-from flask_jwt_extended import create_access_token
+# from flask_jwt_extended import create_access_token
 
 app.config.from_object('config_default.TestingConfig')
 db = app.config['DATABASE']
@@ -102,16 +102,18 @@ def test_TemplatePath_GivenAGETRequest_ShouldReturnTheindexHtmlPage():
     assert res.status_code == 200
 
 def test_UploadUserHistory_GivenAGETRequest_ShouldReturn():
-    with app.app_context():
-        #Prepare Data
-        url = '/uploadhistory'
-        accessToken = create_access_token('test-user-upload')
-        header = {
-            'Authorization': 'Bearer {}'.format(accessToken)
-        }
+    # with app.app_context():
+    #Prepare Data
+    url = '/uploadhistory'
+    key = "secret"
+    # accessToken = create_access_token('test-user-upload')
+    accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
+    header = {
+    'x-access-token':accessToken
+    }
 
-        #Act
-        res = client.post(url, headers=header)
+    #Act
+    res = client.get(url, headers=header, content_type="application/json")
 
-        #Assert
-        assert res.status_code == 200
+    #Assert
+    assert res.status_code == 200
