@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit {
   }
   
   //used for loadig spinner
-  loading=false;
+  loading:Boolean=false;
 
   form = new FormGroup({  
     email: new FormControl('', [Validators.required, Validators.email]),  
