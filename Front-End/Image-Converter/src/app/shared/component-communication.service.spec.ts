@@ -13,4 +13,13 @@ describe('ComponentCommunicationService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  const msg = 'defualt message'
+  // it('changeMessage', ()=>{
+  //   expect(service.changeMessage(msg)).not.toEqual(service.messageSource.next(msg));
+  // });
+
+
+
+
 });
