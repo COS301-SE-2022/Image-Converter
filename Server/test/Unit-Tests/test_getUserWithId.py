@@ -1,9 +1,10 @@
 import os
+import bcrypt
 from database.mockDatabase import mockDatabase
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 
-def test_LoginUser_GivenAnExistingUser_ShouldReturnTrue():
+def test_GetUserWithId_GivenAnExistingUser_ShouldReturnTheUser():
     #Prepare
     try :
         now = datetime.now()
@@ -18,10 +19,14 @@ def test_LoginUser_GivenAnExistingUser_ShouldReturnTrue():
             db.register(name, surname, email, password)
 
             #Act
-            result = db.login(email, password)
+            result = db.getUserWithId(db.db_id)
+            print(result)
+            #Aseert
+            assert result[1] == name
+            assert result[2] == surname
+            assert bcrypt.checkpw(password.encode('UTF-8'), result[3].encode('UTF-8'))
+            assert result[4] == email
 
-            #Assert
-            assert result == True
         else:
             assert False
         

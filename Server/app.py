@@ -151,6 +151,7 @@ def uploadhistory(user):
 @app.route('/deletehistory' ,methods =['POST'])
 @token
 def delete_user_history(user):
+    #check the environment 
     db=User()
     if(db!=None):
         index = request.json['index']

@@ -99,7 +99,6 @@ class mockDatabase:
 
     def delete_history(self,id):
         for x in self.db_history:
-            # print(type(id))
             if x[0] == id:
                 self.db_history.remove(x)
                 return True

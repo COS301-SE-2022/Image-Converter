@@ -29,8 +29,32 @@ def test_GetUserByEmail_GivenAnExistingUser_ShouldReturnTheUser():
 
         else:
             assert False
-        
-        
+
     except Exception as e:
         print(f"Test Error : {e}")
         assert False
+
+def test_GetUserByEmail_GivenAnIncorrectUser_ShouldReturnNone():
+    #Prepare
+    try :
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        email= "email "+current_time
+
+        db = mockDatabase()
+        if(db != None):
+
+            #Act
+            result = db.getUserWithEmail(email)
+            print(result)
+            #Aseert
+            assert result == None
+
+        else:
+            assert False
+
+    except Exception as e:
+        print(f"Test Error : {e}")
+        assert False
+
+
