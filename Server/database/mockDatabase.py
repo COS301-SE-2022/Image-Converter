@@ -74,7 +74,7 @@ class mockDatabase:
 
 
     def insert_image(self, image_uploaded,image_converted, id):
-        if(self.getUserWithId(id) != None):
+        if self.getUserWithId(id) != None:
             history_id = self.db_history_id
             self.db_history_id += 1
             hist = [history_id,'straigh line', id,
@@ -85,28 +85,29 @@ class mockDatabase:
             return False
     
     def get_image(self, id):
-        for x in self.db_history:
+        for x in reversed(self.db_history) :
             if x[2] == id:
                 return x
         return None
 
     #fetches previously uploaded images
     def get_image_history(self, id):
-        for x in self.db_history:
+        temp_list = []
+        for x in reversed(self.db_history):
             if x[2] == id:
-                return x
-        return None
+                temp_list.append(x)
+        
+        return temp_list
 
     def delete_history(self,id):
-        for x in self.db_history:
+        for x in reversed(self.db_history):
             if x[0] == id:
                 self.db_history.remove(x)
                 return True
         return False
 
     def insert_feedback(self, id, feedback):
-        if(self.getUserWithId(id) != None):
-
+        if self.getUserWithId(id) != None:
             feed_id = self.db_feedback_id
             self.db_feedback_id += 1
             hist = [feed_id, id,feedback]

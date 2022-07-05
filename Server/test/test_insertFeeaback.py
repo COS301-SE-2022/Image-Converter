@@ -28,3 +28,24 @@ def test_InsertFeedback_GivenNewUserFeedback_ShouldReturnTrue():
     except Exception as e:
         print(f"Test Error : {e}")
         assert False
+    
+def test_InsertFeedback_GivenNewUserFeedbackAndANonExistingUser_ShouldReturnTrue():
+    #Prepare
+    try :
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        feedback = "feedback "+current_time
+        
+        db = mockDatabase()
+        if(db != None):
+
+            #Act
+            result = db.insert_feedback(db.db_id+10,feedback)
+            #Assert
+            assert result == True
+        else:
+            assert False
+    except Exception as e:
+        print(f"Test Error : {e}")
+        assert False
+    
