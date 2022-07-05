@@ -42,7 +42,7 @@ def test_InsertFeedback_GivenNewUserFeedbackAndANonExistingUser_ShouldReturnTrue
             #Act
             result = db.insert_feedback(db.db_id+10,feedback)
             #Assert
-            assert result == True
+            assert result == False
         else:
             assert False
     except Exception as e:
