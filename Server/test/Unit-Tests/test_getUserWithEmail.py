@@ -1,6 +1,6 @@
 import os
 import bcrypt
-from database.database import User
+from database.mockDatabase import mockDatabase
 from datetime import datetime
 dirname = os.path.dirname(__file__)
 
@@ -14,23 +14,47 @@ def test_GetUserByEmail_GivenAnExistingUser_ShouldReturnTheUser():
         email= "email "+current_time
         password= "password "+current_time
 
-        db = User()
+        db = mockDatabase()
         if(db != None):
             db.register(name, surname, email, password)
 
             #Act
             result = db.getUserWithEmail(email)
-
+            print(result)
             #Aseert
             assert result[1] == name
             assert result[2] == surname
-            assert bcrypt.checkpw(password.encode('UTF-8'), result[4].encode('UTF-8'))
-            assert result[5] == email
+            assert bcrypt.checkpw(password.encode('UTF-8'), result[3].encode('UTF-8'))
+            assert result[4] == email
 
         else:
             assert False
-        
-        
+
     except Exception as e:
         print(f"Test Error : {e}")
         assert False
+
+def test_GetUserByEmail_GivenAnIncorrectUser_ShouldReturnNone():
+    #Prepare
+    try :
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        email= "email "+current_time
+
+        db = mockDatabase()
+        if(db != None):
+
+            #Act
+            result = db.getUserWithEmail(email)
+            print(result)
+            #Aseert
+            assert result == None
+
+        else:
+            assert False
+
+    except Exception as e:
+        print(f"Test Error : {e}")
+        assert False
+
+
