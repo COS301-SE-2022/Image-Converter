@@ -2,8 +2,10 @@ import bcrypt
 from dotenv import load_dotenv
 import psycopg2.extras
 import psycopg2
+import random
 import os
 import sys
+from database.email import Email
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 load_dotenv()
@@ -36,10 +38,20 @@ class User:
             encoded_password = bytes(password, encoding='utf-8')
             encrypted_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
             encrypted_password = encrypted_password.decode('UTF-8')
-            # print(encrypted_password)
+            code = str(random.randint(1000, 9999))
+
             sql = "INSERT INTO users (name,surname,password,email) VALUES(%s,%s,%s,%s)"
             self.cur.execute(sql, (name, surname, encrypted_password, email))
             self.conn.commit()
+            sendemail = Email()
+            message = """\
+            Image Converter Activation Code
+            Welcome to the Image Converter!
+            Please provide us with feedback after using the system.
+            Here is your activation code: """
+            message += code
+            sendemail.sendMessage(email, message)
+            print("sent")
             return True
         except Exception as e:
             print(f"Database connection error: {e}")
@@ -141,7 +153,7 @@ class User:
     def verify_user(self, email):
         try:
             sql = "Update users set verified = True where email=%s;"
-            self.cur.execute(sql, (email,))
+            self.cur.execute(sql, (email))
             self.conn.commit()
         except Exception as e:
             print(f"Database connection error: {e}")
