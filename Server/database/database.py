@@ -127,17 +127,22 @@ class User:
     def updatePassword(self, email, password):
         try:
             encoded_password = bytes(password, encoding='utf-8')
-            encrypted_password = bcrypt.hashpw(
-                encoded_password, bcrypt.gensalt())
-            # print(type(encrypted_password))
+            encrypted_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
             encrypted_password = encrypted_password.decode('UTF-8')
-            # print(email)
+            
             sql = "UPDATE users SET password =%s WHERE email= %s;"
             self.cur.execute(sql, (encrypted_password, email))
             self.conn.commit()
-            # self.cur.close()
-            # self.conn.close()
             return True
         except Exception as e:
-            #print(f"Database connection error: {e}")
+            print(f"Database connection error: {e}")
+            return False
+    
+    def verify_user(self, email):
+        try:
+            sql = "Update users set verified = True where email=%s;"
+            self.cur.execute(sql, (email,))
+            self.conn.commit()
+        except Exception as e:
+            print(f"Database connection error: {e}")
             return False
