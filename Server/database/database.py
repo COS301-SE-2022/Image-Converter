@@ -46,8 +46,10 @@ class User:
             sendemail = Email()
             message = """\
             Image Converter Activation Code
+
             Welcome to the Image Converter!
             Please provide us with feedback after using the system.
+            
             Here is your activation code: """
             message += code
             sendemail.sendMessage(email, message)

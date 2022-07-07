@@ -185,6 +185,19 @@ def user_feedback(user):
     else:
         return {'response': 'failed'}, 400
 
+@app.route('/resetpassword', methods=["POST"])
+def reset_password():
+    db = User()
+    if(db != None):
+        email = str(request.json['email'])
+        newPassword = str(request.json['password'])
+        if(db.updatePassword(email, newPassword)):
+            return {'response': 'password reset'}, 200
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
 
 
 if __name__ == '__main__':
