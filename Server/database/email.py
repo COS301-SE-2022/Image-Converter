@@ -1,7 +1,11 @@
 import os
+import sys
+from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
+load_dotenv()
 
 class Email:
 
@@ -9,14 +13,14 @@ class Email:
 
     def __init__(self):
         try:
-            self.sg = SendGridAPIClient(
-                "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")
+            self.sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
 
         except Exception as e:
             print("THE ERROR IS", e)
 
     def sendMessage(self, reciver_email, message):
-        message = Mail(from_email="hardcode810@gmail.com",
+        message = Mail(
+                       from_email="hardcode810@gmail.com",
                        to_emails=reciver_email,
                        subject="Verification Code",
                        plain_text_content=message,
