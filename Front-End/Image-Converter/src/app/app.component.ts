@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,10 +10,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AppComponent {
 
 
-// constructor(public sanatizer: DomSanitizer) {}
+  // constructor(public sanatizer: DomSanitizer) {}
 
-ngOnInit(): void {  
-}
+  ngOnInit(): void {  
+  }
 
   // w3_open() {
   //   document.getElementById("mySidebar").style.display = "block";
