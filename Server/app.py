@@ -198,6 +198,20 @@ def reset_password():
     else:
         return {'response': 'failed'}, 400
 
+@app.route('/verifyuser', methods=["GET"])
+def verify():
+    db = User()
+    if(db != None):
+        email = request.json["email"]
+        code = int(request.json["code"])
+        if code != None and code == db.get_code(email):
+            db.verify_user(email)
+
+            return {'response': 'verified'}, 200
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {{'response': 'failed'}}, 400
 
 
 if __name__ == '__main__':
