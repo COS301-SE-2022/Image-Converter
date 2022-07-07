@@ -47,13 +47,13 @@ describe('ConverterComponent', () => {
     });
   });
 
-  describe('isDisabled attribute', async() => {
+  describe('default isDisabled attribute value', async() => {
     it('should expect the isDisabled attribute to be true', async() => {
       expect(component.isDisabled).toBeTruthy();
     });
   });
 
-  describe('error attribute', async() => {
+  describe('default error attribute value', async() => {
     it('should expect the error attribute to be \'\'', async() => {
       expect(component.error).toMatch("");
     });
