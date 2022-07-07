@@ -36,6 +36,6 @@ class Email:
             print("Exception error", e)
 
 #create a main function to call the class
-if __name__ == "__main__":
-    email = Email()
-    email.sendMessage("u19081082@tuks.co.za","Hello")
+# if __name__ == "__main__":
+#     email = Email()
+    # email.sendMessage("u@tuks.co.za","Hello")

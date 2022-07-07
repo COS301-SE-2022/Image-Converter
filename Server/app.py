@@ -199,30 +199,18 @@ def reset_password():
     if(db != None):
         email = str(request.json['email'])
         newPassword = str(request.json['password'])
-        if(db.updatePassword(email, newPassword)):
-            return {'response': 'password reset'}, 200
+        code = str(request.json['code'])
+        if session[email] == code:
+            if(db.updatePassword(email, newPassword)):
+                return {'response': 'success'}, 200
+            else:
+                return {'response': 'failed'}, 400
         else:
             return {'response': 'failed'}, 400
     else:
         return {'response': 'failed'}, 400
 
-@app.route('/verifyuser', methods=["GET"])
-@token
-def verify():
-    db = User()
-    if(db != None):
-        email = request.json["email"]
-        code = int(request.json["code"])
-        if code != None and code == db.get_code(email):
-            db.verify_user(email)
-
-            return {'response': 'verified'}, 200
-        else:
-            return {'response': 'failed'}, 400
-    else:
-        return {{'response': 'failed'}}, 400
-
-@app.route('/sendEmail', methods=["GET"])
+@app.route('/sendEmail', methods=["POST"])
 def sendEmail():
     db = User()
     if(db != None):
@@ -237,6 +225,30 @@ def sendEmail():
                 Please provide us with feedback after using the system.
 
                 Here is your activation code: """
+            message += code
+            sendEmail = Email()
+            sendEmail.sendMessage(email, message)
+            print("sent")
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'User Exists'}, 400
+    else:
+        return {{'response': 'failed'}}, 400
+
+@app.route('/resetpasswordemail', methods=["POST"])
+def resetPasswordEmail():
+    db = User()
+    if(db != None):
+        email = request.json["email"]
+        if email == db.getUserWithEmail(email)[4]:
+            code = str(random.randint(1000, 9999))
+            session[email] = code
+            message = """\
+                Image Converter Reset Password Code
+
+                Please provide us with feedback after using the system.
+
+                Here is your reset password code: """
             message += code
             sendEmail = Email()
             sendEmail.sendMessage(email, message)
