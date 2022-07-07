@@ -25,8 +25,17 @@ class Email:
                        subject="Verification Code",
                        plain_text_content=message,
                        html_content="<p>"+message+"</p>")
+        
         try:
             response = self.sg.send(message)
             print(response.status_code)
+            # print(response.body)
+            # print(response.headers)
+            print("SENDING EMAIL")
         except Exception as e:
             print("Exception error", e)
+
+#create a main function to call the class
+if __name__ == "__main__":
+    email = Email()
+    email.sendMessage("u19081082@tuks.co.za","Hello")

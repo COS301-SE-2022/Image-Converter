@@ -5,7 +5,7 @@ import psycopg2
 import random
 import os
 import sys
-from database.email import Email
+from sendEmail import Email
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 load_dotenv()
@@ -158,3 +158,7 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+if __name__ == "__main__":
+    db=User()
+    # db.register("test", "test", "u19081082@tuks.co.za", "test")
