@@ -4,6 +4,7 @@ import psycopg2.extras
 import psycopg2
 import os
 import sys
+from sendEmail import Email
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 load_dotenv()
@@ -31,15 +32,17 @@ class User:
         except:
             return None
 
-    def register(self, name, surname, email, password):
+    def register(self, name, surname, email, password,code):
         try:
             encoded_password = bytes(password, encoding='utf-8')
             encrypted_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
             encrypted_password = encrypted_password.decode('UTF-8')
-            # print(encrypted_password)
+            
+
             sql = "INSERT INTO users (name,surname,password,email) VALUES(%s,%s,%s,%s)"
             self.cur.execute(sql, (name, surname, encrypted_password, email))
             self.conn.commit()
+            
             return True
         except Exception as e:
             print(f"Database connection error: {e}")
@@ -124,3 +127,21 @@ class User:
             print(f"Database connection error: {e}")
             return False
             
+    def updatePassword(self, email, password):
+        try:
+            encoded_password = bytes(password, encoding='utf-8')
+            encrypted_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
+            encrypted_password = encrypted_password.decode('UTF-8')
+            
+            sql = "UPDATE users SET password =%s WHERE email= %s;"
+            self.cur.execute(sql, (encrypted_password, email))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+    
+
+if __name__ == "__main__":
+    db=User()
+    # db.register("test", "test", "u19081082@tuks.co.za", "test")
