@@ -11,3 +11,4 @@ Server/.coverage
 *.pyc
 *.pyc
 Server/test/__pycache__/test_routes.cpython-310-pytest-7.1.2.pyc
+Server/database/firebaseKey.json
