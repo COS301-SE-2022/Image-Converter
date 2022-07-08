@@ -18,6 +18,14 @@ class User:
         Boolean:Returns false if database connection fails
     """
 
+    """
+    __init__ function:
+        initialises the database connection
+    Parameters: 
+        self (current instance)
+    Returns: 
+        prints out success string if database connection is successful
+    """
     def __init__(self):
         try:
             self.DB_HOST = os.environ.get('DB_HOST')
@@ -30,6 +38,16 @@ class User:
             print("Database connection successful")
         except:
             return None
+
+    """
+         register function:
+            registers a new user and adds user to the database
+        Parameters: 
+            self (current instance), the name,  surname, email, & password for each user
+        Returns: 
+            True or False, depending on whether the regustration was successful or not
+            also prints an error message if registration was unsuccessful
+    """
 
     def register(self, name, surname, email, password):
         try:
@@ -44,6 +62,17 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+
+    """
+         login function:
+            checks the parameters to verify whether a user exists in the database to allow for the user to login to the system
+        Parameters: 
+            self (current instance), the email, & password for each user
+        Returns: 
+            True or False, depending on whether the regustration was successful or not
+            also prints an error message if login was unsuccessful
+    """
 
     def login(self, email, password):
         try:
@@ -60,12 +89,29 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
+    """
+         getUserWithEmail function:
+            verifies whether the user exists on the database, using the user's email
+        Parameters: 
+            self (current instance) & the email for each user
+        Returns: 
+            db_user which is the sql statement needed to verify the user   
+    """
     def getUserWithEmail(self, email):
         sql = "SELECT * FROM users where email=%s;"
         self.cur.execute(sql, (email,))
         db_user = self.cur.fetchone()
         self.conn.commit()
         return db_user
+
+    """
+         insert_image function:
+            inserts the uploaded image together with its converted image for the user's upload history
+        Parameters: 
+            self (current instance) & the uploaded image and the converted image for each user
+        Returns: 
+            True or False, depending on whether the image insertion was successful or not   
+    """
 
     def insert_image(self, image_uploaded,image_converted, id):
         try: 
@@ -79,6 +125,16 @@ class User:
             print(f"Database connection error: {e}")
             return False
     
+    """
+         get_image function:
+            retrieves an uploaded image using a valid id 
+        Parameters: 
+            self (current instance) & user id
+        Returns: 
+            db_history if retrieval was successful & False if it was unsuccessful
+            also prints an error message if it was unsuccessful  
+    """
+
     def get_image(self, id):
         try:
             #sql = "SELECT * FROM history where user_id=%s;"
@@ -92,7 +148,16 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    #fetches previously uploaded images
+    
+    """
+         get_image function:
+            retrieves previously uploaded images
+        Parameters: 
+            self (current instance) & user id
+        Returns: 
+            db_history if retrieval was successful & False if it was unsuccessful
+            also prints an error message if it was unsuccessful  
+    """
     def get_image_history(self, id):
         try:
             sql = "SELECT * FROM history where user_id=%s ORDER BY id DESC"
@@ -104,6 +169,14 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
+    """
+         delete_history function:
+            deletes selected images from the history table for a specific user
+        Parameters: 
+            self (current instance) & user id
+        Returns: 
+            True or False, depending on whether the deletion was successful or not  
+    """
     def delete_history(self,id):
         try:
             sql = "DELETE FROM history WHERE id=%s;"
@@ -114,6 +187,15 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
+    """
+         insert_feedback function:
+            inserts the user feedback from the form into the feedback table in the database
+        Parameters: 
+            self (current instance), user id & feedback
+        Returns: 
+            True or False, depending on whether the insertion was successful or not  
+    """
+
     def insert_feedback(self, id, feedback):
         try:
             sql = "INSERT INTO feedback (user_id,feedback) VALUES(%s,%s)"
@@ -123,4 +205,3 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
-            

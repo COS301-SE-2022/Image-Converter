@@ -18,7 +18,14 @@ app = Flask(__name__)
 
 CORS(app)
 
-
+"""
+    token function:
+        handles the functionality of the token assigned to eash user upon registering or login
+    Parameters: 
+        self (current instance), user id & feedback
+    Returns: 
+        decorated function  
+"""
 def token(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -46,15 +53,25 @@ def index():
     return "Hello World!"
 
 
+"""
+     upload_image function:
+        converts the uploaded image into a byte array for storage in the backend and applies the
+        functionality of image smoothening and template matching 
+      Parameters: 
+          user
+     Returns: 
+        print out if the image was inserted successfully & also prints out the kind of graph identified by the template matcher
+        also prints out an error 404 if the db does not exist
+         
+"""
 @app.route('/picture', methods=['POST'])
 @token
 def upload_image(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
-        # print(picture)
         if picture is not None:
-            print("picture is not None")
+            # print("picture is not None")
             base64_picture=base64.b64encode((bytes(picture[picture.find(",")+1:].encode('utf-8'))))
             imageReturned = "data:image/png;base64,"
             imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
@@ -86,7 +103,15 @@ def upload_image(user):
     else:
         return {'response': 'failed'}, 400
 
-
+"""
+    auth_login function:
+        authorises the login functionality by assigning the access token given to a user 
+    Parameters: 
+        None
+    Returns: 
+        a success result & access token if the authorisation was successful, 
+        otherwise it returna a failed result and a status error code 400  
+"""
 @app.route('/login', methods=['POST'])
 def auth_login():
     db = User()
@@ -105,6 +130,16 @@ def auth_login():
         return {'response': 'failed'}, 400
 
 
+"""
+    register function:
+        performs the user registration functionality by retrieving the user's credentials from the form on the front-end
+        this function also assigns an access token to each user
+    Parameters: 
+        None
+    Returns: 
+        a success result & the access token if the registration is successful.
+        If the registration is unseccessful, then a failed response is returned and a status error code 400 
+"""
 @app.route('/register', methods=["POST"])
 def register():
     db = User()
@@ -127,6 +162,15 @@ def register():
 def img():
     return render_template('index.html', images = True)
 
+
+"""
+    uploadhistory function:
+        creates the arrays for storing the uploaded and converted images for each user for the upload history functionality
+    Parameters: 
+        None
+    Returns: 
+          a failed response is returned with a status error code 400 if the db does not exist
+"""
 @app.route('/uploadhistory', methods=["GET"])
 @token
 def uploadhistory(user):
@@ -148,10 +192,19 @@ def uploadhistory(user):
     else:
         return {'response': 'failed'}, 400
 
+
+"""
+    delete_user_history function:
+        performs the functionality of deleting the images if the database exists
+    Parameters: 
+        None
+    Returns: 
+        a success result & an appropriate message if printed.
+        If the deletion is unseccessful, then a failed response is returned and a status error code 400 
+"""
 @app.route('/deletehistory' ,methods =['POST'])
 @token
 def delete_user_history(user):
-    #check the environment 
     db=User()
     if(db!=None):
         index = request.json['index']
@@ -167,7 +220,15 @@ def delete_user_history(user):
     else:
         return {'response': 'failed'}, 400
 
-
+"""
+    user_feedback function:
+        allows for the user feedback functionality to be performed if the database exists
+    Parameters: 
+        None
+    Returns: 
+        a success result & the access token if the feedback is submitted successfully, an appropriate string is also printed out.
+        If the submission is unseccessful, then a failed response is returned and a status error code 400 
+"""
 @app.route('/feedback' ,methods =['POST'])
 @token
 def user_feedback(user):
