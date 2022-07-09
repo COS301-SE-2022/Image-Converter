@@ -4,7 +4,6 @@ import psycopg2.extras
 import psycopg2
 import os
 import sys
-from sendEmail import Email
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 load_dotenv()
