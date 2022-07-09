@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
   hide = true;
   _match!: boolean;
   buttonLogin = "";
-
+  buttonReset = "";
+  
   title = 'reactiveformproject';
   registerForm!: FormGroup;
   reactiveForm!: FormGroup;
@@ -41,7 +42,9 @@ export class RegisterComponent implements OnInit {
       validators: this.MustMatch('password','cpassword')
     })
   }
-
+  formCode = new FormGroup({  
+    code: new FormControl('', [Validators.required, Validators.minLength(4)])
+  });
   // form = new FormGroup({  
   //   username: new FormControl('', Validators.required),  
   //   password: new FormControl('', Validators.required),
@@ -93,7 +96,7 @@ export class RegisterComponent implements OnInit {
 
   
   onSubmit() {
-    this.submitted = true;
+    /*this.submitted = true;
 
     let authDetails:Register = {
       
@@ -120,7 +123,17 @@ export class RegisterComponent implements OnInit {
       return;
     }
  
-    alert('Registered successfully!');
+    alert('Registered successfully!');*/
+  }
+
+  onSubmitCode()
+  {
+    console.log("clicked code");
+    /* this.resetService.ResetPasswordCode(this.form.get('code')!.value).subscribe(
+      responseData =>{
+            //response
+        }
+    );*/
   }
 }
 

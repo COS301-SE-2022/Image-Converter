@@ -159,7 +159,7 @@
                     <div class="shape"></div>
                     <div class="shape"></div>
                 </div>
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <!--<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <table>
                         
                             <h3 id="logo">Register</h3>
@@ -223,8 +223,25 @@
                     <div class="form-group">
                       <button [disabled]="registerForm.invalid" id="loginbtn" class="btn btn-primary">Register</button>
                   </div>      
-                  <!-- <p id="accountLink">Already registered? <a routerLink="/login"  (click)="register()">Login</a></p>   -->
-                </form>
+                </form>-->
+
+                <!--form to submit code-->
+                <form id="codeForm" [formGroup]="formCode" (ngSubmit)="onSubmitCode()">
+                  <h3 id="logo">Image Converter <br>
+                      Code</h3>
+                  
+                    <label for="code">Enter the 4-digit code we sent to your email address</label>
+                      <input formControlName="code" placeholder="####" matInput required>
+                      
+                      <mat-error *ngIf="formCode.get('code')?.touched && formCode.get('code')?.invalid"> 
+                  Code is <strong>required</strong>
+                      </mat-error> 
+
+                  <button id="resetbtn" [disabled]="formCode.get('code')?.invalid" type="submit">Confirm</button>
+                  <p *ngIf="buttonReset != '' && !_match" class="alert alert-danger"> 
+                      Invalid Code!              
+                      </p> 
+              </form>
             </div>
         </div>
     </body>
