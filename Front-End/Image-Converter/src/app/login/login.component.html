@@ -82,7 +82,7 @@
                 <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
                     Password is <strong>required</strong>
                 </mat-error>  
-                <a href="#" id="forgot">Forgot your password?</a>
+                <a routerLink="/ForgotPassword" id="forgot">Forgot your password?</a>
                 
   
                 <button id="loginbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit">Log In</button>
