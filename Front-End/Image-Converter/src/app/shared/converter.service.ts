@@ -98,9 +98,10 @@ export class ConverterService {
   }
 
   //sends users email to where reset code will be sent
-  ResetPassword(email:string){
+  ResetPassword(email:any): Observable<any>
+  { console.log(JSON.stringify(email));
     return this.httpclient.post(
-      'http://localhost:5000/feedback',
+      'http://localhost:5000/resetpasswordemail',
       email
     );
   }
