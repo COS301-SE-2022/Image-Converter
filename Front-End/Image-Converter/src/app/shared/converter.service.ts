@@ -96,4 +96,12 @@ export class ConverterService {
       messageDetails,httpOptions
     );
   }
+
+  //sends users email to where reset code will be sent
+  ResetPassword(email:string){
+    return this.httpclient.post(
+      'http://localhost:5000/feedback',
+      email
+    );
+  }
 }
