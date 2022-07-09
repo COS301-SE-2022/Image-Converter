@@ -29,14 +29,24 @@ export class ForgotPasswordComponent implements OnInit {
     console.log("clicked");
 
     //once code is sent through and response is given
-    document.getElementById("resetForm")!.style.display="none";
-    document.getElementById("codeForm")!.style.display="inline-block";
+    //document.getElementById("resetForm")!.style.display="none";
+   // document.getElementById("codeForm")!.style.display="inline-block";
 
-   /* this.resetService.ResetPassword(this.form.get('email')!.value).subscribe(
+   let email = {
+    email : this.form.get('email')!.value
+  } 
+
+    this.resetService.ResetPassword(email).subscribe(
       responseData =>{
             //response
+            console.log(responseData);
+            //this.response = JSON.parse(JSON.stringify(responseData));
+    
+            if(responseData.body.result == "success"){
+              console.log("success");
+            }
         }
-    );*/
+    );
   }
 
   onSubmitCode()
