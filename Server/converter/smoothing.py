@@ -54,8 +54,8 @@ if __name__ == '__main__':
     filter = np.array([[0, 0, -1, 0, 0], [0, -1, -2, -1, 0], [-1, -2, 16, -2, -1], [0, -1, -2, -1, 0], [0, 0, -1, 0, 0]])
     for i in range(len(img)):
         saturation.append(cv2.filter2D(src=bilateralBlur[i], ddepth=-1, kernel=filter))
-        threshold.append(cv2.filter2D(src=img[i].copy(), ddepth=-1, kernel=kernel))
-        bilateralBlur[i] = cv2.filter2D(img[i].copy(), -1, filter)
+        # threshold.append(cv2.filter2D(src=img[i].copy(), ddepth=-1, kernel=kernel))
+        # bilateralBlur[i] = cv2.filter2D(img[i].copy(), -1, filter)
 
 
     # convert to hsv and get saturation channel
@@ -64,17 +64,17 @@ if __name__ == '__main__':
         threshold.append(cv2.cvtColor(saturation[i], cv2.COLOR_BGR2HSV))
 
     # threshold saturation channel
-    for i in range(len(saturation)):
-        threshold[i] = cv2.threshold(threshold[i], 50, 255, cv2.THRESH_BINARY)[1]
+    # for i in range(len(saturation)):
+    #     threshold[i] = cv2.threshold(threshold[i], 50, 255, cv2.THRESH_BINARY)[1]
 
     # apply morphology close and open to make mask
     # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9))
     # morph = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=1)
     # mask = cv2.morphologyEx(morph, cv2.MORPH_OPEN, kernel, iterations=1)
-    morph = []
-    mask = []
-    for i in range(len(saturation)):
-        mask.append(cv2.Canny(saturation[i], 100, 200))
+    # morph = []
+    # mask = []
+    # for i in range(len(saturation)):
+    #     mask.append(cv2.Canny(saturation[i], 100, 200))
         # obj = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9))
         # morph.append(cv2.morphologyEx(saturation[i], cv2.MORPH_CLOSE, obj, iterations=1))
         # mask.append(cv2.morphologyEx(morph[i], cv2.MORPH_OPEN, obj, iterations=1))
@@ -82,11 +82,11 @@ if __name__ == '__main__':
 
     for i in range(len(img)):
         cv2.imshow("Original_Image", img[i])
-        cv2.imshow("MexicanHatExlBlur", bilateralBlur[i])
+        # cv2.imshow("MexicanHatExlBlur", bilateralBlur[i])
         cv2.imshow("MexicanHatBlur", saturation[i])
         # cv2.imshow("MexicanToHsv", threshold[i])
         # cv2.imshow("Morphology", morph[i])
-        cv2.imshow("Edges", mask[i])
+        # cv2.imshow("Edges", mask[i])
         cv2.waitKey(0)
 
     cv2.destroyAllWindows()
