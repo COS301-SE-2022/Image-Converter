@@ -17,12 +17,15 @@ class FireStore:
         try:
             cred = credentials.Certificate("firebaseKey.json")
             firebase_admin.initialize_app(cred,{'storageBucket': os.environ.get('BUCKET_NAME')})
+            db=firestore.client()
+            
             print("Firebase connection successful")
         except:
             return None
     
     def uploadImage(self,image,name):
         try:
+            
             bucket = storage.bucket()
             blob = bucket.blob(name)
             blob.upload_from_filename(image)

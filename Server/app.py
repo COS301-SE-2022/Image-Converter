@@ -7,6 +7,7 @@ from converter.smoothing import smoothing
 from converter.templateMatching import Matching
 from database.database import User
 from database.sendEmail import Email
+
 from flask import Response
 from flask_cors import CORS
 import base64
@@ -17,10 +18,12 @@ import io
 import PIL.Image as Image
 import numpy as np
 
+
+
+
 app = Flask(__name__)
 
 CORS(app)
-
 
 def token(f):
     @wraps(f)
@@ -66,17 +69,18 @@ def upload_image(user):
             
             image_uploaded = bytearray(base64_picture)
             
-            print(type(opencv_img))
+            print("Opencv img "+str(type(opencv_img)))
             templateMatch = Matching(opencv_img)
             print(templateMatch.graphType)
             print(templateMatch.perfectMatch)
             imageCleaner = smoothing(opencv_img)
-            imageCleaner.clean_noise()
+            imageResult =imageCleaner.clean_noise()
             with open("images/original/Graph.png", "rb") as img_file:
                 b64picture = base64.b64encode(img_file.read())
             print("b64picture")
             image_converted = bytearray(b64picture)
-            if(db.insert_image(picture, image_converted, user[0])):
+            
+            if(db.insert_image(opencv_img, imageResult, user[0])):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             print(db_image)
@@ -85,7 +89,7 @@ def upload_image(user):
                 graphType = graphType + " a "+templateMatch.graphType
             else:
                 graphType= graphType + " not recognized by the system"
-        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8')), 'graphType': graphType})
+        return jsonify({'image': db_image[4], 'graphType': graphType})
     else:
         return {'response': 'failed'}, 400
 
@@ -148,8 +152,8 @@ def uploadhistory(user):
         proccesedImagelist=[]
         for x in db_image_array:
             IndexArray.append(x[0])
-            OriginalImagelist.append(str( bytes(x[3]).decode('UTF-8'))) 
-            proccesedImagelist.append(str(imageReturned+ bytes(x[4]).decode('UTF-8'))) 
+            OriginalImagelist.append(x[3]) 
+            proccesedImagelist.append(x[4]) 
 
 
         return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
