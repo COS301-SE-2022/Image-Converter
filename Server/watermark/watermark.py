@@ -15,7 +15,7 @@ mark = cv2.imread("watermark.jpg")
 h_mark, w_mark, _ = mark.shape
 
 
-img = cv2.imread("C:\\Users\\Mama Modiselle\\Pictures\\example")
+img = cv2.imread('assets/barchart.jpg')
 h_img, w_img, _ = img.shape
 
 print(h_img, w_img)
