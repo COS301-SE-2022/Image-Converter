@@ -108,4 +108,13 @@ export class ConverterService {
       email,{observe:'response'}
     );
   }
+
+  //sends users email to where code will be sent
+  registerEmailSend(email:any): Observable<any>
+  { 
+    return this.httpclient.post(
+      'http://localhost:5000/sendEmail',
+      email
+    );
+  }
 }
