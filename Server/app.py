@@ -18,7 +18,7 @@ import PIL.Image as Image
 import numpy as np
 
 app = Flask(__name__)
-
+app.secret_key = "super secret key"
 CORS(app)
 
 
@@ -239,8 +239,8 @@ def sendEmail():
 def resetPasswordEmail():
     db = User()
     if(db != None):
-        email = request.json["email"]
-        if email == db.getUserWithEmail(email)[4]:
+        email = str(request.json["email"])
+        if email == db.getUserWithEmail(email)[5]:
             code = str(random.randint(1000, 9999))
             session[email] = code
             message = """\

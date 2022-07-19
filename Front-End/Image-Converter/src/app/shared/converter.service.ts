@@ -76,6 +76,7 @@ export class ConverterService {
     };
     
     let pic = {index: id};
+
     return this.httpclient.post(
       'http://localhost:5000/deletehistory',
       pic,httpOptions
@@ -99,10 +100,12 @@ export class ConverterService {
 
   //sends users email to where reset code will be sent
   ResetPassword(email:any): Observable<any>
-  { console.log(JSON.stringify(email));
+  { 
+    console.log(JSON.stringify(email));
+    let request = {email: email}
     return this.httpclient.post(
       'http://localhost:5000/resetpasswordemail',
-      email
+      email,{observe:'response'}
     );
   }
 }
