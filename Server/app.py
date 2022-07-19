@@ -199,23 +199,33 @@ def reset_password():
     if(db != None):
         email = str(request.json['email'])
         newPassword = str(request.json['password'])
-        code = str(request.json['code'])
-        if session[email] == code:
-            if(db.updatePassword(email, newPassword)):
-                return {'response': 'success'}, 200
-            else:
-                return {'response': 'failed'}, 400
+        if(db.updatePassword(email, newPassword)):
+            return {'response': 'success'}, 200
         else:
             return {'response': 'failed'}, 400
     else:
         return {'response': 'failed'}, 400
+
+@app.route('/resetpasswordcode', methods=["POST"])
+def reset_password():
+    db = User()
+    if(db != None):
+        email = str(request.json['email'])
+        code = str(request.json['code'])
+        if session[email] == code:
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
 
 @app.route('/sendEmail', methods=["POST"])
 def sendEmail():
     db = User()
     if(db != None):
         email = request.json["email"]
-        if email != db.getUserWithEmail(email)[4]:
+        if email != db.getUserWithEmail(email)[5]:
             code = str(random.randint(1000, 9999))
             session[email] = code
             message = """\
