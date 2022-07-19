@@ -13,5 +13,9 @@ import numpy as np
 
 logo = cv2.imread("watermark.jpg")
 
+img = cv2.imread("C:\\Users\\Mama Modiselle\\Pictures\\example")
+h_img, w_img, _ = img.shape
+print()
+
 cv2.imshow("logo", logo)
 cv2.waitKey(0)
