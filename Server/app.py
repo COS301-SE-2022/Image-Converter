@@ -206,6 +206,7 @@ def reset_password():
     else:
         return {'response': 'failed'}, 400
 
+
 @app.route('/resetpasswordcode', methods=["POST"])
 def reset_password_code():
     db = User()
@@ -218,7 +219,6 @@ def reset_password_code():
             return {'response': 'failed'}, 400
     else:
         return {'response': 'failed'}, 400
-
 
 @app.route('/sendEmail', methods=["POST"])
 def sendEmail():
@@ -250,6 +250,7 @@ def resetPasswordEmail():
     db = User()
     if(db != None):
         email = str(request.json["email"])
+        # print(db.getUserWithEmail(email))
         if email == db.getUserWithEmail(email)[5]:
             code = str(random.randint(1000, 9999))
             session[email] = code
@@ -263,7 +264,7 @@ def resetPasswordEmail():
             sendEmail = Email()
             sendEmail.sendMessage(email, message)
             print("sent")
-            return {'response': 'success'}, 200
+            return jsonify({'response': 'success'})
         else:
             return {'response': 'User Exists'}, 400
     else:
