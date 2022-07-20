@@ -43,7 +43,9 @@ export class ForgotPasswordComponent implements OnInit {
             //this.response = JSON.parse(JSON.stringify(responseData));
     
             if(responseData.body.result == "success"){
-              console.log("success");
+              //console.log("success");
+
+              localStorage.setItem('codeEmail', this.form.get('email')!.value);
             }
         }
     );
@@ -52,10 +54,10 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmitCode()
   {
     console.log("clicked code");
-    /* this.resetService.ResetPasswordCode(this.form.get('code')!.value).subscribe(
+     this.resetService.resetPasswordCode(this.form.get('code')!.value).subscribe(
       responseData =>{
             //response
         }
-    );*/
+    );
   }
 }

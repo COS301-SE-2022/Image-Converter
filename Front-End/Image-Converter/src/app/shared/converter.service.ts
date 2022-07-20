@@ -109,6 +109,16 @@ export class ConverterService {
     );
   }
 
+  resetPasswordCode(code:any): Observable<any>
+  { 
+    let request = {email: localStorage.getItem('codeEmail'),
+                  code:code}
+    return this.httpclient.post(
+      'http://localhost:5000/resetpasswordcode',
+      request,{observe:'response'}
+    );
+  }
+
   //sends users email to where code will be sent
   registerEmailSend(email:any): Observable<any>
   { 
@@ -117,4 +127,6 @@ export class ConverterService {
       email
     );
   }
+
+  
 }
