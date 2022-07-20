@@ -29,6 +29,9 @@ export class RegisterComponent implements OnInit {
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
 
   ngOnInit() {
+
+    document.getElementById("codeForm")!.style.display = "none";
+
     this.registerForm = this.formBuilder.group({
       surname: ['', [Validators.required, Validators.minLength(2)]],
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -95,8 +98,9 @@ export class RegisterComponent implements OnInit {
   }
 
   
-  onSubmit() {
-    /*this.submitted = true;
+  /*onSubmit() {
+    
+    this.submitted = true;
 
     let authDetails:Register = {
       
@@ -123,11 +127,41 @@ export class RegisterComponent implements OnInit {
       return;
     }
  
-    alert('Registered successfully!');*/
+    alert('Registered successfully!');
+  }*/
+
+  onSubmit(){
+    document.getElementById("codeForm")!.style.display = "block";
+    document.getElementById("reg")!.style.display = "none";
+    console.log("in on sub")
+    //once code is sent through and response is given
+    //document.getElementById("resetForm")!.style.display="none";
+   // document.getElementById("codeForm")!.style.display="inline-block";
+
+   let email = {
+    email : this.registerForm.get('email')!.value
+  } 
+
+    this.registerService.registerEmailSend(email).subscribe(
+      responseData =>{
+            //response
+            console.log(responseData);
+            //this.response = JSON.parse(JSON.stringify(responseData));
+    
+            if(responseData.body.result == "success"){
+              console.log("success");
+
+            }
+        }
+    );
   }
 
   onSubmitCode()
-  {
+  { console.log("code: "+ this.formCode.get('code')!.value)
+    
+  let email = {
+      email : this.registerForm.get('email')!.value
+    } 
     console.log("clicked code");
     /* this.resetService.ResetPasswordCode(this.form.get('code')!.value).subscribe(
       responseData =>{
