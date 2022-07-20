@@ -207,7 +207,7 @@ def reset_password():
         return {'response': 'failed'}, 400
 
 @app.route('/resetpasswordcode', methods=["POST"])
-def reset_password():
+def reset_password_code():
     db = User()
     if(db != None):
         email = str(request.json['email'])
