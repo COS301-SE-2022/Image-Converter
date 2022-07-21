@@ -25,10 +25,18 @@ export class ConverterService {
     );
   }
   
-  register(formData: Register) : Observable<any> {
+  register(codePar:any) : Observable<any> {
+
+    let data = {name: localStorage.getItem('name'),
+                surname: localStorage.getItem('surname'),
+                email: localStorage.getItem('email'),
+                pw: localStorage.getItem('pw'),
+                code: codePar
+                };
+
     return this.httpclient.post(
       'http://localhost:5000/register',
-      formData,{observe:'response'}
+      data,{observe:'response'}
     );
   }
    postImg(data: string) {
@@ -124,7 +132,7 @@ export class ConverterService {
   { 
     return this.httpclient.post(
       'http://localhost:5000/sendEmail',
-      email
+      email,{observe:'response'}
     );
   }
 
