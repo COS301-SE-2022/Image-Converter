@@ -137,6 +137,10 @@ export class RegisterComponent implements OnInit {
     //once code is sent through and response is given
     //document.getElementById("resetForm")!.style.display="none";
    // document.getElementById("codeForm")!.style.display="inline-block";
+   localStorage.setItem('name', this.registerForm.get('name')!.value);
+   localStorage.setItem('surname',this.registerForm.get('surname')!.value);
+   localStorage.setItem('email', this.registerForm.get('email')!.value);
+   localStorage.setItem('pw', this.registerForm.get('password')!.value);
 
    let email = {
     email : this.registerForm.get('email')!.value
@@ -159,15 +163,18 @@ export class RegisterComponent implements OnInit {
   onSubmitCode()
   { console.log("code: "+ this.formCode.get('code')!.value)
     
-  let email = {
-      email : this.registerForm.get('email')!.value
-    } 
-    console.log("clicked code");
-    /* this.resetService.ResetPasswordCode(this.form.get('code')!.value).subscribe(
+    this.registerService.register(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
+            if(responseData.body.result == "success"){
+              console.log("success");
+
+            }
+            else{
+              alert("something went wrong");
+            }
         }
-    );*/
+    );
   }
 }
 
