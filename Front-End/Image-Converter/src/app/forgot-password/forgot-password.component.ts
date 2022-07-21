@@ -65,7 +65,7 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmitCode()
   {
 
-     this.resetService.resetPasswordCode(this.form.get('code')!.value).subscribe(
+     this.resetService.resetPasswordCode(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
             
