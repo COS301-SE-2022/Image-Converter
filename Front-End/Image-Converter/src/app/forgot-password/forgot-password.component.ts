@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {ConverterService} from './../shared/converter.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,7 +10,7 @@ import {ConverterService} from './../shared/converter.service';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private resetService: ConverterService) { }
+  constructor(private resetService: ConverterService, private _router: Router) { }
 
   ngOnInit(): void {
     document.getElementById("codeForm")!.style.display = "none";
@@ -78,5 +79,21 @@ export class ForgotPasswordComponent implements OnInit {
         }
     );
   }
-  
+
+  //sends new password to the backend
+  submitPass()
+  {
+    this.resetService.resetPassword(this.formPass.get('password')!.value).subscribe(
+      responseData =>{
+            //response
+            if(responseData.body.result == "success"){
+              alert("password successfully reset");
+              this._router.navigateByUrl('/');//can be changed to redirect to dashboard if token is returned
+            }
+            else{
+              alert("something went wrong");
+            }
+        }
+    );
+  }
 }
