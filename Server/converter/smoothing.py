@@ -45,7 +45,14 @@ class smoothing:
        
         # cv2.destroyAllWindows()
         img = cv2.imread('images/original/Graph.png')
-        return img
+        resizing = imageResizing(img_result)
+        img = resizing.resize()
+        # object = imageResizing(Image.fromarray(cv2.cvtColor(img_result, cv2.COLOR_BGR2RGB)))
+        logo = AddMark(Image.fromarray(cv2.cvtColor(img_result, cv2.COLOR_BGR2RGB)))
+        watermark = logo.Dev()
+        cv2.imshow("Resized Image", img)
+        print('Resized image:', img.shape)
+        return img_result
 
 if __name__ == '__main__':
     src = 'barGraph.jpeg'
