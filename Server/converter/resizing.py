@@ -9,6 +9,7 @@ class imageResizing:
         # down_points = (800, 800)
         # cv2.resize(self.resizedImage, down_points, cv2.INTER_LINEAR)
         self.resizedImage = self.resizedImage.resize((800,800))
+        # print(self.resizedImage.size)
         return self.resizedImage
 
 if __name__ == '__main__':

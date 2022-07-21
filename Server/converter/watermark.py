@@ -31,9 +31,9 @@ class AddMark:
         self.img.save('results/image_with_logo.jpg')
 
         # Opening the new image
-        img = Image.open('results/image_with_logo.jpg')
-        img.show()
-        print("done")
+        # img = Image.open('results/image_with_logo.jpg')
+        # img.show()
+        # print("done")
         return self.img
 
 if __name__ == '__main__':
