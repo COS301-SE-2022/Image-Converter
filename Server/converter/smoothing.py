@@ -11,23 +11,14 @@ class smoothing:
 
 
     def clean_noise(self):
-        # blur
-        blur = cv2.bilateralFilter(self.img, 9, 75, 75)
-
-        # convert to hsv and get saturation channel
-        sat = cv2.cvtColor(blur, cv2.COLOR_BGR2HSV)[:,:,1]
-
-        # threshold saturation channel
-        thresh = cv2.threshold(sat, 50, 255, cv2.THRESH_BINARY)[1]
-
-        # apply morphology close and open to make mask
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9,9))
-        morph = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=1)
-        mask = cv2.morphologyEx(morph, cv2.MORPH_OPEN, kernel, iterations=1)
+        blurred = cv2.bilateralFilter(self.img, 15, 75, 75)
+        sharp = cv2.addWeighted(self.img, 3.5, blurred, -2.1, 0)
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
+        open = cv2.morphologyEx(sharp, cv2.MORPH_OPEN, kernel, iterations=1)
 
         # write black to input image where mask is black
-        img_result = self.img.copy()
-        img_result[mask==0] = (255,255,255)
+        img_result = open.copy()
+        # img_result[open==0] = (255,255,255)
 
         # display it
         # cv2.imshow("IMAGE", self.img)
@@ -36,19 +27,28 @@ class smoothing:
 
         #resizing
         cv2.imwrite("images/original/Graph.png", img_result)
-        # k = Image.open('Server/images/original/Graph.png')
-        object = imageResizing(Image.fromarray(img_result))
-        img = object.resize()
-        logo = AddMark(img)
-        watermark = logo.Dev()
-        img = np.asarray(watermark)
-        cv2.imwrite("images/original/Graph.png", img)
     
-        image = cv2.imread('images/original/Graph.png')
+        # k = Image.open('Server/images/original/Graph.png')
+        # object = imageResizing(Image.fromarray(cv2.cvtColor(img_result, cv2.COLOR_BGR2RGB)))
+        # # object.resizedImage.show()
+        # img = object.resize()
+        # # img.show()
+        # logo = AddMark(img)
+        # watermark = logo.Dev()
+
+        # i = np.array(i) # After mapping from PIL to numpy : [R,G,B,A]
+        #                  # numpy Image Channel system: [B,G,R,A]
+        # red = i[:,:,0].copy(); i[:,:,0] = i[:,:,2].copy(); i[:,:,2] = red;
+
+        # img = np.asarray(img)
+        
+       
+        # cv2.destroyAllWindows()
+        img = cv2.imread('images/original/Graph.png')
         return img
 
 if __name__ == '__main__':
-    src = 'graph.jpeg'
+    src = 'barGraph.jpeg'
     img = cv2.imread(src)
     object = smoothing(img)
     object.clean_noise()
@@ -94,15 +94,17 @@ if __name__ == '__main__':
     #     th1.append(cv2.adaptiveThreshold(img[i], 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 21, 4))
     #     close.append(cv2.morphologyEx(img[i], cv2.MORPH_CLOSE, kernel, iterations=1))
     #     open.append(cv2.morphologyEx(th3[i], cv2.MORPH_OPEN, kernel, iterations=1))
-    src = 'graph.jpeg'
+    src = 'download.png'
     img = cv2.imread(src)
 
     # # img = image.load_img('barGraph', grayscale=True, target_size=(224, 224))
     # # img = image.img_to_array(img, dtype='uint8')
     blurred = cv2.bilateralFilter(img, 15, 75, 75)
     sharp = cv2.addWeighted(img, 3.5, blurred, -2.1, 0)
-    gry = cv2.cvtColor(blurred, cv2.COLOR_BGR2GRAY)
-    adapt = cv2.adaptiveThreshold(gry, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 91, 12)
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
+    open = cv2.morphologyEx(sharp, cv2.MORPH_OPEN, kernel, iterations=1)
+    # gry = cv2.cvtColor(blurred, cv2.COLOR_BGR2GRAY)
+    # adapt = cv2.adaptiveThreshold(gry, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 91, 12)
 
 
     # for i in range(len(close)):
@@ -117,7 +119,7 @@ if __name__ == '__main__':
     #     cv2.imshow("th5", th5[i])
     #     cv2.waitKey(0)
     cv2.imshow("Original_Image", img)
-    cv2.imshow("Grayscale", sharp)
-    cv2.imshow("Adaptive", adapt)
+    cv2.imshow("Sharpening", sharp)
+    cv2.imshow("Opening", open)
     cv2.waitKey(0)
     cv2.destroyAllWindows()

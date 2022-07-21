@@ -6,13 +6,11 @@ class imageResizing:
         self.resizedImage = image
 
     def resize(self):
-        # down_points = (800, 800)
-        # cv2.resize(self.resizedImage, down_points, cv2.INTER_LINEAR)
-        self.resizedImage = self.resizedImage.resize((800,800))
-        # print(self.resizedImage.size)
+        dimension = (800, 800)
+        self.resizedImage = cv2.resize(self.resizedImage, dimension, interpolation=cv2.INTER_AREA)
         return self.resizedImage
 
 if __name__ == '__main__':
-    obj = imageResizing(Image.open('draw.jpeg'))
+    obj = imageResizing(cv2.imread('barGraph.jpeg'))
     resizedImage = obj.resize()
-    print(resizedImage.size)
+    print(resizedImage.shape)
