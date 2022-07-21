@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from resizing import imageResizing
+from watermark import AddMark
 from PIL import Image
 import PIL
 
@@ -38,7 +39,9 @@ class smoothing:
         # k = Image.open('Server/images/original/Graph.png')
         object = imageResizing(Image.fromarray(img_result))
         img = object.resize()
-        img = np.asarray(img)
+        logo = AddMark(img)
+        watermark = logo.Dev()
+        img = np.asarray(watermark)
         cv2.imwrite("images/original/Graph.png", img)
     
         image = cv2.imread('images/original/Graph.png')
