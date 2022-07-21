@@ -161,14 +161,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmitCode()
-  { console.log("code: "+ this.formCode.get('code')!.value)
-    
+  { 
     this.registerService.register(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
             if(responseData.body.result == "success"){
               console.log("success");
-
+              localStorage.setItem('token', responseData.body.token);
+              this._router.navigateByUrl('/dashboard');
             }
             else{
               alert("something went wrong");
