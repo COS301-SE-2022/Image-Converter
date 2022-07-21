@@ -12,6 +12,9 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(private resetService: ConverterService) { }
 
   ngOnInit(): void {
+    document.getElementById("codeForm")!.style.display = "none";
+    document.getElementById("passForm")!.style.display = "none";
+
   }
 
   _match!: boolean;
@@ -25,17 +28,18 @@ export class ForgotPasswordComponent implements OnInit {
     code: new FormControl('', Validators.required)
   });
 
+  //new password form
+  formPass = new FormGroup({  
+    password: new FormControl('', Validators.required)
+  });
   onSubmit(){
     console.log("clicked");
 
     //once code is sent through and response is given
-    //document.getElementById("resetForm")!.style.display="none";
-   // document.getElementById("codeForm")!.style.display="inline-block";
-
+ 
    let email = {
     email : this.form.get('email')!.value
   } 
-
     this.resetService.ResetPassword(email).subscribe(
       responseData =>{
             //response
@@ -46,6 +50,12 @@ export class ForgotPasswordComponent implements OnInit {
               //console.log("success");
 
               localStorage.setItem('codeEmail', this.form.get('email')!.value);
+              document.getElementById("resetForm")!.style.display="none";
+              document.getElementById("codeForm")!.style.display="block";
+          
+            }
+            else{
+              alert("something went wrong");
             }
         }
     );
@@ -53,11 +63,20 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmitCode()
   {
-    console.log("clicked code");
+
      this.resetService.resetPasswordCode(this.form.get('code')!.value).subscribe(
       responseData =>{
             //response
+            if(responseData.body.result == "success"){
+             
+              document.getElementById("codeForm")!.style.display = "none";
+              document.getElementById("passForm")!.style.display = "block";
+            }
+            else{
+              alert("something went wrong");
+            }
         }
     );
   }
+  
 }
