@@ -36,6 +36,11 @@ class AddMark:
         print("done")
         return self.img
 
+if __name__ == '__main__':
+    obj = AddMark(Image.open('images/bar3.jpg'))
+
+    obj.Dev()
+
 # import cv2
 # import numpy as np
 # import glob
