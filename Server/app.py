@@ -4,6 +4,7 @@ import jwt
 from flask import Flask,json,jsonify, render_template, request
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
+from converter.image_classification import Classification
 from database.database import User
 from flask import Response
 from flask_cors import CORS
@@ -17,6 +18,7 @@ import numpy as np
 app = Flask(__name__)
 
 CORS(app)
+
 
 
 def token(f):
@@ -54,6 +56,7 @@ def test(user):
     return jsonify({'result': username})
 
 
+
 @app.route('/picture', methods=['POST'])
 @token
 def upload_image(user):
@@ -69,21 +72,26 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
-            
-            print(type(opencv_img))
-            templateMatch = Matching(opencv_img)
-            print(templateMatch.graphType)
-            print(templateMatch.perfectMatch)
+            img_class = Classification(picture)
+            # print(type(opencv_img))
+            # templateMatch = Matching(opencv_img)
+            #-------> img_class = Classification(opencv_img)
+            # print(templateMatch.graphType)
+            # print(templateMatch.perfectMatch)
+            print("#########################################")
+            print(img_class.graphType)
+            print("#########################################")
+
             imageCleaner = smoothing(opencv_img)
             imageCleaner.clean_noise()
             with open("images/original/Graph.png", "rb") as img_file:
                 b64picture = base64.b64encode(img_file.read())
-            print("b64picture")
+            # print("b64picture")
             image_converted = bytearray(b64picture)
-            if(db.insert_image(picture, image_converted, user[0])):
-                print("Image inserted")
+            # if(db.insert_image(picture, image_converted, user[0])):
+            #     print("Image inserted")
             db_image = db.get_image(user[0])
-            print(db_image)
+            # print(db_image)
         return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8'))})
     else:
         return {'response': 'failed'}, 400
