@@ -29,8 +29,14 @@ class smoothing:
         # cv2.imshow("IMAGE", self.img)
         # print("printing image")
         # cv2.imshow("IMAGE_RESULT", img_result)
+
+        #resizing
+        
+
+
         cv2.imwrite("images/original/Graph.png", img_result)
         image = cv2.imread('images/original/Graph.png')
+
         return image
 
 if __name__ == '__main__':
@@ -76,10 +82,14 @@ if __name__ == '__main__':
     #     th1.append(cv2.adaptiveThreshold(img[i], 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 21, 4))
     #     close.append(cv2.morphologyEx(img[i], cv2.MORPH_CLOSE, kernel, iterations=1))
     #     open.append(cv2.morphologyEx(th3[i], cv2.MORPH_OPEN, kernel, iterations=1))
-    src = 'barGraph.jpeg'
+    src = 'graph.jpeg'
     img = cv2.imread(src)
+    # img = image.load_img('barGraph', grayscale=True, target_size=(224, 224))
+    # img = image.img_to_array(img, dtype='uint8')
     blurred = cv2.bilateralFilter(img, 15, 75, 75)
-    adapt = cv2.adaptiveThreshold(blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 21, 10)
+    sharp = cv2.addWeighted(img, 3.5, blurred, -2.1, 0)
+    gry = cv2.cvtColor(blurred, cv2.COLOR_BGR2GRAY)
+    adapt = cv2.adaptiveThreshold(gry, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 91, 12)
 
 
     # for i in range(len(close)):
@@ -93,6 +103,8 @@ if __name__ == '__main__':
     #     cv2.imshow("th4", th4[i])
     #     cv2.imshow("th5", th5[i])
     #     cv2.waitKey(0)
-    cv2.imshow("Original_Image", src)
+    cv2.imshow("Original_Image", img)
+    cv2.imshow("Grayscale", sharp)
     cv2.imshow("Adaptive", adapt)
+    cv2.waitKey(0)
     cv2.destroyAllWindows()
