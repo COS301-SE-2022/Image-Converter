@@ -1,54 +1,92 @@
-import cv2
-import numpy as np
-import glob
-import os
+from PIL import Image
 
 
 class AddMark:
 
-    def Dev():
-        mark = cv2.imread("logo/logo-test.png")
-        # print(mark.shape)
-        scale_percent = 0.25
-        width = int(mark.shape[1]*scale_percent)
-        height = int(mark.shape[0]*scale_percent)
-        dimension = (width, height)
+    def __init__ (self,uploaded_image):
+        self.img = uploaded_image
 
-        resized = cv2.resize(mark, dimension, interpolation=cv2.INTER_AREA)
-        # print(resized.shape)
-        # print(mark.shape)
+    def Dev(self):
+        # img = Image.open('images/bar2.png')
+        # img = Image.open('images/bar1.jpg')
+        # img = Image.open('images/bar3.jpg')
+        # Getting the height and width of the image
+        
+        width, height = self.img.size
 
-        # cv2.imwrite('resized_logo.png', resized)
-        # print(logo)
-        h_logo, w_logo, _ = resized.shape
+        size = (100, 100)
+        logo = Image.open('logo/logo-test.png')
 
-        images_path = glob.glob("images/*.*")
+        # You can use resize method here instead of
+        # thumbnail method
+        logo.thumbnail(size)
 
-        print("Adding watermark")
-        for img_path in images_path:
-            img = cv2.imread(img_path)
-            h_img, w_img, _ = img.shape
+        # Location where we want to paste it on the
+        # main image
+        x = width - 100 - 10
+        y = height - 100 - 0
 
-            # Get the center of the original. It's the location where we will place the watermark
-            center_y = int(h_img / 30)
-            center_x = int(w_img / 30)
-            top_y = center_y - int(h_logo / 50)
-            left_x = center_x - int(w_logo / 50)
-            bottom_y = top_y + h_logo
-            right_x = left_x + w_logo
+        self.img.paste(logo, (x, y))
+        # Save the image
+        self.img.save('results/image_with_logo.jpg')
 
-            # Get ROI
-            roi = img[top_y: bottom_y, left_x: right_x]
+        # Opening the new image
+        img = Image.open('results/image_with_logo.jpg')
+        img.show()
+        print("done")
+        return self.img
 
-            # Add the Logo to the Roi
-            # result = cv2.addWeighted(roi, 1, logo, 1, 0)
+# import cv2
+# import numpy as np
+# import glob
+# import os
 
-            # Replace the ROI on the image
-            img[top_y: bottom_y, left_x: right_x] = resized
 
-            # Get filename and save the image
-            filename = os.path.basename(img_path)
-            # cv2.imwrite("images/watermarked_" + filename, img)
-            cv2.imwrite('results/watermarked_' + filename, img)
+# class AddMark:
 
-        print("Watermark added to all the images")
+#     def Dev():
+#         mark = cv2.imread("logo/logo-test.png")
+#         # print(mark.shape)
+#         scale_percent = 0.25
+#         width = int(mark.shape[1]*scale_percent)
+#         height = int(mark.shape[0]*scale_percent)
+#         dimension = (width, height)
+
+#         resized = cv2.resize(mark, dimension, interpolation=cv2.INTER_AREA)
+#         # print(resized.shape)
+#         # print(mark.shape)
+
+#         # cv2.imwrite('resized_logo.png', resized)
+#         # print(logo)
+#         h_logo, w_logo, _ = resized.shape
+
+#         images_path = glob.glob("images/*.*")
+
+#         print("Adding watermark")
+#         for img_path in images_path:
+#             img = cv2.imread(img_path)
+#             h_img, w_img, _ = img.shape
+
+#             # Get the center of the original. It's the location where we will place the watermark
+#             center_y = int(h_img / 30)
+#             center_x = int(w_img / 30)
+#             top_y = center_y - int(h_logo / 50)
+#             left_x = center_x - int(w_logo / 50)
+#             bottom_y = top_y + h_logo
+#             right_x = left_x + w_logo
+
+#             # Get ROI
+#             roi = img[top_y: bottom_y, left_x: right_x]
+
+#             # Add the Logo to the Roi
+#             # result = cv2.addWeighted(roi, 1, logo, 1, 0)
+
+#             # Replace the ROI on the image
+#             img[top_y: bottom_y, left_x: right_x] = resized
+
+#             # Get filename and save the image
+#             filename = os.path.basename(img_path)
+#             # cv2.imwrite("images/watermarked_" + filename, img)
+#             cv2.imwrite('results/watermarked_' + filename, img)
+
+#         print("Watermark added to all the images")

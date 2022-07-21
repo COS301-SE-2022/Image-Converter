@@ -69,6 +69,10 @@ def upload_image(user):
             print(templateMatch.perfectMatch)
             imageCleaner = smoothing(opencv_img)
             imageCleaner.clean_noise()
+
+            # addLogo = AddMark(opencv_img)
+            # addLogo.Dev
+
             with open("images/original/Graph.png", "rb") as img_file:
                 b64picture = base64.b64encode(img_file.read())
             print("b64picture")
