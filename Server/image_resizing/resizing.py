@@ -5,7 +5,7 @@ class imageResizing:
         self.resizedImage = image
 
     def resize(self):
-        self.resizedImage = self.resizedImage.resize((500,500))
+        self.resizedImage = self.resizedImage.resize((800,800))
         return self.resizedImage
 
 if __name__ == '__main__':

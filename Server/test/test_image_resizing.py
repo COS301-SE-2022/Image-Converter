@@ -16,4 +16,4 @@ def testImageSizeBeforeAndAfterResizing():
     #act
     assert object.resizedImage.size == (3104, 3027)
     object.resize()
-    assert object.resizedImage.size == (500, 500)
+    assert object.resizedImage.size == (800, 800)
