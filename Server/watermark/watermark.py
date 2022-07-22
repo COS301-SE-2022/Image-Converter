@@ -3,7 +3,7 @@ from PIL import Image
 
 class AddMark:
 
-    def __init__ (self,uploaded_image):
+    def __init__(self, uploaded_image):
         self.img = uploaded_image
 
     def Dev(self):
@@ -11,10 +11,13 @@ class AddMark:
         # img = Image.open('images/bar1.jpg')
         # img = Image.open('images/bar3.jpg')
         # Getting the height and width of the image
-        
+
         width, height = self.img.size
 
         size = (100, 100)
+        # print(size)
+        # print(self.img.size)
+
         logo = Image.open('logo/logo-test.png')
 
         # You can use resize method here instead of
@@ -35,6 +38,7 @@ class AddMark:
         img.show()
         print("done")
         return self.img
+
 
 if __name__ == '__main__':
     obj = AddMark(Image.open('images/bar3.jpg'))
