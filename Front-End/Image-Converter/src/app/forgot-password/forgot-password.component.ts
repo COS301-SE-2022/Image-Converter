@@ -84,10 +84,12 @@ export class ForgotPasswordComponent implements OnInit {
   //sends new password to the backend
   submitPass()
   {
+    let response;
     this.resetService.resetPassword(this.formPass.get('password')!.value).subscribe(
       responseData =>{
             //response
-            if(responseData.body.result == "success"){
+            response = JSON.parse(JSON.stringify(responseData));
+            if(response.body.response == "success"){
               alert("password successfully reset");
               this._router.navigateByUrl('/');//can be changed to redirect to dashboard if token is returned
             }

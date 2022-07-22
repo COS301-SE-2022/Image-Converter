@@ -131,8 +131,7 @@ export class RegisterComponent implements OnInit {
   }*/
 
   onSubmit(){
-    document.getElementById("codeForm")!.style.display = "block";
-    document.getElementById("reg")!.style.display = "none";
+    
     console.log("in on sub")
     //once code is sent through and response is given
     //document.getElementById("resetForm")!.style.display="none";
@@ -145,16 +144,17 @@ export class RegisterComponent implements OnInit {
    let email = {
     email : this.registerForm.get('email')!.value
   } 
-
+    let response;
     this.registerService.registerEmailSend(email).subscribe(
       responseData =>{
             //response
             console.log(responseData);
             //this.response = JSON.parse(JSON.stringify(responseData));
-    
-            if(responseData.body.result == "success"){
+            response = JSON.parse(JSON.stringify(responseData));
+            if(response.body.response == "success"){
               console.log("success");
-
+              document.getElementById("codeForm")!.style.display = "block";
+              document.getElementById("reg")!.style.display = "none";
             }
         }
     );
@@ -162,10 +162,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmitCode()
   { 
+    let response;
     this.registerService.register(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
-            if(responseData.body.result == "success"){
+            response = JSON.parse(JSON.stringify(responseData));
+            if(response.body.response == "success"){
               console.log("success");
               localStorage.setItem('token', responseData.body.token);
               this._router.navigateByUrl('/dashboard');
