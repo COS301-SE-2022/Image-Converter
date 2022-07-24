@@ -15,7 +15,7 @@ class AddMark:
         # print(size)
         # print(self.img.size)
 
-        logo = Image.open('logo/logo-test.png')
+        logo = Image.open('logo/logo-test.png') #set logo to desired watermark in folder
 
         logo.thumbnail(size)
 
@@ -23,21 +23,21 @@ class AddMark:
         x = width - 100 - 10
         y = height - 100 - 0
 
-        self.img.paste(logo, (x, y))
-        # Save the image
+        self.img.paste(logo, (x, y)) #paste watermark to original image
+        # Save the image to results folder
         self.img.save('results/image_with_logo.jpg')
 
         # Opening the new image
         img = Image.open('results/image_with_logo.jpg')
         img.show()
         print("done")
-        return self.img
+        return self.img #return final image 
 
 
 if __name__ == '__main__':
-    obj = AddMark(Image.open('images/bar3.jpg'))
+    obj = AddMark(Image.open('images/bar3.jpg')) # create object
 
-    obj.Dev()
+    obj.Dev() # call Dev function on object
 
 # import cv2
 # import numpy as np
