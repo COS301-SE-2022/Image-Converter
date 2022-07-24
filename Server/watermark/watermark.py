@@ -7,11 +7,8 @@ class AddMark:
         self.img = uploaded_image
 
     def Dev(self):
-        # img = Image.open('images/bar2.png')
-        # img = Image.open('images/bar1.jpg')
-        # img = Image.open('images/bar3.jpg')
-        # Getting the height and width of the image
-
+       
+        # Get height and width of the image
         width, height = self.img.size
 
         size = (100, 100)
@@ -20,12 +17,9 @@ class AddMark:
 
         logo = Image.open('logo/logo-test.png')
 
-        # You can use resize method here instead of
-        # thumbnail method
         logo.thumbnail(size)
 
-        # Location where we want to paste it on the
-        # main image
+        # Location where we want to paste watermark on the uploaded image
         x = width - 100 - 10
         y = height - 100 - 0
 
