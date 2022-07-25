@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'uploadHistory',
     component: UploadHistoryComponent
+  },
+  {
+    path: 'ForgotPassword',
+    component: ForgotPasswordComponent
   }
 
 ];

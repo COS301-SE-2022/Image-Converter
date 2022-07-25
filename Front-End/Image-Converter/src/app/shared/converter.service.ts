@@ -25,10 +25,18 @@ export class ConverterService {
     );
   }
   
-  register(formData: Register) : Observable<any> {
+  register(codePar:any) : Observable<any> {
+
+    let data = {name: localStorage.getItem('name'),
+                surname: localStorage.getItem('surname'),
+                email: localStorage.getItem('email'),
+                pw: localStorage.getItem('pw'),
+                code: codePar
+                };
+
     return this.httpclient.post(
       'http://localhost:5000/register',
-      formData,{observe:'response'}
+      data,{observe:'response'}
     );
   }
    postImg(data: string) {
@@ -76,6 +84,7 @@ export class ConverterService {
     };
     
     let pic = {index: id};
+
     return this.httpclient.post(
       'http://localhost:5000/deletehistory',
       pic,httpOptions
@@ -96,4 +105,47 @@ export class ConverterService {
       messageDetails,httpOptions
     );
   }
+
+  //sends users email to where reset code will be sent
+  ResetPassword(email:any): Observable<any>
+  { 
+    console.log(JSON.stringify(email));
+    let request = {email: email}
+    return this.httpclient.post(
+      'http://localhost:5000/resetpasswordemail',
+      email,{observe:'response'}
+    );
+  }
+
+  resetPasswordCode(code:any): Observable<any>
+  { 
+    let request = {email: localStorage.getItem('codeEmail'),
+                  code:code}
+    return this.httpclient.post(
+      'http://localhost:5000/resetpasswordcode',
+      request,{observe:'response'}
+    );
+  }
+
+  //sends new password to server
+  resetPassword(pass:any): Observable<any>
+  {
+    let request = {email: localStorage.getItem('codeEmail'),
+                    newPassword:pass}
+    return this.httpclient.post(
+      'http://localhost:5000/resetpassword',
+      request,{observe:'response'}
+    );
+  }
+
+  //sends users email to where code will be sent
+  registerEmailSend(email:any): Observable<any>
+  { 
+    return this.httpclient.post(
+      'http://localhost:5000/sendEmail',
+      email,{observe:'response'}
+    );
+  }
+
+  
 }

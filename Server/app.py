@@ -23,7 +23,7 @@ import numpy as np
 
 
 app = Flask(__name__)
-
+app.secret_key = "super secret key"
 CORS(app)
 
 def token(f):
@@ -211,12 +211,27 @@ def reset_password():
     if(db != None):
         email = str(request.json['email'])
         newPassword = str(request.json['password'])
+        if(db.updatePassword(email, newPassword)):
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
+
+@app.route('/resetpasswordcode', methods=["POST"])
+def reset_password_code():
+    db = User()
+    if(db != None):
+        email = str(request.json['email'])
         code = str(request.json['code'])
+
         if db.get_code(email) == code:
             if(db.updatePassword(email, newPassword)):
                 return {'response': 'success'}, 200
             else:
                 return {'response': 'failed'}, 400
+
         else:
             return {'response': 'failed'}, 400
     else:
@@ -227,7 +242,7 @@ def sendEmail():
     db = User()
     if(db != None):
         email = request.json["email"]
-        if email != db.getUserWithEmail(email)[4]:
+        if email != db.getUserWithEmail(email)[5]:
             code = str(random.randint(1000, 9999))
             session[email] = code
             message = """\
@@ -251,8 +266,9 @@ def sendEmail():
 def resetPasswordEmail():
     db = User()
     if(db != None):
-        email = request.json["email"]
-        if email == db.getUserWithEmail(email)[4]:
+        email = str(request.json["email"])
+        # print(db.getUserWithEmail(email))
+        if email == db.getUserWithEmail(email)[5]:
             code = str(random.randint(1000, 9999))
             db.insert_code(email, code)
             message = """\
@@ -265,7 +281,7 @@ def resetPasswordEmail():
             sendEmail = Email()
             sendEmail.sendMessage(email, message)
             print("sent")
-            return {'response': 'success'}, 200
+            return jsonify({'response': 'success'})
         else:
             return {'response': 'User Exists'}, 400
     else:
