@@ -39,7 +39,7 @@ class User:
         except:
             return None
 
-    def register(self, name, surname, email, password,code):
+    def register(self, name, surname, email, password):
         try:
             encoded_password = bytes(password, encoding='utf-8')
             encrypted_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
@@ -186,8 +186,8 @@ class User:
     def get_code(self, email):
         try:
             #sql = "SELECT * FROM history where user_id=%s;"
-            sql = "SELECT code FROM code where email=%s ORDER BY id DESC LIMIT 1;"
-            self.cur.execute(sql, (email))
+            sql = "SELECT * FROM code where email=%s ORDER BY id DESC LIMIT 1;"
+            self.cur.execute(sql, ([email]))
             code = self.cur.fetchone()
             self.conn.commit()
             # print(db_history)

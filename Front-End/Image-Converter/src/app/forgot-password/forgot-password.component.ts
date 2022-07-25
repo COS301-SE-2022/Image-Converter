@@ -56,7 +56,7 @@ export class ForgotPasswordComponent implements OnInit {
           
             }
             else{
-              alert("something went wrong");
+              alert("User Does not exist");
             }
         }
     );
@@ -68,8 +68,9 @@ export class ForgotPasswordComponent implements OnInit {
      this.resetService.resetPasswordCode(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
-            
-            if(responseData.body.result == "success"){
+            let response = JSON.parse(JSON.stringify(responseData));
+            console.log(response.body.response)
+            if(response.body.response == "success"){
              
               document.getElementById("codeForm")!.style.display = "none";
               document.getElementById("passForm")!.style.display = "block";

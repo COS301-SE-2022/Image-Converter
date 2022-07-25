@@ -30,7 +30,7 @@ export class ConverterService {
     let data = {name: localStorage.getItem('name'),
                 surname: localStorage.getItem('surname'),
                 email: localStorage.getItem('email'),
-                pw: localStorage.getItem('pw'),
+                password: localStorage.getItem('password'),
                 code: codePar
                 };
 

@@ -139,7 +139,7 @@ export class RegisterComponent implements OnInit {
    localStorage.setItem('name', this.registerForm.get('name')!.value);
    localStorage.setItem('surname',this.registerForm.get('surname')!.value);
    localStorage.setItem('email', this.registerForm.get('email')!.value);
-   localStorage.setItem('pw', this.registerForm.get('password')!.value);
+   localStorage.setItem('password', this.registerForm.get('password')!.value);
 
    let email = {
     email : this.registerForm.get('email')!.value
@@ -167,6 +167,7 @@ export class RegisterComponent implements OnInit {
       responseData =>{
             //response
             response = JSON.parse(JSON.stringify(responseData));
+            console.log(response.body.response);
             if(response.body.response == "success"){
               console.log("success");
               localStorage.setItem('token', responseData.body.token);

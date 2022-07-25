@@ -1,5 +1,6 @@
 import datetime
 from functools import wraps
+from lib2to3.pytree import Node
 from attr import s
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
@@ -127,9 +128,9 @@ def register():
         name = str(request.json["name"])
         surname = str(request.json["surname"])
         email = str(request.json["email"])
-        password = str(request.json["password"])
+        password = ""
         code = str(request.json["code"])
-        if code == session[email]:
+        if db.get_code(email)[2]==code:
             if(db.register(name, surname, email, password)):
                 token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
                 ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
@@ -225,26 +226,25 @@ def reset_password_code():
     if(db != None):
         email = str(request.json['email'])
         code = str(request.json['code'])
-
-        if db.get_code(email) == code:
-            if(db.updatePassword(email, newPassword)):
-                return {'response': 'success'}, 200
-            else:
-                return {'response': 'failed'}, 400
-
+        # print(email)
+        # newPassword = str(request.json['password'])
+        print(db.get_code(email))
+        if db.get_code(email)[2] == code:
+            return {'response': 'success'}, 200
         else:
             return {'response': 'failed'}, 400
     else:
         return {'response': 'failed'}, 400
+
 
 @app.route('/sendEmail', methods=["POST"])
 def sendEmail():
     db = User()
     if(db != None):
         email = request.json["email"]
-        if email != db.getUserWithEmail(email)[5]:
+        if db.getUserWithEmail(email) is None:
             code = str(random.randint(1000, 9999))
-            session[email] = code
+            db.insert_code(email, code)
             message = """\
                 Image Converter Activation Code
 
@@ -268,7 +268,7 @@ def resetPasswordEmail():
     if(db != None):
         email = str(request.json["email"])
         # print(db.getUserWithEmail(email))
-        if email == db.getUserWithEmail(email)[5]:
+        if db.getUserWithEmail(email) is not None:
             code = str(random.randint(1000, 9999))
             db.insert_code(email, code)
             message = """\
@@ -283,7 +283,8 @@ def resetPasswordEmail():
             print("sent")
             return jsonify({'response': 'success'})
         else:
-            return {'response': 'User Exists'}, 400
+            print("Errror")
+            return {'response': 'User Exists'}, 200
     else:
         return {{'response': 'failed'}}, 400
 
