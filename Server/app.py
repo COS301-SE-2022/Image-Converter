@@ -96,6 +96,7 @@ def upload_image(user):
                 graphType = graphType + " a "+templateMatch.graphType
             else:
                 graphType= graphType + " not recognized by the system"
+            print("Image: "+db_image[4])
         return jsonify({'image': db_image[4], 'graphType': graphType})
     else:
         return {'response': 'failed'}, 400
@@ -211,7 +212,7 @@ def reset_password():
         email = str(request.json['email'])
         newPassword = str(request.json['password'])
         code = str(request.json['code'])
-        if session[email] == code:
+        if db.get_code(email) == code:
             if(db.updatePassword(email, newPassword)):
                 return {'response': 'success'}, 200
             else:
@@ -253,7 +254,7 @@ def resetPasswordEmail():
         email = request.json["email"]
         if email == db.getUserWithEmail(email)[4]:
             code = str(random.randint(1000, 9999))
-            session[email] = code
+            db.insert_code(email, code)
             message = """\
                 Image Converter Reset Password Code
 

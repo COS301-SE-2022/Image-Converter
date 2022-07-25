@@ -159,6 +159,16 @@ class User:
             print(f"Database connection error: {e}")
             return False
             
+    def insert_code(self, email, code):
+        try:
+            sql = "INSERT INTO code (email,code) VALUES(%s,%s)"
+            self.cur.execute(sql, (email, code))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+            
     def updatePassword(self, email, password):
         try:
             encoded_password = bytes(password, encoding='utf-8')
@@ -173,6 +183,18 @@ class User:
             print(f"Database connection error: {e}")
             return False
     
+    def get_code(self, email):
+        try:
+            #sql = "SELECT * FROM history where user_id=%s;"
+            sql = "SELECT code FROM code where email=%s ORDER BY id DESC LIMIT 1;"
+            self.cur.execute(sql, (email))
+            code = self.cur.fetchone()
+            self.conn.commit()
+            # print(db_history)
+            return code
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
 
 if __name__ == "__main__":
     db=User()
