@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+from watermark import AddMark
+from PIL import Image
 
 class smoothing:
     def __init__(self,uploaded_image):
@@ -31,5 +33,8 @@ class smoothing:
         # cv2.imshow("IMAGE_RESULT", img_result)
         cv2.imwrite("images/original/Graph.png", img_result)
         image = cv2.imread('images/original/Graph.png')
+
+        
+
         return image
 

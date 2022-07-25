@@ -5,6 +5,7 @@ import jwt
 from flask import Flask, json, jsonify, render_template, request, session
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
+from converter.ConvertFomat import ConvertFomat
 from database.database import User
 from database.sendEmail import Email
 
@@ -74,7 +75,13 @@ def upload_image(user):
             print(templateMatch.graphType)
             print(templateMatch.perfectMatch)
             imageCleaner = smoothing(opencv_img)
+
             imageResult =imageCleaner.clean_noise()
+
+
+            # addLogo = AddMark(opencv_img)
+            # addLogo.Dev
+
             with open("images/original/Graph.png", "rb") as img_file:
                 b64picture = base64.b64encode(img_file.read())
             print("b64picture")
