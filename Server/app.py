@@ -1,24 +1,30 @@
 import datetime
 from functools import wraps
+from attr import s
 import jwt
-from flask import Flask, json, jsonify, render_template, request
+from flask import Flask, json, jsonify, render_template, request, session
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
 from converter.ConvertFomat import ConvertFomat
 from database.database import User
+from database.sendEmail import Email
+
 from flask import Response
 from flask_cors import CORS
 import base64
 import cv2
 import os
+import random
 import io
 import PIL.Image as Image
 import numpy as np
 
+
+
+
 app = Flask(__name__)
 
 CORS(app)
-
 
 def token(f):
     @wraps(f)
@@ -64,12 +70,14 @@ def upload_image(user):
             
             image_uploaded = bytearray(base64_picture)
             
-            print(type(opencv_img))
+            print("Opencv img "+str(type(opencv_img)))
             templateMatch = Matching(opencv_img)
             print(templateMatch.graphType)
             print(templateMatch.perfectMatch)
             imageCleaner = smoothing(opencv_img)
-            imageCleaner.clean_noise()
+
+            imageResult =imageCleaner.clean_noise()
+
 
             # addLogo = AddMark(opencv_img)
             # addLogo.Dev
@@ -78,7 +86,8 @@ def upload_image(user):
                 b64picture = base64.b64encode(img_file.read())
             print("b64picture")
             image_converted = bytearray(b64picture)
-            if(db.insert_image(picture, image_converted, user[0])):
+            
+            if(db.insert_image(opencv_img, imageResult, user[0])):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             print(db_image)
@@ -87,7 +96,7 @@ def upload_image(user):
                 graphType = graphType + " a "+templateMatch.graphType
             else:
                 graphType= graphType + " not recognized by the system"
-        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8')), 'graphType': graphType})
+        return jsonify({'image': db_image[4], 'graphType': graphType})
     else:
         return {'response': 'failed'}, 400
 
@@ -118,11 +127,16 @@ def register():
         surname = str(request.json["surname"])
         email = str(request.json["email"])
         password = str(request.json["password"])
-        if(db.register(name, surname, email, password)):
-            token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
-            ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
-            result = "success"
-            return jsonify({'result': result, 'token': str(token)})
+        code = str(request.json["code"])
+        if code == session[email]:
+            if(db.register(name, surname, email, password)):
+                token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
+                ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+                
+                result = "success"
+                return jsonify({'result': result, 'token': str(token)})
+            else:
+                return {'response': 'failed'}, 400
         else:
             return {'response': 'failed'}, 400
     else:
@@ -145,8 +159,8 @@ def uploadhistory(user):
         proccesedImagelist=[]
         for x in db_image_array:
             IndexArray.append(x[0])
-            OriginalImagelist.append(str( bytes(x[3]).decode('UTF-8'))) 
-            proccesedImagelist.append(str(imageReturned+ bytes(x[4]).decode('UTF-8'))) 
+            OriginalImagelist.append(x[3]) 
+            proccesedImagelist.append(x[4]) 
 
 
         return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
@@ -190,6 +204,71 @@ def user_feedback(user):
     else:
         return {'response': 'failed'}, 400
 
+@app.route('/resetpassword', methods=["POST"])
+def reset_password():
+    db = User()
+    if(db != None):
+        email = str(request.json['email'])
+        newPassword = str(request.json['password'])
+        code = str(request.json['code'])
+        if session[email] == code:
+            if(db.updatePassword(email, newPassword)):
+                return {'response': 'success'}, 200
+            else:
+                return {'response': 'failed'}, 400
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
+@app.route('/sendEmail', methods=["POST"])
+def sendEmail():
+    db = User()
+    if(db != None):
+        email = request.json["email"]
+        if email != db.getUserWithEmail(email)[4]:
+            code = str(random.randint(1000, 9999))
+            session[email] = code
+            message = """\
+                Image Converter Activation Code
+
+                Welcome to the Image Converter!
+                Please provide us with feedback after using the system.
+
+                Here is your activation code: """
+            message += code
+            sendEmail = Email()
+            sendEmail.sendMessage(email, message)
+            print("sent")
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'User Exists'}, 400
+    else:
+        return {{'response': 'failed'}}, 400
+
+@app.route('/resetpasswordemail', methods=["POST"])
+def resetPasswordEmail():
+    db = User()
+    if(db != None):
+        email = request.json["email"]
+        if email == db.getUserWithEmail(email)[4]:
+            code = str(random.randint(1000, 9999))
+            session[email] = code
+            message = """\
+                Image Converter Reset Password Code
+
+                Please provide us with feedback after using the system.
+
+                Here is your reset password code: """
+            message += code
+            sendEmail = Email()
+            sendEmail.sendMessage(email, message)
+            print("sent")
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'User Exists'}, 400
+    else:
+        return {{'response': 'failed'}}, 400
 
 
 if __name__ == '__main__':
