@@ -7,7 +7,10 @@ class imageResizing:
 
     def resize(self):
         print('Original dimension: ', self.resizedImage.shape)
+        #Setting the image dimesions
         dimension = (800, 800)
+
+        #Resizing the image
         self.resizedImage = cv2.resize(self.resizedImage, dimension, interpolation=cv2.INTER_AREA)
         return self.resizedImage
 
