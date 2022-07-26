@@ -14,7 +14,7 @@ class AddMark:
         width, height = self.img.size
 
         size = (100, 100)
-        logo = Image.open('logo/logo-test.png')
+        logo = Image.open('converter/logo/logotest.png')
 
         # You can use resize method here instead of
         # thumbnail method

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
-from watermark.watermark import AddMark
-from resizing import imageResizing
+from converter.watermark import AddMark
+from converter.resizing import imageResizing
 from PIL import Image
 
 
