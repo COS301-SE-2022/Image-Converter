@@ -14,10 +14,10 @@ class ConvertFomat:
         rgb_im = im.convert('RGB')
         rgb_im.save('processedImg.jpg')
         rgb_im.save('processedImg.png')
-
+        print("abv")
         with open("processedImg.png", "rb") as img_file:
             convPng = base64.b64encode(img_file.read())
         with open("processedImg.jpg", "rb") as img_file:
             cnvJpg = base64.b64encode(img_file.read())
-
-        return jsonify({'png': convPng, 'jpg':cnvJpg})
+        print("blw")
+        return {'png': convPng, 'jpg':cnvJpg}
