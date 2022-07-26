@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from watermark import AddMark
+from watermark.watermark import AddMark
 from PIL import Image
 
 class smoothing:
