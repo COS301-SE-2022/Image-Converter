@@ -167,8 +167,8 @@ export class RegisterComponent implements OnInit {
       responseData =>{
             //response
             response = JSON.parse(JSON.stringify(responseData));
-            console.log(response.body.response);
-            if(response.body.response == "success"){
+            console.log(response.body.result);
+            if(response.body.result == "success"){
               console.log("success");
               localStorage.setItem('token', responseData.body.token);
               this._router.navigateByUrl('/dashboard');

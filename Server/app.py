@@ -130,6 +130,7 @@ def register():
         email = str(request.json["email"])
         password = ""
         code = str(request.json["code"])
+        print(code)
         if db.get_code(email)[2]==code:
             if(db.register(name, surname, email, password)):
                 token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
@@ -242,6 +243,7 @@ def sendEmail():
     db = User()
     if(db != None):
         email = request.json["email"]
+        print(db.getUserWithEmail(email))
         if db.getUserWithEmail(email) is None:
             code = str(random.randint(1000, 9999))
             db.insert_code(email, code)

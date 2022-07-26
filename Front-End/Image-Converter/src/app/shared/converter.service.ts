@@ -131,7 +131,7 @@ export class ConverterService {
   resetPassword(pass:any): Observable<any>
   {
     let request = {email: localStorage.getItem('codeEmail'),
-                    newPassword:pass}
+                    password:pass}
     return this.httpclient.post(
       'http://localhost:5000/resetpassword',
       request,{observe:'response'}
