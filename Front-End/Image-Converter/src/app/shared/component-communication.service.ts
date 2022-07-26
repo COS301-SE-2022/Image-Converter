@@ -15,7 +15,7 @@ export class ComponentCommunicationService {
   constructor() { }
 
   //used to change message between components
-  changeMessage(message: string) {
+  changeMessage(message: any) {
     this.messageSource.next(message)
   }
   changBool(m :boolean){

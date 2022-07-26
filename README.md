@@ -1,3 +1,13 @@
+![GitHub issues](https://img.shields.io/github/issues/COS301-SE-2022/Image-Converter)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/COS301-SE-2022/Image-Converter)
+<a href = "https://github.com/COS301-SE-2022/Image-Converter/commits">
+  <img alt="Commit Activity" src="https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Image-Converter?color=green&style=flat-square">
+</a>
+<a href = "https://libraries.io/github/Image-Converter/Slip-Snapper">
+  <img alt="GitHub Issues" src="https://img.shields.io/librariesio/github/COS301-SE-2022/Image-Converter">
+</a>
+
+
 # HardCode Image-Converter
 
 ## Description
@@ -16,14 +26,15 @@ display it to the user. The tool will support multiple graphing functions and gr
 [Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
 [Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
+
 ## System Requirements Specification
-[SRS Document](https://drive.google.com/file/d/1U9F_26MrSpzSXQTy3dMCx2aimPu4sqxk/view?usp=sharing)
+[SRS Document](https://drive.google.com/file/d/17HnvjJIGHGOmh0mwlA_B81uC_S_EcNAU/view?usp=sharing)
 
 ## Architectural Requirements
-[Requirements]()
+[Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
 
 ## User Manual
-[Manual](https://drive.google.com/file/d/19B97rhvUiVP9hpCJZbqR2vG2E7nSSVPV/view?usp=sharing)
+[Manual](https://drive.google.com/file/d/1_Y0_HrOpQP24oJWBdDtAn01b9TpFvAfO/view?usp=sharing)
 
 ## Coding Standards
 [Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
@@ -33,10 +44,11 @@ display it to the user. The tool will support multiple graphing functions and gr
     .
     ├── main                    
     │   ├── develop              
-    │   |   ├── feature/set-up-workflows              
-    │   |   ├── feature/config-tets            
-    │   |   ├── feature/intergration 
-    |   |   ├── feature/filter
+    │   |   ├── feature/automate-tests             
+    │   |   ├── feature/back-end-github-actions            
+    │   |   ├── feature/front-end-workflows 
+    |   |   ├── feature/smoothing-template-matching
+    |   |   ├── feature/database-tests
     │   |   └── ...                 
     |   └── ...
     └── ...
@@ -46,7 +58,7 @@ display it to the user. The tool will support multiple graphing functions and gr
   ➛ Demo 1<br>
 </a> 
 
-<a href="#" target="_blank">
+<a href="https://drive.google.com/file/d/1x7NEmJd97rNSyF2K_QLNUmPYAlGTXEG_/view?usp=sharing" target="_blank">
   ➛ Demo 2<br>
 </a>
 
