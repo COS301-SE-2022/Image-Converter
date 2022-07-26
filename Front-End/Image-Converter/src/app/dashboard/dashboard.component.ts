@@ -37,10 +37,6 @@ export class DashboardComponent implements OnInit {
     var x = document.getElementById("contact") as HTMLLinkElement
     x.scrollIntoView();
   }
-  toGraphVis(){
-    var x = document.getElementById("graphVis") as HTMLLinkElement
-    x.scrollIntoView();
-  }
 
 }
 
