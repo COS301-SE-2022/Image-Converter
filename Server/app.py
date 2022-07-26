@@ -128,7 +128,7 @@ def register():
         name = str(request.json["name"])
         surname = str(request.json["surname"])
         email = str(request.json["email"])
-        password = ""
+        password = str(request.json["password"])
         code = str(request.json["code"])
         print(code)
         if db.get_code(email)[2]==code:
