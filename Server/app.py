@@ -6,10 +6,10 @@ import jwt
 from flask import Flask, json, jsonify, render_template, request, session
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
+from converter.ConvertFomat import ConvertFomat
 from database.database import User
 from database.sendEmail import Email
-from converter.ConvertFomat import ConvertFomat
-from watermark.watermark import AddMark
+
 from flask import Response
 from flask_cors import CORS
 import base64
@@ -91,17 +91,14 @@ def upload_image(user):
             if(db.insert_image(opencv_img, imageResult, user[0])):
                 print("Image inserted")
             db_image = db.get_image(user[0])
-            
+            print(db_image)
             graphType = "This graph is"
             if(templateMatch.perfectMatch>5):
                 graphType = graphType + " a "+templateMatch.graphType
             else:
                 graphType= graphType + " not recognized by the system"
-
-            conv=ConvertFomat()
-            conv.covertImgFormat(db_image[4])
-        return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
-
+            print("Image: "+db_image[4])
+        return jsonify({'image': db_image[4], 'graphType': graphType})
     else:
         return {'response': 'failed'}, 400
 
