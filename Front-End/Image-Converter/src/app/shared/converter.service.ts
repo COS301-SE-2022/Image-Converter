@@ -4,6 +4,7 @@ import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http'
 import { Login } from '../classes/Login';
 import { Register } from '../classes/Register';
 import { Message } from '../classes/Message';
+import { BarGraph } from '../classes/BarGraph';
 // import { stringify } from 'querystring';
 
 @Injectable({
@@ -18,12 +19,28 @@ export class ConverterService {
   
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
-    console.log(formData);
     return this.httpclient.post(
       'http://localhost:5000/login',
       formData,{observe:'response'}
     );
   }
+
+
+     barGraph(formData: BarGraph): Observable<any> {
+      console.log(formData);
+      var tok = localStorage.getItem('token');
+      console.log(tok);
+      let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+      const httpOptions:Object = {
+        headers: headers
+      };
+      console.log(formData);
+      return this.httpclient.post(
+        'http://localhost:5000/bargraph',
+        formData,{observe:'response'}, 
+      );
+    }
+
   
   register(formData: Register) : Observable<any> {
     return this.httpclient.post(

@@ -202,6 +202,31 @@ def user_feedback(user):
         return {'response': 'failed'}, 400
 
 
+@app.route('/bargraph', methods=['POST'])
+@token
+def barGraph():
+    
+    db = User()
+    if(db != None):
+        print("barGraph Working")
+        label_1 = request.json['label_1']
+        label_value_1 = request.json['label_value_1']
+    #     if(db.login(username,password)):
+    #         token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
+    #         ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+    #         result = "success"
+    #         return jsonify({'result': result, 'token': str(token)})
+    #     else:
+    #         return jsonify({'result': 'failed'})
+    # else:
+    #     return {'response': 'failed'}, 400
+        return jsonify({'response': 'success'})
+    else:
+        return {'response': 'failed'}, 400
+ 
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
