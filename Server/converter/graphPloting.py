@@ -6,6 +6,7 @@ import cv2
 from PIL import Image
 import sys
 import os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 class GraphPloting:
@@ -47,7 +48,6 @@ if __name__ == '__main__':
     input = ['x**2+2*x+2', '5*x', '5**x', '5/x-11']
     draw = GraphPloting()
     draw.draw(input[0])
-    
     # for i in range(len(input)): 
     #     draw.draw(input[i])
     # draw.parabola(input[0])

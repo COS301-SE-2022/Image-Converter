@@ -23,13 +23,16 @@ class mockDatabase:
     db_history = None
     db_history_id = None
     db_feedback = None
+    db_code = None
     def __init__(self):
         self.db_list = []
         self.db_history = []
         self.db_feedback = []
+        self.db_code = []
         self.db_id = 1
         self.db_history_id = 1
         self.db_feedback_id = 1
+        self.db_code_id = 1
         print("Database connection successful")
 
     def register(self, name, surnname, email, password):
@@ -72,7 +75,6 @@ class mockDatabase:
                 return x
         return None
 
-
     def insert_image(self, image_uploaded,image_converted, id):
         if self.getUserWithId(id) != None:
             history_id = self.db_history_id
@@ -112,6 +114,35 @@ class mockDatabase:
             self.db_feedback_id += 1
             hist = [feed_id, id,feedback]
             self.db_history.append(hist)
+            return True
+        else:
+            return False
+
+    def countRows(self):
+        db_count = self.db_history_id
+        return db_count
+
+    def insert_code(self, email, code):
+        code_id = self.db_code_id
+        self.db_code_id += 1
+        code_record = [code_id, email, code]
+        self.db_code.append(code_record)
+        return True
+
+    def get_code(self, email):
+        for x in reversed(self.db_code):
+            if x[1] == email:
+                return x
+        return None
+
+    def updatePassword(self, email, password):
+        user = self.getUserWithEmail(email)
+        if user != None:
+            encoded_password = bytes(password, encoding='utf-8')
+            encrypted_password = bcrypt.hashpw(
+                encoded_password, bcrypt.gensalt())
+            encrypted_password = encrypted_password.decode('UTF-8')
+            user[3] = encrypted_password
             return True
         else:
             return False
