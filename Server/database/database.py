@@ -101,9 +101,9 @@ class User:
             fireStore1 = FireStore()
             link=fireStore1.uploadImage("images/original/Original.png",str(count)+"Original.jpg")
             link2=fireStore1.uploadImage("images/original/Converted.png",str(count)+"Converted.jpg")
-            print(link)
+            # print(link)
             print("Converted ")
-            print(link2)
+            # print(link2)
             #sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
             sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
             print("Executing")

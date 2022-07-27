@@ -10,7 +10,6 @@ from converter.templateMatching import Matching
 from converter.ConvertFomat import ConvertFomat
 from database.database import User
 from database.sendEmail import Email
-
 from flask import Response
 from flask_cors import CORS
 import base64
@@ -79,15 +78,12 @@ def upload_image(user):
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
-
-
             # addLogo = AddMark(opencv_img)
             # addLogo.Dev
-
-            with open("images/original/Graph.png", "rb") as img_file:
-                b64picture = base64.b64encode(img_file.read())
-            print("b64picture")
-            image_converted = bytearray(b64picture)
+            # with open("images/original/Graph.png", "rb") as img_file:
+            #     b64picture = base64.b64encode(img_file.read())
+            # print("b64picture")
+            # image_converted = bytearray(b64picture)
             
             if(db.insert_image(opencv_img, imageResult, user[0])):
                 print("Image inserted")
@@ -290,28 +286,22 @@ def resetPasswordEmail():
             return {'response': 'User Exists'}, 200
     else:
         return {{'response': 'failed'}}, 400
+        
 @app.route('/plotting', methods=['POST'])
 @token
 def plot_graph(user):
     db=User()
     if(db!=None):
-        formula = request.json['formula']
+        formula = str(request.json['formula'])
         # print(picture)
         if formula is not None:
-            graph = GraphPloting();
-            graph.draw(str(formula))
-
-            with open("images/plottedGraph.png", "rb") as img_file:
-                b64picture = base64.b64encode(img_file.read())
-            print("b64picture")
-            image_converted = bytearray(b64picture)
-
+            graph = GraphPloting()
+            image_converted=graph.draw(formula)
             if(db.insert_image(image_converted, image_converted, user[0])):
                 print("Image inserted")
             db_image = db.get_image(user[0])
-            imageReturned = "data:image/png;base64,"
-            
-        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8')), 'graphType': formula})
+            print(db_image[4])
+        return jsonify({'image': db_image[4]})
     else:
         return {'response': 'failed'}, 400
 

@@ -5,7 +5,8 @@ from converter.watermark import AddMark
 import cv2
 from PIL import Image
 import sys
-sys.path.append('../')
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 class GraphPloting:
     def draw(self, formula):
@@ -18,11 +19,13 @@ class GraphPloting:
         plt.ylabel('y', color='#1C2833')
         # plt.legend(loc='upper left')
         plt.grid()
-        plt.savefig('./../images/plottedGraph.png')
+        print("hello")
+        plt.savefig('images/plottedGraph.png')
+        print("hello2")
         plt.show()
         plt.close
 
-        plottedImage = cv2.imread('./../images/plottedGraph.png')
+        plottedImage = cv2.imread('images/plottedGraph.png')
         #Resizing the image
         resizedImage = imageResizing(plottedImage)
         resizedImage = resizedImage.resize()
