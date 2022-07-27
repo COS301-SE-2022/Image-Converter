@@ -22,6 +22,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { GraphingInputComponent } from './graphing-input/graphing-input.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,11 @@ import { GraphingInputComponent } from './graphing-input/graphing-input.componen
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule
+
   ],
   providers: [ConverterService,ComponentCommunicationService],
   bootstrap: [AppComponent]
