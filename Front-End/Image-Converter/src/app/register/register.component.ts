@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     })
   }
   formCode = new FormGroup({  
-    code: new FormControl('', [Validators.required, Validators.minLength(4)])
+    code: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$"), Validators.minLength(4),Validators.maxLength(4)])
   });
   // form = new FormGroup({  
   //   username: new FormControl('', Validators.required),  
