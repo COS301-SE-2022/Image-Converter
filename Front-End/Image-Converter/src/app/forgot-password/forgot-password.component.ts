@@ -22,11 +22,11 @@ export class ForgotPasswordComponent implements OnInit {
   buttonReset = "";
 
   form = new FormGroup({  
-    email: new FormControl('', Validators.required)
+    email: new FormControl('', [Validators.required, Validators.email])
   });
 
   formCode = new FormGroup({  
-    code: new FormControl('', Validators.required)
+    code: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.minLength(4),Validators.maxLength(4)])
   });
 
   //new password form
@@ -35,7 +35,9 @@ export class ForgotPasswordComponent implements OnInit {
   });
   onSubmit(){
     console.log("clicked");
-
+    //remove
+    document.getElementById("resetForm")!.style.display="none";
+    document.getElementById("codeForm")!.style.display="block";
     //once code is sent through and response is given
  
    let email = {
@@ -63,7 +65,9 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmitCode()
-  {
+  {  //remove
+    document.getElementById("codeForm")!.style.display = "none";
+      document.getElementById("passForm")!.style.display = "block";
 
      this.resetService.resetPasswordCode(this.formCode.get('code')!.value).subscribe(
       responseData =>{
