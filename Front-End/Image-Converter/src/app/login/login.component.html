@@ -73,15 +73,19 @@
                     <label for="Email">Username</label>
                     <input formControlName="username" placeholder="Email" matInput required>
                     <!-- mat-error is for validation  -->
-                     <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.invalid"> 
-                email is <strong>required</strong>
-                    </mat-error> 
-               
+                  
+                    <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.hasError('email') && !form.get('username')?.hasError('required')">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error>
+
                 <label for="password">Password</label>
                 <input id="pword"formControlName="password" placeholder="Password" matInput required [type]="hide ? 'password' : 'text'">
                 <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
                     Password is <strong>required</strong>
-                </mat-error>  
+                </mat-error> <br/>
                 <a routerLink="/ForgotPassword" id="forgot">Forgot your password?</a>
                 
   
