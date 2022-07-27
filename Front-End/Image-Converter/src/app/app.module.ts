@@ -21,6 +21,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { ImagePopupComponent } from './image-popup/image-popup.component';
+import { GraphingInputComponent } from './graphing-input/graphing-input.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ImagePopupComponent } from './image-popup/image-popup.component';
     ContactComponent,
     DashboardComponent,
     TemplateMatchingComponent,
-    ImagePopupComponent
+    ImagePopupComponent,
+    GraphingInputComponent
   ],
   imports: [
     BrowserModule,

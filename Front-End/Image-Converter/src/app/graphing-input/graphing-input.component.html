@@ -1,0 +1,40 @@
+<!-- <link href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="w3-container" id="graphImg" style="margin-top:75px">
+   <h1 class="w3-xxxlarge w3-text-black"><b>Graph Image</b></h1>
+   <hr style="width:50px;border:5px solid black" class="w3-round">   
+</div>
+
+    <p>unhappy with the image quality? Plot your own graph insted</p>
+
+
+    <img *ngIf="loading" src="assets/loading.gif" width="400" />
+<mat-card *ngIf="!loading" class="card" draggable="true" ngClass="{{ dragAreaClass }}">
+   
+       Drag files here
+                <a href="javascript:void(0)" (click)="file.click()"> or click to open </a>
+      <mat-card-content>
+               
+                <input
+                  type="file"
+                  #file
+                  [multiple]="false"
+                  (change)="onFileChange($event)"
+                  style="display:none"
+                /><br>
+
+                <div class="dragged-files-wrapper" >
+                  
+                  <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
+                </div>
+                
+        </mat-card-content>
+        <div class="error" *ngIf="error" style = "color:red;">{{error}}</div>
+    <mat-card-actions>
+      <button  [disabled]="isDisabled" (click)="saveFiles()" class="w3-button w3-block w3-padding-large w3-blue w3-margin-bottom">
+        Upload
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+ -->
