@@ -3,7 +3,8 @@ import numpy as np
 from converter.watermark import AddMark
 from converter.resizing import imageResizing
 from PIL import Image
-
+import sys
+sys.path.append('../')
 
 class smoothing:
     def __init__(self,uploaded_image):
