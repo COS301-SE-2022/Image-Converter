@@ -1,9 +1,10 @@
 import cv2
 import numpy as np
-from resizing import imageResizing
-from watermark import AddMark
+from Server.converter.resizing import imageResizing
+from Server.converter.watermark import AddMark
 from PIL import Image
-
+import sys
+sys.path.append('../')
 
 class smoothing:
     def __init__(self,uploaded_image):
