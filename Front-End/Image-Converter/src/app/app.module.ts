@@ -22,6 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     DashboardComponent,
     TemplateMatchingComponent,
     ImagePopupComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    GraphPlottingComponent
   ],
   imports: [
     BrowserModule,
