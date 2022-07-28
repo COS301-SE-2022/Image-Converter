@@ -1,19 +1,19 @@
-from image_resizing.resizing import imageResizing
-from PIL import Image
+# from image_resizing.resizing import imageResizing
+# from PIL import Image
 
 
-def testImageSizeBeforeResizing():
-    #prepare
-    object = imageResizing(Image.open('draw.jpeg'))
+# def testImageSizeBeforeResizing():
+#     #prepare
+#     object = imageResizing(Image.open('draw.jpeg'))
 
-    #act
-    assert object.resizedImage.size == (3104, 3027)
+#     #act
+#     assert object.resizedImage.size == (3104, 3027)
 
-def testImageSizeBeforeAndAfterResizing():
-    #prepare
-    object = imageResizing(Image.open('draw.jpeg'))
+# def testImageSizeBeforeAndAfterResizing():
+#     #prepare
+#     object = imageResizing(Image.open('draw.jpeg'))
 
-    #act
-    assert object.resizedImage.size == (3104, 3027)
-    object.resize()
-    assert object.resizedImage.size == (800, 800)
+#     #act
+#     assert object.resizedImage.size == (3104, 3027)
+#     object.resize()
+#     assert object.resizedImage.size == (800, 800)
