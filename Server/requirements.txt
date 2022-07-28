@@ -74,3 +74,4 @@ uritemplate==4.1.1
 urllib3==1.26.10
 virtualenv==20.14.1
 Werkzeug==2.1.2
+pytest-cov==3.0.0
