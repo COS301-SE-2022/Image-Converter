@@ -1,5 +1,7 @@
 from PIL import Image
 import cv2
+import sys
+sys.path.append('../')
 
 class imageResizing:
     def __init__(self, image):        
