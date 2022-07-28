@@ -1,16 +1,25 @@
-<br/>
-<h1 class="w3-xxxlarge w3-text-black"><b>Draw graph using Fomula </b></h1>
-    
-<form [formGroup]="form" (ngSubmit)="onFomulaSubmit()">
 
-        <label for="formula">Fomula</label>
-        <input formControlName="formula" placeholder="Email" matInput required>
-        <!-- mat-error is for validation  -->
-            <!--<mat-error *ngIf="form.get('username')?.touched && form.get('username')?.invalid"> 
-    email is <strong>required</strong>
-        </mat-error> -->
+<div class="w3-container">
+    <br/>
+    <h1 class="w3-xxxlarge w3-text-black" ><b>Draw graph using Fomula </b></h1>
+        
+    <form [formGroup]="form" (ngSubmit)="onFomulaSubmit()">
 
+            <label for="formula">Enter fomula below</label>
+            <div>
+            <input formControlName="formula" placeholder="Email" matInput required>
+            <!-- mat-error is for validation  -->
+                <!--<mat-error *ngIf="form.get('username')?.touched && form.get('username')?.invalid"> 
+        email is <strong>required</strong>
+            </mat-error> -->
 
-    <button id="drawbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit" class="w3-button w3-block w3-padding-large w3-blue w3-margin-bottom">Draw</button>
-    <img mat-card-image id="graphImg" src={{displayImg}} alt="graph" >
-</form>
+        
+            <button id="drawbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" class="w3-blue"type="submit">Draw</button>
+        </div>
+        <div class="w3-card-4" class="card" style="width:35%">
+                <img id="graphImg" src={{displayImg}} >
+              <!-- </button> -->
+             </div>
+        <!-- </div> -->
+    </form>
+</div>

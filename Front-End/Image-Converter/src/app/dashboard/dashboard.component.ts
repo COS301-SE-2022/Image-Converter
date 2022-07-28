@@ -41,6 +41,11 @@ export class DashboardComponent implements OnInit {
     var x = document.getElementById("contact") as HTMLLinkElement
     x.scrollIntoView();
   }
+  toGraphing(){
+    var x = document.getElementById("graphPlotting") as HTMLLinkElement
+    x.scrollIntoView();
+  }
+  
 
   logout()
   {
