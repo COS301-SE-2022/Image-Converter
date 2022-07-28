@@ -4,6 +4,7 @@ from lib2to3.pytree import Node
 from attr import s
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
+from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
 from converter.image_classification import Classification
@@ -20,9 +21,6 @@ import random
 import io
 import PIL.Image as Image
 import numpy as np
-
-
-
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -93,15 +91,12 @@ def upload_image(user):
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
-
-
             # addLogo = AddMark(opencv_img)
             # addLogo.Dev
-
-            with open("images/original/Graph.png", "rb") as img_file:
-                b64picture = base64.b64encode(img_file.read())
+            # with open("images/original/Graph.png", "rb") as img_file:
+            #     b64picture = base64.b64encode(img_file.read())
             # print("b64picture")
-            image_converted = bytearray(b64picture)
+            # image_converted = bytearray(b64picture)
             
             if(db.insert_image(opencv_img, imageResult, user[0])):
                 print("Image inserted")
@@ -307,32 +302,24 @@ def resetPasswordEmail():
             return {'response': 'User Exists'}, 200
     else:
         return {{'response': 'failed'}}, 400
-
-@app.route('/bargraph', methods=['POST'])
+        
+@app.route('/plotting', methods=['POST'])
 @token
-def barGraph():
-    
-    db = User()
-    if(db != None):
-        print("barGraph Working")
-        label_1 = request.json['label_1']
-        label_value_1 = request.json['label_value_1']
-    #     if(db.login(username,password)):
-    #         token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
-    #         ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
-    #         result = "success"
-    #         return jsonify({'result': result, 'token': str(token)})
-    #     else:
-    #         return jsonify({'result': 'failed'})
-    # else:
-    #     return {'response': 'failed'}, 400
-        return jsonify({'response': 'success'})
+def plot_graph(user):
+    db=User()
+    if(db!=None):
+        formula = str(request.json['formula'])
+        # print(picture)
+        if formula is not None:
+            graph = GraphPloting()
+            image_converted=graph.draw(formula)
+            if(db.insert_image(image_converted, image_converted, user[0])):
+                print("Image inserted")
+            db_image = db.get_image(user[0])
+            print(db_image[4])
+        return jsonify({'image': db_image[4]})
     else:
         return {'response': 'failed'}, 400
- 
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

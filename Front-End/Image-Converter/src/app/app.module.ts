@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { GraphingComponent } from './graphing/graphing.component';
+import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +37,7 @@ import { GraphingComponent } from './graphing/graphing.component';
     TemplateMatchingComponent,
     ImagePopupComponent,
     ForgotPasswordComponent,
-    GraphingComponent,
+    GraphPlottingComponent
   ],
   imports: [
     BrowserModule,

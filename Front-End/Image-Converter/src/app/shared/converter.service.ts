@@ -164,5 +164,21 @@ export class ConverterService {
     );
   }
 
+  postFormula(data: any) {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    console.log(httpOptions);
+    let pic = {picture: data};
+    // console.log("form: "+data);
+    return this.httpclient.post(
+      'http://localhost:5000/plotting',
+      data,httpOptions
+    );
+  }
   
 }
