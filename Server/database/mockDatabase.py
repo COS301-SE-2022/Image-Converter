@@ -122,14 +122,14 @@ class mockDatabase:
         db_count = self.db_history_id
         return db_count
 
-    def insert_code(self, email, code):
+    def insertCode(self, email, code):
         code_id = self.db_code_id
         self.db_code_id += 1
         code_record = [code_id, email, code]
         self.db_code.append(code_record)
         return True
 
-    def get_code(self, email):
+    def getCode(self, email):
         for x in reversed(self.db_code):
             if x[1] == email:
                 return x
