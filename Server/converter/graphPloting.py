@@ -31,22 +31,15 @@ class GraphPloting:
         
         
         latex = [r'$\dfrac{a}{b}$', r'$a^a$',]
-        for i in range(len(formula)):
-            print(formula[i] + latex[0])
-            if formula[i] in "*/":
-              if formula[i] == '*':
-                self.ifStar(i + 1, formula)
-              elif formula[i] == '/': 
-                self.ifSlash(formula)
-            else:
-                self.formatedFormula += formula[i]
-            self.pos += 1
+        # for i in range(len(formula)):
+        #     if()
+
 
         # print(r'$\frac{a}{b}$')
-        plt.title('Graph of ' + self.formatedFormula)
+        plt.title('Graph of ' + formula)
         plt.grid()
         plt.savefig('./../images/plottedGraph.png')
-        plt.show()
+        # plt.show()
         plt.close
 
         #Resizing the image
@@ -67,22 +60,14 @@ class GraphPloting:
         cv2.imwrite("./../images/plottedGraph.png", finalDrawing)
         # print(finalDrawing)
         return finalDrawing
-    
-    def ifStar(self, index, formula):
-        if formula[index] == '*':
-            self.formatedFormula += ''
-        else:
-            return
-    
-    def ifSlash(self, formula):
-        numerator = self.formatedFormula
+
 
     
 if __name__ == '__main__':
     input = ['(x**2)+2*x+2', '5*x', '5**x', '5/x-11']
     draw = GraphPloting()
-    draw.draw(input[0])
+    draw.draw(input[2])
     
     # for i in range(len(input)): 
-    #     draw.draw(input[0])
+    #     draw.draw(input[i])
     # draw.parabola(input[0])
