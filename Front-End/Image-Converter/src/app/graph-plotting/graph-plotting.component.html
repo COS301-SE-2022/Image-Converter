@@ -1,11 +1,11 @@
 
 <div class="w3-container">
     <br/>
-    <h1 class="w3-xxxlarge w3-text-black" ><b>Draw graph using Fomula </b></h1>
+    <h1 class="w3-xxxlarge w3-text-black" ><b>Draw graph using Formula </b></h1>
         
     <form [formGroup]="form" (ngSubmit)="onFomulaSubmit()">
 
-            <label for="formula">Enter fomula below</label>
+            <label for="formula">Enter formula below</label>
             <div>
             <input formControlName="formula" placeholder="Email" matInput required>
             <!-- mat-error is for validation  -->
@@ -18,8 +18,9 @@
         </div>
         <div class="w3-card-4" class="card" style="width:35%">
                 <img id="graphImg" src={{displayImg}} >
-              <!-- </button> -->
+                <a class="btn btn-primary w3-blue" (click)="downloadFile(displayImg)">Download</a>
+                
              </div>
-        <!-- </div> -->
+
     </form>
 </div>

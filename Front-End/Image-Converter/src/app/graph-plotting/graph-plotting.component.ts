@@ -47,4 +47,33 @@ export class GraphPlottingComponent implements OnInit {
         }
     );
   }
+
+  downloadFile(imageDownload:any) {
+    var a = document.createElement('a');
+    a.href = imageDownload;
+
+    console.log("a.href: "+a.href)
+    // this.download(a.href)
+    // console.log("a.download: "+a.download)
+    a.download = "output.png";
+     document.body.appendChild(a);
+     a.click();
+     document.body.removeChild(a);
+
+  }
+
+
+
+  // download(source:any){
+  //   const fileName = source.split('/').pop();
+	// var el = document.createElement("a");
+	// el.setAttribute("href", source);
+	// el.setAttribute("download", fileName);
+	// document.body.appendChild(el);
+ 	// el.click();
+	// el.remove();
+// }
+
+
+  
 }
