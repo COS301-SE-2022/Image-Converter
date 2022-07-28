@@ -107,11 +107,11 @@ def upload_image(user):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             
-            graphType = "This graph is"
-            if(templateMatch.perfectMatch>5):
-                graphType = graphType + " a "+templateMatch.graphType
-            else:
-                graphType= graphType + " not recognized by the system"
+            graphType = "This "+img_class.graphType
+            # if(templateMatch.perfectMatch>5):
+            #     graphType = graphType + " a "+templateMatch.graphType
+            # else:
+            #     graphType= graphType + " not recognized by the system"
 
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
