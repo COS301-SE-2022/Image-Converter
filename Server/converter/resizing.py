@@ -8,7 +8,7 @@ class imageResizing:
         self.resizedImage = image
 
     def resize(self):
-        print('Original dimension: ', self.resizedImage.shape)
+        #print('Original dimension: ', self.resizedImage.shape)
         #Setting the image dimesions
         dimension = (800, 800)
 
