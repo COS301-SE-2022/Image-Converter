@@ -6,6 +6,7 @@ import jwt
 from flask import Flask, json, jsonify, render_template, request, session
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
+from converter.image_classification import Classification
 from database.database import User
 from database.sendEmail import Email
 from converter.ConvertFomat import ConvertFomat
@@ -54,6 +55,15 @@ def index():
     return "Hello World!"
 
 
+@app.route('/test', methods=['POST'])
+@token
+def test(user):
+    username = str(request.json['email'])
+    print(user)
+    return jsonify({'result': username})
+
+
+
 @app.route('/picture', methods=['POST'])
 @token
 def upload_image(user):
@@ -70,11 +80,16 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
-            
-            print("Opencv img "+str(type(opencv_img)))
-            templateMatch = Matching(opencv_img)
-            print(templateMatch.graphType)
-            print(templateMatch.perfectMatch)
+            img_class = Classification(picture)
+            # print(type(opencv_img))
+            # templateMatch = Matching(opencv_img)
+            #-------> img_class = Classification(opencv_img)
+            # print(templateMatch.graphType)
+            # print(templateMatch.perfectMatch)
+            print("#########################################")
+            print(img_class.graphType)
+            print("#########################################")
+
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
@@ -85,7 +100,7 @@ def upload_image(user):
 
             with open("images/original/Graph.png", "rb") as img_file:
                 b64picture = base64.b64encode(img_file.read())
-            print("b64picture")
+            # print("b64picture")
             image_converted = bytearray(b64picture)
             
             if(db.insert_image(opencv_img, imageResult, user[0])):
@@ -292,6 +307,31 @@ def resetPasswordEmail():
             return {'response': 'User Exists'}, 200
     else:
         return {{'response': 'failed'}}, 400
+
+@app.route('/bargraph', methods=['POST'])
+@token
+def barGraph():
+    
+    db = User()
+    if(db != None):
+        print("barGraph Working")
+        label_1 = request.json['label_1']
+        label_value_1 = request.json['label_value_1']
+    #     if(db.login(username,password)):
+    #         token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
+    #         ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+    #         result = "success"
+    #         return jsonify({'result': result, 'token': str(token)})
+    #     else:
+    #         return jsonify({'result': 'failed'})
+    # else:
+    #     return {'response': 'failed'}, 400
+        return jsonify({'response': 'success'})
+    else:
+        return {'response': 'failed'}, 400
+ 
+
+
 
 
 if __name__ == '__main__':
