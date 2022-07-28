@@ -9,13 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
+  
 
-  constructor(private resetService: ConverterService, private _router: Router) { }
+  constructor(private resetService: ConverterService, private _router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     document.getElementById("codeForm")!.style.display = "none";
     document.getElementById("passForm")!.style.display = "none";
-
+    this.formPass.controls['password'].setValue("");
   }
   // result!:{response:string};
   _match!: boolean;
@@ -30,19 +31,41 @@ export class ForgotPasswordComponent implements OnInit {
   });
 
   //new password form
-  formPass = new FormGroup({  
-    password: new FormControl('', Validators.required)
-  });
-  onSubmit(){
-    console.log("clicked");
-    //remove
-    document.getElementById("resetForm")!.style.display="none";
-    document.getElementById("codeForm")!.style.display="block";
+  formPass = this.formBuilder.group({  
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    cpassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+  },
+  {
+      validators: this.MustMatch('password','cpassword')
+    });
+
+  MustMatch(controlName: string, matchingControl: string)
+  {
+    return(formGroup: FormGroup)=>{
+      const control = formGroup.controls[controlName];
+      const matchingCont = formGroup.controls[matchingControl];
+      if(matchingCont.errors && !matchingCont.errors.MustMatch)
+      {
+        return
+      }
+
+      if(control.value !== matchingCont.value)
+      {
+        matchingCont.setErrors({MustMatch:true});
+      }
+
+      else{
+        matchingCont.setErrors(null);
+      }
+    }
+  }
+  onSubmit()
+  {
     //once code is sent through and response is given
  
-   let email = {
-    email : this.form.get('email')!.value
-  } 
+    let email = {
+      email : this.form.get('email')!.value
+      } 
   let response;
     this.resetService.ResetPassword(email).subscribe(
       responseData =>{
@@ -65,10 +88,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmitCode()
-  {  //remove
-    document.getElementById("codeForm")!.style.display = "none";
-      document.getElementById("passForm")!.style.display = "block";
-
+  {  
      this.resetService.resetPasswordCode(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
