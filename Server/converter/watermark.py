@@ -1,8 +1,6 @@
 from PIL import Image
-import numpy as np
-import cv2
-import os
-import base64
+import sys
+sys.path.append('../')
 
 class AddMark:
 
@@ -14,7 +12,7 @@ class AddMark:
         width, height = self.img.size
 
         size = (100, 100)
-        logo = Image.open('converter/logo/logotest.png')
+        logo = Image.open(r'./logo/logo-test.png', 'r')
 
         # You can use resize method here instead of
         # thumbnail method
