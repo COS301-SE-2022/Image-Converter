@@ -42,12 +42,11 @@ class GraphPloting:
         print("hello")
         plt.savefig('images/plottedGraph.png')
         print("hello2")
-        plt.show()
+       # plt.show()
         plt.close
-
-        plottedImage = cv2.imread('images/plottedGraph.png')
+        
         #Resizing the image
-        plottedImage = cv2.imread('./../images/plottedGraph.png')
+        plottedImage = cv2.imread('images/plottedGraph.png')
         resizedImage = imageResizing(plottedImage)
         resizedImage = resizedImage.resize()
         # print('Resized image:', resizedImage.shape)
