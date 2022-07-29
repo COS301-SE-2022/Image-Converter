@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from converter.resizing import imageResizing
-from converter.watermark import AddMark
+from resizing import imageResizing
+from watermark import AddMark
 import cv2
 from PIL import Image
 import sys
