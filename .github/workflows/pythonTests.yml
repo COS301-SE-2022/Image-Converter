@@ -1,4 +1,4 @@
-name: Unit-test for Python application
+name: Back-end github actions
 
 on: [push]
 
