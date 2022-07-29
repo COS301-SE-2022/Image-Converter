@@ -7,6 +7,7 @@ from PIL import Image
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from pathlib import Path
 
 class GraphPloting:
     def __init__(self):
@@ -33,7 +34,7 @@ class GraphPloting:
         
         latex = [r'$\dfrac{a}{b}$', r'$a^a$',]
         for i in range(len(formula)):
-            if(formula[i]):
+            if(formula[i] == '*'):
                 self.formatedFormula += ''
             else:
                  self.formatedFormula += formula[i]
@@ -43,6 +44,9 @@ class GraphPloting:
         plt.title('Graph of ' + formula)
         plt.grid()
         print("hello")
+        workingDir = Path(__file__).parent  
+        filePath = workingDir / 'images/plottedGraph.png' 
+        print('Test', str(filePath)) 
         plt.savefig('./../images/plottedGraph.png')
         print("hello2")
         # plt.show()
@@ -66,6 +70,7 @@ class GraphPloting:
 
         cv2.imwrite("./../images/plottedGraph.png", finalDrawing)
         # print(finalDrawing)
+
         return finalDrawing
 
 
@@ -73,7 +78,7 @@ class GraphPloting:
 if __name__ == '__main__':
     input = ['(x**2)+2*x+2', '5*x', '5**x', '5/x-11']
     draw = GraphPloting()
-    draw.draw(input[2])
+    draw.draw(input[1])
     
     # for i in range(len(input)): 
     #     draw.draw(input[i])

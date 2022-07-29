@@ -1,4 +1,5 @@
 from PIL import Image
+from pathlib import Path
 import sys
 sys.path.append('../')
 
@@ -12,7 +13,10 @@ class AddMark:
         width, height = self.img.size
 
         size = (100, 100)
-        logo = Image.open('converter/logo/logotest.png')
+        workingDir = Path(__file__).parent  
+        filePath = workingDir / 'logo/logotest.png' 
+        # print('WaterMark path', filePath)
+        logo = Image.open(str(filePath))
 
         # You can use resize method here instead of
         # thumbnail method
