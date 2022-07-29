@@ -6,51 +6,30 @@ import cv2
 from PIL import Image
 import sys
 import os
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 class GraphPloting:
-    def __init__(self):
-        self.formatedFormula = ""
-        self.pos = 0
-        self.divisionFlag = False
-        self.denominator = "" 
-
     def draw(self, formula):
-        #generating the x and y
-        x = np.linspace(-np.pi, np.pi, 100)
+        x = np.linspace(-10,10,1000)
         y = eval(formula)
-
-        # use set_position
-        axis = plt.gca()
-        axis.spines['top'].set_color('none')
-        axis.spines['left'].set_position('zero')
-        axis.spines['right'].set_color('none')
-        axis.spines['bottom'].set_position('zero')
-
-        #plotting the graph
+        # int(re.search(r'\d+', string1).group())
         plt.plot(x, y, '-r', label=formula)
-        
-        
-        latex = [r'$\dfrac{a}{b}$', r'$a^a$',]
-        # for i in range(len(formula)):
-        #     if()
-
-
-        # print(r'$\frac{a}{b}$')
         plt.title('Graph of ' + formula)
+        plt.xlabel('x', color='#1C2833')
+        plt.ylabel('y', color='#1C2833')
+        # plt.legend(loc='upper left')
         plt.grid()
         print("hello")
         plt.savefig('images/plottedGraph.png')
         print("hello2")
-       # plt.show()
+        plt.show()
         plt.close
-        
-        #Resizing the image
+
         plottedImage = cv2.imread('images/plottedGraph.png')
+        #Resizing the image
         resizedImage = imageResizing(plottedImage)
         resizedImage = resizedImage.resize()
-        # print('Resized image:', resizedImage.shape)
+        print('Resized image:', resizedImage.shape)
 
         #Adding a watermark to the image
         imageWatermark = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
@@ -59,18 +38,15 @@ class GraphPloting:
         #Converting the returned image to numpy array
         finalDrawing = np.array(imageWatermark) 
         finalDrawing = finalDrawing[:, :, ::-1].copy() 
-        # print("Image: ", finalDrawing.shape)
+        print("Image: ", finalDrawing.shape)
 
         cv2.imwrite("./../images/plottedGraph.png", finalDrawing)
-        # print(finalDrawing)
         return finalDrawing
-
-
     
 if __name__ == '__main__':
-    input = ['(x**2)+2*x+2', '5*x', '5**x', '5/x-11']
+    input = ['x**2+2*x+2', '5*x', '5**x', '5/x-11']
     draw = GraphPloting()
-    draw.draw(input[2])
+    draw.draw(input[0])
     
     # for i in range(len(input)): 
     #     draw.draw(input[i])
