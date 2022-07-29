@@ -32,20 +32,23 @@ class GraphPloting:
         
         
         latex = [r'$\dfrac{a}{b}$', r'$a^a$',]
-        # for i in range(len(formula)):
-        #     if()
+        for i in range(len(formula)):
+            if(formula[i]):
+                self.formatedFormula += ''
+            else:
+                 self.formatedFormula += formula[i]
 
 
         # print(r'$\frac{a}{b}$')
         plt.title('Graph of ' + formula)
         plt.grid()
         print("hello")
-        plt.savefig('images/plottedGraph.png')
+        plt.savefig('./../images/plottedGraph.png')
         print("hello2")
-        plt.show()
+        # plt.show()
         plt.close
 
-        plottedImage = cv2.imread('images/plottedGraph.png')
+        # plottedImage = cv2.imread('images/plottedGraph.png')
         #Resizing the image
         plottedImage = cv2.imread('./../images/plottedGraph.png')
         resizedImage = imageResizing(plottedImage)
