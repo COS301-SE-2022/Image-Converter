@@ -1,6 +1,6 @@
 import datetime
 from functools import wraps
-from lib2to3.pytree import Node
+# from lib2to3.pytree import Node
 from attr import s
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
@@ -59,7 +59,6 @@ def test(user):
     username = str(request.json['email'])
     print(user)
     return jsonify({'result': username})
-
 
 
 @app.route('/picture', methods=['POST'])
