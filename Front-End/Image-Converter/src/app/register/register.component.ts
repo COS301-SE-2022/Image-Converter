@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   reactiveForm!: FormGroup;
   submitted = false;
   response!:{result:string,token:string};
+  
 
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
 
