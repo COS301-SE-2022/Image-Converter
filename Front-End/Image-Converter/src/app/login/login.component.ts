@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   _match!: boolean;
   buttonLogin = "";
-
+  loading=false;
   constructor(private loginService: ConverterService, private _router: Router) { }
 
   ngOnInit(): void {
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit()
   {
+    this.loading=true;
     let authDetails:Login = {
       email : this.form.get('username')!.value,
       password : this.form.get('password')!.value
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(authDetails).subscribe(
       responseData=>{
+        this.loading=false;
         console.log(responseData.body.result);
         this.response = JSON.parse(JSON.stringify(responseData));
         // console.log(responseData.body.token);

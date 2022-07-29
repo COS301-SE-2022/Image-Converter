@@ -89,7 +89,12 @@
                 <a routerLink="/ForgotPassword" id="forgot">Forgot your password?</a>
                 
   
-                <button id="loginbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit">Log In</button>
+                <button *ngIf="!loading" id="loginbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit">
+                    Log In
+                </button>
+                <button  type="submit" *ngIf="loading">
+                    <mat-spinner id="spin" [diameter]="25" primary style="margin:0 auto;"></mat-spinner>
+                </button>
                 <p *ngIf="buttonLogin != '' && !_match" class="alert alert-danger"> 
                     Invalid Username or Password !              
                     </p> 
