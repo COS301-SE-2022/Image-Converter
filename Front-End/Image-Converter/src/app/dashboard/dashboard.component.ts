@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
-  
+    if(!localStorage.getItem('token') && localStorage.getItem('token')=="")
+    {
+      this._router.navigateByUrl('/');
+    }
   }
 
   toHome() {
@@ -37,7 +41,17 @@ export class DashboardComponent implements OnInit {
     var x = document.getElementById("contact") as HTMLLinkElement
     x.scrollIntoView();
   }
+  toGraphing(){
+    var x = document.getElementById("graphPlotting") as HTMLLinkElement
+    x.scrollIntoView();
+  }
+  
 
+  logout()
+  {
+    localStorage.setItem('token', "");
+    this._router.navigateByUrl('/');
+  }
 }
 
 

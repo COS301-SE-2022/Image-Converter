@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import {ConverterService} from './../shared/converter.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-history',
@@ -10,7 +11,7 @@ import {ConverterService} from './../shared/converter.service';
 })
 export class UploadHistoryComponent implements OnInit {
 
-  constructor(private dialog: MatDialog,private imgService: ConverterService) { }
+  constructor(private dialog: MatDialog,private imgService: ConverterService,private _router: Router) { }
 
   //holds unprocessed images
   uploadedImg: string[] = [];
@@ -38,7 +39,10 @@ export class UploadHistoryComponent implements OnInit {
               console.log("index: "+respsonseBase64.Index[i]);
               this.uuid.push(respsonseBase64.Index[i]);
           }
-        }
+        },//code below ensures that if token is invalid or expired user gets sent back to login
+         (err) => {
+          //if (err === 'Unauthorized') { this._router.navigateByUrl('/'); }
+      }
       );
   }
 

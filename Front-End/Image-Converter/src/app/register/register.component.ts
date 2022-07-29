@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
   hide = true;
   _match!: boolean;
   buttonLogin = "";
-
+  buttonReset = "";
+  
   title = 'reactiveformproject';
   registerForm!: FormGroup;
   reactiveForm!: FormGroup;
@@ -28,6 +29,9 @@ export class RegisterComponent implements OnInit {
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
 
   ngOnInit() {
+
+    document.getElementById("codeForm")!.style.display = "none";
+
     this.registerForm = this.formBuilder.group({
       surname: ['', [Validators.required, Validators.minLength(2)]],
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -41,7 +45,9 @@ export class RegisterComponent implements OnInit {
       validators: this.MustMatch('password','cpassword')
     })
   }
-
+  formCode = new FormGroup({  
+    code: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$"), Validators.minLength(4),Validators.maxLength(4)])
+  });
   // form = new FormGroup({  
   //   username: new FormControl('', Validators.required),  
   //   password: new FormControl('', Validators.required),
@@ -92,7 +98,8 @@ export class RegisterComponent implements OnInit {
   }
 
   
-  onSubmit() {
+  /*onSubmit() {
+    
     this.submitted = true;
 
     let authDetails:Register = {
@@ -121,6 +128,56 @@ export class RegisterComponent implements OnInit {
     }
  
     alert('Registered successfully!');
+  }*/
+
+  onSubmit(){
+    
+    console.log("in on sub")
+    //once code is sent through and response is given
+    //document.getElementById("resetForm")!.style.display="none";
+   // document.getElementById("codeForm")!.style.display="inline-block";
+   localStorage.setItem('name', this.registerForm.get('name')!.value);
+   localStorage.setItem('surname',this.registerForm.get('surname')!.value);
+   localStorage.setItem('email', this.registerForm.get('email')!.value);
+   localStorage.setItem('password', this.registerForm.get('password')!.value);
+
+   let email = {
+    email : this.registerForm.get('email')!.value
+  } 
+    let response;
+    this.registerService.registerEmailSend(email).subscribe(
+      responseData =>{
+            //response
+            console.log(responseData);
+            //this.response = JSON.parse(JSON.stringify(responseData));
+            response = JSON.parse(JSON.stringify(responseData));
+            if(response.body.response == "success"){
+              console.log("success");
+              document.getElementById("codeForm")!.style.display = "block";
+              document.getElementById("reg")!.style.display = "none";
+            }
+        }
+    );
+  }
+
+  onSubmitCode()
+  { 
+    let response;
+    this.registerService.register(this.formCode.get('code')!.value).subscribe(
+      responseData =>{
+            //response
+            response = JSON.parse(JSON.stringify(responseData));
+            console.log(response.body.result);
+            if(response.body.result == "success"){
+              console.log("success");
+              localStorage.setItem('token', responseData.body.token);
+              this._router.navigateByUrl('/dashboard');
+            }
+            else{
+              alert("something went wrong");
+            }
+        }
+    );
   }
 }
 

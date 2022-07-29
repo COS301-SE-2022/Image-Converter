@@ -1,23 +1,30 @@
 import datetime
 from functools import wraps
+from lib2to3.pytree import Node
+from attr import s
 import jwt
-from flask import Flask, json, jsonify, render_template, request
+from flask import Flask, json, jsonify, render_template, request, session
+from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
+from converter.image_classification import Classification
 from database.database import User
+from database.sendEmail import Email
+from converter.ConvertFomat import ConvertFomat
+from converter.watermark import AddMark
 from flask import Response
 from flask_cors import CORS
 import base64
 import cv2
 import os
+import random
 import io
 import PIL.Image as Image
 import numpy as np
 
 app = Flask(__name__)
-
+app.secret_key = "super secret key"
 CORS(app)
-
 
 def token(f):
     @wraps(f)
@@ -46,6 +53,15 @@ def index():
     return "Hello World!"
 
 
+@app.route('/test', methods=['POST'])
+@token
+def test(user):
+    username = str(request.json['email'])
+    print(user)
+    return jsonify({'result': username})
+
+
+
 @app.route('/picture', methods=['POST'])
 @token
 def upload_image(user):
@@ -62,27 +78,40 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
-            
-            print(type(opencv_img))
-            templateMatch = Matching(opencv_img)
-            print(templateMatch.graphType)
-            print(templateMatch.perfectMatch)
+            img_class = Classification(picture)
+            # print(type(opencv_img))
+            # templateMatch = Matching(opencv_img)
+            #-------> img_class = Classification(opencv_img)
+            # print(templateMatch.graphType)
+            # print(templateMatch.perfectMatch)
+            print("#########################################")
+            print(img_class.graphType)
+            print("#########################################")
+
             imageCleaner = smoothing(opencv_img)
-            imageCleaner.clean_noise()
-            with open("images/original/Graph.png", "rb") as img_file:
-                b64picture = base64.b64encode(img_file.read())
-            print("b64picture")
-            image_converted = bytearray(b64picture)
-            if(db.insert_image(picture, image_converted, user[0])):
+
+            imageResult =imageCleaner.clean_noise()
+            # addLogo = AddMark(opencv_img)
+            # addLogo.Dev
+            # with open("images/original/Graph.png", "rb") as img_file:
+            #     b64picture = base64.b64encode(img_file.read())
+            # print("b64picture")
+            # image_converted = bytearray(b64picture)
+            
+            if(db.insert_image(opencv_img, imageResult, user[0])):
                 print("Image inserted")
             db_image = db.get_image(user[0])
-            print(db_image)
-            graphType = "This graph is"
-            if(templateMatch.perfectMatch>5):
-                graphType = graphType + " a "+templateMatch.graphType
-            else:
-                graphType= graphType + " not recognized by the system"
-        return jsonify({'image': str(imageReturned+ bytes(db_image[4]).decode('UTF-8')), 'graphType': graphType})
+            
+            graphType = "This "+img_class.graphType
+            # if(templateMatch.perfectMatch>5):
+            #     graphType = graphType + " a "+templateMatch.graphType
+            # else:
+            #     graphType= graphType + " not recognized by the system"
+
+            conv=ConvertFomat()
+            conv.covertImgFormat(db_image[4])
+        return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+
     else:
         return {'response': 'failed'}, 400
 
@@ -113,11 +142,17 @@ def register():
         surname = str(request.json["surname"])
         email = str(request.json["email"])
         password = str(request.json["password"])
-        if(db.register(name, surname, email, password)):
-            token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
-            ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
-            result = "success"
-            return jsonify({'result': result, 'token': str(token)})
+        code = str(request.json["code"])
+        print(code)
+        if db.get_code(email)[2]==code:
+            if(db.register(name, surname, email, password)):
+                token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
+                ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+                
+                result = "success"
+                return jsonify({'result': result, 'token': str(token)})
+            else:
+                return {'response': 'failed'}, 400
         else:
             return {'response': 'failed'}, 400
     else:
@@ -140,8 +175,8 @@ def uploadhistory(user):
         proccesedImagelist=[]
         for x in db_image_array:
             IndexArray.append(x[0])
-            OriginalImagelist.append(str( bytes(x[3]).decode('UTF-8'))) 
-            proccesedImagelist.append(str(imageReturned+ bytes(x[4]).decode('UTF-8'))) 
+            OriginalImagelist.append(x[3]) 
+            proccesedImagelist.append(x[4]) 
 
 
         return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
@@ -185,7 +220,106 @@ def user_feedback(user):
     else:
         return {'response': 'failed'}, 400
 
+@app.route('/resetpassword', methods=["POST"])
+def reset_password():
+    db = User()
+    if(db != None):
+        email = str(request.json['email'])
+        newPassword = str(request.json['password'])
+        if(db.updatePassword(email, newPassword)):
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
 
+
+@app.route('/resetpasswordcode', methods=["POST"])
+def reset_password_code():
+    db = User()
+    if(db != None):
+        email = str(request.json['email'])
+        code = str(request.json['code'])
+        # print(email)
+        # newPassword = str(request.json['password'])
+        print(db.get_code(email))
+        if db.get_code(email)[2] == code:
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
+
+@app.route('/sendEmail', methods=["POST"])
+def sendEmail():
+    db = User()
+    if(db != None):
+        email = request.json["email"]
+        print(db.getUserWithEmail(email))
+        if db.getUserWithEmail(email) is None:
+            code = str(random.randint(1000, 9999))
+            db.insert_code(email, code)
+            message = """\
+                Image Converter Activation Code
+
+                Welcome to the Image Converter!
+                Please provide us with feedback after using the system.
+
+                Here is your activation code: """
+            message += code
+            sendEmail = Email()
+            sendEmail.sendMessage(email, message)
+            print("sent")
+            return {'response': 'success'}, 200
+        else:
+            return {'response': 'User Exists'}, 400
+    else:
+        return {{'response': 'failed'}}, 400
+
+@app.route('/resetpasswordemail', methods=["POST"])
+def resetPasswordEmail():
+    db = User()
+    if(db != None):
+        email = str(request.json["email"])
+        # print(db.getUserWithEmail(email))
+        if db.getUserWithEmail(email) is not None:
+            code = str(random.randint(1000, 9999))
+            db.insert_code(email, code)
+            message = """\
+                Image Converter Reset Password Code
+
+                Please provide us with feedback after using the system.
+
+                Here is your reset password code: """
+            message += code
+            sendEmail = Email()
+            sendEmail.sendMessage(email, message)
+            print("sent")
+            return jsonify({'response': 'success'})
+        else:
+            print("Errror")
+            return {'response': 'User Exists'}, 200
+    else:
+        return {{'response': 'failed'}}, 400
+        
+@app.route('/plotting', methods=['POST'])
+@token
+def plot_graph(user):
+    db=User()
+    if(db!=None):
+        formula = str(request.json['formula'])
+        # print(picture)
+        if formula is not None:
+            graph = GraphPloting()
+            image_converted=graph.draw(formula)
+            if(db.insert_image(image_converted, image_converted, user[0])):
+                print("Image inserted")
+            db_image = db.get_image(user[0])
+            print(db_image[4])
+        return jsonify({'image': db_image[4]})
+    else:
+        return {'response': 'failed'}, 400
 
 if __name__ == '__main__':
     app.run(debug=True)

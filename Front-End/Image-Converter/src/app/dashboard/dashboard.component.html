@@ -23,9 +23,11 @@ body {font-size:16px;}
       <a (click)="toHome()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
       <a (click)="toImageUpload()"  class="w3-bar-item w3-button w3-hover-white">Image Upload</a> 
       <!-- <a (click)="toImageFilter()" class="w3-bar-item w3-button w3-hover-white">Image Filters</a>  -->
-      <a (click)="toConversionFormat()"  class="w3-bar-item w3-button w3-hover-white">Conversion Formats</a> 
+      <!--<a (click)="toConversionFormat()"  class="w3-bar-item w3-button w3-hover-white">Conversion Formats</a> -->
+      <a (click)="toGraphing()"  class="w3-bar-item w3-button w3-hover-white">Draw graph using formulae</a>
       <a (click)="toUploadHistory()"  class="w3-bar-item w3-button w3-hover-white">Upload History</a> 
       <a (click)="toContact()"  class="w3-bar-item w3-button w3-hover-white">Contact</a>
+      <a (click)="logout()"  class="w3-bar-item w3-button w3-hover-white">Logout</a>
     </div>
   </nav>
 
@@ -73,9 +75,18 @@ body {font-size:16px;}
     <div id="imageFilter">
       <app-filter></app-filter>
     </div>
+
+    <!-- Graphing -->
+    <!-- <div id="">
+      <app-graphing></app-graphing>
+    </div> -->
   <!-- Conversion Formats -->
   <div id="conversionFormat">
     <app-conversion></app-conversion>
+  </div>
+   <!-- Graphing -->
+   <div id="graphPlotting">
+    <app-graph-plotting></app-graph-plotting>
   </div>
 <!-- Upload History-->
   <div id="uploadHistory">
