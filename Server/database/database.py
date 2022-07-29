@@ -13,7 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 load_dotenv()
 
-cred = credentials.Certificate("database/firebaseKey.json")
+cred = credentials.Certificate("../database/firebaseKey.json")
 firebase_admin.initialize_app(cred,{'storageBucket': os.environ.get('BUCKET_NAME')})
 
 class User:
@@ -99,8 +99,8 @@ class User:
             cv2.imwrite("images/original/Original.png", image_uploaded)
             cv2.imwrite("images/original/Converted.png", image_converted)
             fireStore1 = FireStore()
-            link=fireStore1.uploadImage("images/original/Original.png",str(count)+"Original.jpg")
-            link2=fireStore1.uploadImage("images/original/Converted.png",str(count)+"Converted.jpg")
+            link=fireStore1.uploadImage("../images/original/Original.png",str(count)+"Original.jpg")
+            link2=fireStore1.uploadImage("../images/original/Converted.png",str(count)+"Converted.jpg")
             # print(link)
             print("Converted ")
             # print(link2)

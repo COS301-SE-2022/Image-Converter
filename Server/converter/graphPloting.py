@@ -21,12 +21,12 @@ class GraphPloting:
         # plt.legend(loc='upper left')
         plt.grid()
         print("hello")
-        plt.savefig('images/plottedGraph.png')
+        plt.savefig('../images/plottedGraph.png')
         print("hello2")
         # plt.show()
         plt.close
 
-        plottedImage = cv2.imread('images/plottedGraph.png')
+        plottedImage = cv2.imread('../images/plottedGraph.png')
         #Resizing the image
         resizedImage = imageResizing(plottedImage)
         resizedImage = resizedImage.resize()
