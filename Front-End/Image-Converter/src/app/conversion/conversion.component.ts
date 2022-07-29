@@ -20,7 +20,7 @@ export class ConversionComponent implements OnInit {
   ngOnInit(): void {
     //subscribe for communication between components
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
-    //this.subscription = this.imgData.currentMessage2.subscribe(message=>this.message2=message);
+    this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
   }
 
   ngOnDestroy() {
