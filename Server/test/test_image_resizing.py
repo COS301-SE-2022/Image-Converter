@@ -8,7 +8,6 @@ def testImageSizeBeforeResizing():
     #Prepare data
     workingDir = Path(__file__).parent  
     filePath = workingDir / 'draw.jpeg'  
-    os.chdir(str(filePath))
 
     #Act
     object = imageResizing(cv2.imread(str(filePath)))
