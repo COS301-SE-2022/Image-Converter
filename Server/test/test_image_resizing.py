@@ -19,7 +19,7 @@ def testImageSizeBeforeAndAfterResizing():
     #Prepare data
     workingDir = Path(__file__).parent  
     filePath = workingDir / 'draw.jpeg' 
-    
+    #pr
 
     #Act
     object = imageResizing(cv2.imread(str(filePath)))
