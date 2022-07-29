@@ -7,7 +7,6 @@ from PIL import Image
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-from pathlib import Path
 
 class GraphPloting:
     def __init__(self):
@@ -28,10 +27,6 @@ class GraphPloting:
         axis.spines['right'].set_color('none')
         axis.spines['bottom'].set_position('zero')
 
-        #plotting the graph
-        plt.plot(x, y, '-r', label=formula)
-        
-        
         latex = [r'$\dfrac{a}{b}$', r'$a^a$',]
         for i in range(len(formula)):
             if(formula[i] == '*'):
@@ -39,21 +34,21 @@ class GraphPloting:
             else:
                  self.formatedFormula += formula[i]
 
-
+        #plotting the graph
+        plt.plot(x, y, '-r', label=formula)
         # print(r'$\frac{a}{b}$')
         plt.title('Graph of ' + formula)
         plt.grid()
-        print("hello")
-        workingDir = Path(__file__).parent  
-        filePath = workingDir / 'images/plottedGraph.png' 
-        print('Test', str(filePath)) 
+        # print("hello")
+        # print('Test', str(filePath)) 
         plt.savefig('./../images/plottedGraph.png')
-        print("hello2")
+        # print("hello2")
         # plt.show()
         plt.close
 
         # plottedImage = cv2.imread('images/plottedGraph.png')
         #Resizing the image
+        # print("Olo", str(filePath))
         plottedImage = cv2.imread('./../images/plottedGraph.png')
         resizedImage = imageResizing(plottedImage)
         resizedImage = resizedImage.resize()
