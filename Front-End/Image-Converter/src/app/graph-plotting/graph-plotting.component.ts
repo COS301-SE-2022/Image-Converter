@@ -53,7 +53,7 @@ export class GraphPlottingComponent implements OnInit {
     );
   }
 
-  downloadFile(imageDownload:any) {
+  /*downloadFile(imageDownload:any) {
     var a = document.createElement('a');
     a.href = imageDownload;
 
@@ -66,7 +66,24 @@ export class GraphPlottingComponent implements OnInit {
      document.body.removeChild(a);
 
   }
-
+*/
+  downloadFile(imageDownload:any)
+  {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", imageDownload, true);
+    xhr.responseType = "blob";
+    xhr.onload = function(){
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = "output.png";
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+    }
+    xhr.send();
+  }
 
 
   // download(source:any){
