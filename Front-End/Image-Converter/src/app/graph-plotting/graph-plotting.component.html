@@ -1,11 +1,10 @@
-
 <div class="w3-container">
     <br/>
-    <h1 class="w3-xxxlarge w3-text-black" ><b>Draw graph using Formula </b></h1>
-        
-    <form [formGroup]="form" (ngSubmit)="onFomulaSubmit()">
+    <h1 class="w3-xxxlarge w3-text-black" ><b>Draw graph using formulae</b></h1>
+    <img *ngIf="loading" src="assets/loading.gif" width="400" />  
+    <form [formGroup]="form" (ngSubmit)="onFomulaSubmit()"  *ngIf="!loading">
 
-            <label for="formula">Enter formula below</label>
+            <label for="formula">Enter formulae below</label>
             <div>
             <input formControlName="formula" placeholder="Email" matInput required>
             <!-- mat-error is for validation  -->
@@ -17,8 +16,8 @@
             <button id="drawbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" class="w3-blue"type="submit">Draw</button>
         </div>
         <div class="w3-card-4" class="card" style="width:35%">
-                <img id="graphImg" src={{displayImg}} >
-                <a class="btn btn-primary w3-blue" (click)="downloadFile(displayImg)">Download</a>
+                <img id="graphImg" src={{displayImg}} *ngIf="display">
+                <a *ngIf="display" id="downloadBtn" class="btn btn-primary w3-blue" (click)="downloadFile(displayImg)">Download</a>
                 
              </div>
 

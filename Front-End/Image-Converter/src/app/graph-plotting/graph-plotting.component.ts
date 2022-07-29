@@ -11,6 +11,9 @@ export class GraphPlottingComponent implements OnInit {
 
   constructor(private  graphPService: ConverterService,) { }
 
+  //used for loadig spinner
+  loading=false;
+  display=false;
   ngOnInit(): void {
   }
 
@@ -26,20 +29,22 @@ export class GraphPlottingComponent implements OnInit {
   //handle formula submission then displays drawn graph
   onFomulaSubmit()
   {
+    this.loading = true;
     let formula = {
       formula : this.form.get('formula')!.value
     } 
     let response:any=null;
     this.graphPService.postFormula(formula).subscribe(
       responseData =>{
+          this.loading = false;
             //response
             response = JSON.parse(JSON.stringify(responseData));
             console.log(response);
             if(response.image){
               console.log("success: "+response.image);
               this.displayImg=response.image;
-
-             
+              this.display=true;
+              
             }
             else{
               alert("could not draw graph");
