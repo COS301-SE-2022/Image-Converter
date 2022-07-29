@@ -23,6 +23,15 @@ class TestWatermark(unittest.TestCase):
         else:
             print("results folder does not exist")
 
+    def test_returnType(self):
+        obj3 = AddMark(Image.open('images/bar3.jpg'))
+
+        if obj3.Dev() == obj3.img:
+            print("return type correct")
+
+        else:
+            print("incorrect return type")
+
 
 # def test_watermark():
 #     testImg = Image.open('images/bar3.jpg')
