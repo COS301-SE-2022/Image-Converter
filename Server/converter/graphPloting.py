@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib
 import numpy as np
 from converter.resizing import imageResizing
 from converter.watermark import AddMark
@@ -22,7 +23,7 @@ class GraphPloting:
         print("hello")
         plt.savefig('images/plottedGraph.png')
         print("hello2")
-        plt.show()
+        # plt.show()
         plt.close
 
         plottedImage = cv2.imread('images/plottedGraph.png')
