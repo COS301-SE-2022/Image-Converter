@@ -28,13 +28,16 @@ display it to the user. The tool will support multiple graphing functions and gr
 
 
 ## System Requirements Specification
-[SRS Document](https://drive.google.com/file/d/17HnvjJIGHGOmh0mwlA_B81uC_S_EcNAU/view?usp=sharing)
+[SRS Document](https://drive.google.com/file/d/1rdijt_f5z58gLLqSOU7jMKewXRHDYkeQ/view?usp=sharing)
 
 ## Architectural Requirements
 [Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
 
 ## User Manual
-[Manual](https://drive.google.com/file/d/1_Y0_HrOpQP24oJWBdDtAn01b9TpFvAfO/view?usp=sharing)
+[Manual](https://drive.google.com/file/d/1l6HxlCZIPMnvjEwP6GMHtGoG3iaP30AW/view?usp=sharing)
+
+## Technical Installation Manual
+[TechnicalManual](https://drive.google.com/file/d/1PYll45FZF9yuEJLTHFyySPbtFCbvW7d9/view?usp=sharing)
 
 ## Coding Standards
 [Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
