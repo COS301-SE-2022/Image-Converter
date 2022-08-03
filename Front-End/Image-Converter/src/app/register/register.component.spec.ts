@@ -80,17 +80,17 @@ describe('RegisterComponent', () => {
     let mail = component.registerForm.controls.email
     expect(mail.valid).toBeFalsy();
     expect(mail.pristine).toBeTruthy();
-    // expect(mail.errors.required).toBeTruthy();
+    expect(mail.errors).toBeTruthy();
 
     mail.setValue('omo')
-    // expect(mail.errors.email).toBeTruthy
+    expect(mail.errors).toBeTruthy
   });
 
   it('email - should check if correct email adress is entered', () => {
 
     let mail = component.registerForm.controls.email
-    mail.setValue('abc@gmail.com')
-    // expect(mail.errors.email).toBeNull()
+    mail.setValue('abc123@gmail.com')
+    expect(mail.errors).toBeNull() //fail
   });
 
 
@@ -123,7 +123,7 @@ describe('RegisterComponent', () => {
     component.registerForm.controls.email.setValue('abc@gmail.com');
     component.registerForm.controls.password.setValue('01234567');
 
+    // expect(component.registerForm.valid).toBeTruthy();
     expect(component.registerForm.valid).toBeFalsy();
-    // expect(component.registerForm.valid).toBeFalsy();
   }); 
 });
