@@ -42,6 +42,39 @@ describe('RegisterComponent', () => {
   
   });
 
+  it('username should be invalid if it is less than 2 characters', () => {
+
+    let nme = component.registerForm.controls.name
+    nme.setValue('O');
+    expect(nme.errors).toBeTruthy();
+  
+  });
+
+  it('username should be valid if it is more than 2 characters', () => {
+
+    let nme = component.registerForm.controls.name
+    nme.setValue('Omo');
+    expect(nme.errors).toBeFalsy();
+  
+  });
+
+  it('surname should be invalid if it is less than 2 characters', () => {
+
+    let usrnme = component.registerForm.controls.surname
+    usrnme.setValue('M');
+    expect(usrnme.errors).toBeTruthy();
+  
+  });
+
+
+  it('surname should be valid if it is more than 2 characters', () => {
+
+    let usrnme = component.registerForm.controls.surname
+    usrnme.setValue('Mash');
+    expect(usrnme.errors).toBeFalsy()
+  
+  });
+
   it('email - should be valid', () => {
 
     let mail = component.registerForm.controls.email
@@ -51,8 +84,6 @@ describe('RegisterComponent', () => {
 
     mail.setValue('omo')
     // expect(mail.errors.email).toBeTruthy
-
-
   });
 
   it('email - should check if correct email adress is entered', () => {
@@ -80,4 +111,19 @@ describe('RegisterComponent', () => {
     expect(pwd.errors).toBeFalsy();
     expect(pwd.valid).toBeTruthy();//.minLength  
   });
+
+
+  it('form check - should check if form is valid or not if no values are entered', () => {
+
+    expect(component.registerForm.valid).toBeFalsy();
+  });
+
+  it('form check - should check if form is valid or not if values are entered', () => {
+
+    component.registerForm.controls.email.setValue('abc@gmail.com');
+    component.registerForm.controls.password.setValue('01234567');
+
+    expect(component.registerForm.valid).toBeFalsy();
+    // expect(component.registerForm.valid).toBeFalsy();
+  }); 
 });
