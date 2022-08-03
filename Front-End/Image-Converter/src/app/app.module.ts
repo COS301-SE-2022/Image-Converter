@@ -21,6 +21,7 @@ import { TemplateMatchingComponent } from './template-matching/template-matching
 import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
+import { Router, RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -46,9 +47,10 @@ import { GraphPlottingComponent } from './graph-plotting/graph-plotting.componen
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    RouterModule
   ],
-  providers: [ConverterService,ComponentCommunicationService],
+  providers: [ConverterService,ComponentCommunicationService, Router],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
