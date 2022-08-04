@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing'
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ImagePopupComponent } from './image-popup.component';
-import {UploadHistoryComponent } from '../upload-history/upload-history.component';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UploadHistoryComponent } from '../upload-history/upload-history.component';
 
 describe('ImagePopupComponent', () => {
   let component: ImagePopupComponent;
@@ -10,14 +10,8 @@ describe('ImagePopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImagePopupComponent ] ,
-      imports: [
-        RouterTestingModule,
-        HttpClientTestingModule, 
-      ],
-      providers: [
-        UploadHistoryComponent
-      ]
+      declarations: [ ImagePopupComponent ],
+      providers: [UploadHistoryComponent,MatDialogRef]
     })
     .compileComponents();
   });
@@ -28,26 +22,7 @@ describe('ImagePopupComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create image pop up component', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  describe('testing downloadFile method', async() => {
-    const blob = new Blob([""], { type: "text/html" });
-    const file = <File>blob;
-    it('', () => {
-      component.downloadFile(file);
-      // expect(component).toEqual('');
-    });
-  });
-
-  describe('testing deleteImages method', async() => {
-    const blob = new Blob([""], { type: "text/html" });
-    const file = <File>blob;
-    it('', () => {
-      component.deleteImages();
-      // expect(component).toEqual('');
-    });
-  });
-
 });
