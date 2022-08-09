@@ -1,8 +1,0 @@
-DB_HOST="hardcodedatabase.comb9wxgwyny.us-east-1.rds.amazonaws.com"
-DB_NAME="hardcode"
-DB_PASS="h4rdcod3"
-DB_USER="hardcode"
-SENDGRID_API_KEY="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"
-BUCKET_NAME="hardcode-9aba7.appspot.com"
-SESSION_REDIS="o;jliukjhygtfrfsxdgh09876r5dretcf"
-SESSION_TYPE=redis
