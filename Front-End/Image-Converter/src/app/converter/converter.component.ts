@@ -145,10 +145,15 @@ export class ConverterComponent implements OnInit {
           responseData =>{
             this.loading = false;
             console.log(responseData);
-            this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-             console.log(this.respsonseBase64);
-            this.imgData.changeMessage(this.respsonseBase64);
-            this.imgData.changBool(true);
+            let response = JSON.parse(JSON.stringify(responseData));
+            if(response.body.response == "Picture is None!"){
+              alert("No image sent");
+            }else{
+              console.log(this.respsonseBase64);
+              this.imgData.changeMessage(response);
+              this.imgData.changBool(true);
+            }
+            
           }
         );
       });

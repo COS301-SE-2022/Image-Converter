@@ -110,8 +110,10 @@ def upload_image(user):
 
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-        return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
-
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+        else:
+            print("picture is None")
+            return {'response': 'Picture is None!'},200
     else:
         return {'response': 'failed'}, 400
 
@@ -127,9 +129,9 @@ def auth_login():
             token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
             ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
             result = "success"
-            return jsonify({'result': result, 'token': str(token)})
+            return jsonify({'response': result, 'token': str(token)})
         else:
-            return jsonify({'result': 'failed'})
+            return {'response': 'failed'},200
     else:
         return {'response': 'failed'}, 400
 
