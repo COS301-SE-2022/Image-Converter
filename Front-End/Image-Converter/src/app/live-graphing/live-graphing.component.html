@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+  <!-- <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script> -->
+
+    
+    
+  <style>
+    #screenshot-button {
+      margin: 10px 0;
+      display: block;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    #screenshot-container {
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+    
+    <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    
+  <div id="calculator" style="width: 600px; height: 400px;"></div>
+  
+  <button id="screenshot-button">Capture Screenshot</button>
+  
+  <div id="screenshot-container" style="display: none;">
+    <table>
+      <tr>
+        <td><code>targetPixelRatio: 1</code> (default)</td>
+       
+      </tr>
+      <tr>
+        <td>
+          <img class="screenshot" id="screenshot-1x" width="400" height="400" />
+        </td>
+       
+      <tr>
+    </table>
+
+  </div>
+
+  <script >
+    var calcElt = document.getElementById('calculator');
+    var calculator = Desmos.GraphingCalculator(calcElt);
+    calculator.setExpression({latex: 'x^2+y^2=10'});
+
+    var btnElt = document.getElementById('screenshot-button');
+    btnElt.addEventListener('click', captureScreenshots);
+
+    var containerElt = document.getElementById('screenshot-container');
+    var img1x = document.getElementById('screenshot-1x');
+    
+
+    function captureScreenshots () {
+      img1x.src = calculator.screenshot({
+        height: 400,
+        width: 400
+      });
+
+      
+
+      containerElt.style.display = 'block';
+    }
+  </script>
+  
+</body>
+</html>
