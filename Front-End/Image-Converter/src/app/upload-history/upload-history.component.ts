@@ -73,10 +73,16 @@ export class UploadHistoryComponent implements OnInit {
         this.loading = true;
         this.imgService.deleteImage(this.uuid[index]).subscribe(
           responseData =>{
+            let response = JSON.parse(JSON.stringify(responseData));
+            if(response.body.response == "success"){
                 //response
                 this.uploadedImg=[];
                 this.uploadedImgProcessed=[];
                 this.ngOnInit();
+            }else{
+              alert("Something is wrong")
+            }
+                
             }
         );
       
