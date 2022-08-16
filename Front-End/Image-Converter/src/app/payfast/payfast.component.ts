@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payfast.component.scss']
 })
 export class PayfastComponent implements OnInit {
-
+  // url ="https://sandbox.payfast.co.za/eng/process ";
+  url = "https://www.payfast.co.za/eng/process";
   constructor() { }
 
   ngOnInit(): void {

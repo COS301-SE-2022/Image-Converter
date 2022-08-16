@@ -8,6 +8,7 @@ import { TemplateMatchingComponent } from './template-matching/template-matching
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {PayfastComponent} from './payfast/payfast.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule, HttpClientModule]
 })
 export class AppRoutingModule { }
 declare global{
