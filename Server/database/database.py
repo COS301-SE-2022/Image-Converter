@@ -89,7 +89,7 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    def insert_image(self, image_uploaded,image_converted, id):
+    def insert_image(self, image_uploaded,image_converted, id,graphType):
         try: 
             
             value = self.countRows()
@@ -107,7 +107,7 @@ class User:
             #sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
             sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
             print("Executing")
-            self.cur.execute(sql, ('straight line', id, link,link2))
+            self.cur.execute(sql, (graphType, id, link,link2))
             self.conn.commit()
             return True
         except Exception as e:
@@ -138,6 +138,20 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+
+    
+    def getUnrecognizedImages(self):
+        try:
+            sql = "SELECT * FROM history2 where graph_type=unrecognized ORDER BY id DESC"
+            self.cur.execute(sql,)
+            db_history = self.cur.fetchall()
+            self.conn.commit()
+            return db_history
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+
+    
 
     def delete_history(self,id):
         try:

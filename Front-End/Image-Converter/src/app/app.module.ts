@@ -22,6 +22,7 @@ import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
 import { Router, RouterModule} from '@angular/router';
+import { UnrecognizedGraphsComponent } from './unrecognized-graphs/unrecognized-graphs.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { Router, RouterModule} from '@angular/router';
     TemplateMatchingComponent,
     ImagePopupComponent,
     ForgotPasswordComponent,
-    GraphPlottingComponent
+    GraphPlottingComponent,
+    UnrecognizedGraphsComponent
   ],
   imports: [
     BrowserModule,

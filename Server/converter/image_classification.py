@@ -91,11 +91,11 @@ class Classification:
         print(img_pred)
 
         if(img_pred.count("bar_chart") ==2):
-            self.graphType = "Image is a bar chart"
+            self.graphType = "bar chart"
             return self.graphType
         elif((img_pred.count("line_graph") ==2)):
-            self.graphType = "Image is a line graph"
+            self.graphType = "line graph"
             return self.graphType
         elif((img_pred.count("pie_chart") ==2)):
-            self.graphType = "Image is a pie chart"
+            self.graphType = "pie chart"
             return self.graphType

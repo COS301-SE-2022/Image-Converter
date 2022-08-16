@@ -180,5 +180,21 @@ export class ConverterService {
       data,httpOptions
     );
   }
+
+  getUnrecognizedGraphs(){
+
+    let token = localStorage.getItem('token');
+    
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    let data = {data: ''};
+    return this.httpclient.get(
+      'http://localhost:5000/unrecognizedgraphs',
+      httpOptions
+    );
+  }
+  
   
 }
