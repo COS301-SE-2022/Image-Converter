@@ -1,0 +1,89 @@
+<!-- <p>live-graphing2 works!</p> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <h1 class="w3-xxxlarge w3-text-black" ><b>Draw graph using formulae</b></h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    
+
+
+  <style>
+    #screenshot-button {
+      margin: 10px 0;
+      display: block;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    #screenshot-container {
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+ 
+  <div id="calculator" style="width: 800px; height: 400px;"></div>
+
+  <button id="screenshot-button">Capture Screenshot</button>
+  <p>here</p>
+  <div id="screenshot-container" style="display: none;">
+    <table>
+      
+      <tr>
+        <td>
+          <img class="screenshot" id="screenshot-1x" width="500" height="500" />
+        </td>
+       
+      <tr>
+    </table>
+
+  </div>
+
+  <script >
+    var calcElt = document.getElementById('calculator');
+    var calculator = Desmos.GraphingCalculator(calcElt);
+    calculator.setExpression({});
+
+    var btnElt = document.getElementById('screenshot-button');
+    btnElt.addEventListener('click', captureScreenshots);
+
+    var containerElt = document.getElementById('screenshot-container');
+    var img1x = document.getElementById('screenshot-1x');
+    
+
+    function captureScreenshots () {
+      img1x.src = calculator.screenshot({
+        height: 500,
+        width: 500
+      });
+
+      console.log(img1x.src);
+
+      containerElt.style.display = 'block';
+    }
+  </script>
+  
+</body>
+</html> -->
+
+<div id="calculator" style="width: 800px; height: 400px;"></div>
+
+<button id="screenshot-button">Capture Screenshot</button>
+
+  <div id="screenshot-container" style="display: none;">
+    <table>
+      
+      <tr>
+        <td>
+          <img class="screenshot" id="screenshot-1x" width="500" height="500" />
+        </td>
+       
+      <tr>
+    </table>
+
+  </div>
