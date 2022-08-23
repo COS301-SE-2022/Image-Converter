@@ -52,6 +52,11 @@ export class DashboardComponent implements OnInit {
     localStorage.setItem('token', "");
     this._router.navigateByUrl('/');
   }
+
+  toUnrecognized() {
+    var x = document.getElementById("unrecognizedImg") as HTMLLinkElement
+    x.scrollIntoView();
+  }
 }
 
 
