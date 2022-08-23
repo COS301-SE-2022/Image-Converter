@@ -26,6 +26,10 @@ app = Flask(__name__)
 app.secret_key = "super secret key"
 CORS(app)
 
+"""
+Methos for creating a new token or checking if a token is valid.
+
+"""
 def token(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -47,20 +51,17 @@ def token(f):
 
     return decorated
 
-
-@app.route('/')
-def index():
-    return "Hello World!"
-
-
-@app.route('/test', methods=['POST'])
-@token
-def test(user):
-    username = str(request.json['email'])
-    print(user)
-    return jsonify({'result': username})
-
-
+"""
+    Upload image Function:
+        Classifies , cleans and add water mark to the image
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        picture
+    Returns:
+        JSON Object
+"""
 
 @app.route('/picture', methods=['POST'])
 @token
@@ -79,11 +80,6 @@ def upload_image(user):
             
             image_uploaded = bytearray(base64_picture)
             img_class = Classification(picture)
-            # print(type(opencv_img))
-            # templateMatch = Matching(opencv_img)
-            #-------> img_class = Classification(opencv_img)
-            # print(templateMatch.graphType)
-            # print(templateMatch.perfectMatch)
             print("#########################################")
             print(img_class.graphType)
             print("#########################################")
@@ -91,31 +87,31 @@ def upload_image(user):
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
-            # addLogo = AddMark(opencv_img)
-            # addLogo.Dev
-            # with open("images/original/Graph.png", "rb") as img_file:
-            #     b64picture = base64.b64encode(img_file.read())
-            # print("b64picture")
-            # image_converted = bytearray(b64picture)
-            
             if(db.insert_image(opencv_img, imageResult, user[0])):
                 print("Image inserted")
             db_image = db.get_image(user[0])
-            
             graphType = "This "+img_class.graphType
-            # if(templateMatch.perfectMatch>5):
-            #     graphType = graphType + " a "+templateMatch.graphType
-            # else:
-            #     graphType= graphType + " not recognized by the system"
-
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-        return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
-
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+        else:
+            print("picture is None")
+            return {'response': 'Picture is None!'},200
     else:
         return {'response': 'failed'}, 400
 
 
+"""
+    Login Function:
+        logs the user into the system
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        email, password
+    Returns:
+        JSON Object
+"""
 @app.route('/login', methods=['POST'])
 def auth_login():
     db = User()
@@ -127,12 +123,25 @@ def auth_login():
             token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
             ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
             result = "success"
-            return jsonify({'result': result, 'token': str(token)})
+            return jsonify({'response': result, 'token': str(token)})
         else:
-            return jsonify({'result': 'failed'})
+            return {'response': 'failed'},200
     else:
         return {'response': 'failed'}, 400
 
+
+
+"""
+    Register Function:
+        registers the user into the system
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        name, surname, email, password and the verification code
+    Returns:
+        JSON Object
+"""
 
 @app.route('/register', methods=["POST"])
 def register():
@@ -154,21 +163,25 @@ def register():
             else:
                 return {'response': 'failed'}, 400
         else:
-            return {'response': 'failed'}, 400
+            return {'response': 'code not found'}, 200
     else:
             return {'response': 'failed'}, 400
 
-@app.route('/template')
-def img():
-    return render_template('index.html', images = True)
 
+"""
+    UploadHistory Function:
+        Gets the 6 recent uploads for a specific user
+    Parameters:
+        User array
+    HTTP method: GET
+    Returns:
+        JSON Object
+"""
 @app.route('/uploadhistory', methods=["GET"])
 @token
 def uploadhistory(user):
-    
     db = User()
     if(db != None):
-        imageReturned = "data:image/png;base64,"
         db_image_array=db.get_image_history(user[0])
         OriginalImagelist=[]
         IndexArray=[]
@@ -177,16 +190,25 @@ def uploadhistory(user):
             IndexArray.append(x[0])
             OriginalImagelist.append(x[3]) 
             proccesedImagelist.append(x[4]) 
-
-
         return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
     else:
         return {'response': 'failed'}, 400
 
+
+"""
+    DeleteHistory Function:
+        deletes a specific user history
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        index for the specific history
+    Returns:
+        JSON Object
+"""
 @app.route('/deletehistory' ,methods =['POST'])
 @token
-def delete_user_history(user):
-    #check the environment 
+def delete_user_history():
     db=User()
     if(db!=None):
         index = request.json['index']
@@ -198,11 +220,22 @@ def delete_user_history(user):
             else:
                 return jsonify({'response': 'failed'})
         else:
-            return {'response': 'failed'}, 400
+            return {'response': 'index is invalid'}, 400
     else:
         return {'response': 'failed'}, 400
 
 
+"""
+    UserFeedback Function:
+        registers the user into the system
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        feedback
+    Returns:
+        JSON Object
+"""
 @app.route('/feedback' ,methods =['POST'])
 @token
 def user_feedback(user):
@@ -220,6 +253,18 @@ def user_feedback(user):
     else:
         return {'response': 'failed'}, 400
 
+
+"""
+    ResetPassword Function:
+        updates the user password
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        email, password
+    Returns:
+        JSON Object
+"""
 @app.route('/resetpassword', methods=["POST"])
 def reset_password():
     db = User()
@@ -234,14 +279,23 @@ def reset_password():
         return {'response': 'failed'}, 400
 
 
+"""
+    ResetPasswordCode Function:
+        checks the verification code if it's valid
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        email, verification code
+    Returns:
+        JSON Object
+"""
 @app.route('/resetpasswordcode', methods=["POST"])
 def reset_password_code():
     db = User()
     if(db != None):
         email = str(request.json['email'])
         code = str(request.json['code'])
-        # print(email)
-        # newPassword = str(request.json['password'])
         print(db.get_code(email))
         if db.get_code(email)[2] == code:
             return {'response': 'success'}, 200
@@ -251,6 +305,17 @@ def reset_password_code():
         return {'response': 'failed'}, 400
 
 
+"""
+    SendEmail Function:
+        sending email with a verification code to the new user
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        email
+    Returns:
+        JSON Object
+"""
 @app.route('/sendEmail', methods=["POST"])
 def sendEmail():
     db = User()
@@ -277,12 +342,23 @@ def sendEmail():
     else:
         return {{'response': 'failed'}}, 400
 
+
+"""
+    ResetPasswordEmail Function:
+        sending email with a reset password verification code to a user
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        email
+    Returns:
+        JSON Object
+"""
 @app.route('/resetpasswordemail', methods=["POST"])
 def resetPasswordEmail():
     db = User()
     if(db != None):
         email = str(request.json["email"])
-        # print(db.getUserWithEmail(email))
         if db.getUserWithEmail(email) is not None:
             code = str(random.randint(1000, 9999))
             db.insert_code(email, code)
@@ -302,7 +378,19 @@ def resetPasswordEmail():
             return {'response': 'User Exists'}, 200
     else:
         return {{'response': 'failed'}}, 400
-        
+
+
+"""
+    PlotGraph Function:
+        plots a graph given a formula
+    Parameters:
+        User array 
+    HTTP method: POST
+    Request data:
+        formula
+    Returns:
+        JSON Object
+"""
 @app.route('/plotting', methods=['POST'])
 @token
 def plot_graph(user):
