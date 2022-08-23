@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { ConverterService } from '../shared/converter.service';
 
 @Component({
@@ -8,7 +11,7 @@ import { ConverterService } from '../shared/converter.service';
 })
 export class UnrecognizedImagesComponent implements OnInit {
 
-  constructor(private imgService: ConverterService) { }
+  constructor(private dialog: MatDialog,private imgService: ConverterService,private _router: Router) { }
     //holds unprocessed images
     uploadedImg: string[] = [];
     //holds unprocessed images
@@ -40,6 +43,46 @@ export class UnrecognizedImagesComponent implements OnInit {
       }
       );
   }
+
+  imageClick(index:any, arrayToUse:String){
+
+    /* let image;
+     if(arrayToUse=="uploaded"){
+       image=this.uploadedImg[index];
+     }
+     else{
+       image=this.uploadedImgProcessed[index];
+     }*/
+     
+     const configDialog = new MatDialogConfig();
+ 
+     //send the processed version of the image (parameter)
+     const dialogRef = this.dialog.open(ImagePopupComponent, {
+       width: '40%',
+       height: '80%',
+       data: { img: this.uploadedImg[index],imgProcessed:this.uploadedImgProcessed[index] },
+     });
+ 
+     dialogRef.afterClosed().subscribe((data) => {
+       if (data != undefined) {
+         //returned message
+         console.log('returned message:'+data.request);
+         this.loading = true;
+         this.imgService.deleteImage(this.uuid[index]).subscribe(
+           responseData =>{
+                 //response
+                 this.uploadedImg=[];
+                 this.uploadedImgProcessed=[];
+                 this.ngOnInit();
+             }
+         );
+       
+       } else {
+         console.log('returned empty:');
+       } //dialog closed
+     });
+ 
+   }
 
 
 }
