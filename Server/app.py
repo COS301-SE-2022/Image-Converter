@@ -87,7 +87,7 @@ def upload_image(user):
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
-            if(db.insert_image(opencv_img, imageResult, user[0])):
+            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             graphType = "This "+img_class.graphType
@@ -123,6 +123,7 @@ def auth_login():
             token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
             ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
             result = "success"
+            print(result)
             return jsonify({'response': result, 'token': str(token)})
         else:
             return {'response': 'failed'},200
@@ -401,11 +402,40 @@ def plot_graph(user):
         if formula is not None:
             graph = GraphPloting()
             image_converted=graph.draw(formula)
-            if(db.insert_image(image_converted, image_converted, user[0])):
+            if(db.insert_image(image_converted, image_converted, user[0],'line graph')):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             print(db_image[4])
         return jsonify({'image': db_image[4]})
+    else:
+        return {'response': 'failed'}, 400
+
+
+"""
+    unrecognizedGraphs Function:
+        Gets all the unrecognized graphs (Only admin users)
+    Parameters:
+        User array
+    HTTP method: GET
+    Returns:
+        JSON Object
+"""
+@app.route('/unrecognizedgraphs', methods=["GET"])
+@token
+def unrecognizedGraphs(user):
+    db = User()
+    if(db != None):
+        if(user[6]):
+            db_image_array=db.getUnrecognizedImages()
+            OriginalImagelist=[]
+            IndexArray=[]
+            proccesedImagelist=[]
+            for x in db_image_array:
+                IndexArray.append(x[0])
+                OriginalImagelist.append(x[3]) 
+                proccesedImagelist.append(x[4]) 
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
+        return {'response':'UserNotAdmin'},200
     else:
         return {'response': 'failed'}, 400
 
