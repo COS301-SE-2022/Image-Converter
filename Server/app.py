@@ -439,5 +439,14 @@ def unrecognizedGraphs(user):
     else:
         return {'response': 'failed'}, 400
 
+@app.route('/checkusertype', methods=['GET'])
+@token
+def check_user(user):
+    db=User()
+    if(db!=None):
+        return jsonify({'response':'success','userType': user[6]})
+    else:
+        return {'response': 'failed'}, 400
+
 if __name__ == '__main__':
     app.run(debug=True)
