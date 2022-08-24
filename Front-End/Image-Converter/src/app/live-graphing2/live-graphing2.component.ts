@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // // import {Desmos} from 'desmos';
-// import {Chart} from 'chart.js';
+import html2canvas from 'html2canvas';
 
 // declare var Desmos: any;
 
@@ -34,6 +34,13 @@ export class LiveGraphing2Component implements OnInit {
         // calculator.setExpression({id: 'graph1', latex: 'y=x^2'});
 
         // var img1x = document.getElementById('screenshot-1x');
+        var fullsize = calculator.screenshot();
+
+        var img = document.createElement('img');
+
+        img.src = fullsize;
+
+        document.body.appendChild(img);
         
     }
 
@@ -41,6 +48,10 @@ export class LiveGraphing2Component implements OnInit {
 
   }
 
+    getName()
+    {
+      alert("yessir")
+    }
     // captureScreenshots () {
     // img1x.src = calculator.screenshot({
     //   height: 500,
