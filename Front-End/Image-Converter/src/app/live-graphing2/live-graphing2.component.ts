@@ -12,6 +12,7 @@ import html2canvas from 'html2canvas';
 export class LiveGraphing2Component implements OnInit {
   myScriptElement: HTMLScriptElement;
   Desmos: any;
+  captureScreenshots(){};
 
   constructor() { 
     this.myScriptElement = document.createElement("script");
@@ -27,21 +28,16 @@ export class LiveGraphing2Component implements OnInit {
         document.getElementsByTagName('head')[0].appendChild(this.myScriptElement);
         var elt = document.getElementById('calculator');
         // var calculator = this.Desmos.GraphingCalculator(elt, { keypad: true, expressions: true, settingsMenu: false, expressionsCollapsed: true });
-        var calculator = this.Desmos.GraphingCalculator(elt);
-
-      
+        var calculator = this.Desmos.GraphingCalculator(elt);      
         calculator.setExpression({});
-        // calculator.setExpression({id: 'graph1', latex: 'y=x^2'});
-
-        // var img1x = document.getElementById('screenshot-1x');
-        var fullsize = calculator.screenshot();
-
-        var img = document.createElement('img');
-
-        img.src = fullsize;
-
-        document.body.appendChild(img);
         
+
+        // var btnElt = document.getElementById('screenshot-button');
+        // btnElt.addEventListener('click',this.captureScreenshots);
+        
+        
+        
+
     }
 
   
@@ -50,7 +46,7 @@ export class LiveGraphing2Component implements OnInit {
 
     getName()
     {
-      alert("yessir")
+      alert("yah saan")
     }
     // captureScreenshots () {
     // img1x.src = calculator.screenshot({
