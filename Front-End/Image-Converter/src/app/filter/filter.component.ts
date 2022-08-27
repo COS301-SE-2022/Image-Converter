@@ -24,7 +24,7 @@ export class FilterComponent implements OnInit {
   subscription!: Subscription;
   private globalFilterVar = GlobalVariable.globalVar;
   
-  constructor(public sanitizer: DomSanitizer,private imgData: ComponentCommunicationService ) { }
+  constructor(private imgData: ComponentCommunicationService ) { }
 
   ngOnInit(): void {
     //subscribe for communication between components
@@ -75,39 +75,34 @@ export class FilterComponent implements OnInit {
     var a = document.createElement('a');
     a.href = this.message.image;
     var imgBckend = a.href;
-  // a.download = "output.png";
-  // document.body.appendChild(a);
-  // a.click();
-  // document.body.removeChild(a);
-var filterVar;
-// console.log(temp);
-  if(this.globalFilterVar == "grayscale"){
-    filterVar = "grayscale";
-  }
-  else if(this.globalFilterVar == "sepia"){
-    filterVar = "sepia";
-  }
-  else if(this.globalFilterVar == "contrast"){
-    filterVar = "contrast";
-  }
-  else if(this.globalFilterVar == "hueRotate"){
-    filterVar = "hueRotate";
-  }
-  else if(this.globalFilterVar == "revert"){
-    filterVar = "revert";
+    // a.download = "output.png";
+    // document.body.appendChild(a);
+    // a.click();
+    // document.body.removeChild(a);
+    var filterVar;
+    // console.log(temp);
+    if(this.globalFilterVar == "grayscale"){
+      filterVar = "grayscale";
+    }
+    else if(this.globalFilterVar == "sepia"){
+      filterVar = "sepia";
+    }
+    else if(this.globalFilterVar == "contrast"){
+      filterVar = "contrast";
+    }
+    else if(this.globalFilterVar == "hueRotate"){
+      filterVar = "hueRotate";
+    }
+    else if(this.globalFilterVar == "revert"){
+      filterVar = "revert";
+    }
+
+    myTest(imgBckend,filterVar);
+    // alert(myTest);
   }
 
-  myTest(imgBckend,filterVar);
-  // alert(myTest);
-
+  upload(){
+    //  uploadImage(window.event);
+    myTest();
   }
-
- upload(){
-  //  uploadImage(window.event);
-  myTest();
- }
-
-
-
 }
-
