@@ -200,12 +200,12 @@ export class ConverterService {
   deleteUnrecognisableImage(id:any){
 
     var tok = localStorage.getItem('token');
-  
+ 
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
     };
-    
+
     let pic = {index: id};
 
     return this.httpclient.post(
@@ -222,10 +222,26 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
-    let data = {data: ''};
     return this.httpclient.get(
       'http://localhost:5000/checkusertype',
       httpOptions
+    );
+  }
+
+  AdminFeedback(adminFeedback:any, id:any){
+
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    
+    let pic = {feedback:adminFeedback, index: id};
+
+    return this.httpclient.post(
+      'http://localhost:5000/adminFeedback',
+      pic,httpOptions
     );
   }
   
