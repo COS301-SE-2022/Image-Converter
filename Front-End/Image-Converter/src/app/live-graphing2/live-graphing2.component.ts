@@ -65,13 +65,23 @@ export class LiveGraphing2Component implements OnInit {
               console.log("success: "+response.image);
              // this.displayImg=response.image;
              // this.display=true;
-              
+             this.downloadFile(response.image);
             }
             else{
-              alert("could not draw graph");
+              alert("could not save graph");
             }
         }
     );
+  }
+
+  downloadFile(imageDownload:any) {
+    var a = document.createElement('a');
+    a.href = imageDownload;
+
+    a.download = "output.png";
+     document.body.appendChild(a);
+     a.click();
+     document.body.removeChild(a);
   }
   
   
