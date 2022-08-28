@@ -21,8 +21,10 @@ import { TemplateMatchingComponent } from './template-matching/template-matching
 import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
+import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-u
     ImagePopupComponent,
     ForgotPasswordComponent,
     GraphPlottingComponent,
+    LiveGraphing2Component,
     UnrecognizedImagesComponent,
     AdminImagePopUpComponent
   ],
