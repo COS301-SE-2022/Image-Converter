@@ -491,9 +491,9 @@ def check_user(user):
         JSON Object
 """
 
-@app.route('/addWaterMark', methods=['POST'])
+@app.route('/addWatermark', methods=['POST'])
 @token
-def addWaterMark(user):
+def addWatermark(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
@@ -504,12 +504,12 @@ def addWaterMark(user):
             img = Image.open(io.BytesIO(imgdata))
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             resize = imageResizing(opencv_img)
-            logo = AddMark(Image.fromarray(cv2.cvtColor(resize, cv2.COLOR_BGR2RGB)))
+            resizedImage = resize.resize()
+            logo = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
             imageResult = logo.Dev()
             finalImage = np.array(imageResult) 
             finalImage = finalImage[:, :, ::-1].copy() 
-            
-            return jsonify({'image': finalImage})
+            return jsonify({'image': finalImage.tolist()})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
