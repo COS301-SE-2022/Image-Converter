@@ -79,9 +79,10 @@ export class UnrecognizedImagesComponent implements OnInit {
                   this.ngOnInit();
               }
           );
-         }else if(data.request=="feedback"){
+         }else {
           this.loading = true;
-          this.imgService.AdminFeedback(data.graphType, this.uuid[index]).subscribe(
+          console.log("request "+data.request);
+          this.imgService.AdminFeedback(data.request, this.uuid[index]).subscribe(
             responseData =>{
                   //response
                   this.uploadedImg=[];

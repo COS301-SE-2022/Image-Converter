@@ -56,6 +56,7 @@ export class ConverterService {
       data,{observe:'response'}
     );
   }
+
    postImg(data: string) {
      
     // var auth=sessionStorage.getItem('token');
@@ -196,7 +197,7 @@ export class ConverterService {
     );
   }
   
-  AdminFeedback(adminFeedback:any, id:any){
+  AdminFeedback(adminFeedback:string, id:any){
 
     var tok = localStorage.getItem('token');
   
@@ -206,7 +207,7 @@ export class ConverterService {
     };
     
     let pic = {feedback:adminFeedback, index: id};
-
+    console.log(pic)
     return this.httpclient.post(
       'http://localhost:5000/adminFeedback',
       pic,httpOptions
