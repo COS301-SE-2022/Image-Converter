@@ -244,5 +244,23 @@ export class ConverterService {
       pic,httpOptions
     );
   }
+
+  savePlottedImg(data: string) {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    let pic = {picture: data};
+
+    return this.httpclient.post(
+      'http://localhost:5000/addWatermark',
+      pic,httpOptions
+    );
+  }
   
 }
