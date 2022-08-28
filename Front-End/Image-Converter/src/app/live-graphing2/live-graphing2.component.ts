@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // // import {Desmos} from 'desmos';
 import html2canvas from 'html2canvas';
-
+import {ConverterService} from './../shared/converter.service';
 // declare var Desmos: any;
 
 @Component({
@@ -15,23 +15,14 @@ export class LiveGraphing2Component implements OnInit {
   Desmos: any;
   
 
-  constructor() { 
+  constructor(private  graphService: ConverterService) { 
     this.myScriptElement = document.createElement("script");
     this.myScriptElement.src = "https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6";
     document.body.appendChild(this.myScriptElement);
 
-    // this.myScriptElement.onload = () => {
-    //   this.Desmos = (<any>window).Desmos;
-    //   console.log('loaded');
-    //   document.getElementsByTagName('head')[0].appendChild(this.myScriptElement);
-    //   var elt = document.getElementById('calculator');
-    //   // var calculator = this.Desmos.GraphingCalculator(elt, { keypad: true, expressions: true, settingsMenu: false, expressionsCollapsed: true });
-    //   var calculator = this.Desmos.GraphingCalculator(elt);      
-    //   calculator.setExpression({});
-       
-    // } 
-    
   }
+
+  calculator:any;
 
   ngOnInit(): void {
 
@@ -41,8 +32,8 @@ export class LiveGraphing2Component implements OnInit {
         document.getElementsByTagName('head')[0].appendChild(this.myScriptElement);
         var elt = document.getElementById('calculator');
         // var calculator = this.Desmos.GraphingCalculator(elt, { keypad: true, expressions: true, settingsMenu: false, expressionsCollapsed: true });
-        var calculator = this.Desmos.GraphingCalculator(elt);      
-        calculator.setExpression({});
+        this.calculator = this.Desmos.GraphingCalculator(elt);      
+        this.calculator.setExpression({});
          
     }
 
@@ -50,24 +41,37 @@ export class LiveGraphing2Component implements OnInit {
 
   }
 
+  //saves plotted graph
+   captureScreenshots() {
+    var containerElt = document.getElementById('screenshot-container');
+    var img1x = document.getElementById('screenshot-1x') as HTMLImageElement;
 
-
-  captureScreenshots () {
-    
-    var thumbnail = this.Desmos.calculator.screenshot({
-      width: 200,
-      height: 200,
+    img1x!.src = this.calculator.screenshot({
+      height: 500,
+      width: 500,
       targetPixelRatio: 2
     });
 
+    console.log(img1x.src);
 
-    var img = document.createElement('img');
-    img.src = thumbnail;
-
-    console.log(img.src);
-
-    console.log("huh?");
-    alert("we did it");
+    //containerElt!.style.display = 'block';
+    this.graphService.savePlottedImg(img1x.src).subscribe(
+      responseData =>{
+         // this.loading = false;
+            //response
+            let response = JSON.parse(JSON.stringify(responseData));
+            console.log(response);
+            if(response.image){
+              console.log("success: "+response.image);
+             // this.displayImg=response.image;
+             // this.display=true;
+              
+            }
+            else{
+              alert("could not draw graph");
+            }
+        }
+    );
   }
   
   
