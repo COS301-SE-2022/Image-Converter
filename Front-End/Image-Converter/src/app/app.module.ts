@@ -22,6 +22,7 @@ import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
+import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-
     ImagePopupComponent,
     ForgotPasswordComponent,
     GraphPlottingComponent,
-    UnrecognizedImagesComponent
+    UnrecognizedImagesComponent,
+    AdminImagePopUpComponent
   ],
   imports: [
     BrowserModule,

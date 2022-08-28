@@ -211,6 +211,17 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+    
+    def updateGraphType(self, graphType,id):
+        try:
+            sql = "UPDATE history2 SET graph_type =%s WHERE id= %s;"
+            self.cur.execute(sql, (graphType, id))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+    
 
 if __name__ == "__main__":
     db=User()

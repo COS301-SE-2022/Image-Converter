@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+// import { request } from 'http';
+import { AdminImagePopUpComponent } from '../admin-image-pop-up/admin-image-pop-up.component';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { ConverterService } from '../shared/converter.service';
 
@@ -57,7 +59,7 @@ export class UnrecognizedImagesComponent implements OnInit {
      const configDialog = new MatDialogConfig();
  
      //send the processed version of the image (parameter)
-     const dialogRef = this.dialog.open(ImagePopupComponent, {
+     const dialogRef = this.dialog.open(AdminImagePopUpComponent, {
        width: '40%',
        height: '80%',
        data: { img: this.uploadedImg[index],imgProcessed:this.uploadedImgProcessed[index] },
@@ -67,15 +69,28 @@ export class UnrecognizedImagesComponent implements OnInit {
        if (data != undefined) {
          //returned message
          console.log('returned message:'+data.request);
-         this.loading = true;
-         this.imgService.deleteImage(this.uuid[index]).subscribe(
-           responseData =>{
-                 //response
-                 this.uploadedImg=[];
-                 this.uploadedImgProcessed=[];
-                 this.ngOnInit();
-             }
-         );
+         if(data.request=="delete"){
+          this.loading = true;
+          this.imgService.deleteImage(this.uuid[index]).subscribe(
+            responseData =>{
+                  //response
+                  this.uploadedImg=[];
+                  this.uploadedImgProcessed=[];
+                  this.ngOnInit();
+              }
+          );
+         }else if(data.request=="feedback"){
+          this.loading = true;
+          this.imgService.AdminFeedback(data.graphType, this.uuid[index]).subscribe(
+            responseData =>{
+                  //response
+                  this.uploadedImg=[];
+                  this.uploadedImgProcessed=[];
+                  this.ngOnInit();
+              }
+          );
+         }
+         
        
        } else {
          console.log('returned empty:');

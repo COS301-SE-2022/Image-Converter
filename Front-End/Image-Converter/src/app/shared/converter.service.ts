@@ -196,5 +196,21 @@ export class ConverterService {
     );
   }
   
+  AdminFeedback(adminFeedback:any, id:any){
+
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    
+    let pic = {feedback:adminFeedback, index: id};
+
+    return this.httpclient.post(
+      'http://localhost:5000/adminFeedback',
+      pic,httpOptions
+    );
+  }
   
 }
