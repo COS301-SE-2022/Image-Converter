@@ -439,6 +439,35 @@ def unrecognizedGraphs(user):
     else:
         return {'response': 'failed'}, 400
 
+"""
+    deleteUnrecognisableImage Function:
+        Deletes a specific image from the list unrecognisable images.
+    Parameters:
+        User array
+    HTTP method: GET
+    Request data:
+        index for the specific unrecognisable image
+    Returns:
+        JSON Object
+"""
+@app.route('/deleteUnrecognisableImage', methods=["POST"])
+@token
+def deleteUnrecognisableImage(user):
+    db = User()
+    if(db != None):
+        if(user[6]):
+            index = request.json['index']
+            if index is not None:
+                if db.deleteUnrecognizedImages(index) is True:
+                    print("Image deleted")
+                    return jsonify({'response': 'success'})
+                else:
+                    print("Image not deleted")
+                    return jsonify({'response': 'failed'})
+            else:
+                return {'response': 'index is invalid'}, 400
+        return {'response':'UserNotAdmin'},200
+
 @app.route('/checkusertype', methods=['GET'])
 @token
 def check_user(user):

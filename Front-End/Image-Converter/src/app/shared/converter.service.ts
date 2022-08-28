@@ -195,7 +195,25 @@ export class ConverterService {
       httpOptions
     );
   }
+ 
+  //sends request to delete unrecognisable images
+  deleteUnrecognisableImage(id:any){
+
+    var tok = localStorage.getItem('token');
   
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    
+    let pic = {index: id};
+
+    return this.httpclient.post(
+      'http://localhost:5000//deleteUnrecognisableImage',
+      pic,httpOptions
+       );
+  }
+
   userType(){
 
     let token = localStorage.getItem('token');

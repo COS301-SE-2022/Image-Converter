@@ -68,7 +68,7 @@ export class UnrecognizedImagesComponent implements OnInit {
          //returned message
          console.log('returned message:'+data.request);
          this.loading = true;
-         this.imgService.deleteImage(this.uuid[index]).subscribe(
+         this.imgService.deleteUnrecognisableImage(this.uuid[index]).subscribe(
            responseData =>{
                  //response
                  this.uploadedImg=[];
