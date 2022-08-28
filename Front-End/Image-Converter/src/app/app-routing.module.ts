@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,12 @@ const routes: Routes = [
   {
     path: 'ForgotPassword',
     component: ForgotPasswordComponent
+  },
+  {
+    path: 'unrecognzied',
+    component: UnrecognizedImagesComponent
   }
+
 
 ];
 

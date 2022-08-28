@@ -49,10 +49,10 @@ export class LoginComponent implements OnInit {
     this.loginService.login(authDetails).subscribe(
       responseData=>{
         this.loading=false;
-        console.log(responseData.body.result);
+        console.log(responseData.body.response);
         this.response = JSON.parse(JSON.stringify(responseData));
         // console.log(responseData.body.token);
-        if(responseData.body.result == "success"){
+        if(responseData.body.response == "success"){
           localStorage.setItem('token', responseData.body.token);
           localStorage.setItem('email', this.form.get('username')!.value);
           this._router.navigateByUrl('/dashboard');
