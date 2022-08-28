@@ -211,7 +211,7 @@ def uploadhistory(user):
 """
 @app.route('/deletehistory' ,methods =['POST'])
 @token
-def delete_user_history():
+def delete_user_history(user):
     db=User()
     if(db!=None):
         index = request.json['index']
@@ -230,7 +230,7 @@ def delete_user_history():
 
 """
     UserFeedback Function:
-        registers the user into the system
+        adds the user feedback in the data
     Parameters:
         User array
     HTTP method: POST
@@ -490,7 +490,6 @@ def check_user(user):
     Returns:
         JSON Object
 """
-
 @app.route('/addWatermark', methods=['POST'])
 @token
 def addWatermark(user):
@@ -514,7 +513,37 @@ def addWatermark(user):
             print("picture is None")
             return {'response': 'Picture is None!'},200
     else:
-        return {'response': 'failed'}, 400        
+        return {'response': 'failed'}, 400  
+        
+"""
+    AdminFeedback Function:
+        the admin updates the graph type for a 
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        feedback
+        index
+    Returns:
+        JSON Object
+"""
+@app.route('/adminFeedback' ,methods =['POST'])
+@token
+def adminFeedback(user):
+    db=User()
+    if(db!=None):
+        feedback = request.json['feedback']
+        index = request.json['index']
+        if feedback is not None:
+            if db.updateGraphType(feedback,index) is True:
+                print("feedback inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
 
 if __name__ == '__main__':
     app.run(debug=True)
