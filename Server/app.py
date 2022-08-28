@@ -1,9 +1,11 @@
 import datetime
 from functools import wraps
 from lib2to3.pytree import Node
+from typing import final
 from attr import s
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
+from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
@@ -477,6 +479,42 @@ def check_user(user):
     else:
         return {'response': 'failed'}, 400
 
+"""
+    addWaterMark Function:
+        Resizes the image to 800x800 and adds the water mark to the image
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        picture
+    Returns:
+        JSON Object
+"""
+@app.route('/addWatermark', methods=['POST'])
+@token
+def addWatermark(user):
+    db=User()
+    if(db!=None):
+        picture = request.json['picture']
+        # print(picture)
+        if picture is not None:
+            print("picture is not None")
+            imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
+            img = Image.open(io.BytesIO(imgdata))
+            opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+            resize = imageResizing(opencv_img)
+            resizedImage = resize.resize()
+            logo = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
+            imageResult = logo.Dev()
+            finalImage = np.array(imageResult) 
+            finalImage = finalImage[:, :, ::-1].copy() 
+            return jsonify({'image': finalImage.tolist()})
+        else:
+            print("picture is None")
+            return {'response': 'Picture is None!'},200
+    else:
+        return {'response': 'failed'}, 400  
+        
 """
     AdminFeedback Function:
         the admin updates the graph type for a 
