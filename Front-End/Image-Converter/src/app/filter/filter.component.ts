@@ -1,9 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
-import { image } from 'html2canvas/dist/types/css/types/image';
-import { ReturnStatement } from '@angular/compiler';
 import {GlobalVariable} from './global';
 
 declare const myTest:any;
