@@ -26,7 +26,8 @@ body {font-size:16px;}
       <!--<a (click)="toConversionFormat()"  class="w3-bar-item w3-button w3-hover-white">Conversion Formats</a> -->
       <a (click)="toGraphing()"  class="w3-bar-item w3-button w3-hover-white">Draw graph using formulae</a>
       <a (click)="toUploadHistory()"  class="w3-bar-item w3-button w3-hover-white">Upload History</a> 
-      <a (click)="toContact()"  class="w3-bar-item w3-button w3-hover-white">Contact</a>
+      <a (click)="toContact()"  class="w3-bar-item w3-button w3-hover-white" id="cont">Contact</a>
+      <a (click)="toUnrecognized()"  class="w3-bar-item w3-button w3-hover-white" id="unrec">Unrecognized Images</a>
       <a (click)="logout()"  class="w3-bar-item w3-button w3-hover-white">Logout</a>
     </div>
   </nav>
@@ -95,6 +96,10 @@ body {font-size:16px;}
   <!-- Contact -->
   <div id="contact">
     <app-contact></app-contact>
+  </div>
+  <!--Unrecognized Images-->
+  <div id="unrecognizedImg">
+    <app-unrecognized-images></app-unrecognized-images>
   </div>
 <!-- End page content -->
 </div>

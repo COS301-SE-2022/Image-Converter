@@ -195,7 +195,7 @@ export class ConverterService {
       httpOptions
     );
   }
-  
+ 
   //sends request to delete unrecognisable images
   deleteUnrecognisableImage(id:any){
 
@@ -211,6 +211,21 @@ export class ConverterService {
     return this.httpclient.post(
       'http://localhost:5000//deleteUnrecognisableImage',
       pic,httpOptions
+       );
+  }
+
+  userType(){
+
+    let token = localStorage.getItem('token');
+    
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    let data = {data: ''};
+    return this.httpclient.get(
+      'http://localhost:5000/checkusertype',
+      httpOptions
     );
   }
   
