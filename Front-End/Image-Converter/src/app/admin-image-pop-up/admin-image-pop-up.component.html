@@ -16,8 +16,14 @@
     </div>
     
     <div>
-       <input type="text" [value]="graphType">
-       <button class="w3-button w3-round w3-block w3-red" (click)="feedback(graphType)">Submit</button>
+        <p>Select the graphType </p>
+        <select #type (change)="feedback(type.value)">
+            <option default>Pick a graphType</option>
+            <option>straight line</option>
+            <option>bar graph</option>
+            <option>pie chart</option>
+            <option>scatter plot</option>
+        </select>
     </div>
     
 </div>

@@ -69,15 +69,29 @@ export class UnrecognizedImagesComponent implements OnInit {
        if (data != undefined) {
          //returned message
          console.log('returned message:'+data.request);
-         this.loading = true;
-         this.imgService.deleteImage(this.uuid[index]).subscribe(
-           responseData =>{
-                 //response
-                 this.uploadedImg=[];
-                 this.uploadedImgProcessed=[];
-                 this.ngOnInit();
-             }
-         );
+         if(data.request=="delete"){
+          this.loading = true;
+          this.imgService.deleteImage(this.uuid[index]).subscribe(
+            responseData =>{
+                  //response
+                  this.uploadedImg=[];
+                  this.uploadedImgProcessed=[];
+                  this.ngOnInit();
+              }
+          );
+         }else {
+          this.loading = true;
+          console.log("request "+data.request);
+          this.imgService.AdminFeedback(data.request, this.uuid[index]).subscribe(
+            responseData =>{
+                  //response
+                  this.uploadedImg=[];
+                  this.uploadedImgProcessed=[];
+                  this.ngOnInit();
+              }
+          );
+         }
+         
        
        } else {
          console.log('returned empty:');

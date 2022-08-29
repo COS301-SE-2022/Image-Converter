@@ -536,6 +536,7 @@ def addWatermark(user):
 def adminFeedback(user):
     db=User()
     if(db!=None):
+        
         feedback = request.json['feedback']
         index = request.json['index']
         if feedback is not None:

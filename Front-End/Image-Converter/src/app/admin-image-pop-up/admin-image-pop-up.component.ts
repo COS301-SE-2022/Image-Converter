@@ -36,7 +36,7 @@ export class AdminImagePopUpComponent implements OnInit {
   }
   feedback(type:any)
   {
-    this.dialogRef.close({request:"feedback",graphType:type});
+    this.dialogRef.close({request:type});
   }
 
 }
