@@ -8,9 +8,13 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+// myscriptElement: HTMLScriptElement;
 
-
-  // constructor(public sanatizer: DomSanitizer) {}
+  // constructor() {
+  //   this.myscriptElement = document.createElement("script");
+  //   this.myscriptElement.src = "https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6";
+  //   document.body.appendChild(this.myscriptElement);
+  // }
 
   ngOnInit(): void {  
   }

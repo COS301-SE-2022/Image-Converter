@@ -1,9 +1,11 @@
 import datetime
 from functools import wraps
 from lib2to3.pytree import Node
+from typing import final
 from attr import s
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
+from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
@@ -440,6 +442,84 @@ def unrecognizedGraphs(user):
         return {'response': 'failed'}, 400
 
 """
+    deleteUnrecognisableImage Function:
+        Deletes a specific image from the list unrecognisable images.
+    Parameters:
+        User array
+    HTTP method: GET
+    Request data:
+        index for the specific unrecognisable image
+    Returns:
+        JSON Object
+"""
+@app.route('/deleteUnrecognisableImage', methods=["POST"])
+@token
+def deleteUnrecognisableImage(user):
+    db = User()
+    if(db != None):
+        if(user[6]):
+            index = request.json['index']
+            if index is not None:
+                if db.deleteUnrecognizedImages(index) is True:
+                    print("Image deleted")
+                    return jsonify({'response': 'success'})
+                else:
+                    print("Image not deleted")
+                    return jsonify({'response': 'failed'})
+            else:
+                return {'response': 'index is invalid'}, 400
+        return {'response':'UserNotAdmin'},200
+
+@app.route('/checkusertype', methods=['GET'])
+@token
+def check_user(user):
+    db=User()
+    if(db!=None):
+        return jsonify({'response':'success','userType': user[6]})
+    else:
+        return {'response': 'failed'}, 400
+
+"""
+    addWaterMark Function:
+        Resizes the image to 800x800 and adds the water mark to the image
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        picture
+    Returns:
+        JSON Object
+"""
+@app.route('/addWatermark', methods=['POST'])
+@token
+def addWatermark(user):
+    db=User()
+    if(db!=None):
+        picture = request.json['picture']
+        # print(picture)
+        if picture is not None:
+            print("picture is not None")
+            imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
+            img = Image.open(io.BytesIO(imgdata))
+            opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+            
+            resize = imageResizing(opencv_img)
+            resizedImage = resize.resize()
+            logo = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
+            imageResult = logo.Dev()
+            
+            buffered = io.BytesIO()
+            imageResult.save(buffered, format="PNG")
+            img_str = base64.b64encode(buffered.getvalue())
+            img_base64 = bytes("data:image/png;base64,", encoding='utf-8') + img_str
+            return jsonify({'image': img_base64.decode('utf-8')})
+        else:
+            print("picture is None")
+            return {'response': 'Picture is None!'},200
+    else:
+        return {'response': 'failed'}, 400  
+        
+"""
     AdminFeedback Function:
         the admin updates the graph type for a 
     Parameters:
@@ -469,7 +549,6 @@ def adminFeedback(user):
             return {'response': 'failed'}, 400
     else:
         return {'response': 'failed'}, 400
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -89,3 +89,14 @@ describe('ConverterComponent', () => {
   });
 
 });
+
+describe('Component: ConverterComponent', () => {
+  let component: ConverterComponent;
+  let converter: ConverterService;
+  let communication: ComponentCommunicationService;
+  let spy: any;
+
+  beforeEach(() => {
+    
+  });
+});

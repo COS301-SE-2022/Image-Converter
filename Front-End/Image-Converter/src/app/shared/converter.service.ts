@@ -196,20 +196,84 @@ export class ConverterService {
       httpOptions
     );
   }
-  
-  AdminFeedback(adminFeedback:string, id:any){
+ 
+  //sends request to delete unrecognisable images
+  deleteUnrecognisableImage(id:any){
 
+    var tok = localStorage.getItem('token');
+ 
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    let pic = {index: id};
+
+    return this.httpclient.post(
+      'http://localhost:5000//deleteUnrecognisableImage',
+      pic,httpOptions
+       );
+  }
+
+  userType(){
+
+    let token = localStorage.getItem('token');
+    
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    return this.httpclient.get(
+      'http://localhost:5000/checkusertype',
+      httpOptions
+    );
+  }
+
+ """
+    AdminFeedback Function:
+        the admin updates the graph type for a 
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        feedback
+        index
+    Returns:
+        JSON Object
+"""
+@app.route('/adminFeedback' ,methods =['POST'])
+@token
+def adminFeedback(user):
+    db=User()
+    if(db!=None):
+        
+        feedback = request.json['feedback']
+        index = request.json['index']
+        if feedback is not None:
+            if db.updateGraphType(feedback,index) is True:
+                print("feedback inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+        
+  savePlottedImg(data: string) {
+     
+    // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
   
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
     };
-    
-    let pic = {feedback:adminFeedback, index: id};
-    console.log(pic)
+
+    let pic = {picture: data};
+
     return this.httpclient.post(
-      'http://localhost:5000/adminFeedback',
+      'http://localhost:5000/addWatermark',
       pic,httpOptions
     );
   }

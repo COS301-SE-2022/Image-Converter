@@ -223,6 +223,16 @@ class User:
             return False
     
 
+    def deleteUnrecognizedImages(self, id):
+        try:
+            sql = "DELETE FROM history2 WHERE id=%s;"
+            self.cur.execute(sql, ([id]))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+
 if __name__ == "__main__":
     db=User()
     # db.register("test", "test", "u19081082@tuks.co.za", "test")
