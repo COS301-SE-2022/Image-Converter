@@ -502,13 +502,17 @@ def addWatermark(user):
             imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
             img = Image.open(io.BytesIO(imgdata))
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+            
             resize = imageResizing(opencv_img)
             resizedImage = resize.resize()
             logo = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
             imageResult = logo.Dev()
-            finalImage = np.array(imageResult) 
-            finalImage = finalImage[:, :, ::-1].copy() 
-            return jsonify({'image': finalImage.tolist()})
+            
+            buffered = io.BytesIO()
+            imageResult.save(buffered, format="PNG")
+            img_str = base64.b64encode(buffered.getvalue())
+            img_base64 = bytes("data:image/png;base64,", encoding='utf-8') + img_str
+            return jsonify({'image': img_base64.decode('utf-8')})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
