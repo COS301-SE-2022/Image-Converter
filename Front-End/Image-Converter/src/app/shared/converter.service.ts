@@ -56,7 +56,6 @@ export class ConverterService {
       data,{observe:'response'}
     );
   }
-
    postImg(data: string) {
      
     // var auth=sessionStorage.getItem('token');
@@ -229,37 +228,23 @@ export class ConverterService {
     );
   }
 
- """
-    AdminFeedback Function:
-        the admin updates the graph type for a 
-    Parameters:
-        User array
-    HTTP method: POST
-    Request data:
-        feedback
-        index
-    Returns:
-        JSON Object
-"""
-@app.route('/adminFeedback' ,methods =['POST'])
-@token
-def adminFeedback(user):
-    db=User()
-    if(db!=None):
-        
-        feedback = request.json['feedback']
-        index = request.json['index']
-        if feedback is not None:
-            if db.updateGraphType(feedback,index) is True:
-                print("feedback inserted")
-                return jsonify({'response': 'success'})
-            else:
-                return jsonify({'response': 'failed'})
-        else:
-            return {'response': 'failed'}, 400
-    else:
-        return {'response': 'failed'}, 400
-        
+  AdminFeedback(adminFeedback:any, id:any){
+
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    
+    let pic = {feedback:adminFeedback, index: id};
+
+    return this.httpclient.post(
+      'http://localhost:5000/adminFeedback',
+      pic,httpOptions
+    );
+  }
+
   savePlottedImg(data: string) {
      
     // var auth=sessionStorage.getItem('token');
