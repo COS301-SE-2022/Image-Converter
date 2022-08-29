@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
 
 import { UploadHistoryComponent } from './upload-history.component';
 
@@ -8,7 +10,8 @@ describe('UploadHistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UploadHistoryComponent ]
+      declarations: [ UploadHistoryComponent ],
+      imports: [HttpClientModule, MatDialog]
     })
     .compileComponents();
   });

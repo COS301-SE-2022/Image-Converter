@@ -24,6 +24,7 @@ import { GraphPlottingComponent } from './graph-plotting/graph-plotting.componen
 import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
+import { Router, RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -53,9 +54,10 @@ import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-u
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    RouterModule
   ],
-  providers: [ConverterService,ComponentCommunicationService],
+  providers: [ConverterService,ComponentCommunicationService, Router],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
