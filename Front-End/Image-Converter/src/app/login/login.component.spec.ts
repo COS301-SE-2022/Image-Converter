@@ -1,8 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Login } from '../classes/Login';
 import { ConverterService } from '../shared/converter.service';
-import { RouterTestingModule } from '@angular/router/testing';
+
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -15,8 +14,6 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       providers: [{provide: ConverterService, useValue: spy}]
-      imports: [HttpClientModule, RouterTestingModule]
-
     })
     .compileComponents();
   });

@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GraphPlottingComponent } from './graph-plotting.component';
@@ -9,8 +8,7 @@ describe('GraphPlottingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GraphPlottingComponent ],
-      imports: [HttpClientModule]
+      declarations: [ GraphPlottingComponent ]
     })
     .compileComponents();
   });
