@@ -5,7 +5,7 @@ import os
 
 def testImageSizeBeforeResizing():
     #Prepare data
-    filePath = os.path.join(os.getcwd() + r'\draw.jpeg' )
+    filePath = os.path.join(os.getcwd() + r'/draw.jpeg' )
     #Act
     object = imageResizing(cv2.imread(str(filePath)))
 
@@ -14,7 +14,7 @@ def testImageSizeBeforeResizing():
 
 def testImageSizeBeforeAndAfterResizing():
     #Prepare data
-    filePath = os.path.join(os.getcwd() + r'\draw.jpeg' )
+    filePath = os.path.join(os.getcwd() + r'/draw.jpeg' )
 
     #Act
     object = imageResizing(cv2.imread(str(filePath)))
