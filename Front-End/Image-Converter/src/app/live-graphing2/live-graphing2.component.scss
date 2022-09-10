@@ -1,14 +1,23 @@
+#screenshot{
+  width: 15%;
+  height: 5%;
+  border: none;
+  background-color: white;
+  margin-top: 50px;
+}
+
 #screenshot-button {
     margin: 10px 0;
     display: block;
     font-size: 13px;
     cursor: pointer;
-
-
+    height: 5%;
+    border: none;
 
     margin-top: 50px;
     width: 15%;
     background-color: #2f7fe7;
+    color: white;
     padding: 15px 0;
     font-size: 13px;
     font-weight: 600;

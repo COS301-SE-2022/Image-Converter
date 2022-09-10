@@ -14,7 +14,7 @@ export class LiveGraphing2Component implements OnInit {
   myScriptElement: HTMLScriptElement;
   Desmos: any;
   
-
+  loading=false;
   constructor(private  graphService: ConverterService) { 
     this.myScriptElement = document.createElement("script");
     this.myScriptElement.src = "https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6";
@@ -43,6 +43,7 @@ export class LiveGraphing2Component implements OnInit {
 
   //saves plotted graph
    captureScreenshots() {
+    this.loading = true;
     var containerElt = document.getElementById('screenshot-container');
     var img1x = document.getElementById('screenshot-1x') as HTMLImageElement;
 
@@ -66,6 +67,7 @@ export class LiveGraphing2Component implements OnInit {
              // this.displayImg=response.image;
              // this.display=true;
              this.downloadFile(response.image);
+             this.loading = false;
             }
             else{
               alert("could not save graph");
