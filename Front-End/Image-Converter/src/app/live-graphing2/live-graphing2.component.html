@@ -43,7 +43,10 @@
 
 <div id="calculator" style="width: 800px; height: 400px;"></div>
 
-<button id="screenshot-button" (click) ="captureScreenshots()">Save Graph</button>
+<button *ngIf="!loading" id="screenshot-button" (click) ="captureScreenshots()">Save Graph</button>
+<button id="screenshot"  type="submit" *ngIf="loading">
+  <mat-spinner id="spin" [diameter]="30" primary style="margin:0 auto;"></mat-spinner>
+</button>
 
 <div id="screenshot-container" style="display: none;">
     <table>
