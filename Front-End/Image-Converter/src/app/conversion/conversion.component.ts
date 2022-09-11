@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
+//import {GlobalVariable} from './global';
+
+declare const myTest:any;
 
 @Component({
   selector: 'app-conversion',
@@ -15,11 +18,13 @@ export class ConversionComponent implements OnInit {
   dispBool!: boolean;
   subscription!: Subscription;
 
+  filter!:any;
   constructor(private imgData: ComponentCommunicationService) { }
 
   ngOnInit(): void {
     //subscribe for communication between components
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
+    this.subscription = this.imgData.currentimgFilter.subscribe(filter => this.filter = filter);
     this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
   }
 
@@ -30,12 +35,14 @@ export class ConversionComponent implements OnInit {
   downloadPngFile()
   {
     var a = document.createElement('a');
-    a.href = this.message.png;
-    var imgBckend = a.href;
+    a.href = this.message.image;
+    myTest(a.href,this.filter,"png");
+
+   /* var imgBckend = a.href;
     a.download = "output.png";
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
+    document.body.removeChild(a);*/
   }
 
   //download jpg function
@@ -43,11 +50,14 @@ export class ConversionComponent implements OnInit {
   {
     var a = document.createElement('a');
     console.log("jpeg: "+this.message.jpg);
-    a.href = this.message.jpg;
+
+    a.href = this.message.image;
+    myTest(a.href,this.filter,"jpg");
+    /*a.href = this.message.jpg;
     var imgBckend = a.href;
     a.download = "output.jpg";
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
+    document.body.removeChild(a);*/
   }
 }
