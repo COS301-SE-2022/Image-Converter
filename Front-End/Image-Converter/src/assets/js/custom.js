@@ -1,4 +1,4 @@
-function myTest(imgBckend,filterVar){
+function myTest(imgBckend,filterVar,imgFormat = "png"){
 var img = new Image();
 img.crossOrigin = ""; 
 img.onload = draw; 
@@ -41,7 +41,16 @@ function  draw() {
   }
   var dataURL = canvas.toDataURL();
 
-  var dlnk = document.getElementById('dwnldLnk');
+  var dlnk;
+  if(imgFormat=="png")
+  {
+    dlnk=document.getElementById('dwnldLnk');
+  }
+  else
+  {
+    dlnk=document.getElementById('dwnldLnk2');
+  }
+   
   var pdf = dataURL;
   dlnk.href = pdf;
   dlnk.click();
