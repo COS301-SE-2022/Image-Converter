@@ -38,33 +38,35 @@ export class FilterComponent implements OnInit {
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "revert"
     this.globalFilterVar = "revert";
-
+    this.imgData.changeFilter("revert");
   }
 
   grayScale(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "grayscale(100%)"
     this.globalFilterVar = "grayscale";
-    
+    this.imgData.changeFilter("grayscale");
   }
 
   sepia(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "sepia(100%)"
     this.globalFilterVar = "sepia";
+    this.imgData.changeFilter("sepia");
   }
 
   contrast(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "contrast(200%)"
     this.globalFilterVar = "contrast";
+    this.imgData.changeFilter("contrast");
   }
 
   hueRotate(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "hue-rotate(90deg)"
     this.globalFilterVar = "hueRotate";
-
+    this.imgData.changeFilter("hueRotate");
   }
 
   //downloadFile is used to download an image
