@@ -263,4 +263,22 @@ export class ConverterService {
     );
   }
   
+  //activity tracker(increment/decrement)
+  activityTrackerIncrement(data: string) {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    let activity = {activity: data};
+
+    return this.httpclient.post(
+      'http://localhost:5000/incrementActivity',
+      activity,httpOptions
+    );
+  }
 }
