@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
 import {GlobalVariable} from './global';
+import {ConverterService} from './../shared/converter.service';
 
 declare const myTest:any;
 declare const uploadImage:any;
@@ -21,7 +22,7 @@ export class FilterComponent implements OnInit {
   subscription!: Subscription;
   private globalFilterVar = GlobalVariable.globalVar;
   
-  constructor(private imgData: ComponentCommunicationService ) { }
+  constructor(private imgData: ComponentCommunicationService,private trackerService: ConverterService ) { }
 
   ngOnInit(): void {
     //subscribe for communication between components
@@ -103,5 +104,17 @@ export class FilterComponent implements OnInit {
   upload(){
     //  uploadImage(window.event);
     myTest();
+  }
+
+  incrementDownload()
+  {
+    
+    this.trackerService.activityTrackerIncrement("Downloads").subscribe(
+      responseData =>{
+            //response
+            console.log(responseData);
+           
+        }
+    );
   }
 }
