@@ -242,8 +242,29 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
+    def decrementActivity(self,activity):
+        try:
+            sql ="UPDATE tracking SET count =count - 1 WHERE activity= %s;"
+            self.cur.execute(sql, (activity,))
+            self.conn.commit()
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+
+    def getActivities(self):
+        try:
+            sql = "SELECT * FROM tracking FETCH FIRST 3 ROW ONLY;"
+            self.cur.execute(sql,)
+            code = self.cur.fetchall()
+            self.conn.commit()
+            return code
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+
 if __name__ == "__main__":
     db=User()
+    print(db.getActivities()[0][1])
     # db.incrementActivity("Uploads")
     # db.incrementActivity("Downloads")
     # db.incrementActivity("Unrecognized")

@@ -74,6 +74,7 @@ def upload_image(user):
         # print(picture)
         if picture is not None:
             print("picture is not None")
+            db.incrementActivity("Uploads")
             base64_picture=base64.b64encode((bytes(picture[picture.find(",")+1:].encode('utf-8'))))
             imageReturned = "data:image/png;base64,"
             imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
@@ -84,6 +85,8 @@ def upload_image(user):
             img_class = Classification(picture)
             print("#########################################")
             print(img_class.graphType)
+            if(img_class.graphType=="Unrecognized"):
+                db.incrementActivity("Unrecognized")
             print("#########################################")
 
             imageCleaner = smoothing(opencv_img)
@@ -462,6 +465,7 @@ def deleteUnrecognisableImage(user):
             if index is not None:
                 if db.deleteUnrecognizedImages(index) is True:
                     print("Image deleted")
+                    db.decrementActivity("Unrecognized")
                     return jsonify({'response': 'success'})
                 else:
                     print("Image not deleted")
@@ -541,6 +545,7 @@ def adminFeedback(user):
         index = request.json['index']
         if feedback is not None:
             if db.updateGraphType(feedback,index) is True:
+                db.decrementActivity("Unrecognized")
                 print("feedback inserted")
                 return jsonify({'response': 'success'})
             else:
@@ -576,6 +581,26 @@ def incrementActivity():
                 return jsonify({'response': 'failed'})
         else:
             return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
+
+"""
+    Activities Function:
+        It increments the number of times an activity is done
+    Parameters:
+        None
+    HTTP method: GET
+    Returns:
+        JSON Object
+"""
+@app.route('/activities' ,methods =['GET'])
+@token
+def Activities():
+    db=User()
+    if(db!=None):
+        data= db.getActivities()
+        return jsonify({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
     else:
         return {'response': 'failed'}, 400
 
