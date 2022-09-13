@@ -281,4 +281,21 @@ export class ConverterService {
       activity,httpOptions
     );
   }
+
+  //graph data
+  activityTrackerGraphData() {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    return this.httpclient.get(
+      'http://localhost:5000/activities',
+      httpOptions
+    );
+  }
 }
