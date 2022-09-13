@@ -235,12 +235,8 @@ class User:
 
     def incrementActivity(self,activity):
         try:
-            # sql ="SELECT * FROM tracking where activity=%s;"
-            # self.cur.execute(sql, ([activity]))
-            # code = self.cur.fetchone()
-            # counter =code[2]+1
-            sql2 ="UPDATE tracking SET count =count + 1 WHERE activity= %s;"
-            self.cur.execute(sql2, (activity,))
+            sql ="UPDATE tracking SET count =count + 1 WHERE activity= %s;"
+            self.cur.execute(sql, (activity,))
             self.conn.commit()
         except Exception as e:
             print(f"Database connection error: {e}")
