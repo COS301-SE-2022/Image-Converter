@@ -550,5 +550,35 @@ def adminFeedback(user):
     else:
         return {'response': 'failed'}, 400
 
+
+"""
+    IncrementActivity Function:
+        It increments the number of times an activity is done
+    Parameters:
+        None
+    HTTP method: POST
+    Request data:
+        acivity
+    Returns:
+        JSON Object
+"""
+@app.route('/incrementActivity' ,methods =['POST'])
+@token
+def incrementActivity():
+    db=User()
+    if(db!=None):
+        
+        activity = request.json['activity']
+        if activity is not None:
+            if db.incrementActivity(activity) is True:
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
+
 if __name__ == '__main__':
     app.run(debug=True)
