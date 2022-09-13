@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
+import {ConverterService} from './../shared/converter.service';
 import { Subscription } from 'rxjs';
 //import {GlobalVariable} from './global';
 
@@ -19,7 +20,7 @@ export class ConversionComponent implements OnInit {
   subscription!: Subscription;
 
   filter!:any;
-  constructor(private imgData: ComponentCommunicationService) { }
+  constructor(private imgData: ComponentCommunicationService,private trackerService: ConverterService) { }
 
   ngOnInit(): void {
     //subscribe for communication between components
@@ -38,6 +39,7 @@ export class ConversionComponent implements OnInit {
     a.href = this.message.image;
     myTest(a.href,this.filter,"png");
 
+    this.incrementDownload();
    /* var imgBckend = a.href;
     a.download = "output.png";
     document.body.appendChild(a);
@@ -53,11 +55,26 @@ export class ConversionComponent implements OnInit {
 
     a.href = this.message.image;
     myTest(a.href,this.filter,"jpg");
+    
+    this.incrementDownload();
     /*a.href = this.message.jpg;
     var imgBckend = a.href;
     a.download = "output.jpg";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);*/
+  }
+
+  //tracks number of downloads
+  incrementDownload()
+  {
+    
+    this.trackerService.activityTrackerIncrement("Downloads").subscribe(
+      responseData =>{
+            //response
+            console.log(responseData);
+           
+        }
+    );
   }
 }
