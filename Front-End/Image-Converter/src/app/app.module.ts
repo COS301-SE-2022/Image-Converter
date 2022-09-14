@@ -24,6 +24,7 @@ import { GraphPlottingComponent } from './graph-plotting/graph-plotting.componen
 import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
+import { TrackerComponent } from './tracker/tracker.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-u
     GraphPlottingComponent,
     LiveGraphing2Component,
     UnrecognizedImagesComponent,
-    AdminImagePopUpComponent
+    AdminImagePopUpComponent,
+    TrackerComponent
   ],
   imports: [
     BrowserModule,
