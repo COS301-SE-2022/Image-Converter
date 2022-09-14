@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables} from 'chart.js';
+import {ConverterService} from './../shared/converter.service';
+import {ComponentCommunicationService} from './../shared/component-communication.service';
+import {ConversionComponent} from './../conversion/conversion.component';
 
 Chart.register(...registerables);
 
@@ -14,20 +17,24 @@ Chart.register(...registerables);
 export class TrackerComponent implements OnInit {
   
 
-  constructor() { }
+  constructor(private trackerService: ConverterService) { }
 
   
 
   ngOnInit(): void {
     // Chart.registerables(...registerables);
-
+    // const down = this.stats.incrementDownload();
+    const down = this.trackerService.activityTrackerGraphData();
+    const x = this.trackerService.activityTrackerGraphData();
+    const xlabels = ['Uploads', 'Downloads', 'Unrecognised', 'Categorised', 'Deleted Images'];
+    const ylabels = [x, 12, down, 14, 11];
     var myChart = new Chart("myChart", {
       type: 'bar',
       data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: xlabels,
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              label: 'Statistics of various actions performed', 
+              data: ylabels,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',

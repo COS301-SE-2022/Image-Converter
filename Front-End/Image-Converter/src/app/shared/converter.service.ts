@@ -293,9 +293,13 @@ export class ConverterService {
       headers: headers
     };
 
+    console.log("activity tracker here");
+    
     return this.httpclient.get(
       'http://localhost:5000/activities',
       httpOptions
     );
+
+    
   }
 }
