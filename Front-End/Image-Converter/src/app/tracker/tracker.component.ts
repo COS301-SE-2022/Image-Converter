@@ -3,6 +3,7 @@ import { Chart, registerables} from 'chart.js';
 import {ConverterService} from './../shared/converter.service';
 import {ComponentCommunicationService} from './../shared/component-communication.service';
 import {ConversionComponent} from './../conversion/conversion.component';
+// import { constants } from 'buffer';
 
 Chart.register(...registerables);
 
@@ -29,18 +30,16 @@ export class TrackerComponent implements OnInit {
     // const down  = JSON.parse(JSON.stringify(this.trackerService.activityTrackerGraphData()));
     // console.log(this.trackerService.activityTrackerGraphData());
     let responseData:any="";
+    
 
     this.trackerService.activityTrackerGraphData().subscribe((data:any) => {
       responseData = JSON.parse(JSON.stringify(data));
       console.log(responseData.Uploads);
-    });
 
-    // console.log(down);
 
+      const xlabels = ["Uploads","Downloads", "Unrecognised"];
     
-    const xlabels = ['Uploads', 'Downloads', 'Unrecognised'];
-    // const xlabels = [down];
-    const ylabels = [4, 12, 15, 14, 11];
+    const ylabels = [responseData.Uploads, responseData.Downloads, responseData.Unrecognised];
     var myChart = new Chart("myChart", {
       type: 'bar',
       data: {
@@ -75,6 +74,13 @@ export class TrackerComponent implements OnInit {
           }
       }
   });
+      
+    });
+
+    // console.log(down);
+
+    
+    
   }
 
 }
