@@ -32,7 +32,7 @@ export class TrackerComponent implements OnInit {
 
     this.trackerService.activityTrackerGraphData().subscribe((data:any) => {
       responseData = JSON.parse(JSON.stringify(data));
-      console.log(responseData);
+      console.log(responseData.Uploads);
     });
 
     // console.log(down);

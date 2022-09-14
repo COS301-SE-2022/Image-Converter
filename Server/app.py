@@ -569,7 +569,7 @@ def adminFeedback(user):
 """
 @app.route('/incrementActivity' ,methods =['POST'])
 @token
-def incrementActivity():
+def incrementActivity(user):
     db=User()
     if(db!=None):
         
@@ -596,7 +596,7 @@ def incrementActivity():
 """
 @app.route('/activities' ,methods =['GET'])
 @token
-def Activities():
+def Activities(user):
     db=User()
     if(db!=None):
         data= db.getActivities()
