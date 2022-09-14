@@ -73,8 +73,7 @@ export class ConversionComponent implements OnInit {
       responseData =>{
             //response
             console.log(responseData);
-            // console.log("wassup");
-           
+                
         }
     );
   }

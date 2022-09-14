@@ -293,7 +293,16 @@ export class ConverterService {
       headers: headers
     };
 
-    console.log("activity tracker here");
+    // console.log(this.httpclient.get(
+    //   'http://localhost:5000/activities'
+    // ));
+
+    // let temp = JSON.parse(JSON.stringify(this.httpclient.get(
+    //   'http://localhost:5000/activities',
+    //   httpOptions
+    // )))
+
+    // console.log(temp);
     
     return this.httpclient.get(
       'http://localhost:5000/activities',

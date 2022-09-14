@@ -24,10 +24,17 @@ export class TrackerComponent implements OnInit {
   ngOnInit(): void {
     // Chart.registerables(...registerables);
     // const down = this.stats.incrementDownload();
-    const down = this.trackerService.activityTrackerGraphData();
-    const x = this.trackerService.activityTrackerGraphData();
-    const xlabels = ['Uploads', 'Downloads', 'Unrecognised', 'Categorised', 'Deleted Images'];
-    const ylabels = [x, 12, down, 14, 11];
+    
+
+    const down  = JSON.parse(JSON.stringify(this.trackerService.activityTrackerGraphData()));
+    // console.log(this.trackerService.activityTrackerGraphData());
+
+    console.log(down);
+
+    
+    const xlabels = ['Uploads', 'Downloads', 'Unrecognised'];
+    // const xlabels = [down];
+    const ylabels = [4, 12, 15, 14, 11];
     var myChart = new Chart("myChart", {
       type: 'bar',
       data: {
