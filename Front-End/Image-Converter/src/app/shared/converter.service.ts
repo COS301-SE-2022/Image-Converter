@@ -292,18 +292,7 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
-
-    // console.log(this.httpclient.get(
-    //   'http://localhost:5000/activities'
-    // ));
-
-    // let temp = JSON.parse(JSON.stringify(this.httpclient.get(
-    //   'http://localhost:5000/activities',
-    //   httpOptions
-    // )))
-
-    // console.log(temp);
-    
+ 
     return this.httpclient.get(
       'http://localhost:5000/activities',
       httpOptions

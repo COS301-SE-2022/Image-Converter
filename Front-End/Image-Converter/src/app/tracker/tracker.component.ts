@@ -26,10 +26,16 @@ export class TrackerComponent implements OnInit {
     // const down = this.stats.incrementDownload();
     
 
-    const down  = JSON.parse(JSON.stringify(this.trackerService.activityTrackerGraphData()));
+    // const down  = JSON.parse(JSON.stringify(this.trackerService.activityTrackerGraphData()));
     // console.log(this.trackerService.activityTrackerGraphData());
+    let responseData:any="";
 
-    console.log(down);
+    this.trackerService.activityTrackerGraphData().subscribe((data:any) => {
+      responseData = JSON.parse(JSON.stringify(data));
+      console.log(responseData);
+    });
+
+    // console.log(down);
 
     
     const xlabels = ['Uploads', 'Downloads', 'Unrecognised'];
