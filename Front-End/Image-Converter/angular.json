@@ -36,7 +36,10 @@
               "src/theme.scss",
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/glightbox/src/postcss/glightbox.min.css"
+              "node_modules/glightbox/src/postcss/glightbox.min.css",
+              "node_modules/swiper/swiper-bundle.min.js.map",
+              "node_modules/aos/dist/aos.css",
+              "node_modules/remixicon/fonts/remixicon.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -44,7 +47,10 @@
               "src/assets/js/calculator.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/glightbox/src/js/glightbox.min.js"
+              "node_modules/glightbox/src/js/glightbox.min.js",
+              "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/aos/dist/aos.js",
+              "src/assets/js/main.js"
               
             ]
           },
