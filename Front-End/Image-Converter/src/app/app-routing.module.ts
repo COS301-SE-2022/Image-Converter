@@ -8,6 +8,7 @@ import { TemplateMatchingComponent } from './template-matching/template-matching
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
+import { NavComponent } from './nav/nav.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'upload',
+    component: ConverterComponent
   },
   {
     path: 'register',
@@ -33,6 +38,10 @@ const routes: Routes = [
   {
     path: 'unrecognzied',
     component: UnrecognizedImagesComponent
+  },
+  {
+    path: 'nav',
+    component: NavComponent
   }
 
 
