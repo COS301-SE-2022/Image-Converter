@@ -25,7 +25,7 @@ import { LiveGraphing2Component } from './live-graphing2/live-graphing2.componen
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
 import { NavComponent } from './nav/nav.component';
-
+import { TrackerComponent } from './tracker/tracker.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { NavComponent } from './nav/nav.component';
     LiveGraphing2Component,
     UnrecognizedImagesComponent,
     AdminImagePopUpComponent,
+    TrackerComponent,
     NavComponent
   ],
   imports: [

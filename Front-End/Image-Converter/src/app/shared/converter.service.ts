@@ -292,10 +292,12 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
-
+ 
     return this.httpclient.get(
       'http://localhost:5000/activities',
       httpOptions
     );
+
+    
   }
 }
