@@ -263,7 +263,7 @@
   .navbar .getstarted:hover,
   .navbar .getstarted:focus:hover {
     color: #fff;
-    background: #5969f3;
+    background: rgb(146, 143, 143);
   }
   
   .navbar .dropdown ul {
@@ -461,7 +461,7 @@
   .hero h2 {
     color: #444444;
     margin: 15px 0 0 0;
-    font-size: 26px;
+    font-size: 19px;
   }
   
   .hero .btn-get-started {
@@ -881,20 +881,20 @@
   }
   
   .services .service-box.red {
-    border-bottom: 3px solid #e9222c;
+    border-bottom: 3px solid #333333;
   }
   
   .services .service-box.red .icon {
     color: #e9e9ec;
-    background: #fef7f8;
+    background: #333333;
   }
   
   .services .service-box.red .read-more {
-    color: #e9222c;
+    color: #333333;
   }
   
   .services .service-box.red:hover {
-    background: #e9222c;
+    background: #333333;
   }
   
   .services .service-box.purple {
@@ -915,20 +915,20 @@
   }
   
   .services .service-box.pink {
-    border-bottom: 3px solid #f51f9c;
+    border-bottom: 3px solid #333333;
   }
   
   .services .service-box.pink .icon {
     color: #e9e9ec;
-    background: #feecf7;
+    background: #333333;
   }
   
   .services .service-box.pink .read-more {
-    color: #f51f9c;
+    color: #333333;
   }
   
   .services .service-box.pink:hover {
-    background: #f51f9c;
+    background: #333333;
   }
   
   .services .service-box:hover h3,
