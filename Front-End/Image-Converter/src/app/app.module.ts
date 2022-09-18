@@ -26,6 +26,7 @@ import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-
 import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
 import { TrackerComponent } from './tracker/tracker.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     UnrecognizedImagesComponent,
     AdminImagePopUpComponent,
     TrackerComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
