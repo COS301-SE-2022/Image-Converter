@@ -54,7 +54,7 @@
     letter-spacing: 1px;
     font-weight: 700;
     margin: 0;
-    color: #4154f1;
+    color: #333333;
     text-transform: uppercase;
   }
   
@@ -64,7 +64,7 @@
     font-size: 38px;
     line-height: 42px;
     font-weight: 700;
-    color: #012970;
+    color: #333333;
   }
   
   @media (max-width: 768px) {
@@ -472,7 +472,7 @@
     transition: 0.5s;
     color: #fff;
     background: #333333;
-    box-shadow: 0px 5px 30px rgba(59, 65, 119, 0.4);
+    box-shadow: 0px 5px 30px rgba(44, 53, 139, 0.4);
   }
   
   .hero .btn-get-started span {
@@ -810,7 +810,7 @@
   }
   
   .services .service-box h3 {
-    color: #444444;
+    color: #333333;
     font-weight: 700;
   }
   
@@ -830,20 +830,20 @@
   }
   
   .services .service-box.blue {
-    border-bottom: 3px solid #2db6fa;
+    border-bottom: 3px solid #232d85;
   }
   
   .services .service-box.blue .icon {
-    color: #2db6fa;
-    background: #dbf3fe;
+    color: #e9e9ec;
+    background: 232d85;
   }
   
   .services .service-box.blue .read-more {
-    color: #2db6fa;
+    color: #232d85;
   }
   
   .services .service-box.blue:hover {
-    background: #2db6fa;
+    background: #232d85;
   }
   
   .services .service-box.orange {
