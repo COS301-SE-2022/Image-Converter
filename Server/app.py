@@ -569,7 +569,7 @@ def adminFeedback(user):
 """
 @app.route('/incrementActivity' ,methods =['POST'])
 @token
-def incrementActivity():
+def incrementActivity(user):
     db=User()
     if(db!=None):
         
@@ -596,10 +596,13 @@ def incrementActivity():
 """
 @app.route('/activities' ,methods =['GET'])
 @token
-def Activities():
+def Activities(user):
     db=User()
     if(db!=None):
         data= db.getActivities()
+
+        # print({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
+
         return jsonify({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
     else:
         return {'response': 'failed'}, 400

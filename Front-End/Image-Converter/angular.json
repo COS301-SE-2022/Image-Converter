@@ -118,5 +118,8 @@
       }
     }
   },
-  "defaultProject": "Image-Converter"
+  "defaultProject": "Image-Converter",
+  "cli": {
+    "analytics": "f9714407-0c61-48a2-8fa0-41bfb8414642"
+  }
 }
