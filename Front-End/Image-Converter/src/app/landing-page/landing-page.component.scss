@@ -177,7 +177,7 @@
   }
   
   .header.header-scrolled {
-    background: #fff;
+    background: rgb(139, 37, 37);
     padding: 15px 0;
     box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
   }
@@ -472,7 +472,7 @@
     transition: 0.5s;
     color: #fff;
     background: #333333;
-    box-shadow: 0px 5px 30px rgba(44, 53, 139, 0.4);
+    box-shadow: 0px 5px 30px rgba(44, 53, 139, 0.9);
   }
   
   .hero .btn-get-started span {
@@ -790,7 +790,7 @@
   # Services
   --------------------------------------------------------------*/
   .services .service-box {
-    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.7);
     height: 100%;
     padding: 60px 30px;
     text-align: center;
@@ -835,7 +835,7 @@
   
   .services .service-box.blue .icon {
     color: #e9e9ec;
-    background: 232d85;
+    background: #232d85;
   }
   
   .services .service-box.blue .read-more {
@@ -847,37 +847,37 @@
   }
   
   .services .service-box.orange {
-    border-bottom: 3px solid #f68c09;
+    border-bottom: 3px solid #333333;
   }
   
   .services .service-box.orange .icon {
-    color: #f68c09;
-    background: #fde3c4;
+    color: #e9e9ec;
+    background: #333333;
   }
   
   .services .service-box.orange .read-more {
-    color: #f68c09;
+    color: #333333;
   }
   
   .services .service-box.orange:hover {
-    background: #f68c09;
+    background: #333333;
   }
   
   .services .service-box.green {
-    border-bottom: 3px solid #08da4e;
+    border-bottom: 3px solid #232d85;
   }
   
   .services .service-box.green .icon {
-    color: #08da4e;
-    background: #cffddf;
+    color: #e9e9ec;
+    background: #232d85;
   }
   
   .services .service-box.green .read-more {
-    color: #08da4e;
+    color: #232d85;
   }
   
   .services .service-box.green:hover {
-    background: #08da4e;
+    background: #232d85;
   }
   
   .services .service-box.red {
@@ -885,7 +885,7 @@
   }
   
   .services .service-box.red .icon {
-    color: #e9222c;
+    color: #e9e9ec;
     background: #fef7f8;
   }
   
@@ -898,20 +898,20 @@
   }
   
   .services .service-box.purple {
-    border-bottom: 3px solid #b50edf;
+    border-bottom: 3px solid #232d85;
   }
   
   .services .service-box.purple .icon {
-    color: #b50edf;
-    background: #f8e4fd;
+    color: #e9e9ec;
+    background: #232d85;
   }
   
   .services .service-box.purple .read-more {
-    color: #b50edf;
+    color: #232d85;
   }
   
   .services .service-box.purple:hover {
-    background: #b50edf;
+    background: #232d85;
   }
   
   .services .service-box.pink {
@@ -919,7 +919,7 @@
   }
   
   .services .service-box.pink .icon {
-    color: #f51f9c;
+    color: #e9e9ec;
     background: #feecf7;
   }
   
