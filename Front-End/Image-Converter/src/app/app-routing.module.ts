@@ -9,6 +9,8 @@ import { UploadHistoryComponent } from './upload-history/upload-history.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 import { NavComponent } from './nav/nav.component';
+import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
+import { TrackerComponent } from './tracker/tracker.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path: 'nav',
     component: NavComponent
+  },
+  {
+    path: 'livegraph',
+    component: LiveGraphing2Component
+  },
+  {
+    path: 'activitytracker',
+    component: TrackerComponent
   }
 
 
