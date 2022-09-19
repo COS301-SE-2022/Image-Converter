@@ -11,6 +11,7 @@ import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
+
 const routes: Routes = [
   {
     path: 'dashboard',
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomePageComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 
 ];

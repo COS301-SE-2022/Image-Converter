@@ -27,4 +27,8 @@ export class LandingPageComponent implements OnInit {
     // alert("button working");
   }
 
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
+}
+
 }

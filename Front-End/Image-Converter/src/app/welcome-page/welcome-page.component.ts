@@ -25,11 +25,11 @@ export class WelcomePageComponent implements OnInit {
   }
 
   onSubmitHistory(){
-    // this._router.navigateByUrl("/dashboard");
+    // this._router.navigateByUrl("/uploadHistory");
   }
 
   onSubmitUnrecognized(){
-    // this._router.navigateByUrl("/dashboard");
+    // this._router.navigateByUrl("/unrecognzied");
   }
 
   onSubmitTracker(){
