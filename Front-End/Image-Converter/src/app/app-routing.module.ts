@@ -13,30 +13,31 @@ import { LiveGraphing2Component } from './live-graphing2/live-graphing2.componen
 import { TrackerComponent } from './tracker/tracker.component';
 
 const routes: Routes = [
-  {
+  /*{
     path: 'dashboard',
     component: DashboardComponent
-  },
+  },*/
   {
     path: '',
     component: LoginComponent
-  },
+  }/*,
   {
     path: 'upload',
-    component: ConverterComponent
-  },
+    component: ConverterComponent,
+    outlet:'navContent'
+  }*/,
   {
     path: 'register',
     component: RegisterComponent
-  },
+  }/*,
   {
     path: 'uploadHistory',
     component: UploadHistoryComponent
-  },
+  }*/,
   {
     path: 'ForgotPassword',
     component: ForgotPasswordComponent
-  },
+  }/*,
   {
     path: 'unrecognzied',
     component: UnrecognizedImagesComponent
@@ -52,9 +53,14 @@ const routes: Routes = [
   {
     path: 'activitytracker',
     component: TrackerComponent
+  }*/
+
+  ,{
+    path: 'nav',
+    //canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./nav/nav-route/nav-route.module').then((m) => m.NavRouteModule),
   }
-
-
 ];
 
 @NgModule({
