@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title, Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meta: Meta) {
+    meta.updateTag({name:'viewport', content:'width=device-width, initial-scale=1.0'});
+   }
 
   ngOnInit(): void {
   }

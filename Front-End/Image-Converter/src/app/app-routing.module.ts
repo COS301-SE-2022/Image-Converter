@@ -9,6 +9,7 @@ import { UploadHistoryComponent } from './upload-history/upload-history.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'landing',
     component: LandingPageComponent
+  },
+  {
+    path: 'welcome',
+    component: WelcomePageComponent
   }
 
 ];
