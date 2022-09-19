@@ -17,27 +17,27 @@ export class WelcomePageComponent implements OnInit {
   }
 
   onSubmitUpload(){
-    this._router.navigateByUrl("/dashboard")
+    // this._router.navigateByUrl("/dashboard");
   }
 
   onSubmitGraphing(){
-    this._router.navigateByUrl("/dashboard")
+    // this._router.navigateByUrl("/dashboard");
   }
 
   onSubmitHistory(){
-    this._router.navigateByUrl("/dashboard")
+    // this._router.navigateByUrl("/dashboard");
   }
 
   onSubmitUnrecognized(){
-    this._router.navigateByUrl("/dashboard")
+    // this._router.navigateByUrl("/dashboard");
   }
 
   onSubmitTracker(){
-    this._router.navigateByUrl("/dashboard")
+    // this._router.navigateByUrl("/dashboard");
   }
 
   onSubmitRetraining(){
-    this._router.navigateByUrl("/dashboard")
+    // this._router.navigateByUrl("/dashboard");
   }
 
 }

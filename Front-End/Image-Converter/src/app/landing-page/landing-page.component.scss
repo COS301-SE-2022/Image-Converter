@@ -209,6 +209,7 @@
   /**
   * Desktop Navigation 
   */
+
   .navbar {
     padding: 0;
     
@@ -262,9 +263,41 @@
     border-radius: 4px;
     color: #fff;
   }
+
+  .navbar .nav-link,
+  .navbar .navlink:focus {
+    // background: #333333;
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 4px;
+    // color: #fff;
+  }
+
+  #reg{
+    background: #333333;
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  #reg:focus,
+  #reg:focus:hover{
+    color: #fff;
+    background: rgb(146, 143, 143);
+  }
   
   .navbar .getstarted:hover,
   .navbar .getstarted:focus:hover {
+    color: #fff;
+    background: rgb(146, 143, 143);
+  }
+
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus:hover {
     color: #fff;
     background: rgb(146, 143, 143);
   }
@@ -489,11 +522,16 @@
     margin-left: 5px;
     font-size: 18px;
     transition: 0.3s;
+    // outline: none;
   }
   
   .hero .btn-get-started:hover i {
     transform: translateX(5px);
   }
+
+//   .hero .btn-get-started:focus i {
+//     outline: none;
+//   }
   
   .hero .hero-img {
     text-align: right;

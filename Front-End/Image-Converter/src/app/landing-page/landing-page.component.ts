@@ -18,8 +18,13 @@ export class LandingPageComponent implements OnInit {
   }
 
   onSubmitCode(){
-    this._router.navigateByUrl('/dashboard');
-    alert("button working");
+    this._router.navigateByUrl('/register');
+    // alert("button working");
+  }
+
+  onSubmitLogin(){
+    this._router.navigateByUrl('/login');
+    // alert("button working");
   }
 
 }
