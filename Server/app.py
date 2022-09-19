@@ -601,7 +601,7 @@ def Activities(user):
     if(db!=None):
         data= db.getActivities()
 
-        # print({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
+        print(data[2][1])
 
         return jsonify({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
     else:
