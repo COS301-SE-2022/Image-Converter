@@ -174,12 +174,15 @@
     transition: all 0.5s;
     z-index: 997;
     padding: 20px 0;
+    // background-color: rgb(190, 185, 185);
+    background-color: #fff;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.7);
   }
   
   .header.header-scrolled {
     background: rgb(139, 37, 37);
     padding: 15px 0;
-    box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+    box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.9);
   }
   
   .header .logo {
@@ -1401,6 +1404,12 @@
   /*--------------------------------------------------------------
   # Team
   --------------------------------------------------------------*/
+  .row{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  
   .team {
     background: #fff;
     padding: 60px 0;
