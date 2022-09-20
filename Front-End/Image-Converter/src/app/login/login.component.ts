@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         if(responseData.body.response == "success"){
           localStorage.setItem('token', responseData.body.token);
           localStorage.setItem('email', this.form.get('username')!.value);
-          this._router.navigateByUrl('/nav/upload');
+          this._router.navigateByUrl('/welcome');
         }
         // this._router.navigateByUrl('/dashboard');
       });
