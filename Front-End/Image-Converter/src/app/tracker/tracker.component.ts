@@ -36,9 +36,13 @@ export class TrackerComponent implements OnInit {
     this.trackerService.activityTrackerGraphData().subscribe((data:any) => {
       responseData = JSON.parse(JSON.stringify(data));
       console.log(responseData.Uploads);
+
+      console.log(responseData.Downloads);
+      console.log(responseData.Unrecognised);
+
       this.loading = false;
 
-      const xlabels = ["Uploads","Downloads", "Unrecognised"];
+    const xlabels = ["Uploads","Downloads", "Unrecognised"];
     
     const ylabels = [responseData.Uploads, responseData.Downloads, responseData.Unrecognised];
     var myChart = new Chart("myChart", {

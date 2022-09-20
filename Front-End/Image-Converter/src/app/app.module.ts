@@ -24,8 +24,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
 import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
 import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
+
+import { TrackerComponent } from './tracker/tracker.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+
+
 import { NavComponent } from './nav/nav.component';
 import { TrackerComponent } from './tracker/tracker.component';*/
+
 
 @NgModule({
   declarations: [
@@ -48,7 +55,12 @@ import { TrackerComponent } from './tracker/tracker.component';*/
     UnrecognizedImagesComponent,
     AdminImagePopUpComponent,
     TrackerComponent,
+
+    LandingPageComponent,
+    WelcomePageComponent
+
     NavComponent*/
+
   ],
   imports: [
     BrowserModule,
