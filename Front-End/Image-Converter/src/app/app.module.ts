@@ -37,30 +37,9 @@ import { TrackerComponent } from './tracker/tracker.component';*/
 @NgModule({
   declarations: [
     AppComponent,
-    /*ConverterComponent,
-    FilterComponent,*/
     LoginComponent,
     ForgotPasswordComponent,
-    /*RegisterComponent,
-    SideBarComponent,
-    ConversionComponent,
-    UploadHistoryComponent,
-    ContactComponent,
-    DashboardComponent,
-    TemplateMatchingComponent,
-    ImagePopupComponent,
-    
-    GraphPlottingComponent,
-    LiveGraphing2Component,
-    UnrecognizedImagesComponent,
-    AdminImagePopUpComponent,
-    TrackerComponent,
-
-    LandingPageComponent,
-    WelcomePageComponent
-
-    NavComponent*/
-
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
