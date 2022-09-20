@@ -17,7 +17,8 @@ Chart.register(...registerables);
 
 export class TrackerComponent implements OnInit {
   
-
+  //used for loadig spinner
+  loading=false;
   constructor(private trackerService: ConverterService) { }
 
   
@@ -26,7 +27,7 @@ export class TrackerComponent implements OnInit {
     // Chart.registerables(...registerables);
     // const down = this.stats.incrementDownload();
     
-
+    this.loading = true;
     // const down  = JSON.parse(JSON.stringify(this.trackerService.activityTrackerGraphData()));
     // console.log(this.trackerService.activityTrackerGraphData());
     let responseData:any="";
@@ -35,9 +36,11 @@ export class TrackerComponent implements OnInit {
     this.trackerService.activityTrackerGraphData().subscribe((data:any) => {
       responseData = JSON.parse(JSON.stringify(data));
       console.log(responseData.Uploads);
+
       console.log(responseData.Downloads);
       console.log(responseData.Unrecognised);
 
+      this.loading = false;
 
     const xlabels = ["Uploads","Downloads", "Unrecognised"];
     
