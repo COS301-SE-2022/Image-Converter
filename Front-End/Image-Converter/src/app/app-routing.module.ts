@@ -24,57 +24,26 @@ const routes: Routes = [
     component: DashboardComponent
   },*/
   {
-    path: '',
+    path: 'login',
     component: LoginComponent
-  }/*,
-  {
-    path: 'upload',
-    component: ConverterComponent,
-    outlet:'navContent'
-  }*/,
+  },
   {
     path: 'register',
     component: RegisterComponent
-  }/*,
-  {
-    path: 'uploadHistory',
-    component: UploadHistoryComponent
-  }*/,
+  },
   {
     path: 'ForgotPassword',
     component: ForgotPasswordComponent
-  }/*,
-  {
-    path: 'unrecognzied',
-    component: UnrecognizedImagesComponent
-  },
-  {
-
-    path: 'landing',
-    component: LandingPageComponent
   },
   {
     path: 'welcome',
     component: WelcomePageComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
+
+    path: '',
+    component: LandingPageComponent
   }
-
-
-    path: 'nav',
-    component: NavComponent
-  },
-  {
-    path: 'livegraph',
-    component: LiveGraphing2Component
-  },
-  {
-    path: 'activitytracker',
-    component: TrackerComponent
-  }*/
-
   ,{
     path: 'nav',
     //canActivate: [AuthGuard],

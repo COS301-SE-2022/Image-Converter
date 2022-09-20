@@ -20,10 +20,6 @@ const routes: Routes = [
         path: '',
         component: NavComponent,
         children: [
-        {
-            path: 'dashboard',
-            component: DashboardComponent
-          },
           {
             path: 'upload',
             component: ConverterComponent
@@ -33,13 +29,9 @@ const routes: Routes = [
             component: UploadHistoryComponent
           },
           {
-            path: 'unrecognzied',
+            path: 'unrecognized',
             component: UnrecognizedImagesComponent
-          }/*,
-          {
-            path: 'nav',
-            component: NavComponent
-          }*/,
+          },
           {
             path: 'livegraph',
             component: LiveGraphing2Component
