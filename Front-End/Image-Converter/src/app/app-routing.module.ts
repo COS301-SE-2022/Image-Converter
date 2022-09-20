@@ -24,7 +24,7 @@ const routes: Routes = [
     component: DashboardComponent
   },*/
   {
-    path: '',
+    path: 'login',
     component: LoginComponent
   },
   {
@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
 
-    path: 'landing',
+    path: '',
     component: LandingPageComponent
   }
   ,{
