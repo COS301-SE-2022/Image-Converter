@@ -15,7 +15,7 @@ from database.sendEmail import Email
 from converter.ConvertFomat import ConvertFomat
 from converter.watermark import AddMark
 from flask import Response
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import base64
 import cv2
 import os
@@ -115,6 +115,7 @@ def upload_image(user):
         JSON Object
 """
 @app.route('/login', methods=['POST'])
+@cross_origin()
 def auth_login():
     db = User()
     if(db != None):
