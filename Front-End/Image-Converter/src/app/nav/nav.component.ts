@@ -3,6 +3,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -21,7 +22,7 @@ export class NavComponent implements OnInit {
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private observer: BreakpointObserver) { 
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private observer: BreakpointObserver, private _router: Router) { 
 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -46,4 +47,8 @@ export class NavComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   
+  onSubmitWelcome(){
+    this._router.navigateByUrl('/welcome');
+  }
+
 }

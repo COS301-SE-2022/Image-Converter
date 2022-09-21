@@ -1,4 +1,6 @@
-<mat-toolbar class="mat-elevation-z8">
+
+
+<!-- <mat-toolbar class="mat-elevation-z8">
     <button
       mat-icon-button
       *ngIf="sidenav.mode === 'over'"
@@ -8,9 +10,10 @@
       <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
     </button>
     Responsive side navigation
-  </mat-toolbar>
+  </mat-toolbar> -->
   
   <mat-sidenav-container>
+    
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
       <!-- <img
         class="avatar mat-elevation-z8"
@@ -22,7 +25,7 @@
   
       <mat-divider></mat-divider> 
   
-      <button mat-button class="menu-button" routerLink="/home">
+      <button mat-button class="menu-button" (click)="onSubmitWelcome()">
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </button>
@@ -68,7 +71,45 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <mat-toolbar class="">
+  <!-- <mat-toolbar class="">
     
     Responsive side navigation
-  </mat-toolbar>
+  </mat-toolbar> -->
+  <footer id="footer" class="footer">
+
+    
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <!-- <img src="assets/img/logo2.png" alt=""> -->
+              <span>Image-Converter</span>
+            </a>
+            <p>In partnership with MathU Teaching Emporium and the COS 301 team</p>
+            <div class="social-links mt-3">
+              
+              <a href="https://github.com/COS301-SE-2022/Image-Converter" class="linkedin"><i class="bi bi-github"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Contact Us</h4>
+            <p>
+              <strong>Email:</strong> hardcode8102gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="credits">
+        <p>Powered by by HardCode</p>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
