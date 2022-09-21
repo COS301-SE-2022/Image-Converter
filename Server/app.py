@@ -9,7 +9,8 @@ from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
-from converter.image_classification import Classification
+# from converter.image_classification import Classification
+from converter.multiclass_integ import MultiClassification
 from database.database import User
 from database.sendEmail import Email
 from converter.ConvertFomat import ConvertFomat
@@ -82,7 +83,7 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
-            img_class = Classification(picture)
+            img_class = MultiClassification(picture)
             print("#########################################")
             print(img_class.graphType)
             if(img_class.graphType=="Unrecognized"):
