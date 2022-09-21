@@ -638,9 +638,9 @@
   --------------------------------------------------------------*/
   .values .box {
     padding: 30px;
-    box-shadow: 0px 0 5px rgba(1, 41, 112, 0.08);
+    box-shadow: 0px 0 5px rgba(1, 41, 112, 0.6);
     text-align: center;
-    transition: 0.3s;
+    transition: 0.2s;
     height: 100%;
   }
   
@@ -658,7 +658,7 @@
   }
   
   .values .box:hover {
-    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.5);
   }
   
   .values .box:hover img {

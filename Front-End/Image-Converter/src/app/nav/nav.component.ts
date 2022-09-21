@@ -51,4 +51,9 @@ export class NavComponent implements OnInit {
     this._router.navigateByUrl('/welcome');
   }
 
+  onSubmitLogin(){
+    this._router.navigateByUrl('/login');
+    // alert("button working");
+  }
+
 }
