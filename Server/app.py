@@ -66,6 +66,7 @@ def token(f):
 """
 
 @app.route('/picture', methods=['POST'])
+@cross_origin()
 @token
 def upload_image(user):
     db=User()
@@ -85,7 +86,7 @@ def upload_image(user):
             print("#########################################")
             print(img_class.graphType)
             print("#########################################")
-
+        
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
