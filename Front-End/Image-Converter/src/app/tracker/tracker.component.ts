@@ -44,7 +44,7 @@ export class TrackerComponent implements OnInit {
 
     const xlabels = ["Uploads","Downloads", "Unrecognised"];
     
-    const ylabels = [responseData.Uploads, responseData.Downloads, responseData.Unrecognised];
+    const ylabels = [responseData.Uploads, responseData.Downloads, responseData.Unrecognized];
     var myChart = new Chart("myChart", {
       type: 'bar',
       data: {
