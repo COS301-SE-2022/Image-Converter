@@ -43,8 +43,8 @@ const routes: Routes = [
 
     path: '',
     component: LandingPageComponent
-  }
-  ,{
+  },
+  {
     path: 'nav',
     //canActivate: [AuthGuard],
     loadChildren: () =>

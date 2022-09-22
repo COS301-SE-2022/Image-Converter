@@ -56,4 +56,8 @@ export class NavComponent implements OnInit {
     // alert("button working");
   }
 
+  onSubmitLanding(){
+    this._router.navigateByUrl('/landing');
+  }
+
 }
