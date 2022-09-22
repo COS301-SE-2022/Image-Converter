@@ -13,9 +13,11 @@ class smoothing:
     def clean_noise(self):
         sr = cv2.dnn_superres.DnnSuperResImpl_create()
         path = "converter/EDSR_x4.pb"
+        print('------------------------Loading model----------------------------------------')
         sr.readModel(path)
-        sr.setModel("edsr",4)
+        sr.setModel("edsr",1)
         result = sr.upsample(self.img)
+        print('------------------------DONE Loading model----------------------------------------')
 
         # kernel = np.array([[0, -1, 0],
         #            [-1, 5,-1],
