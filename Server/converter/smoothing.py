@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
-from watermark import AddMark
-from resizing import imageResizing
+from converter.watermark import AddMark
+from converter.resizing import imageResizing
 from PIL import Image
 import sys
 sys.path.append('../')
@@ -12,14 +12,10 @@ class smoothing:
 
     def clean_noise(self):
         sr = cv2.dnn_superres.DnnSuperResImpl_create()
-
-        path = "EDSR_x4.pb"
-
+        path = "converter/EDSR_x4.pb"
         sr.readModel(path)
-
         sr.setModel("edsr",4)
-
-        result = sr.upsample(img)
+        result = sr.upsample(self.img)
 
         # kernel = np.array([[0, -1, 0],
         #            [-1, 5,-1],
@@ -29,7 +25,7 @@ class smoothing:
         # image_sharp = cv2.filter2D(src=self.img, ddepth=-1, kernel=kernel)
         # #Image smoothing and sharpening
         # blurred = cv2.bilateralFilter(self.img, 15, 75, 75)
-        sharp = cv2.addWeighted(self.img, 3.5, self.img, -2.1, 0)
+        # sharp = cv2.addWeighted(self.img, 3.5, self.img, -2.1, 0)
         # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
         # open = cv2.morphologyEx(sharp, cv2.MORPH_OPEN, kernel, iterations=1)
 
@@ -63,7 +59,7 @@ class smoothing:
         return cleanedImage
 
 if __name__ == '__main__':
-    src = [ 'pie_chart_example1.png']
+    src = [ 'img.png']
     for i in src:
         img = cv2.imread(i)
         object = smoothing(img)
