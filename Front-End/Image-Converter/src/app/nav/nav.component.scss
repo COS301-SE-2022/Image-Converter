@@ -15,7 +15,7 @@ mat-toolbar {
   }
   
   .content {
-    height: 150%;
+    height: 350%;
     //border-radius: 10px;
     margin: 16px;
     margin-left: 32px;
@@ -23,11 +23,11 @@ mat-toolbar {
     padding: 16px;
   
     overflow: auto;
-    // width: 80%;
+    width: 2500%;
   }
   
   mat-sidenav-container {
-    height: calc(100vh - 65px);
+    height: calc(400vh - 85px);
   }
   
   .menu-button {
@@ -373,18 +373,22 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: #012970;;
+    color: #012970;
     background: #fff;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #012970;
 }
 
 a[data-toggle="collapse"] {
     position: relative;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 0%), 0px 8px 10px 1px rgb(0 0 0 / 0%), 0px 3px 14px 2px rgb(0 0 0 / 0%);
 }
 
 .dropdown-toggle::after {
