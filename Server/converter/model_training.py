@@ -42,4 +42,40 @@ def trainModel():
     class_names = train_ds.class_names
 
 
+#######################################################################################
+####### Model Training ################################################################
+#######################################################################################        
+    resnet_model = Sequential()
+
+    pretrained_model= tf.keras.applications.ResNet50(include_top=False,
+                       input_shape=(img_height,img_width,3),
+                       pooling='avg',classes=6,
+                       weights='imagenet')
+
+
+    for layer in pretrained_model.layers:
+        layer.trainable=False
+
+    resnet_model.add(pretrained_model)
+
+    resnet_model.add(Flatten())
+    resnet_model.add(Dense(512, activation='relu'))
+    resnet_model.add(Dense(256, activation='relu'))
+    resnet_model.add(Dense(128, activation='relu'))
+    resnet_model.add(Dense(64, activation='relu'))
+
+    resnet_model.add(Dense(8))
+
+    loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss',
+    patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model",save_best_weights=True),tf.keras.callbacks.TensorBoard()]
+
+    resnet_model.compile(optimizer=Adam(lr=0.001),loss=loss_fn,metrics=['accuracy'])
+
+    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=1)
+
+    resnet_model.save("VM_Model")
+
+
+
 
