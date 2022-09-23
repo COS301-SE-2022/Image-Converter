@@ -22,7 +22,7 @@ def trainModel():
 
     img_height,img_width=90,90
     batch_size=32
-    #Preprocessing module deprecated, switch to tf.keras.utils.image_dataset_from_directory
+
     train_ds = tf.keras.preprocessing.image_dataset_from_directory(
       data_dir,
       validation_split=0.2,
@@ -70,11 +70,11 @@ def trainModel():
     callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss',
     patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model",save_best_weights=True),tf.keras.callbacks.TensorBoard()]
 
-    resnet_model.compile(optimizer=Adam(lr=0.001),loss=loss_fn,metrics=['accuracy'])
+    resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss=loss_fn,metrics=['accuracy'])
 
     history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=1)
 
-    resnet_model.save("VM_Model")
+    resnet_model.save("Multi_Class_Model")
 
 
 

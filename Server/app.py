@@ -8,9 +8,8 @@ from flask import Flask, json, jsonify, render_template, request, session
 from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
-from converter.templateMatching import Matching
-# from converter.image_classification import Classification
 from converter.multiclass_integ import MultiClassification
+from converter.model_training import trainModel
 from database.database import User
 from database.sendEmail import Email
 from converter.ConvertFomat import ConvertFomat
@@ -25,9 +24,11 @@ import io
 import PIL.Image as Image
 import numpy as np
 
+
 app = Flask(__name__)
 app.secret_key = "super secret key"
 CORS(app)
+
 
 """
 Methos for creating a new token or checking if a token is valid.
@@ -135,7 +136,6 @@ def auth_login():
             return {'response': 'failed'},200
     else:
         return {'response': 'failed'}, 400
-
 
 
 """
