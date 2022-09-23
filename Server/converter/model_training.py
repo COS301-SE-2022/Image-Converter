@@ -72,7 +72,7 @@ def trainModel():
 
     resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss=loss_fn,metrics=['accuracy'])
 
-    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=1)
+    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=30)
 
     resnet_model.save("Multi_Class_Model")
 
