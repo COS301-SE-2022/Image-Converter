@@ -45,6 +45,32 @@ const routes: Routes = [
     component: LandingPageComponent
   },
   {
+
+    path: 'livegraph',
+    component: LiveGraphing2Component
+  },
+  {
+
+    path: 'activity',
+    component: TrackerComponent
+  },
+  {
+
+    path: 'unrecognized',
+    component: UnrecognizedImagesComponent
+  },
+  {
+
+    path: 'upload',
+    component: ConverterComponent
+  },
+  {
+
+    path: 'history',
+    component: UploadHistoryComponent
+  },
+
+  {
     path: 'nav',
     //canActivate: [AuthGuard],
     loadChildren: () =>

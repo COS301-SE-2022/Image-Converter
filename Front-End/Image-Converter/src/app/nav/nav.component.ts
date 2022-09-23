@@ -4,6 +4,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-nav',
@@ -30,6 +32,13 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    
   }
 
   ngAfterViewInit() {
