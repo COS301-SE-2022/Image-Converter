@@ -85,4 +85,7 @@ export class NavComponent implements OnInit {
     this._router.navigateByUrl('/nav/activitytracker');
   }
 
+  onSubmitUpload(){
+    this._router.navigateByUrl('/nav/upload');
+  }
 }

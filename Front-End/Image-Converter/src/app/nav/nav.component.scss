@@ -454,3 +454,12 @@ a.article:hover {
         display: none;
     }
 }
+
+.btn-info {
+  color: #fff;
+  background-color: #2f7fe7;
+  border-color: #2f7fe7;
+  --bs-btn-hover-bg: #2f7fe7;
+  --bs-btn-hover-border-color: #2f7fe7;
+}
+

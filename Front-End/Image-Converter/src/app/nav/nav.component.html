@@ -77,13 +77,13 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Image-Converter</h3>
+                <h3 (click)="onSubmitWelcome()">Image-Converter</h3>
             </div>
 
             <ul class="list-unstyled components">
                 <!-- <p>Dummy Heading</p> -->
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Upload Image</a>
+                    <a (click)="onSubmitUpload()">Upload Image</a>
                 </li>
                 <li>
                     <a (click)="onSubmitGraphing()">Draw graph using formulae</a>
