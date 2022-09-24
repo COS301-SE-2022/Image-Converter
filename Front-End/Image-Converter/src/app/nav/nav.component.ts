@@ -69,4 +69,20 @@ export class NavComponent implements OnInit {
     this._router.navigateByUrl('/landing');
   }
 
+  onSubmitGraphing(){
+    this._router.navigateByUrl('/nav/livegraph');
+  }
+
+  onSubmitHistory(){
+    this._router.navigateByUrl('/nav/uploadHistory');
+  }
+
+  onSubmitUnrecognized(){
+    this._router.navigateByUrl('/nav/unrecognized');
+  }
+
+  onSubmitTracker(){
+    this._router.navigateByUrl('/nav/activitytracker');
+  }
+
 }
