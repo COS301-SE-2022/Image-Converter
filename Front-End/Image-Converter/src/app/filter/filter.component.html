@@ -26,7 +26,7 @@ body {font-size:16px;}
             <p><b>{{message.graphType}}</b></p>
         </div>
           <div class="w3-container w3-cell">
-            <div class="w3-panel" style="width:100%">
+            <!-- <div class="w3-panel" style="width:100%">
                 <button class="w3-button w3-block w3-blue" (click)="original()">Original</button>
               </div>
               <div class="w3-panel" style="width:100%">
@@ -40,13 +40,13 @@ body {font-size:16px;}
             </div>
             <div class="w3-panel" style="width:100%">
                 <button class="w3-button w3-block w3-blue" (click)="hueRotate()">Hue Rotate</button>
-            </div>
+            </div> -->
           </div>
       </div> 
       <div class="w3-panel" style="width:15%">
         <a id='dwnldLnk' download='output.png' style="display:none;" ></a>
         <a id='dwnldLnk2' download='output.jpg' style="display:none;" ></a>
-        <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile()">Download</button>
+        <button class="w3-button w3-round w3-block w3-black" (click)="downloadPngFile()">Download</button>
         <div >
           <canvas id="myCanvas" ></canvas>
         </div>
