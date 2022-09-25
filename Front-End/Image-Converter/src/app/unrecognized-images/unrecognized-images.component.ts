@@ -82,7 +82,7 @@ export class UnrecognizedImagesComponent implements OnInit {
          }else {
           this.loading = true;
           console.log("request "+data.request);
-          this.imgService.AdminFeedback(data.request, this.uuid[index]).subscribe(
+          this.imgService.AdminFeedback(data.request, this.uuid[index],this.uploadedImgProcessed[index]).subscribe(
             responseData =>{
                   //response
                   this.uploadedImg=[];
