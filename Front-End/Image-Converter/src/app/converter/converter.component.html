@@ -3,7 +3,8 @@
           <h1 class="w3-xxxlarge w3-text-black"><b>Upload image</b></h1>
           <hr style="width:50px;border:5px solid black" class="w3-round">
         </div>
-        <img id="load" *ngIf="loading" src="assets/loading.gif" width="400"/>
+        <!-- <img id="load" *ngIf="loading" src="assets/loading.gif" width="400"/> -->
+        <mat-spinner *ngIf="loading" id="spin" [diameter]="250" primary style="margin:0 auto;"></mat-spinner>
         <mat-card id="uploadcard" *ngIf="!loading" class="card" draggable="true" ngClass="{{ dragAreaClass }}">
         
                       <span id="drag">Drag files here
