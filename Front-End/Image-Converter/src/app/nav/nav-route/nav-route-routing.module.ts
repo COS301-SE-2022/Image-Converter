@@ -14,6 +14,7 @@ import { ContactComponent } from './../../contact/contact.component';
 import { ImagePopupComponent } from './../../image-popup/image-popup.component';
 import { GraphPlottingComponent } from './../../graph-plotting/graph-plotting.component';
 import { AdminImagePopUpComponent } from './../../admin-image-pop-up/admin-image-pop-up.component';
+import { LandingPageComponent } from 'src/app/landing-page/landing-page.component';
 
 const routes: Routes = [
     {
@@ -39,6 +40,11 @@ const routes: Routes = [
           {
             path: 'activitytracker',
             component: TrackerComponent
+          }
+          ,
+          {
+            path: 'landing',
+            component: LandingPageComponent
           }/*,
           { path: '', redirectTo: '/upload', pathMatch: 'full' },*/
         ],

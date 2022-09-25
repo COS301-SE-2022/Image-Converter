@@ -14,15 +14,45 @@
 
 </head>
 <body>
-
     <style>
         body{
-            background-image:url("assets/img/register-wallpaper6.jpg");
+            /* background-image:url("assets/img/register-wallpaper6.jpg"); */
+            background-image:url("assets/img/wallpaper.jpg");
             /* background-image:url("assets/img/wallpaper.jpg"); */
             /* background-repeat:no-repeat;
             background-size: cover; */
+            /* background-position: 150%; */
+            /* background-repeat: no-repeat; */
+            /* background-size: contain;
+            background-color: #fff; */
+            
         }
       </style>
+
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    
+          <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/logo2.png" alt="">
+            <span>Image-Converter</span>
+          </a>
+    
+          <nav id="navbar" class="navbar">
+            <ul>
+            
+              <p id="accountLink">Don't have an account?</p>
+              <li><a class="getstarted scrollto" (click)="onSubmitCode()">Register</a></li>
+               <!-- <a routerLink="/register"  (click)="register()">register</a>  -->
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+          
+    
+        </div>
+      </header>
+      
+
+ 
 
     <div id="loginForm">
         <div id="formContent">
@@ -51,7 +81,7 @@
                 <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
                     Password is <strong>required</strong>
                 </mat-error> <br/>
-                <a routerLink="/ForgotPassword" id="forgot">Forgot your password?</a>
+                
                 
   
                 <button *ngIf="!loading" id="loginbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit">
@@ -62,9 +92,11 @@
                 </button>
                 <p *ngIf="buttonLogin != '' && !_match" class="alert alert-danger"> 
                     Invalid Username or Password !              
-                    </p> 
+                </p> 
 
-                <p id="accountLink">Don't have an account? <a routerLink="/register"  (click)="register()">register</a></p> 
+                    <a routerLink="/ForgotPassword" id="forgot">Forgot your password?</a>
+
+                <!-- <p id="accountLink">Don't have an account? <a routerLink="/register"  (click)="register()">register</a></p>  -->
 
                 
             </form>
