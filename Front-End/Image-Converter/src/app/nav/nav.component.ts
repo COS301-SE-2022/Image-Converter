@@ -4,6 +4,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-nav',
@@ -30,6 +32,13 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    
   }
 
   ngAfterViewInit() {
@@ -56,4 +65,27 @@ export class NavComponent implements OnInit {
     // alert("button working");
   }
 
+  onSubmitLanding(){
+    this._router.navigateByUrl('/landing');
+  }
+
+  onSubmitGraphing(){
+    this._router.navigateByUrl('/nav/livegraph');
+  }
+
+  onSubmitHistory(){
+    this._router.navigateByUrl('/nav/uploadHistory');
+  }
+
+  onSubmitUnrecognized(){
+    this._router.navigateByUrl('/nav/unrecognized');
+  }
+
+  onSubmitTracker(){
+    this._router.navigateByUrl('/nav/activitytracker');
+  }
+
+  onSubmitUpload(){
+    this._router.navigateByUrl('/nav/upload');
+  }
 }
