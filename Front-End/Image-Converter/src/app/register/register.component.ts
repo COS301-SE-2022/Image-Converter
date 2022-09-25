@@ -179,5 +179,10 @@ export class RegisterComponent implements OnInit {
         }
     );
   }
+
+  onSubmitLogin()
+  {
+    this._router.navigateByUrl('/login');
+  }
 }
 

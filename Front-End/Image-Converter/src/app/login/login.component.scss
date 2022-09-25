@@ -230,6 +230,8 @@
   display: flex;
   list-style: none;
   align-items: center;
+  left:20%;
+  
 }
 
 .navbar li {
@@ -485,4 +487,8 @@
 
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
+}
+
+.header a{
+  text-decoration: none;
 }
