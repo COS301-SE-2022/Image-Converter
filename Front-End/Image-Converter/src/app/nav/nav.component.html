@@ -44,7 +44,7 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container> -->
-
+  <app-toolbar></app-toolbar>
   <!DOCTYPE html>
 <html>
 
@@ -83,20 +83,19 @@
             <ul class="list-unstyled components">
                 <!-- <p>Dummy Heading</p> -->
                 <li class="active">
-                    <a (click)="onSubmitUpload()">Upload Image</a>
+                    <a (click)="onSubmitUpload()"><mat-icon>add_photo_alternate</mat-icon> Upload Image</a>
                 </li>
                 <li>
-                    <a (click)="onSubmitGraphing()">Draw graph using formulae</a>
+                    <a (click)="onSubmitGraphing()"><mat-icon>brush</mat-icon> Plot graph using formulae</a>
                 </li>
                 <li>
-                    <a (click)="onSubmitHistory()">Upload History</a>
-                    
+                    <a (click)="onSubmitHistory()"><mat-icon> history</mat-icon>Upload History</a>
                 </li>
                 <li>
-                    <a (click)="onSubmitUnrecognized()">Unrecognized Images</a>
+                    <a (click)="onSubmitUnrecognized()"><mat-icon>report_problem</mat-icon> Unrecognized Images</a>
                 </li>
                 <li>
-                    <a (click)="onSubmitTracker()">Activity Tracker</a>
+                    <a (click)="onSubmitTracker()"><mat-icon>track_changes</mat-icon> Activity Tracker</a>
                 </li>
                 <li>
                   <a (click)="onSubmitLogin()">Log out</a>
