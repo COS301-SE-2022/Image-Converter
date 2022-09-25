@@ -71,8 +71,8 @@ mat-toolbar {
 
   .footer {
     background: #f6f9ff;
-    padding: 0 0 30px 0;
-    font-size: 14px;
+    padding: 0 0 0px 0;
+    font-size: 12px;
   }
   
   // .footer .footer-newsletter {
@@ -130,7 +130,7 @@ mat-toolbar {
     background-size: contain;
     border-top: 1px solid #e1ecff;
     border-bottom: 1px solid #e1ecff;
-    padding: 30px 0 20px 0;
+    padding: 15px 0 15px 0;
   }
   
   @media (max-width: 992px) {
@@ -149,12 +149,12 @@ mat-toolbar {
   }
   
   .footer .footer-top .footer-info .logo img {
-    max-height: 40px;
+    max-height: 30px;
     margin-right: 6px;
   }
   
   .footer .footer-top .footer-info .logo span {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 1px;
     color: #012970;
@@ -163,14 +163,14 @@ mat-toolbar {
   }
   
   .footer .footer-top .footer-info p {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 24px;
     margin-bottom: 0;
     font-family: "Nunito", sans-serif;
   }
   
   .footer .footer-top .social-links a {
-    font-size: 20px;
+    font-size: 25px;
     display: inline-block;
     color: rgba(1, 41, 112, 0.5);
     line-height: 0;
@@ -376,6 +376,10 @@ a:focus {
     // color: #2f7fe7;
     color: #333333;
     background: #fff;
+}
+
+#sidebar h1 {
+  font: 400 28px / 32px Roboto, "Helvetica Neue", sans-serif;
 }
 
 #sidebar ul li.active>a,
