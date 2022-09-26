@@ -10,18 +10,12 @@ import base64
 
 class MultiClassification:
     def __init__(self,uploaded_image):
-        # print("====================")
         sliced_png = uploaded_image[22:]
-        # print(uploaded_image[22:])
-        # print("============")
 
         converted_base64= bytes(sliced_png, encoding='utf8')
         with open("img.png", "wb") as fh:
             fh.write((base64.decodebytes(converted_base64)))
         self.uploaded_image = 'img.png'
-        # print("=======")
-        # print(self.uploaded_image[21:])
-        # print("=======")
         self.graphType = ""
         self.match()
 

@@ -82,24 +82,55 @@
             </div>
 
             <ul class="list-unstyled components">
-                <!-- <p>Dummy Heading</p> -->
-                <li class="active">
-                    <a (click)="onSubmitUpload()"><mat-icon>add_photo_alternate</mat-icon> Upload Image</a>
+                <li>
+                  <a (click)="onSubmitUpload()">
+                    <button  mat-button class="menu-button" routerLink="./upload">
+                      <mat-icon>add_photo_alternate</mat-icon>
+                      <span>Upload</span>
+                    </button>
+                  </a>
+                    
                 </li>
                 <li>
-                    <a (click)="onSubmitGraphing()"><mat-icon>brush</mat-icon> Plot graph using formulae</a>
+                    <a (click)="onSubmitGraphing()">
+                      <button  mat-button class="menu-button" routerLink="./upload">
+                        <mat-icon>brush</mat-icon>
+                        <span>Draw Graph using formulae</span>
+                      </button>
+                    </a>
                 </li>
                 <li>
-                    <a (click)="onSubmitHistory()"><mat-icon> history</mat-icon>Upload History</a>
+                    <a (click)="onSubmitHistory()">
+                      <button  mat-button class="menu-button" routerLink="./upload">
+                        <mat-icon>history</mat-icon>
+                        <span>Upload History</span>
+                      </button>
+                    </a>
+                    
                 </li>
                 <li>
-                    <a (click)="onSubmitUnrecognized()"><mat-icon>report_problem</mat-icon> Unrecognized Images</a>
+                    <a (click)="onSubmitUnrecognized()">
+                      <button  mat-button class="menu-button" routerLink="./upload">
+                        <mat-icon>report_problem</mat-icon>
+                        <span>Unrecognized Images</span>
+                      </button>
+                    </a>
                 </li>
                 <li>
-                    <a (click)="onSubmitTracker()"><mat-icon>track_changes</mat-icon> Activity Tracker</a>
+                    <a (click)="onSubmitTracker()">
+                      <button  mat-button class="menu-button" routerLink="./upload">
+                        <mat-icon>track_changes</mat-icon>
+                        <span>Activity Tracker</span>
+                      </button>
+                    </a>
                 </li>
                 <li>
-                  <a (click)="onSubmitLogin()"><mat-icon>close</mat-icon> Log out</a>
+                  <a (click)="onSubmitLogin()">
+                    <button  mat-button class="menu-button" routerLink="./upload">
+                      <mat-icon>logout</mat-icon>
+                      <span>Log out</span>
+                    </button>
+                  </a>
               </li>
             </ul>
 

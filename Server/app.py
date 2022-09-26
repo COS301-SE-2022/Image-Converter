@@ -8,9 +8,8 @@ from flask import Flask, json, jsonify, render_template, request, session
 from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
-from converter.templateMatching import Matching
-# from converter.image_classification import Classification
 from converter.multiclass_integ import MultiClassification
+from converter.model_training import trainModel
 from database.database import User
 from database.sendEmail import Email
 from converter.ConvertFomat import ConvertFomat
@@ -24,10 +23,16 @@ import random
 import io
 import PIL.Image as Image
 import numpy as np
+import urllib.request
+import uuid
+from PIL import Image
+
+
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
 CORS(app)
+
 
 """
 Methos for creating a new token or checking if a token is valid.
@@ -135,7 +140,6 @@ def auth_login():
             return {'response': 'failed'},200
     else:
         return {'response': 'failed'}, 400
-
 
 
 """
@@ -544,6 +548,15 @@ def adminFeedback(user):
         
         feedback = request.json['feedback']
         index = request.json['index']
+        image = request.json['image']
+        print(image)
+        myUUID = str(uuid.uuid4())
+        if(feedback=="straight line"):
+            urllib.request.urlretrieve(image,"./graph_dataset/line_graph/"+feedback+'_'+myUUID+"img.png")
+        elif(feedback=="bar graph"):
+            urllib.request.urlretrieve(image,"./graph_dataset/bar_chart/"+feedback+'_'+myUUID+"img.png")
+        elif(feedback=="pie chart"):
+            urllib.request.urlretrieve(image,"./graph_dataset/pie_chart/"+feedback+'_'+myUUID+"img.png")
         if feedback is not None:
             if db.updateGraphType(feedback,index) is True:
                 db.decrementActivity("Unrecognized")
