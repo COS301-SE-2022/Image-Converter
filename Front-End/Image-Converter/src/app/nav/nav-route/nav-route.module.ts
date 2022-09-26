@@ -19,6 +19,7 @@ import { GraphPlottingComponent } from './../../graph-plotting/graph-plotting.co
 import { AdminImagePopUpComponent } from './../../admin-image-pop-up/admin-image-pop-up.component';
 import { FilterComponent } from './../../filter/filter.component';
 import { ToolbarComponent } from './../../toolbar/toolbar.component';
+// import { FooterComponent } from './../../footer/footer.component';
 
 import { MaterialModule } from './../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
