@@ -527,7 +527,8 @@ def addWatermark(user):
             return {'response': 'Picture is None!'},200
     else:
         return {'response': 'failed'}, 400  
-        
+
+
 """
     AdminFeedback Function:
         the admin updates the graph type for a 
@@ -616,11 +617,11 @@ def Activities(user):
         data= db.getActivities()
 
         # print({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
-
+        # print(str(data[0][1])+" :"+str(data[0][2]))
         return jsonify({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
     else:
         return {'response': 'failed'}, 400
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=5000)
