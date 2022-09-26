@@ -127,15 +127,17 @@ def auth_login():
     if(db != None):
         username = str(request.json['email'])
         password = str(request.json['password'])
-        print(db.getUserWithEmail(username)[0])
-        if(db.login(username,password)):
-            token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
-            ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
-            result = "success"
-            print(result)
-            return jsonify({'response': result, 'token': str(token)})
+        if db.getUserWithEmail(username) is not None:
+            if(db.login(username,password)):
+                token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
+                ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
+                result = "success"
+                print(result)
+                return jsonify({'response': result, 'token': str(token)})
+            else:
+                return {'response': 'failed'},200
         else:
-            return {'response': 'failed'},200
+            return {'response': 'UserDoesNotExist'},200
     else:
         return {'response': 'failed'}, 400
 
@@ -541,7 +543,6 @@ def addWatermark(user):
 def adminFeedback(user):
     db=User()
     if(db!=None):
-        
         feedback = request.json['feedback']
         index = request.json['index']
         image = request.json['image']
