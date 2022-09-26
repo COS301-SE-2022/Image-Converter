@@ -2,7 +2,6 @@ import datetime
 from functools import wraps
 from lib2to3.pytree import Node
 from typing import final
-from attr import s
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
 from converter.resizing import imageResizing
@@ -18,7 +17,6 @@ from flask import Response
 from flask_cors import CORS
 import base64
 import cv2
-import os
 import random
 import io
 import PIL.Image as Image
@@ -615,9 +613,6 @@ def Activities(user):
     db=User()
     if(db!=None):
         data= db.getActivities()
-
-        # print({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
-        # print(str(data[0][1])+" :"+str(data[0][2]))
         return jsonify({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
     else:
         return {'response': 'failed'}, 400
