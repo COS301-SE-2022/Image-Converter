@@ -166,7 +166,6 @@ def register():
             if(db.register(name, surname, email, password)):
                 token = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
                 ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
-                
                 result = "success"
                 return jsonify({'result': result, 'token': str(token)})
             else:
@@ -433,7 +432,6 @@ def plot_graph(user):
 def unrecognizedGraphs(user):
     db = User()
     if(db != None):
-        if(user[6]):
             db_image_array=db.getUnrecognizedImages()
             OriginalImagelist=[]
             IndexArray=[]
@@ -443,7 +441,6 @@ def unrecognizedGraphs(user):
                 OriginalImagelist.append(x[3]) 
                 proccesedImagelist.append(x[4]) 
             return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
-        return {'response':'UserNotAdmin'},200
     else:
         return {'response': 'failed'}, 400
 
@@ -482,7 +479,7 @@ def deleteUnrecognisableImage(user):
 def check_user(user):
     db=User()
     if(db!=None):
-        return jsonify({'response':'success','userType': user[6]})
+        return jsonify({'response':'success','userType': 'true'})
     else:
         return {'response': 'failed'}, 400
 
