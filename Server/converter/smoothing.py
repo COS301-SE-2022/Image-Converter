@@ -15,7 +15,7 @@ class smoothing:
         start = time.time()
         sr = cv2.dnn_superres.DnnSuperResImpl_create()
         # Read the desired model
-        path = "EDSR_x4.pb"
+        path = "converter/RealESRGAN_x4plus.pth"
         sr.readModel(path)
         sr.setModel("edsr",4)
 
