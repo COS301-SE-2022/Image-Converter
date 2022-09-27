@@ -1,5 +1,6 @@
 import json
 from os import access
+import random
 import re
 from app import app
 import pytest
@@ -15,46 +16,51 @@ client = app.test_client()
 
 
 # @pytest.mark.xfail(reason="Still need to cater for the user tokens")
-def test_PicturePath_GivenAnUploadedImage_ShouldReturnAnImageByteArray():
-    #Prepare Data
-    url = '/picture'
-    key = "secret"
-    accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
-    header = {
-        'x-access-token':accessToken
-    }
-    with open("../images/download.png", "rb") as img_file:
-                b64picture = base64.b64encode(img_file.read())
-    # print(b64picture)
-    #Act
-    res = client.post(url, headers=header,content_type="application/json", data=json.dumps({'picture': 'data:image/png;base64,'+str(b64picture)}))
-
-    #Assert
-    assert res.status_code == 200
-    # assert res.content_type == "application/json"
-
-# @pytest.mark.xfail(reason="Fix the database config for register")
-# def test_RegisterPath_GivenUserCredentials_ShouldReturnABooleanValue():
+# def test_PicturePath_GivenAnUploadedImage_ShouldReturnAnImageByteArray():
 #     #Prepare Data
-#     now = datetime.now()
-#     current_time = now.strftime("%H:%M:%S")
-#     name= "name "+current_time
-#     surname= "surname "+current_time
-#     email= "email "+current_time
-#     password= "password "+current_time
-#     user = {
-#         'name': name,
-#         'surname': surname,
-#         'email': email,
-#         'password': password
+#     url = '/picture'
+#     key = "secret"
+#     accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
+#     header = {
+#         'x-access-token':accessToken
 #     }
-#     url = '/register'
-
+#     with open("../images/download.png", "rb") as img_file:
+#                 b64picture = base64.b64encode(img_file.read())
+#     # print(b64picture[b64picture.find("b'")+1:])
+#     b64picture=str(b64picture)
+#     # print(b64picture[b64picture.find("b'")+2:])
 #     #Act
-#     res = client.post(url, content_type="application/json",data=json.dumps(user))
-    
+#     res = client.post(url, headers=header,content_type="application/json", data=json.dumps({'picture': 'data:image/png;base64,'+b64picture[b64picture.find("b'")+2:]}))
+
 #     #Assert
 #     assert res.status_code == 200
+#     # assert res.content_type == "application/json"
+
+# @pytest.mark.xfail(reason="Fix the database config for register")
+def test_RegisterPath_GivenUserCredentials_ShouldReturnABooleanValue():
+    #Prepare Data
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    name= "name "+current_time
+    surname= "surname "+current_time
+    email= "email "+current_time
+    password= "password "+current_time
+    code = str(random.randint(1000, 9999))
+    db.insert_code(email, code)
+    user = {
+        'name': name,
+        'surname': surname,
+        'email': email,
+        'password': password,
+        'code':code
+    }
+    url = '/register'
+
+    #Act
+    res = client.post(url, content_type="application/json",data=json.dumps(user))
+    
+    #Assert
+    assert res.status_code == 200
 
 # @pytest.mark.xfail(reason="Fix the database config for login")
 # def test_LoginPath_GivenUserLoginCredentials_ShouldReturnTheStringFailOrSuccess():
