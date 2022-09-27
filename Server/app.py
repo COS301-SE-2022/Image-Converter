@@ -79,9 +79,11 @@ def upload_image(user):
         if picture is not None:
             print("picture is not None")
             db.incrementActivity("Uploads")
+            print(picture)
             base64_picture=base64.b64encode((bytes(picture[picture.find(",")+1:].encode('utf-8'))))
             imageReturned = "data:image/png;base64,"
             imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
+            
             img = Image.open(io.BytesIO(imgdata))
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
