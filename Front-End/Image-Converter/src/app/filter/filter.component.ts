@@ -101,6 +101,21 @@ export class FilterComponent implements OnInit {
     // alert(myTest);
   }
 
+  downloadPngFile()
+  {
+    var a = document.createElement('a');
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+    
+    this.incrementDownload();
+    a.href = this.message.jpg;
+    var imgBckend = a.href;
+    a.download = "output.png";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  
   upload(){
     //  uploadImage(window.event);
     myTest();

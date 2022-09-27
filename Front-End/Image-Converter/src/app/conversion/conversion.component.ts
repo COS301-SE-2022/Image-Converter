@@ -37,14 +37,15 @@ export class ConversionComponent implements OnInit {
   {
     var a = document.createElement('a');
     a.href = this.message.image;
-    myTest(a.href,this.filter,"png");
-
+    // myTest(a.href,this.filter,"jpg");
+    
     this.incrementDownload();
-   /* var imgBckend = a.href;
+    a.href = this.message.jpg;
+    var imgBckend = a.href;
     a.download = "output.png";
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);*/
+    document.body.removeChild(a);
   }
 
   //download jpg function
@@ -54,15 +55,15 @@ export class ConversionComponent implements OnInit {
     console.log("jpeg: "+this.message.jpg);
 
     a.href = this.message.image;
-    myTest(a.href,this.filter,"jpg");
+    // myTest(a.href,this.filter,"jpg");
     
     this.incrementDownload();
-    /*a.href = this.message.jpg;
+    a.href = this.message.jpg;
     var imgBckend = a.href;
     a.download = "output.jpg";
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);*/
+    document.body.removeChild(a);
   }
 
   //tracks number of downloads

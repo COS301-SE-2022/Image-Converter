@@ -1,3 +1,51 @@
+<!-- 
+  
+  <mat-sidenav-container>
+    
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <mat-divider></mat-divider> 
+  
+      <button mat-button class="menu-button" (click)="onSubmitWelcome()">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button  mat-button class="menu-button" routerLink="./upload">
+        <mat-icon>add_photo_alternate</mat-icon>
+        <span>Upload Image</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="./livegraph">
+        <mat-icon>brush</mat-icon>
+        <span>Draw Graph using formulae</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="./uploadHistory">
+        <mat-icon>history</mat-icon>
+        <span>Upload History</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="./unrecognized">
+        <mat-icon>report_problem</mat-icon>
+        <span>Unrecognized Images</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="./activitytracker">
+        <mat-icon>track_changes</mat-icon>
+        <span>Activity Tracker</span>
+      </button>
+      <button mat-button class="menu-button" (click)="onSubmitLogin()">
+        
+        <span>Logout</span>
+      </button>
+      
+  
+      <mat-divider></mat-divider>
+  
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container> -->
+  <app-toolbar></app-toolbar>
+
 <!DOCTYPE html>
 <html>
 
@@ -23,6 +71,7 @@
   <style>
     body{
         background-image:url("assets/img/wallpaper.jpg");
+        background-attachment: fixed;
         /* background-repeat:no-repeat;
         background-size: cover; */
     }
@@ -109,11 +158,11 @@
 
         <div id="content">
 
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
                 <i class="fas fa-align-left"></i>
                 
                 <span>Menu</span>
-            </button>
+            </button> -->
             
 
             <!-- top navbar -->
@@ -158,8 +207,8 @@
 </body>
 
 </html>
-  
-  <footer id="footer" class="footer">
+ <app-footer></app-footer>
+  <!-- <footer id="footer" class="footer">
 
     
 
@@ -191,5 +240,5 @@
       </div>
     </div>
 
-  </footer>
+  </footer> -->
   <!-- End Footer -->

@@ -145,7 +145,7 @@ class User:
             sql = "SELECT * FROM history2 where graph_type=%s ORDER BY id DESC"
             graphType="unrecognized"
             self.cur.execute(sql,([graphType]))
-            db_history = self.cur.fetchall()
+            db_history = self.cur.fetchmany(6)
             self.conn.commit()
             print("Unrecognized")
             return db_history
