@@ -188,3 +188,20 @@ def test_GetUnrecognizedgraphs_GivenAGETRequest_ShouldReturnStatusCode200():
 
     #Assert
     assert res.status_code == 200
+
+def test_SendEmail_GivenUserEmail_ShouldReturnStatusCode200():
+    #Prepare Data
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    email= "email "+current_time
+    url = '/sendEmail'
+    # key = "secret"
+
+    request ={
+        'email': email
+    }
+    #Act
+    res = client.post(url, content_type="application/json",data=json.dumps(request))
+
+    #Assert
+    assert res.status_code == 200
