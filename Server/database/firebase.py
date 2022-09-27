@@ -16,7 +16,7 @@ class FireStore:
     def __init__(self):
         try:
             config={
-                "type": os.environ.get('TYPE'),
+                "type": "service_account",
                 "project_id": os.environ.get('PROJECT_ID'),
                 "private_key_id": os.environ.get('PRIVATE_KEY_ID'),
                 "private_key": os.environ.get('PRIVATE_KEY'),
