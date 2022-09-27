@@ -19,7 +19,24 @@ jobs:
           pip install -r Server/requirements.txt
       - name: Test with pytest
         env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          DB_USER: ${{ secrets.DB_USER }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+          SESSION_REDIS: ${{ secrets.SESSION_REDIS }}
+          SESSION_TYPE: ${{ secrets.SESSION_TYPE }}
           TYPE: ${{ secrets.TYPE }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          PRIVATE_KEY_ID: ${{ secrets.PRIVATE_KEY_ID }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          AUTH_URI: ${{ secrets.AUTH_URI }}
+          TOKEN_URI: ${{ secrets.TOKEN_URI }}
+          AUTH_PROVIDER_x509_CERT_URL: ${{ secrets.AUTH_PROVIDER_x509_CERT_URL }}
+          CLIENT_x509_CERT_URL: ${{ secrets.CLIENT_x509_CERT_URL }}
         run: |
           pip install pytest
           export PYTHONPATH=Server/
