@@ -88,7 +88,7 @@ def test_LoginPath_GivenUserLoginCredentials_ShouldReturnStatusCode200():
     assert res.status_code == 200
     
 
-def test_UploadUserHistory_GivenAGETRequest_ShouldReturn():
+def test_UploadUserHistory_GivenAGETRequest_ShouldReturnStatusCode200():
     # with app.app_context():
     #Prepare Data
     url = '/uploadhistory'
@@ -106,7 +106,7 @@ def test_UploadUserHistory_GivenAGETRequest_ShouldReturn():
     assert res.status_code == 200
 
 
-def test_UserFeedback_GivenUserFeedback_ShouldReturnSuccess():
+def test_UserFeedback_GivenUserFeedback_ShouldReturnStatusCode200():
     # with app.app_context():
     #Prepare Data
     url = '/feedback'
