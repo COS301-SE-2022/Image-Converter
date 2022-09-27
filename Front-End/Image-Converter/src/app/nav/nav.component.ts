@@ -38,6 +38,7 @@ export class NavComponent implements OnInit {
                 $('#sidebar').toggleClass('active');
             });
         });
+        
       //   var jquery = document.createElement('script');
       //   jquery.type = 'text/javascript';
       //   jquery.src("assets/js/scrollPlugin.js");

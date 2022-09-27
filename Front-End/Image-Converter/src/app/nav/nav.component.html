@@ -44,7 +44,7 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container> -->
-  <app-toolbar></app-toolbar>
+  <!-- <app-toolbar></app-toolbar> -->
 
 <!DOCTYPE html>
 <html>
@@ -75,12 +75,17 @@
         /* background-repeat:no-repeat;
         background-size: cover; */
     }
+    
   </style>
+
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
+                <img src="assets/img/HardCode.png" (click)="onSubmitWelcome()" alt="">
                 <h1 (click)="onSubmitWelcome()">Image-Converter</h1>
+                
             </div>
 
             <ul class="list-unstyled components">
@@ -158,16 +163,18 @@
 
         <div id="content">
 
-            <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <div class="container-fluid" id="burger">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
                 <i class="fas fa-align-left"></i>
-                
                 <span>Menu</span>
-            </button> -->
+            </button>
+          </div>
+
             
 
             <!-- top navbar -->
             <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
+                <div class="container-fluid" id="burger">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>

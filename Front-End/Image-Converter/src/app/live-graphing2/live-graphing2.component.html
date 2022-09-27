@@ -7,6 +7,20 @@
 
 <button *ngIf="!loading" id="screenshot-button" (click) ="captureScreenshots()">Save Graph</button>
 <button id="screenshot"  type="submit" *ngIf="loading">
+
+  <!-- <div class="center">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div> -->
+
   <mat-spinner id="spin" [diameter]="30" primary style="margin:0 auto;"></mat-spinner>
 </button>
 
