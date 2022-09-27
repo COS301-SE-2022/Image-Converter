@@ -332,6 +332,15 @@ a:focus {
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
+// ::ng-deep{
+//   mat-icon {
+//        font-size: 24px;
+//        color: #3b86ff;
+//      }
+// }
+span{
+  font-size: medium;
+}
 
 .wrapper {
     display: flex;
@@ -385,7 +394,7 @@ a:focus {
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    // background: #2f7fe7;
+    background: #2f7fe7;
     background: #333333;
 }
 

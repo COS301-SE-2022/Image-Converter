@@ -228,7 +228,7 @@ export class ConverterService {
     );
   }
 
-  AdminFeedback(adminFeedback:any, id:any){
+  AdminFeedback(adminFeedback:any, id:any, ImgProcessed:any){
 
     var tok = localStorage.getItem('token');
   
@@ -237,7 +237,7 @@ export class ConverterService {
       headers: headers
     };
     
-    let pic = {feedback:adminFeedback, index: id};
+    let pic = {feedback:adminFeedback, index: id, image:ImgProcessed};
 
     return this.httpclient.post(
       'http://localhost:5000/adminFeedback',
