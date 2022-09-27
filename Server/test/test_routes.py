@@ -156,3 +156,19 @@ def test_IncrementActivity_GivenTheTypeOfActivity_ShouldReturnStatusCode200():
 
     #Assert
     assert res.status_code == 200
+
+def test_GetUserType_GivenAGETRequest_ShouldReturnStatusCode200():
+    #Prepare Data
+    url = '/checkusertype'
+    key = "secret"
+
+    accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
+    header = {
+    'x-access-token':accessToken
+    }
+
+    #Act
+    res = client.get(url, headers=header, content_type="application/json")
+
+    #Assert
+    assert res.status_code == 200
