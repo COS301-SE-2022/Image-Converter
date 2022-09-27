@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 # from flask_jwt_extended import create_access_token
 
 app.config.from_object('config_default.TestingConfig')
-db = app.config['DATABASE']
+db = User()
 client = app.test_client()
 
 
