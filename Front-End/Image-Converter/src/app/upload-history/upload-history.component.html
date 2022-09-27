@@ -7,7 +7,19 @@
 
     <!-- <h1>Recent Uploads</h1> -->
    <!-- <img *ngIf="loading" src="assets/loading.gif" width="400" /> -->
-   <mat-spinner *ngIf="loading" id="spin" [diameter]="150" primary style="margin-top:50px;margin:0 auto;"></mat-spinner>
+   <!-- <mat-spinner *ngIf="loading" id="spin" [diameter]="150" primary style="margin-top:50px;margin:0 auto;"></mat-spinner> -->
+   <div class="center" *ngIf="loading">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
    <div *ngIf="!loading" class="w3-row w3-container">
     <div *ngFor="let image of uploadedImg;let pImage of uploadedImgProcessed;index as i;">
       <div class="w3-col s4  w3-center w3-padding-large">

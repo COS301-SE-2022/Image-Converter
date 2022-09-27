@@ -2,7 +2,21 @@
     <h1 class="w3-xxxlarge w3-text-black"><b>Activity Tracker</b></h1>
     <hr style="width:50px;border:5px solid black" class="w3-round">
     <!-- <img id="load" *ngIf="loading" src="assets/loading.gif" width="400"/> -->
-    <mat-spinner *ngIf="loading" id="spin" [diameter]="250" primary style="margin:0 auto;"></mat-spinner>
+    <!-- <mat-spinner *ngIf="loading" id="spin" [diameter]="250" primary style="margin:0 auto;"></mat-spinner> -->
+
+    <div class="center" *ngIf="loading">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+
     <div id="divChart" width = "400" height = "400">
         <canvas id="myChart" ></canvas>
     </div>
