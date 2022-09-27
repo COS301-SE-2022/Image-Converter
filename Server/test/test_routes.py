@@ -36,8 +36,8 @@ client = app.test_client()
 #     assert res.status_code == 200
 #     # assert res.content_type == "application/json"
 
-# @pytest.mark.xfail(reason="Fix the database config for register")
-def test_RegisterPath_GivenUserCredentials_ShouldReturnABooleanValue():
+
+def test_RegisterPath_GivenUserCredentials_ShouldReturnStatusCode200():
     #Prepare Data
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
@@ -62,76 +62,65 @@ def test_RegisterPath_GivenUserCredentials_ShouldReturnABooleanValue():
     #Assert
     assert res.status_code == 200
 
-# @pytest.mark.xfail(reason="Fix the database config for login")
-# def test_LoginPath_GivenUserLoginCredentials_ShouldReturnTheStringFailOrSuccess():
-#     #Prepare Date
-#     now = datetime.now()
-#     current_time = now.strftime("%H:%M:%S")
-#     name= "name "+current_time
-#     surname= "surname "+current_time
-#     email= "email "+current_time
-#     password= "password "+current_time
-#     #Act
-#     db = User()
-#     if(db != None):
-#         result = db.register(name, surname, email, password)
+def test_LoginPath_GivenUserLoginCredentials_ShouldReturnStatusCode200():
+    #Prepare Date
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    name= "name "+current_time
+    surname= "surname "+current_time
+    email= "email "+current_time
+    password= "password "+current_time
+    #Act
+    # db = User()
+    if(db != None):
+        result = db.register(name, surname, email, password)
 
-#     invalid_user = {
-#         'email': email,
-#         'password': password
-#     }
-#     url = '/login'
+    valid_user = {
+        'email': email,
+        'password': password
+    }
+    url = '/login'
 
-#     #Act
-#     res = client.post(url, content_type="application/json",data=json.dumps(invalid_user))
+    #Act
+    res = client.post(url, content_type="application/json",data=json.dumps(valid_user))
 
-#     #Assert
-#     assert res.status_code == 200
+    #Assert
+    assert res.status_code == 200
     
 
-# def test_TemplatePath_GivenAGETRequest_ShouldReturnTheindexHtmlPage():
-#     #Prepare Data
-#     url = '/template'
+def test_UploadUserHistory_GivenAGETRequest_ShouldReturn():
+    # with app.app_context():
+    #Prepare Data
+    url = '/uploadhistory'
+    key = "secret"
 
-#     #Act
-#     res = client.get(url)
+    accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
+    header = {
+    'x-access-token':accessToken
+    }
 
-#     #Assert
-#     assert res.status_code == 200
+    #Act
+    res = client.get(url, headers=header, content_type="application/json")
 
-# def test_UploadUserHistory_GivenAGETRequest_ShouldReturn():
-#     # with app.app_context():
-#     #Prepare Data
-#     url = '/uploadhistory'
-#     key = "secret"
-#     # accessToken = create_access_token('test-user-upload')
-#     accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
-#     header = {
-#     'x-access-token':accessToken
-#     }
-
-#     #Act
-#     res = client.get(url, headers=header, content_type="application/json")
-
-#     #Assert
-#     assert res.status_code == 200
+    #Assert
+    assert res.status_code == 200
 
 
-# def test_UserFeedback_GivenUserFeedback_ShouldReturnSuccess():
-#     # with app.app_context():
-#     #Prepare Data
-#     url = '/feedback'
-#     key = "secret"
-#     # accessToken = create_access_token('test-user-upload')
-#     accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
-#     header = {
-#     'x-access-token':accessToken
-#     }
-#     request ={
-#         'feedback': "test feedback"
-#     }
-#     #Act
-#     res = client.post(url, headers=header, content_type="application/json",data=json.dumps(request))
+def test_UserFeedback_GivenUserFeedback_ShouldReturnSuccess():
+    # with app.app_context():
+    #Prepare Data
+    url = '/feedback'
+    key = "secret"
+    # accessToken = create_access_token('test-user-upload')
+    accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
+    header = {
+    'x-access-token':accessToken
+    }
+    request ={
+        'feedback': "test feedback"
+    }
+    #Act
+    res = client.post(url, headers=header, content_type="application/json",data=json.dumps(request))
 
-#     #Assert
-#     assert res.status_code == 200
+    #Assert
+    assert res.status_code == 200
