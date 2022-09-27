@@ -109,7 +109,7 @@ def test_UserFeedback_GivenUserFeedback_ShouldReturnStatusCode200():
     #Prepare Data
     url = '/feedback'
     key = "secret"
-    # accessToken = create_access_token('test-user-upload')
+
     accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
     header = {
     'x-access-token':accessToken
@@ -135,6 +135,24 @@ def test_Activities_GivenAGETRequest_ShouldReturnStatusCode200():
 
     #Act
     res = client.get(url, headers=header, content_type="application/json")
+
+    #Assert
+    assert res.status_code == 200
+
+def test_IncrementActivity_GivenTheTypeOfActivity_ShouldReturnStatusCode200():
+    #Prepare Data
+    url = '/incrementActivity'
+    key = "secret"
+
+    accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
+    header = {
+    'x-access-token':accessToken
+    }
+    request ={
+        'activity': "downloads"
+    }
+    #Act
+    res = client.post(url, headers=header, content_type="application/json",data=json.dumps(request))
 
     #Assert
     assert res.status_code == 200
