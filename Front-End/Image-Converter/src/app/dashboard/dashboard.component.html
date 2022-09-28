@@ -26,7 +26,8 @@ body {font-size:16px;}
       <!--<a (click)="toConversionFormat()"  class="w3-bar-item w3-button w3-hover-white">Conversion Formats</a> -->
       <a (click)="toGraphing()"  class="w3-bar-item w3-button w3-hover-white">Draw graph using formulae</a>
       <a (click)="toUploadHistory()"  class="w3-bar-item w3-button w3-hover-white">Upload History</a> 
-      <a (click)="toContact()"  class="w3-bar-item w3-button w3-hover-white">Contact</a>
+      <a (click)="toContact()"  class="w3-bar-item w3-button w3-hover-white" id="cont">Contact</a>
+      <a (click)="toUnrecognized()"  class="w3-bar-item w3-button w3-hover-white" id="unrec">Unrecognized Images</a>
       <a (click)="logout()"  class="w3-bar-item w3-button w3-hover-white">Logout</a>
     </div>
   </nav>
@@ -76,17 +77,18 @@ body {font-size:16px;}
       <app-filter></app-filter>
     </div>
 
-    <!-- Graphing -->
-    <!-- <div id="">
-      <app-graphing></app-graphing>
-    </div> -->
+   
   <!-- Conversion Formats -->
   <div id="conversionFormat">
     <app-conversion></app-conversion>
   </div>
    <!-- Graphing -->
-   <div id="graphPlotting">
+   <!-- <div id="graphPlotting">
     <app-graph-plotting></app-graph-plotting>
+  </div> -->
+   <!-- Graphing -->
+   <div id="livegraphing">
+    <app-live-graphing2></app-live-graphing2>
   </div>
 <!-- Upload History-->
   <div id="uploadHistory">
@@ -95,6 +97,15 @@ body {font-size:16px;}
   <!-- Contact -->
   <div id="contact">
     <app-contact></app-contact>
+  </div>
+  <!--Unrecognized Images-->
+  <div id="unrecognizedImg">
+    <app-unrecognized-images></app-unrecognized-images>
+  </div>
+
+  <!-- Admin Tracker -->
+  <div id="adminTracker">
+    <app-tracker></app-tracker>
   </div>
 <!-- End page content -->
 </div>

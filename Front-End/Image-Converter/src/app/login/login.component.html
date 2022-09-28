@@ -1,49 +1,3 @@
-<!--
-<div id="loginForm">
-    <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
-    <h1 id="logo">Image converter</h1>
-    <div id="formContent">
-        <form  [formGroup]="form" (ngSubmit)="onSubmit()">
-            <mat-form-field color="accent" class="field" appearance="outline" >
-            <mat-label>email</mat-label>
-            <input formControlName="username" matInput required>
-             <!-- mat-error is for validation  
-            <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
-                email is <strong>required</strong>
-            </mat-error>
-            </mat-form-field>
-        <br/>
-            <mat-form-field color="accent" class="field" appearance="outline" >
-            <mat-label>password</mat-label>
-            <input formControlName="password" matInput required [type]="hide ? 'password' : 'text'">
-            <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
-                Password is <strong>required</strong>
-            </mat-error>
-            
-            <button id="pbutton"  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon id="pIcon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            
-            </mat-form-field>
-            <br/>
-            <a href="#" id="forgot">Forgot your password?</a>
-        <div class="form-group" >
-            <button id="loginbtn" class="btn btn-primary"  [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit"  >Login</button><br><br>
-            <p *ngIf="buttonLogin != '' && !_match" class="alert alert-danger"> 
-            Invalid Username or Password !              
-            </p> 
-        <p id="accountLink">don't have an account? <a id="registerlink" href="#"  (click)="register()">register</a></p> 
-        </div>
-        
-        </form>
-        </div>
-</div>
--->
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +14,47 @@
 
 </head>
 <body>
+    <style>
+        body{
+            /* background-image:url("assets/img/register-wallpaper6.jpg"); */
+            background-image:url("assets/img/wallpaper.jpg");
+            /* background-image:url("assets/img/wallpaper.jpg"); */
+            /* background-repeat:no-repeat;
+            background-size: cover; */
+            /* background-position: 150%; */
+            /* background-repeat: no-repeat; */
+            /* background-size: contain;
+            background-color: #fff; */
+            
+        }
+      </style>
+
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    
+          <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/logos.png" alt="">
+            <span>Image-Converter</span>
+          </a>
+    
+          <nav id="navbar" class="navbar">
+            <ul>
+              
+            
+              <p id="accountLink">Don't have an account?</p>
+              <li><a class="getstarted scrollto" (click)="onSubmitCode()">Register</a></li>
+              
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+          
+    
+        </div>
+      </header>
+      
+
+ 
+
     <div id="loginForm">
         <div id="formContent">
             <div class="background">
@@ -67,8 +62,9 @@
                 <div class="shape"></div>
             </div>
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <h3 id="logo">Image Converter <br>
-                    Login</h3>
+                <h3 id="logo" class="welcome">Welcome back</h3>
+                <h2>Log in to your account below</h2>
+
                 
                     <label for="Email">Username</label>
                     <input formControlName="username" placeholder="Email" matInput required>
@@ -86,7 +82,7 @@
                 <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
                     Password is <strong>required</strong>
                 </mat-error> <br/>
-                <a routerLink="/ForgotPassword" id="forgot">Forgot your password?</a>
+                
                 
   
                 <button *ngIf="!loading" id="loginbtn" [disabled]="form.get('username')?.invalid || form.get('password')?.invalid" type="submit">
@@ -97,9 +93,11 @@
                 </button>
                 <p *ngIf="buttonLogin != '' && !_match" class="alert alert-danger"> 
                     Invalid Username or Password !              
-                    </p> 
+                </p> 
 
-                <p id="accountLink">Don't have an account? <a routerLink="/register"  (click)="register()">register</a></p> 
+                    <a routerLink="/ForgotPassword" id="forgot">Forgot your password?</a>
+
+                <!-- <p id="accountLink">Don't have an account? <a routerLink="/register"  (click)="register()">register</a></p>  -->
 
                 
             </form>

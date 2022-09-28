@@ -1,10 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
-import { image } from 'html2canvas/dist/types/css/types/image';
-import { ReturnStatement } from '@angular/compiler';
 import {GlobalVariable} from './global';
+import {ConverterService} from './../shared/converter.service';
 
 declare const myTest:any;
 declare const uploadImage:any;
@@ -24,7 +22,7 @@ export class FilterComponent implements OnInit {
   subscription!: Subscription;
   private globalFilterVar = GlobalVariable.globalVar;
   
-  constructor(public sanitizer: DomSanitizer,private imgData: ComponentCommunicationService ) { }
+  constructor(private imgData: ComponentCommunicationService,private trackerService: ConverterService ) { }
 
   ngOnInit(): void {
     //subscribe for communication between components
@@ -41,33 +39,35 @@ export class FilterComponent implements OnInit {
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "revert"
     this.globalFilterVar = "revert";
-
+    this.imgData.changeFilter("revert");
   }
 
   grayScale(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "grayscale(100%)"
     this.globalFilterVar = "grayscale";
-    
+    this.imgData.changeFilter("grayscale");
   }
 
   sepia(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "sepia(100%)"
     this.globalFilterVar = "sepia";
+    this.imgData.changeFilter("sepia");
   }
 
   contrast(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "contrast(200%)"
     this.globalFilterVar = "contrast";
+    this.imgData.changeFilter("contrast");
   }
 
   hueRotate(){
     var x=document.getElementById("imgLink") as HTMLLinkElement
     x.style.filter = "hue-rotate(90deg)"
     this.globalFilterVar = "hueRotate";
-
+    this.imgData.changeFilter("hueRotate");
   }
 
   //downloadFile is used to download an image
@@ -75,39 +75,61 @@ export class FilterComponent implements OnInit {
     var a = document.createElement('a');
     a.href = this.message.image;
     var imgBckend = a.href;
-  // a.download = "output.png";
-  // document.body.appendChild(a);
-  // a.click();
-  // document.body.removeChild(a);
-var filterVar;
-// console.log(temp);
-  if(this.globalFilterVar == "grayscale"){
-    filterVar = "grayscale";
-  }
-  else if(this.globalFilterVar == "sepia"){
-    filterVar = "sepia";
-  }
-  else if(this.globalFilterVar == "contrast"){
-    filterVar = "contrast";
-  }
-  else if(this.globalFilterVar == "hueRotate"){
-    filterVar = "hueRotate";
-  }
-  else if(this.globalFilterVar == "revert"){
-    filterVar = "revert";
+    // a.download = "output.png";
+    // document.body.appendChild(a);
+    // a.click();
+    // document.body.removeChild(a);
+    var filterVar;
+    // console.log(temp);
+    if(this.globalFilterVar == "grayscale"){
+      filterVar = "grayscale";
+    }
+    else if(this.globalFilterVar == "sepia"){
+      filterVar = "sepia";
+    }
+    else if(this.globalFilterVar == "contrast"){
+      filterVar = "contrast";
+    }
+    else if(this.globalFilterVar == "hueRotate"){
+      filterVar = "hueRotate";
+    }
+    else if(this.globalFilterVar == "revert"){
+      filterVar = "revert";
+    }
+
+    myTest(imgBckend,filterVar);
+    // alert(myTest);
   }
 
-  myTest(imgBckend,filterVar);
-  // alert(myTest);
-
+  downloadPngFile()
+  {
+    var a = document.createElement('a');
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+    
+    this.incrementDownload();
+    a.href = this.message.jpg;
+    var imgBckend = a.href;
+    a.download = "output.png";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  
+  upload(){
+    //  uploadImage(window.event);
+    myTest();
   }
 
- upload(){
-  //  uploadImage(window.event);
-  myTest();
- }
-
-
-
+  incrementDownload()
+  {
+    
+    this.trackerService.activityTrackerIncrement("Downloads").subscribe(
+      responseData =>{
+            //response
+            console.log(responseData);
+           
+        }
+    );
+  }
 }
-

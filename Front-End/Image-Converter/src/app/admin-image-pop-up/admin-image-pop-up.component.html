@@ -1,0 +1,29 @@
+<div>
+    <div>
+        <h2>Uploaded Image</h2>
+        <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile(imageUrl)">
+            <img [src]="imageUrl" id="popupImg" alt="img" />
+        </button>
+        <br />
+        <br/>
+        <h2>Processed Image</h2>
+        <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile(imageProcessedUrl)">
+            <img [src]="imageProcessedUrl" id="popupImg" alt="img" />
+        </button>
+    </div>
+    <div>
+       <button class="w3-button w3-round w3-block w3-red" (click)="deleteImages()">Delete Images</button>
+    </div>
+    
+    <div>
+        <p>Select the graphType </p>
+        <select #type (change)="feedback(type.value)">
+            <option default>Pick a graphType</option>
+            <option>straight line</option>
+            <option>bar graph</option>
+            <option>pie chart</option>
+            <option>scatter plot</option>
+        </select>
+    </div>
+    
+</div>

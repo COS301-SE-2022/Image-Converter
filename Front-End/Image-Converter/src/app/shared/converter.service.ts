@@ -180,5 +180,124 @@ export class ConverterService {
       data,httpOptions
     );
   }
+
+  getUnrecognizedGraphs(){
+
+    let token = localStorage.getItem('token');
+    
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    let data = {data: ''};
+    return this.httpclient.get(
+      'http://localhost:5000/unrecognizedgraphs',
+      httpOptions
+    );
+  }
+ 
+  //sends request to delete unrecognisable images
+  deleteUnrecognisableImage(id:any){
+
+    var tok = localStorage.getItem('token');
+ 
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    let pic = {index: id};
+
+    return this.httpclient.post(
+      'http://localhost:5000//deleteUnrecognisableImage',
+      pic,httpOptions
+       );
+  }
+
+  userType(){
+
+    let token = localStorage.getItem('token');
+    
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    return this.httpclient.get(
+      'http://localhost:5000/checkusertype',
+      httpOptions
+    );
+  }
+
+  AdminFeedback(adminFeedback:any, id:any, ImgProcessed:any){
+
+    var tok = localStorage.getItem('token');
   
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    
+    let pic = {feedback:adminFeedback, index: id, image:ImgProcessed};
+
+    return this.httpclient.post(
+      'http://localhost:5000/adminFeedback',
+      pic,httpOptions
+    );
+  }
+
+  savePlottedImg(data: string) {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    let pic = {picture: data};
+
+    return this.httpclient.post(
+      'http://localhost:5000/addWatermark',
+      pic,httpOptions
+    );
+  }
+  
+  //activity tracker(increment/decrement)
+  activityTrackerIncrement(data: string) {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    let activity = {activity: data};
+
+    return this.httpclient.post(
+      'http://localhost:5000/incrementActivity',
+      activity,httpOptions
+    );
+  }
+
+  //graph data
+  activityTrackerGraphData() {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+ 
+    return this.httpclient.get(
+      'http://localhost:5000/activities',
+      httpOptions
+    );
+
+    
+  }
 }
