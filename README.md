@@ -11,16 +11,8 @@
 # HardCode Image-Converter
 
 ## Description
-With our current climate of easy access to information, we are faced with the problem of information
-overload. Therefore it is important that we are able to view data in a concise format. This will allow
-us to understand the data in a comprehensive manner without getting distracted by unnecessary
-information.
-Graphing is a way to counter the problem effectively. However, mismatched or unclear graphs
-fail to help us understand the data adequately. We intend to create a software solution that enables
-the standardization of graphs to solve this problem.
-The tool that we will build will convert the image of a graph into a standardized graph. By doing
-so, we will be able to easily interpret the data. It will also extract the function of the graph and
-display it to the user. The tool will support multiple graphing functions and graph representations.
+With our current climate of easy access to information, we are faced with the problem of information overload. Therefore it is important that we are able to view data in a concise format. This will allow us to understand the data in a comprehensive manner without getting distracted by unnecessary information. Graphing is a way to counter the problem effectively. However, mismatched or unclear graphs fail to help us understand the data adequately. 
+The Image converter is a tool created for a Content Management System (CMS). It hosts a variety of functions of image manipulation, such as image cleaning, classification and filtering. The tool also manages uploaded images in a concise and efficient way.  The tool will be used solely by administrators of the CMS
 
 ## Project Board
 [Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>

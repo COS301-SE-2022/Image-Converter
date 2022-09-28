@@ -15,12 +15,19 @@ body {font-size:16px;}
 </style>
 </head>
 <body *ngIf=dispBool>
-  
+  <style>
+    body{
+        background-image:url("assets/img/wallpaper.jpg");
+        background-attachment: fixed;
+        /* background-repeat:no-repeat;
+        background-size: cover; */
+    }
+  </style>
   <!--Image Filters-->  
-  <div class="w3-container" id="imageFilters" style="margin-top:5px">
-    <h1 class="w3-xxxlarge w3-text-black"><b>Image Filters</b></h1>
+  <div class="w3-container" id="imageFilters" style="margin-top:50px">
+    <h1 class="w3-xxxlarge w3-text-black"><b>Processed Image</b></h1>
     <hr style="width:50px;border:5px solid black" class="w3-round">
-      <div>  
+      <div  id="processedImg">  
         <div class="w3-container w3-cell">
             <img id="imgLink" src={{message.image}} alt="response img" width="400" height="400"><br/>
             <p><b>{{message.graphType}}</b></p>

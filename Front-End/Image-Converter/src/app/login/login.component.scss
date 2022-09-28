@@ -204,7 +204,7 @@
 .header {
   transition: all 0.5s;
   z-index: 997;
-  padding: 20px 0;
+  padding: 5px 0;
   // background-color: rgb(190, 185, 185);
   background-color: #fff;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.7);
@@ -221,8 +221,10 @@
 }
 
 .header .logo img {
-  max-height: 40px;
-  margin-right: 6px;
+  // max-height: 40px;
+  // margin-right: 6px;
+  height:60px;
+  width: 60px;
 }
 
 .header .logo span {
@@ -252,6 +254,8 @@
   display: flex;
   list-style: none;
   align-items: center;
+  left:20%;
+  
 }
 
 .navbar li {
@@ -507,4 +511,8 @@
 
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
+}
+
+.header a{
+  text-decoration: none;
 }

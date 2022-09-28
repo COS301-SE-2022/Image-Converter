@@ -15,6 +15,7 @@ import { ImagePopupComponent } from './../../image-popup/image-popup.component';
 import { GraphPlottingComponent } from './../../graph-plotting/graph-plotting.component';
 import { AdminImagePopUpComponent } from './../../admin-image-pop-up/admin-image-pop-up.component';
 import { LandingPageComponent } from 'src/app/landing-page/landing-page.component';
+// import { FooterComponent } from 'src/app/footer/footer.component';
 
 const routes: Routes = [
     {
@@ -45,7 +46,13 @@ const routes: Routes = [
           {
             path: 'landing',
             component: LandingPageComponent
-          }/*,
+          }
+          
+          // {
+          //   path: 'footer',
+          //   component: FooterComponent
+          // }
+          /*,
           { path: '', redirectTo: '/upload', pathMatch: 'full' },*/
         ],
     },

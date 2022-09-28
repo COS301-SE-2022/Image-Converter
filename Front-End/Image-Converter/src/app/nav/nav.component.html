@@ -44,8 +44,9 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container> -->
+  <app-toolbar></app-toolbar>
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -57,6 +58,7 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="/path/to/jquery.mCustomScrollbar.css" />
     <!-- Our Custom CSS -->
     <!-- <link rel="stylesheet" href="style.css"> -->
 
@@ -69,21 +71,27 @@
   <style>
     body{
         background-image:url("assets/img/wallpaper.jpg");
+        background-attachment: fixed;
         /* background-repeat:no-repeat;
         background-size: cover; */
     }
+    
   </style>
+
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3 (click)="onSubmitWelcome()">Image-Converter</h3>
+                <img src="assets/img/HardCode.png" (click)="onSubmitWelcome()" alt="">
+                <h1 (click)="onSubmitWelcome()">Image-Converter</h1>
+                
             </div>
 
             <ul class="list-unstyled components">
                 <li>
                   <a (click)="onSubmitUpload()">
-                    <button  mat-button class="menu-button" routerLink="./upload">
+                    <button  mat-button class="menu-button">
                       <mat-icon>add_photo_alternate</mat-icon>
                       <span>Upload</span>
                     </button>
@@ -92,15 +100,15 @@
                 </li>
                 <li>
                     <a (click)="onSubmitGraphing()">
-                      <button  mat-button class="menu-button" routerLink="./upload">
+                      <button  mat-button class="menu-button">
                         <mat-icon>brush</mat-icon>
-                        <span>Draw Graph using formulae</span>
+                        <span>Plot Graph</span>
                       </button>
                     </a>
                 </li>
                 <li>
                     <a (click)="onSubmitHistory()">
-                      <button  mat-button class="menu-button" routerLink="./upload">
+                      <button  mat-button class="menu-button">
                         <mat-icon>history</mat-icon>
                         <span>Upload History</span>
                       </button>
@@ -109,7 +117,7 @@
                 </li>
                 <li>
                     <a (click)="onSubmitUnrecognized()">
-                      <button  mat-button class="menu-button" routerLink="./upload">
+                      <button  mat-button class="menu-button">
                         <mat-icon>report_problem</mat-icon>
                         <span>Unrecognized Images</span>
                       </button>
@@ -117,7 +125,7 @@
                 </li>
                 <li>
                     <a (click)="onSubmitTracker()">
-                      <button  mat-button class="menu-button" routerLink="./upload">
+                      <button  mat-button class="menu-button">
                         <mat-icon>track_changes</mat-icon>
                         <span>Activity Tracker</span>
                       </button>
@@ -125,7 +133,7 @@
                 </li>
                 <li>
                   <a (click)="onSubmitLogin()">
-                    <button  mat-button class="menu-button" routerLink="./upload">
+                    <button  mat-button class="menu-button">
                       <mat-icon>logout</mat-icon>
                       <span>Log out</span>
                     </button>
@@ -155,15 +163,36 @@
 
         <div id="content">
 
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span>Menu</span>
-            </button>
-            <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-align-justify"></i>
-            </button> -->
+          <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <div class="container-fluid" id="burger">
+              <button type="button" id="sidebarCollapse" class="btn btn-info">
+                  <i class="fas fa-align-left"></i>
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav> -->
+
+            
+
+            <!-- top navbar -->
+            <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid" id="burger">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                </div>
+                
+            </nav> -->
 
 
+            
         </div>
 
         <div class="content mat-elevation-z8">
@@ -188,43 +217,5 @@
 </body>
 
 </html>
+ <app-footer></app-footer>
   
-  <footer id="footer" class="footer">
-
-    
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              
-              <span>Image-Converter</span>
-            </a>
-            <p>In partnership with MathU Teaching Emporium and the COS 301 team</p>
-            <div class="social-links mt-3">
-              
-              <a href="https://github.com/COS301-SE-2022/Image-Converter" class="linkedin"><i class="bi bi-github"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              <strong>Email:</strong> hardcode8102gmail.com<br>
-            </p>
-            <p>Powered by by HardCode</p>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- <div class="container">
-      <div class="credits">
-        <p>Powered by by HardCode</p>
-      </div>
-    </div> -->
-  </footer>
-  <!-- End Footer -->
