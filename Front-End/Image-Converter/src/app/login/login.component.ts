@@ -56,6 +56,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', responseData.body.token);
           localStorage.setItem('email', this.form.get('username')!.value);
           this._router.navigateByUrl('/welcome');
+        }else if(responseData.body.response =="UserDoesNotExist"){
+          alert('User Does Not Exist in the system');
+        }
+        else{
+          alert('Username or password is incorrect')
         }
         // this._router.navigateByUrl('/dashboard');
       });
