@@ -129,12 +129,12 @@ a:focus {
 }
 
 .navbar {
-    padding: 15px 10px;
+    padding: 9px 10px;
     background: #fff;
     border: none;
     border-radius: 0;
     margin-bottom: 0px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-btn {
@@ -297,6 +297,7 @@ a.article:hover {
   border-color: #2f7fe7;
   --bs-btn-hover-bg: #2f7fe7;
   --bs-btn-hover-border-color: #2f7fe7;
+  padding: 4px 8px;
 }
 
 
