@@ -8,33 +8,11 @@ import base64
 import jwt
 from database.database import User
 from datetime import datetime, timedelta
-# from flask_jwt_extended import create_access_token
 
 app.config.from_object('config_default.TestingConfig')
 db = User()
 client = app.test_client()
 
-
-# @pytest.mark.xfail(reason="Still need to cater for the user tokens")
-# def test_PicturePath_GivenAnUploadedImage_ShouldReturnAnImageByteArray():
-#     #Prepare Data
-#     url = '/picture'
-#     key = "secret"
-#     accessToken = jwt.encode({'email' :'hardcode810@gmail.com', 'exp' : datetime.utcnow() + timedelta(minutes=60)}, key,algorithm="HS256")
-#     header = {
-#         'x-access-token':accessToken
-#     }
-#     with open("../images/download.png", "rb") as img_file:
-#                 b64picture = base64.b64encode(img_file.read())
-#     # print(b64picture[b64picture.find("b'")+1:])
-#     b64picture=str(b64picture)
-#     # print(b64picture[b64picture.find("b'")+2:])
-#     #Act
-#     res = client.post(url, headers=header,content_type="application/json", data=json.dumps({'picture': 'data:image/png;base64,'+b64picture[b64picture.find("b'")+2:]}))
-
-#     #Assert
-#     assert res.status_code == 200
-#     # assert res.content_type == "application/json"
 
 
 def test_RegisterPath_GivenUserCredentials_ShouldReturnStatusCode200():
@@ -195,7 +173,6 @@ def test_SendEmail_GivenUserEmail_ShouldReturnStatusCode200():
     current_time = now.strftime("%H:%M:%S")
     email= "email "+current_time
     url = '/sendEmail'
-    # key = "secret"
 
     request ={
         'email': email
