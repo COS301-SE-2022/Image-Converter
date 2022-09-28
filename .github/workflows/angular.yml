@@ -5,6 +5,17 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    variables:
+      - name: js-src-dir
+        value: Front-End/Image-Converter/src/assets/glightbox.js
+      - name: css-src-dir
+        value: Front-End/Image-Converter/src/assets/glightbox.css
+      - name: js-dest-dir
+        value: Front-End/Image-Converter/node_modules/glightbox/src/js
+      - name: csss-dest-dir
+        value: Front-End/Image-Converter/node_modules/glightbox/src/postcss
+      
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 16
@@ -14,5 +25,7 @@ jobs:
         cache: 'npm'
     - run: npm ci --prefix  Front-End/Image-Converter/
     - run: npm fund --prefix  Front-End/Image-Converter/
+    - run: mv ${{ variables.js-src-dir}} ${{ variables.js-dest-dir}}
+    - run: mv ${{ variables.csss-src-dir}} ${{ variables.css-dest-dir}}
     - run: npm run build --if-present --prefix  Front-End/Image-Converter/
     - run: npm test --prefix  Front-End/Image-Converter/
