@@ -10,4 +10,4 @@ class Config(object):
 
 class TestingConfig(Config):
     DB_NAME='Mock'
-    DATABASE=mockDatabase()
+    DATABASE=User()
