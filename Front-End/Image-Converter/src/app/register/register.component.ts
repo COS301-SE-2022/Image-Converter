@@ -171,13 +171,18 @@ export class RegisterComponent implements OnInit {
             if(response.body.result == "success"){
               console.log("success");
               localStorage.setItem('token', responseData.body.token);
-              this._router.navigateByUrl('/dashboard');
+              this._router.navigateByUrl('/welcome');
             }
-            else{
-              alert("something went wrong");
-            }
+            // else{
+            //   alert("something went wrong");
+            // }
         }
     );
+  }
+
+  onSubmitLogin()
+  {
+    this._router.navigateByUrl('/login');
   }
 }
 

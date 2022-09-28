@@ -30,7 +30,7 @@ export class UploadHistoryComponent implements OnInit {
           this.loading = false;
            respsonseBase64 = JSON.parse(JSON.stringify(responseData));
 
-         //console.log("response here: "+JSON.stringify(responseData));
+        //  console.log("response here: "+JSON.stringify(responseData));
          
           for(let i=0;i<respsonseBase64.OriginalImage.length;i++){
 
