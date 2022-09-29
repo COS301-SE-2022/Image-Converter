@@ -10,7 +10,7 @@ from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
 from converter.templateMatching import Matching
 # from converter.image_classification import Classification
-from converter.multiclass_integ import MultiClassification
+# from converter.multiclass_integ import MultiClassification
 from database.database import User
 from database.sendEmail import Email
 from converter.ConvertFomat import ConvertFomat
@@ -80,24 +80,25 @@ def upload_image(user):
             base64_picture=base64.b64encode((bytes(picture[picture.find(",")+1:].encode('utf-8'))))
             imageReturned = "data:image/png;base64,"
             imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
+            print("Image returned", io.BytesIO(imgdata))
             img = Image.open(io.BytesIO(imgdata))
-            opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+            # opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
-            img_class = MultiClassification(picture)
+            # img_class = MultiClassification(picture)
             print("#########################################")
-            print(img_class.graphType)
-            if(img_class.graphType=="Unrecognized"):
-                db.incrementActivity("Unrecognized")
+            # print(img_class.graphType)
+            # if(img_class.graphType=="Unrecognized"):
+            #     db.incrementActivity("Unrecognized")
             print("#########################################")
         
-            imageCleaner = smoothing(opencv_img)
+            imageCleaner = smoothing(np.array(img))
 
             imageResult =imageCleaner.clean_noise()
-            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
+            if(db.insert_image(img, imageResult, user[0],"line_graph")):
                 print("Image inserted")
             db_image = db.get_image(user[0])
-            graphType = "This "+img_class.graphType
+            graphType = "This "+" a line_graph"
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
             return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})

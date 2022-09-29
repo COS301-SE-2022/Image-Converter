@@ -1,8 +1,12 @@
 import cv2
 import numpy as np
+"""converter."""
 from converter.watermark import AddMark
 from converter.resizing import imageResizing
 from PIL import Image
+import torch
+from basicsr.archs.rrdbnet_arch import RRDBNet
+
 import sys
 sys.path.append('../')
 
@@ -11,97 +15,99 @@ class smoothing:
         self.img = uploaded_image
 
     def clean_noise(self):
-        import time
-        start = time.time()
-        sr = cv2.dnn_superres.DnnSuperResImpl_create()
-        # Read the desired model
-        path = "converter/RealESRGAN_x4plus.pth"
-        sr.readModel(path)
-        sr.setModel("edsr",4)
+        ########################################################################
+        # Remove noise from the image
+        model_path = 'converter/RealESRGAN_x4plus.pth'
+        img_path = '/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/balloons_noisy.png'
 
-        # Set CUDA backend and target to enable GPU inference
-        sr.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-        sr.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
-        
-        result = sr.upsample(self.img)
-        end = time.time()
-        print(end - start)
+        #Enable gpu acceleration
+        if torch.backends.mps.is_available():
+            device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+        else:
+            device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        # sr = cv2.dnn_superres.DnnSuperResImpl_create()
-        # path = "ESPCN_x4.pb"
-        # print('------------------------Loading model1----------------------------------------')
-        # sr.readModel(path)
-        # sr.setModel("espcn",4)
-        # result = sr.upsample(self.img)
-        # print('------------------------DONE Loading model-------------------------------------')
+        model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32)
+        loadnet = torch.load(model_path)
+        if 'params_ema' in loadnet:
+            keyname = 'params_ema'
+        else:
+            keyname = 'params'
+        model.load_state_dict(loadnet[keyname], strict=True)
+        model.eval()
+        model = model.to(device)
+        print('Model path {:s}. \nTesting...'.format(model_path))
 
+        #Load the image
+        img = self.img.astype(np.float32)
+        cv2.imshow("Load image:", img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        # os.makedirs('results/', exist_ok=True)
 
-        # sr1 = cv2.dnn_superres.DnnSuperResImpl_create()
-        # path = "EDSR_x4.pb"
-        # print('------------------------Loading model 2----------------------------------------')
-        # start = time.time()
-        # sr1.readModel(path)
-        # sr1.setModel("edsr",4)
-        # result1 = sr1.upsample(self.img)
-        # end = time.time()
-        # print(end - start)
-        # print('------------------------DONE Loading model----------------------------------------')
-        
-        # sr2 = cv2.dnn_superres.DnnSuperResImpl_create()
-        # path = "LapSRN_x8.pb"
-        # print('------------------------Loading model3----------------------------------------')
-        # sr2.readModel(path)
-        # sr2.setModel("lapsrn",8)
-        # result2 = sr2.upsample(self.img)
-        # print('------------------------DONE Loading model----------------------------------------')
-
-        # kernel = np.array([[0, -1, 0],
-        #            [-1, 5,-1],
-        #            [0, -1, 0]])
-
-        # # kernel = np.ones((5, 5), np.float32)/30
-        # image_sharp = cv2.filter2D(src=self.img, ddepth=-1, kernel=kernel)
-        # #Image smoothing and sharpening
-        # blurred = cv2.bilateralFilter(self.img, 15, 75, 75)
-        # sharp = cv2.addWeighted(self.img, 3.5, self.img, -2.1, 0)
-        # kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
-        # open = cv2.morphologyEx(sharp, cv2.MORPH_OPEN, kernel, iterations=1)
-
-        # Using cv2.imshow() method 
-        # Displaying the image 
-        cv2.imshow("Original Image", self.img)
-        cv2.imshow("ESDSR_x4", result)
-        # cv2.imshow("eDsr_x4", result1)
-        # cv2.imshow("LapSRN_x8", result2)
-        
-        # waits for user to press any key 
-        # (this is necessary to avoid Python kernel form crashing)
-        cv2.waitKey(0) 
-        
-        # closing all open windows 
-        cv2.destroyAllWindows() 
+        if np.max(img) > 255:  # 16-bit image
+            max_range = 65535
+            print('\tInput is a 16-bit image')
+        else:
+            max_range = 255
+        img = img / max_range
+        if len(img.shape) == 2:  # gray image
+            img_mode = 'L'
+            img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
+        elif img.shape[2] == 4:  # RGBA image with alpha channel
+            img_mode = 'RGBA'
+            alpha = img[:, :, 3]
+            img = img[:, :, 0:3]
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            # if args.alpha_upsampler == 'realesrgan':
+            #     alpha = cv2.cvtColor(alpha, cv2.COLOR_GRAY2RGB)
+        else:
+            img_mode = 'RGB'
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img1 = img
+        img = torch.from_numpy(np.transpose(img[:, :, [2, 1, 0]], (2, 0, 1))).float()
+        img = img.unsqueeze(0).to(device)
+        print('Device: %s' % device)
+        with torch.no_grad():
+            output = model(img).data.squeeze().float().cpu().clamp_(0, 1).numpy()
+        output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
+        output = output[:, :, ::-1].copy()
+        print(output.shape)
+        cv2.imshow("Upscaled Image: ", output)
+        cv2.imshow("Original: ", img1[:, :, ::-1].copy())
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        ########################################################################
 
         #Resizing the image
-        resizedImage = imageResizing(result)
+        resizedImage = imageResizing(output)
         resizedImage = resizedImage.resize()
         print('Resized image:', resizedImage.shape)
+        # # cv2.imshow("Image: ", output)
+        # cv2.imshow("Image2: ", resizedImage)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
 
         #Adding a watermark to the image
-        imageWatermark = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
-        imageWatermark = imageWatermark.Dev()
+        # imageWatermark = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
+        # imageWatermark = imageWatermark.Dev()
 
         # #Converting the returned image to numpy array
-        cleanedImage = np.array(imageWatermark) 
-        cleanedImage = cleanedImage[:, :, ::-1].copy() 
+        # cleanedImage = np.array(imageWatermark)
+        # cleanedImage = cleanedImage[:, :, ::-1].copy()
 
 
-        cv2.imwrite("./../images/original/Graph.png", cleanedImage)
-        return cleanedImage
+        cv2.imwrite("./../images/original/Graph.png", resizedImage)
+        return resizedImage
 
 if __name__ == '__main__':
-    src = [ '/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/graphs/imagemg8c19s191e1pa1p2answer.png']
+    src = ['/Users/neoseefane/Documents/GitHub/Image-Converter/Server/images/download.png']
     for i in src:
+        img = Image.open(i)
         img = cv2.imread(i)
-        object = smoothing(img)
+        open_cv_image = np.array(img)
+        # Convert RGB to BGR
+        open_cv_image = open_cv_image[:, :, ::-1].copy()
+        object = smoothing(open_cv_image)
         object.clean_noise()
+        break
     
