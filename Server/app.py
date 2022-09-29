@@ -99,7 +99,7 @@ def upload_image(user):
             if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
-            if(img_class.graphType=="Unrecognized"):
+            if(img_class.graphType=="unrecognized"):
                 db.incrementActivity("Unrecognized")
                 graphType = "This is an "+img_class.graphType+" graph"
             else:
