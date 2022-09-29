@@ -64,7 +64,7 @@ def trainModel():
     resnet_model.add(Dense(128, activation='relu'))
     resnet_model.add(Dense(64, activation='relu'))
 
-    resnet_model.add(Dense(8))
+    resnet_model.add(Dense(6))
 
     loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss',

@@ -31,7 +31,7 @@ class MultiClassification:
         image=np.expand_dims(image_resized,axis=0)
 
 
-        model = tf.keras.models.load_model('Multi_Class_Model')
+        model = tf.keras.models.load_model('model') 
         class_names = ['bar graph', 'flow chart', 'line graph', 'unrecognized', 'pie chart', 'table']
 
         pred=model.predict(image)
