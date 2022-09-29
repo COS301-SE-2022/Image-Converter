@@ -64,15 +64,18 @@ def trainModel():
     resnet_model.add(Dense(128, activation='relu'))
     resnet_model.add(Dense(64, activation='relu'))
 
+
     resnet_model.add(Dense(6))
 
     loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss',
-    patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model",save_best_weights=True),tf.keras.callbacks.TensorBoard()]    #In file path set path to where the model will be called 
+    patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model",save_best_weights=True),tf.keras.callbacks.TensorBoard()]
 
     resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss=loss_fn,metrics=['accuracy'])
 
-    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=30, callbacks=callbacks)
+    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=30)
+
+    resnet_model.save("Multi_Class_Model")  #Change to path in VM directory where current model is stored
 
 
 
