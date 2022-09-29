@@ -103,7 +103,7 @@ def upload_image(user):
                 db.incrementActivity("Unrecognized")
                 graphType = "This is an "+img_class.graphType+" graph"
             else:
-                graphType = "This is a"+img_class.graphType
+                graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
             return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
