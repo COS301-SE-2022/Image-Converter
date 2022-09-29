@@ -135,7 +135,8 @@
                       Code</h3>
                   
                     <label for="code">Enter the 4-digit code we sent to your email address</label>
-                      <input formControlName="code" placeholder="####" matInput required>
+                      <input class="form-control" formControlName="code" placeholder="####" matInput required>
+
                       
                       <mat-error *ngIf="formCode.get('code')?.touched && formCode.get('code')?.invalid"> 
                   Code is <strong>required</strong>
