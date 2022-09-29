@@ -18,7 +18,7 @@ def trainModel():
 #######################################################################################
 ####### Dataset Collection ############################################################
 #######################################################################################
-    data_dir = (r"C:\Users\moemo\Downloads/graph_dataset")
+    data_dir = (r"C:\Users\moemo\Downloads/graph_dataset") #Set path for dataset
 
     img_height,img_width=90,90
     batch_size=32
@@ -68,13 +68,11 @@ def trainModel():
 
     loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss',
-    patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model",save_best_weights=True),tf.keras.callbacks.TensorBoard()]
+    patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model",save_best_weights=True),tf.keras.callbacks.TensorBoard()]    #In file path set path to where the model will be called 
 
     resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss=loss_fn,metrics=['accuracy'])
 
-    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=30)
-
-    resnet_model.save("Multi_Class_Model")
+    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=30, callbacks=callbacks)
 
 
 
