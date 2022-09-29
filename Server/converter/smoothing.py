@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 """converter."""
-from converter.watermark import AddMark
 from converter.resizing import imageResizing
 from PIL import Image
 import torch
@@ -16,16 +15,14 @@ class smoothing:
 
     def clean_noise(self):
         ########################################################################
-        # Remove noise from the image
         model_path = 'converter/RealESRGAN_x4plus.pth'
-        img_path = '/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/balloons_noisy.png'
+        img_path = '/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/imageSmoothing/download_1.png'
 
-        #Enable gpu acceleration
+        # initialize gpu acceleration
         if torch.backends.mps.is_available():
             device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
         else:
             device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
         model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32)
         loadnet = torch.load(model_path)
         if 'params_ema' in loadnet:
@@ -37,11 +34,14 @@ class smoothing:
         model = model.to(device)
         print('Model path {:s}. \nTesting...'.format(model_path))
 
-        #Load the image
-        img = self.img.astype(np.float32)
-        cv2.imshow("Load image:", img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        # img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED).astype(np.float32)
+        
+        img = cv2.imread(self.img,  cv2.IMREAD_UNCHANGED).astype(np.float32)
+        # img = self.img
+        # cv2.imshow("Image: ", img)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+
         # os.makedirs('results/', exist_ok=True)
 
         if np.max(img) > 255:  # 16-bit image
@@ -66,22 +66,25 @@ class smoothing:
         img1 = img
         img = torch.from_numpy(np.transpose(img[:, :, [2, 1, 0]], (2, 0, 1))).float()
         img = img.unsqueeze(0).to(device)
-        print('Device: %s' % device)
+
         with torch.no_grad():
             output = model(img).data.squeeze().float().cpu().clamp_(0, 1).numpy()
         output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
-        output = output[:, :, ::-1].copy()
+        # output1 =  Image.fromarray((output * 255).astype(np.uint8))
+        # # output = Image.fromarray(output)
+        # output1.show()
+        # output = output[:, :, ::-1].copy()
         print(output.shape)
-        cv2.imshow("Upscaled Image: ", output)
-        cv2.imshow("Original: ", img1[:, :, ::-1].copy())
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        # cv2.imshow("Upscaled Image: ", output)
+        # cv2.imshow("Original: ", img1[:, :, ::-1].copy())
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
         ########################################################################
 
         #Resizing the image
-        resizedImage = imageResizing(output)
-        resizedImage = resizedImage.resize()
-        print('Resized image:', resizedImage.shape)
+        # resizedImage = imageResizing(output)
+        # resizedImage = resizedImage.resize()
+        # print('Resized image:', resizedImage.shape)
         # # cv2.imshow("Image: ", output)
         # cv2.imshow("Image2: ", resizedImage)
         # cv2.waitKey(0)
@@ -96,18 +99,32 @@ class smoothing:
         # cleanedImage = cleanedImage[:, :, ::-1].copy()
 
 
-        cv2.imwrite("./../images/original/Graph.png", resizedImage)
-        return resizedImage
+        cv2.imwrite("./../images/original/Graph.png", output)
+        return output
 
 if __name__ == '__main__':
-    src = ['/Users/neoseefane/Documents/GitHub/Image-Converter/Server/images/download.png']
-    for i in src:
-        img = Image.open(i)
-        img = cv2.imread(i)
-        open_cv_image = np.array(img)
-        # Convert RGB to BGR
-        open_cv_image = open_cv_image[:, :, ::-1].copy()
-        object = smoothing(open_cv_image)
-        object.clean_noise()
-        break
-    
+    obj = smoothing('imageSmoothing/img.png')
+    img = obj.clean_noise()
+    cv2.imshow("Original: ", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
+    # src = ['/Users/neoseefane/Documents/GitHub/Image-Converter/Server/images/download.png']
+    # for i in src:
+    #     img = Image.open(i)
+    #     img = cv2.imread(i)
+    #     open_cv_image = np.array(img)
+    #     # Convert RGB to BGR
+    #     open_cv_image = open_cv_image[:, :, ::-1].copy()
+    #     object = smoothing(open_cv_image)
+    #     object.clean_noise()
+    #     break
+"""
+@InProceedings{wang2021realesrgan,
+    author    = {Xintao Wang and Liangbin Xie and Chao Dong and Ying Shan},
+    title     = {Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data},
+    booktitle = {International Conference on Computer Vision Workshops (ICCVW)},
+    date      = {2021}
+}
+"""
