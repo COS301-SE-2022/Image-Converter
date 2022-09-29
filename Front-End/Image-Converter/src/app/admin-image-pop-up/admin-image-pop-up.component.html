@@ -15,6 +15,15 @@
        <button class="w3-button w3-round w3-block w3-red" (click)="deleteImages()">Delete Images</button>
     </div>
     
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        </div>
+      </div>
+
     <div>
         <p>Select the graphType </p>
         <select #type (change)="feedback(type.value)">
