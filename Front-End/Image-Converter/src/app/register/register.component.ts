@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   reactiveForm!: FormGroup;
   submitted = false;
   response!:{result:string,token:string};
+  loading=false;
 
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
 
@@ -97,42 +98,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  
-  /*onSubmit() {
-    
-    this.submitted = true;
-
-    let authDetails:Register = {
-      
-      name: this.registerForm.get('name')!.value,
-      surname: this.registerForm.get('surname')!.value,
-      email: this.registerForm.get('email')!.value,
-      password: this.registerForm.get('password')!.value,
-      cpassword: this.registerForm.get('cpassword')!.value
-    }
-
-    this.registerService.register(authDetails).subscribe(
-      responseData=>{
-        console.log(responseData);
-        this.response = JSON.parse(JSON.stringify(responseData));
-
-        if(responseData.body.result == "success"){
-          localStorage.setItem('token', responseData.body.token);
-          this._router.navigateByUrl('/dashboard');
-        }
-      });
- 
-    // stop the process here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
- 
-    alert('Registered successfully!');
-  }*/
-
+  //sends registration user details the backend
   onSubmit(){
-    
-    console.log("in on sub")
+    this.loading=true;
     //once code is sent through and response is given
     //document.getElementById("resetForm")!.style.display="none";
    // document.getElementById("codeForm")!.style.display="inline-block";
@@ -148,6 +116,7 @@ export class RegisterComponent implements OnInit {
     this.registerService.registerEmailSend(email).subscribe(
       responseData =>{
             //response
+            this.loading=false;
             console.log(responseData);
             //this.response = JSON.parse(JSON.stringify(responseData));
             response = JSON.parse(JSON.stringify(responseData));
@@ -159,13 +128,14 @@ export class RegisterComponent implements OnInit {
         }
     );
   }
-
+  //sends verification code to the backend
   onSubmitCode()
-  { 
+  { this.loading=true;
     let response;
     this.registerService.register(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
+            this.loading=false;
             response = JSON.parse(JSON.stringify(responseData));
             console.log(response.body.result);
             if(response.body.result == "success"){

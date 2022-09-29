@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   {
     //intentionally left blank
   }
+  //send users login details to the backend
   onSubmit()
   {
     this.loading=true;

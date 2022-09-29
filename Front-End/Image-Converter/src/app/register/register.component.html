@@ -122,7 +122,10 @@
                         
                     </table> 
                     <div class="form-group">
-                      <button [disabled]="registerForm.invalid" id="loginbtn" class="btn btn-primary">Register</button>
+                      <button *ngIf="!loading" [disabled]="registerForm.invalid" id="loginbtn" >Register</button>
+                      <button  type="submit" *ngIf="loading">
+                        <mat-spinner id="spin" [diameter]="25" primary style="margin:0 auto;"></mat-spinner>
+                    </button>
                   </div>      
                 </form>
 
@@ -132,13 +135,17 @@
                       Code</h3>
                   
                     <label for="code">Enter the 4-digit code we sent to your email address</label>
-                      <input formControlName="code" placeholder="####" matInput required>
+                      <input class="form-control" formControlName="code" placeholder="####" matInput required>
+
                       
                       <mat-error *ngIf="formCode.get('code')?.touched && formCode.get('code')?.invalid"> 
                   Code is <strong>required</strong>
                       </mat-error> 
 
-                  <button id="resetbtn" [disabled]="formCode.get('code')?.invalid" type="submit">Confirm</button>
+                  <button *ngIf="!loading" id="resetbtn" [disabled]="formCode.get('code')?.invalid" type="submit">Confirm</button>
+                  <button  type="submit" *ngIf="loading">
+                    <mat-spinner id="spin" [diameter]="25" primary style="margin:0 auto;"></mat-spinner>
+                  </button>
                   <p *ngIf="buttonReset != '' && !_match" class="alert alert-danger"> 
                       Invalid Code!              
                       </p> 

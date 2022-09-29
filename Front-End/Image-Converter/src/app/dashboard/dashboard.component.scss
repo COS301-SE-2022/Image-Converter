@@ -1,3 +1,23 @@
 *{
     scroll-behavior: smooth;
+
+    .imageUpload{
+        cursor: pointer;
+    }
+
+    .imageFilter{
+        cursor: pointer;
+    }
+    .conversionFormat{
+        cursor: pointer;
+    }
+    .livegraphing{
+        cursor: pointer;
+    }
+    .uploadHistory{
+        cursor: pointer
+    }
+    .unrecognizedImg{
+        cursor: pointer;
+    }
 }
