@@ -90,8 +90,7 @@ def upload_image(user):
             img_class = MultiClassification(picture)
             print("#########################################")
             print(img_class.graphType)
-            if(img_class.graphType=="Unrecognized"):
-                db.incrementActivity("Unrecognized")
+           
             print("#########################################")
 
             imageCleaner = smoothing(opencv_img)
@@ -100,7 +99,11 @@ def upload_image(user):
             if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
-            graphType = "This "+img_class.graphType
+            if(img_class.graphType=="unrecognized"):
+                db.incrementActivity("Unrecognized")
+                graphType = "This is an "+img_class.graphType+" graph"
+            else:
+                graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
             return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
