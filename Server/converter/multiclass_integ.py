@@ -32,7 +32,7 @@ class MultiClassification:
 
 
         model = tf.keras.models.load_model('Multi_Class_Model')
-        class_names = ['is a bar chart', 'is a flow chart', 'is a line graph', 'is an unrecognizable image', 'is a pie chart', 'is a table']
+        class_names = ['bar graph', 'flow chart', 'line graph', 'unrecognized', 'pie chart', 'table']
 
         pred=model.predict(image)
 
