@@ -21,7 +21,7 @@ export class ForgotPasswordComponent implements OnInit {
   // result!:{response:string};
   _match!: boolean;
   buttonReset = "";
-
+  loading=false;
   form = new FormGroup({  
     email: new FormControl('', [Validators.required, Validators.email])
   });
@@ -62,13 +62,14 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmit()
   {
     //once code is sent through and response is given
- 
+    this.loading=true;
     let email = {
       email : this.form.get('email')!.value
       } 
   let response;
     this.resetService.ResetPassword(email).subscribe(
       responseData =>{
+        this.loading=false;
             //response
             response = JSON.parse(JSON.stringify(responseData));
             console.log(response.body.response)
@@ -88,14 +89,15 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmitCode()
-  {  
+  {  this.loading=true;
      this.resetService.resetPasswordCode(this.formCode.get('code')!.value).subscribe(
       responseData =>{
             //response
+            this.loading=false;
             let response = JSON.parse(JSON.stringify(responseData));
             console.log(response.body.response)
             if(response.body.response == "success"){
-             
+            
               document.getElementById("codeForm")!.style.display = "none";
               document.getElementById("passForm")!.style.display = "block";
             }
@@ -109,10 +111,12 @@ export class ForgotPasswordComponent implements OnInit {
   //sends new password to the backend
   submitPass()
   {
+    this.loading=true;
     let response;
     this.resetService.resetPassword(this.formPass.get('password')!.value).subscribe(
       responseData =>{
             //response
+            this.loading=false;
             response = JSON.parse(JSON.stringify(responseData));
             if(response.body.response == "success"){
               alert("password successfully reset");
