@@ -98,9 +98,9 @@ export class FilterComponent implements OnInit {
     }
 
     myTest(imgBckend,filterVar);
-    // alert(myTest);
+    
   }
-
+  // used to save the image in png format
   downloadPngFile()
   {
     var a = document.createElement('a');
@@ -120,7 +120,7 @@ export class FilterComponent implements OnInit {
     //  uploadImage(window.event);
     myTest();
   }
-
+// used to increment stats of download
   incrementDownload()
   {
     

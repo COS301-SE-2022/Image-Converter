@@ -131,6 +131,7 @@ export class ConverterComponent implements OnInit {
       console.log(files);
     }
   }
+  //sends uploaded image to the backend for processing.
   saveFiles() {
     this.loading = true;
     if(this.saveFile!=''){
