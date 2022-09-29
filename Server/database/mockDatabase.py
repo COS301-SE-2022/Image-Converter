@@ -24,11 +24,13 @@ class mockDatabase:
     db_history_id = None
     db_feedback = None
     db_code = None
+    db_tracking =None
     def __init__(self):
         self.db_list = []
         self.db_history = []
         self.db_feedback = []
         self.db_code = []
+        self.db_tracking = []
         self.db_id = 1
         self.db_history_id = 1
         self.db_feedback_id = 1
@@ -146,3 +148,20 @@ class mockDatabase:
             return True
         else:
             return False
+
+    def updateGraphType(self, graphType,id):
+        if id>0 :
+            for x in self.db_history:
+                if x[0]==id:
+                    x[1]=graphType
+                    return True
+        return False
+    
+    def getUnrecognizedImages(self):
+        temp_list =[]
+        for x in self.db_history:
+            if x[1]=='unrecognized':
+                temp_list.append(x)
+        return None
+
+
