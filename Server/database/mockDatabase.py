@@ -162,6 +162,6 @@ class mockDatabase:
         for x in self.db_history:
             if x[1]=='unrecognized':
                 temp_list.append(x)
-        return None
+        return temp_list
 
 

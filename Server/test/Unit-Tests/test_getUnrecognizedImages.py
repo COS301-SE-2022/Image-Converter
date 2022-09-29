@@ -23,7 +23,7 @@ def test_GetUnrecognizedImages_GivenAnExistingHistoryRecod_ShouldReturnTrue():
             #Act
             result = db.getUnrecognizedImages()
             #Assert
-            assert result == True
+            assert result != []
         else:
             assert False
     except Exception as e:
