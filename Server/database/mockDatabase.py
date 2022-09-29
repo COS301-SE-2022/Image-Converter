@@ -81,7 +81,7 @@ class mockDatabase:
         if self.getUserWithId(id) != None:
             history_id = self.db_history_id
             self.db_history_id += 1
-            hist = [history_id,'straigh line', id,
+            hist = [history_id,'unrecognized', id,
                         image_uploaded, image_converted]
             self.db_history.append(hist)
             return True
