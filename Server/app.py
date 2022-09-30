@@ -102,10 +102,10 @@ def upload_image(user):
             imageCleaner = smoothing(img_path)
 
             imageResult = imageCleaner.clean_noise()
-            output1 =  Image.fromarray((imageResult * 255).astype(np.uint8))
+            # output1 =  Image.fromarray((imageResult * 255).astype(np.uint8))
             # output = Image.fromarray(output)
-            output1.show()
-            if (db.insert_image(opencv_img, output1, user[0], "")):
+            # output1.show()
+            if (db.insert_image(opencv_img, imageResult, user[0], "")):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             # if (img_class.graphType == "unrecognized"):
