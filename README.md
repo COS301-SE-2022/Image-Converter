@@ -34,8 +34,6 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 ## Coding Standards
 [Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
 
-## Testing Policy
-[Policy](https://drive.google.com/file/d/1OWnpzDbrxdE0wB6wJeu-xuDompegJquD/view?usp=sharing)
 
 ## Project Branch Structure
     .
@@ -50,8 +48,12 @@ The Image converter is a tool created for a Content Management System (CMS). It 
     |   └── ...
     └── ...
 
+## Testing Policy
+[TestingPolicy](https://drive.google.com/file/d/1OWnpzDbrxdE0wB6wJeu-xuDompegJquD/view?usp=sharing)
+
 ## Usability Testing
 [Usability Testing](https://drive.google.com/file/d/1W9O6KDEwehZsslzHIwWtalZNSDJejTQS/view?usp=sharing)
+
 ## Recorded Demo
 <a href="#" target="_blank">
   ➛ Demo 1<br>
