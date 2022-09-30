@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 """converter."""
 from converter.resizing import imageResizing
+from converter.watermark import AddMark
 from PIL import Image
 import torch
 from basicsr.archs.rrdbnet_arch import RRDBNet
@@ -70,9 +71,9 @@ class smoothing:
         with torch.no_grad():
             output = model(img).data.squeeze().float().cpu().clamp_(0, 1).numpy()
         output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
-        # output1 =  Image.fromarray((output * 255).astype(np.uint8))
-        # # output = Image.fromarray(output)
-        # output1.show()
+        output1 =  Image.fromarray((output * 255).astype(np.uint8))
+        output2 = Image.fromarray(output)
+        output1.show()
         # output = output[:, :, ::-1].copy()
         print(output.shape)
         # cv2.imshow("Upscaled Image: ", output)
@@ -82,25 +83,36 @@ class smoothing:
         ########################################################################
 
         #Resizing the image
-        # resizedImage = imageResizing(output)
-        # resizedImage = resizedImage.resize()
-        # print('Resized image:', resizedImage.shape)
+        resizedImage = imageResizing(output)
+        resizedImage = resizedImage.resize()
+        print('Resized image:', resizedImage.shape)
         # # cv2.imshow("Image: ", output)
         # cv2.imshow("Image2: ", resizedImage)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-
+        print(resizedImage.__class__)
         #Adding a watermark to the image
-        # imageWatermark = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
-        # imageWatermark = imageWatermark.Dev()
+        imageWatermark = AddMark(output1)
 
-        # #Converting the returned image to numpy array
+        # img[:,:,0] = numpy.ones([5,5])*64/255.0
+        # img[:,:,1] = numpy.ones([5,5])*128/255.0
+        # img[:,:,2] = numpy.ones([5,5])*192/255.0)
+        imageWatermark = imageWatermark.Dev()
+
+        # # #Converting the returned image to numpy array
         # cleanedImage = np.array(imageWatermark)
         # cleanedImage = cleanedImage[:, :, ::-1].copy()
-
-
-        cv2.imwrite("./../images/original/Graph.png", output)
-        return output
+    
+        # imageWatermark.save("./../images/original/Graph.png")
+        imageWatermark.show()
+        # imageWatermark = np.array(imageWatermark)
+        # imageWatermark = imageWatermark[:, :, ::-1].copy()
+        # imageWatermark= np.array(imageWatermark) 
+        # Convert RGB to BGR 
+        # imageWatermark = imageWatermark[:, :, ::-1].copy() 
+        # imageWatermark.save('./../images/original/Graph.png')
+        # cv2.imwrite("./../images/original/Graph.png", imageWatermark)
+        return imageWatermark
 
 if __name__ == '__main__':
     obj = smoothing('imageSmoothing/img.png')
