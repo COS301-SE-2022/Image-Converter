@@ -1,35 +1,41 @@
 import cv2
 import numpy as np
+from converter.watermark import AddMark
+from converter.resizing import imageResizing
+from PIL import Image
+import sys
+sys.path.append('../')
 
 class smoothing:
     def __init__(self,uploaded_image):
         self.img = uploaded_image
 
-
     def clean_noise(self):
-        # blur
-        blur = cv2.medianBlur(self.img, 5)
+        #Image smoothing and sharpening
+        blurred = cv2.bilateralFilter(self.img, 15, 75, 75)
+        sharp = cv2.addWeighted(self.img, 3.5, blurred, -2.1, 0)
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
+        open = cv2.morphologyEx(sharp, cv2.MORPH_OPEN, kernel, iterations=1)
 
-        # convert to hsv and get saturation channel
-        sat = cv2.cvtColor(blur, cv2.COLOR_BGR2HSV)[:,:,1]
+        #Resizing the image
+        resizedImage = imageResizing(open)
+        resizedImage = resizedImage.resize()
+        print('Resized image:', resizedImage.shape)
 
-        # threshold saturation channel
-        thresh = cv2.threshold(sat, 50, 255, cv2.THRESH_BINARY)[1]
+        #Adding a watermark to the image
+        imageWatermark = AddMark(Image.fromarray(cv2.cvtColor(resizedImage, cv2.COLOR_BGR2RGB)))
+        imageWatermark = imageWatermark.Dev()
 
-        # apply morphology close and open to make mask
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9,9))
-        morph = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=1)
-        mask = cv2.morphologyEx(morph, cv2.MORPH_OPEN, kernel, iterations=1)
+        #Converting the returned image to numpy array
+        cleanedImage = np.array(imageWatermark) 
+        cleanedImage = cleanedImage[:, :, ::-1].copy() 
 
-        # write black to input image where mask is black
-        img_result = self.img.copy()
-        img_result[mask==0] = (255,255,255)
 
-        # display it
-        # cv2.imshow("IMAGE", self.img)
-        # print("printing image")
-        # cv2.imshow("IMAGE_RESULT", img_result)
-        cv2.imwrite("images/original/Graph.png", img_result)
-        image = cv2.imread('images/original/Graph.png')
-        return image
+        cv2.imwrite("./../images/original/Graph.png", cleanedImage)
+        return cleanedImage
 
+if __name__ == '__main__':
+    src = 'barGraph.jpeg'
+    img = cv2.imread(src)
+    object = smoothing(img)
+    object.clean_noise()

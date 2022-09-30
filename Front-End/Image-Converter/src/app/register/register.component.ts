@@ -18,16 +18,21 @@ export class RegisterComponent implements OnInit {
   hide = true;
   _match!: boolean;
   buttonLogin = "";
-
+  buttonReset = "";
+  
   title = 'reactiveformproject';
   registerForm!: FormGroup;
   reactiveForm!: FormGroup;
   submitted = false;
   response!:{result:string,token:string};
+  loading=false;
 
   constructor(private registerService: ConverterService, private formBuilder: FormBuilder, private _router: Router) {}
 
   ngOnInit() {
+
+    document.getElementById("codeForm")!.style.display = "none";
+
     this.registerForm = this.formBuilder.group({
       surname: ['', [Validators.required, Validators.minLength(2)]],
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -41,7 +46,9 @@ export class RegisterComponent implements OnInit {
       validators: this.MustMatch('password','cpassword')
     })
   }
-
+  formCode = new FormGroup({  
+    code: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$"), Validators.minLength(4),Validators.maxLength(4)])
+  });
   // form = new FormGroup({  
   //   username: new FormControl('', Validators.required),  
   //   password: new FormControl('', Validators.required),
@@ -91,36 +98,61 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  
-  onSubmit() {
-    this.submitted = true;
+  //sends registration user details the backend
+  onSubmit(){
+    this.loading=true;
+    //once code is sent through and response is given
+    //document.getElementById("resetForm")!.style.display="none";
+   // document.getElementById("codeForm")!.style.display="inline-block";
+   localStorage.setItem('name', this.registerForm.get('name')!.value);
+   localStorage.setItem('surname',this.registerForm.get('surname')!.value);
+   localStorage.setItem('email', this.registerForm.get('email')!.value);
+   localStorage.setItem('password', this.registerForm.get('password')!.value);
 
-    let authDetails:Register = {
-      
-      name: this.registerForm.get('name')!.value,
-      surname: this.registerForm.get('surname')!.value,
-      email: this.registerForm.get('email')!.value,
-      password: this.registerForm.get('password')!.value,
-      cpassword: this.registerForm.get('cpassword')!.value
-    }
-
-    this.registerService.register(authDetails).subscribe(
-      responseData=>{
-        console.log(responseData);
-        this.response = JSON.parse(JSON.stringify(responseData));
-
-        if(responseData.body.result == "success"){
-          localStorage.setItem('token', responseData.body.token);
-          this._router.navigateByUrl('/dashboard');
+   let email = {
+    email : this.registerForm.get('email')!.value
+  } 
+    let response;
+    this.registerService.registerEmailSend(email).subscribe(
+      responseData =>{
+            //response
+            this.loading=false;
+            console.log(responseData);
+            //this.response = JSON.parse(JSON.stringify(responseData));
+            response = JSON.parse(JSON.stringify(responseData));
+            if(response.body.response == "success"){
+              console.log("success");
+              document.getElementById("codeForm")!.style.display = "block";
+              document.getElementById("reg")!.style.display = "none";
+            }
         }
-      });
- 
-    // stop the process here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
- 
-    alert('Registered successfully!');
+    );
+  }
+  //sends verification code to the backend
+  onSubmitCode()
+  { this.loading=true;
+    let response;
+    this.registerService.register(this.formCode.get('code')!.value).subscribe(
+      responseData =>{
+            //response
+            this.loading=false;
+            response = JSON.parse(JSON.stringify(responseData));
+            console.log(response.body.result);
+            if(response.body.result == "success"){
+              console.log("success");
+              localStorage.setItem('token', responseData.body.token);
+              this._router.navigateByUrl('/welcome');
+            }
+            // else{
+            //   alert("something went wrong");
+            // }
+        }
+    );
+  }
+
+  onSubmitLogin()
+  {
+    this._router.navigateByUrl('/login');
   }
 }
 

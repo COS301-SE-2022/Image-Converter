@@ -15,14 +15,14 @@ export class LoginComponent implements OnInit {
   hide = true;
   _match!: boolean;
   buttonLogin = "";
-
+  loading=false;
   constructor(private loginService: ConverterService, private _router: Router) { }
 
   ngOnInit(): void {
   }
   response!:{result:string,token:string};
   form = new FormGroup({  
-    username: new FormControl('', Validators.required),  
+    username: new FormControl('', [Validators.required, Validators.email]),  
     password: new FormControl('', Validators.required),
     // submit: new FormControl()
   });
@@ -38,8 +38,10 @@ export class LoginComponent implements OnInit {
   {
     //intentionally left blank
   }
+  //send users login details to the backend
   onSubmit()
   {
+    this.loading=true;
     let authDetails:Login = {
       email : this.form.get('username')!.value,
       password : this.form.get('password')!.value
@@ -47,16 +49,27 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(authDetails).subscribe(
       responseData=>{
-        console.log(responseData.body.result);
+        this.loading=false;
+        console.log(responseData.body.response);
         this.response = JSON.parse(JSON.stringify(responseData));
         // console.log(responseData.body.token);
-        if(responseData.body.result == "success"){
+        if(responseData.body.response == "success"){
           localStorage.setItem('token', responseData.body.token);
           localStorage.setItem('email', this.form.get('username')!.value);
-          this._router.navigateByUrl('/dashboard');
+          this._router.navigateByUrl('/welcome');
+        }else if(responseData.body.response =="UserDoesNotExist"){
+          alert('User Does Not Exist in the system');
+        }
+        else{
+          alert('Username or password is incorrect')
         }
         // this._router.navigateByUrl('/dashboard');
       });
+      }
+
+      onSubmitCode(){
+        this._router.navigateByUrl('/register');
+        // alert("button working");
       }
       
 }

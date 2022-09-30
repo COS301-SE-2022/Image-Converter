@@ -1,3 +1,4 @@
+
 /*
 This file is used to group/contain all angular material modules imports that are used in the app
 inorder to limit the amount of  angular material imports in the app.module.ts
@@ -12,6 +13,9 @@ import {MatInputModule } from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [],
@@ -24,7 +28,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatListModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatToolbarModule
   ],
   exports: [
     cardModule.MatCardModule,
@@ -34,7 +41,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatListModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatToolbarModule
   ]
 })
 export class MaterialModule { }

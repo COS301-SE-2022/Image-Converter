@@ -11,16 +11,8 @@
 # HardCode Image-Converter
 
 ## Description
-With our current climate of easy access to information, we are faced with the problem of information
-overload. Therefore it is important that we are able to view data in a concise format. This will allow
-us to understand the data in a comprehensive manner without getting distracted by unnecessary
-information.
-Graphing is a way to counter the problem effectively. However, mismatched or unclear graphs
-fail to help us understand the data adequately. We intend to create a software solution that enables
-the standardization of graphs to solve this problem.
-The tool that we will build will convert the image of a graph into a standardized graph. By doing
-so, we will be able to easily interpret the data. It will also extract the function of the graph and
-display it to the user. The tool will support multiple graphing functions and graph representations.
+With our current climate of easy access to information, we are faced with the problem of information overload. Therefore it is important that we are able to view data in a concise format. This will allow us to understand the data in a comprehensive manner without getting distracted by unnecessary information. Graphing is a way to counter the problem effectively. However, mismatched or unclear graphs fail to help us understand the data adequately. 
+The Image converter is a tool created for a Content Management System (CMS). It hosts a variety of functions of image manipulation, such as image cleaning, classification and filtering. The tool also manages uploaded images in a concise and efficient way.  The tool will be used solely by administrators of the CMS
 
 ## Project Board
 [Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
@@ -28,37 +20,55 @@ display it to the user. The tool will support multiple graphing functions and gr
 
 
 ## System Requirements Specification
-[SRS Document](https://drive.google.com/file/d/1w-jS-2xv21549DzbAdenfn62-Wqz8XJg/view?usp=sharing)
+[SRS Document](https://drive.google.com/file/d/1rdijt_f5z58gLLqSOU7jMKewXRHDYkeQ/view?usp=sharing)
+
+## Deployment Diagram
+[Deployment Diagram](https://drive.google.com/file/d/1JcKCmY-K3CXK1k3RmECPAtbi0cnMcx18/view?usp=sharing)
+
 
 ## Architectural Requirements
-[Requirements]()
+[Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
 
 ## User Manual
-[Manual](https://drive.google.com/file/d/19B97rhvUiVP9hpCJZbqR2vG2E7nSSVPV/view?usp=sharing)
+[Manual](https://drive.google.com/file/d/1eTZhkYAKVOxBN3B2hynJgSoHuf3JOOZF/view?usp=sharing)
+
+## Technical Installation Manual
+[TechnicalManual](https://drive.google.com/file/d/1PYll45FZF9yuEJLTHFyySPbtFCbvW7d9/view?usp=sharing)
 
 ## Coding Standards
-[Standards](https://drive.google.com/file/d/1vg8Iyyt-q_ABy_pjhY8m8m2hHec_qBtu/view?usp=sharing)
+[Standards](https://drive.google.com/file/d/1y4fxapy0Obc0-7xggG2OFrleq6K91kSf/view?usp=sharing)
 
 
 ## Project Branch Structure
     .
     ├── main                    
     │   ├── develop              
-    │   |   ├── feature/set-up-workflows              
-    │   |   ├── feature/config-tets            
-    │   |   ├── feature/intergration 
-    |   |   ├── feature/filter
+    │   |   ├── feature/automate-tests             
+    │   |   ├── feature/back-end-github-actions            
+    │   |   ├── feature/front-end-workflows 
+    |   |   ├── feature/smoothing-template-matching
+    |   |   ├── feature/database-tests
     │   |   └── ...                 
     |   └── ...
     └── ...
+
+## Testing Policy
+[Testing Policy](https://drive.google.com/file/d/1OWnpzDbrxdE0wB6wJeu-xuDompegJquD/view?usp=sharing)
+
+## Usability Testing
+[Usability Testing](https://drive.google.com/file/d/1W9O6KDEwehZsslzHIwWtalZNSDJejTQS/view?usp=sharing)
 
 ## Recorded Demo
 <a href="#" target="_blank">
   ➛ Demo 1<br>
 </a> 
 
-<a href="#" target="_blank">
+<a href="https://drive.google.com/file/d/1x7NEmJd97rNSyF2K_QLNUmPYAlGTXEG_/view?usp=sharing" target="_blank">
   ➛ Demo 2<br>
+</a>
+
+<a href="https://drive.google.com/file/d/1nr3-aYvJZjlOTAmOrXmLl5FQIRJ-xZ6Q/view?usp=sharing" target="_blank">
+  ➛ Demo 3<br>
 </a>
 
 ## Omolemo Mashigo - Team Leader

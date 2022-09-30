@@ -31,12 +31,27 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
+             
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/theme.scss",
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/glightbox/src/postcss/glightbox.min.css",
+              "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/aos/dist/aos.css",
+              "node_modules/remixicon/fonts/remixicon.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/js/custom.js"
+              "src/assets/js/custom.js",
+              "src/assets/js/calculator.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/glightbox/src/js/glightbox.min.js",
+              "node_modules/swiper/swiper-bundle.min.js",
+              "node_modules/aos/dist/aos.js",
+              "src/assets/js/main.js"
+              
             ]
           },
           "configurations": {
@@ -115,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "Image-Converter"
+  "defaultProject": "Image-Converter",
+  "cli": {
+    "analytics": "f9714407-0c61-48a2-8fa0-41bfb8414642"
+  }
 }

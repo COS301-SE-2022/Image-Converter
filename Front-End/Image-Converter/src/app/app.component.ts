@@ -2,19 +2,22 @@ import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+// myscriptElement: HTMLScriptElement;
 
+  // constructor() {
+  //   this.myscriptElement = document.createElement("script");
+  //   this.myscriptElement.src = "https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6";
+  //   document.body.appendChild(this.myscriptElement);
+  // }
 
-// constructor(public sanatizer: DomSanitizer) {}
-
-ngOnInit(): void {  
-}
+  ngOnInit(): void {  
+  }
 
   // w3_open() {
   //   document.getElementById("mySidebar").style.display = "block";

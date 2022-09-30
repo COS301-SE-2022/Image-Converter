@@ -131,6 +131,7 @@ export class ConverterComponent implements OnInit {
       console.log(files);
     }
   }
+  //sends uploaded image to the backend for processing.
   saveFiles() {
     this.loading = true;
     if(this.saveFile!=''){
@@ -149,6 +150,8 @@ export class ConverterComponent implements OnInit {
              console.log(this.respsonseBase64);
             this.imgData.changeMessage(this.respsonseBase64);
             this.imgData.changBool(true);
+            document.getElementById("imageFilter")!.style.display = "block";
+            document.getElementById("conversionFormat")!.style.display = "block";
           }
         );
       });

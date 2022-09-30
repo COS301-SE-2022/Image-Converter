@@ -1,34 +1,61 @@
-<img *ngIf="loading" src="assets/loading.gif" width="400" />
-<mat-card *ngIf="!loading" class="card" draggable="true" ngClass="{{ dragAreaClass }}">
-    <!--<mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>-->
-       Drag files here
-                <a href="javascript:void(0)" (click)="file.click()"> or click to open </a>
-      <mat-card-content>
-               
-                <input
-                  type="file"
-                  #file
-                  [multiple]="false"
-                  (change)="onFileChange($event)"
-                  style="display:none"
-                /><br>
 
-                <div class="dragged-files-wrapper" ><!--*ngIf="draggedFiles">-->
-                  <!--<div class="file" *ngFor="let file of draggedFiles">
-                    <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
-                  </div>-->
-                  <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
-                </div>
-                
-        </mat-card-content>
-        <div class="error" *ngIf="error" style = "color:red;">{{error}}</div>
-    <mat-card-actions>
-      <button  [disabled]="isDisabled" (click)="saveFiles()" class="w3-button w3-block w3-padding-large w3-blue w3-margin-bottom">
-        Upload
-      </button>
-    </mat-card-actions>
-  </mat-card>
+        <div class="w3-container" id="uploadHistory" style="margin-top:5px">
+          <h1 class="text-heading"><b>Upload Image</b></h1>
+          <!-- <hr style="width:50px;border:5px solid black" class="w3-round"> -->
+        </div>
+
+
+        <div class="center" *ngIf="loading">
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+        </div>
+
+        <!-- <img id="load" *ngIf="loading" src="assets/loading.gif" width="400"/> -->
+        <!-- <mat-spinner *ngIf="loading" id="spin" [diameter]="150" primary style="margin-top:50px;margin:0 auto;"></mat-spinner> -->
+        <mat-card id="uploadcard" *ngIf="!loading" class="card" draggable="true" ngClass="{{ dragAreaClass }}">
+        
+                      <span id="drag">Drag files here
+                        <a href="javascript:void(0)" (click)="file.click()"> or click to open </a>
+                      </span>
+              <mat-card-content>
+                       
+                        <input
+                          type="file"
+                          #file
+                          [multiple]="false"
+                          (change)="onFileChange($event)"
+                          style="display:none"
+                        /><br>
+        
+                        <div class="dragged-files-wrapper" ><!--*ngIf="draggedFiles">-->
+                          <!--<div class="file" *ngFor="let file of draggedFiles">
+                            <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
+                          </div>-->
+                          <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
+                        </div>
+                        
+                </mat-card-content>
+                <div class="error" *ngIf="error" style = "color:red;">{{error}}</div>
+            <mat-card-actions>
+              <button  [disabled]="isDisabled" (click)="saveFiles()" class="w3-button w3-block w3-padding-large w3-blue w3-margin-bottom">
+                Upload
+              </button>
+            </mat-card-actions>
+          </mat-card>
+            <!-- Image Filters -->
+            <div id="imageFilter">
+              <app-filter></app-filter>
+           </div>
+           <!-- Conversion Formats -->
+           <div id="conversionFormat">
+             <app-conversion></app-conversion>
+           </div>
+        
