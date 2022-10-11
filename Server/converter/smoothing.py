@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 """converter."""
-from converter.resizing import imageResizing
-from converter.watermark import AddMark
+from resizing import imageResizing
+from watermark import AddMark
 from PIL import Image
 import torch
 from basicsr.archs.rrdbnet_arch import RRDBNet
@@ -16,7 +16,7 @@ class smoothing:
 
     def clean_noise(self):
         ########################################################################
-        model_path = 'converter/RealESRGAN_x4plus.pth'
+        model_path = 'RealESRGAN_x4plus.pth'
         img_path = '/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/imageSmoothing/download_1.png'
 
         # initialize gpu acceleration
@@ -35,15 +35,9 @@ class smoothing:
         model = model.to(device)
         print('Model path {:s}. \nTesting...'.format(model_path))
 
-        # img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED).astype(np.float32)
+
         
         img = cv2.imread(self.img,  cv2.IMREAD_UNCHANGED).astype(np.float32)
-        # img = self.img
-        # cv2.imshow("Image: ", img)
-        # cv2.waitKey(0)
-        # cv2.destroyAllWindows()
-
-        # os.makedirs('results/', exist_ok=True)
 
         if np.max(img) > 255:  # 16-bit image
             max_range = 65535
@@ -96,23 +90,9 @@ class smoothing:
         return imageWatermark
 
 if __name__ == '__main__':
-    obj = smoothing('imageSmoothing/img.png')
+    obj = smoothing('/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/download.png')
     img = obj.clean_noise()
-    # cv2.imshow("Original: ", img)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
 
-
-    # src = ['/Users/neoseefane/Documents/GitHub/Image-Converter/Server/images/download.png']
-    # for i in src:
-    #     img = Image.open(i)
-    #     img = cv2.imread(i)
-    #     open_cv_image = np.array(img)
-    #     # Convert RGB to BGR
-    #     open_cv_image = open_cv_image[:, :, ::-1].copy()
-    #     object = smoothing(open_cv_image)
-    #     object.clean_noise()
-    #     break
 """
 @InProceedings{wang2021realesrgan,
     author    = {Xintao Wang and Liangbin Xie and Chao Dong and Ying Shan},
