@@ -16,7 +16,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NavComponent } from './nav/nav.component';
 import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
 import { TrackerComponent } from './tracker/tracker.component';
-
+import { GalleryComponent } from './gallery/gallery.component';
 
 const routes: Routes = [
   /*{
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'gallery',
+    component: GalleryComponent
   },
   {
     path: 'register',
