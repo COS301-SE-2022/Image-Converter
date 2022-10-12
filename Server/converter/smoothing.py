@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 """converter."""
-from resizing import imageResizing
-from watermark import AddMark
+from converter.resizing import imageResizing
+from converter.watermark import AddMark
 from PIL import Image
 import torch
 from basicsr.archs.rrdbnet_arch import RRDBNet
@@ -16,7 +16,7 @@ class smoothing:
 
     def clean_noise(self):
         ########################################################################
-        model_path = 'RealESRGAN_x4plus.pth'
+        model_path = 'converter/RealESRGAN_x4plus.pth'
         img_path = '/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/imageSmoothing/download_1.png'
 
         # initialize gpu acceleration
@@ -37,7 +37,7 @@ class smoothing:
 
 
         
-        img = cv2.imread(self.img,  cv2.IMREAD_UNCHANGED).astype(np.float32)
+        img = self.img
 
         if np.max(img) > 255:  # 16-bit image
             max_range = 65535

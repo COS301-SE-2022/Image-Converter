@@ -84,14 +84,16 @@ def upload_image(user):
             imgdata = base64.b64decode(str(picture[picture.find(",") + 1:]))
             print(io.BytesIO(imgdata))
             img = Image.open(io.BytesIO(imgdata))
-            img_path = "converter/imageSmoothing/img.png"
-            img.save("converter/imageSmoothing/img.png")
+            img.show()
+            img_path = "Graph1.png"
+            img.save(img_path)
             # #----------------------------------------------------------------
             # np_array = np.frombuffer(imgdata, base64.b64decode(str(picture[picture.find("")])), np.uint8)
             # img2 = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
             # img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
             # #----------------------------------------------------------------
-            opencv_img = cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+            opencv_img = cv2.imread(img_path,  cv2.IMREAD_UNCHANGED).astype(np.float32)
+
 
             # img_class = MultiClassification(picture)
             print("#########################################")
@@ -99,7 +101,7 @@ def upload_image(user):
 
             print("#########################################")
 
-            imageCleaner = smoothing(img_path)
+            imageCleaner = smoothing(opencv_img)
 
             imageResult = imageCleaner.clean_noise()
             # output1 =  Image.fromarray((imageResult * 255).astype(np.uint8))
@@ -114,6 +116,7 @@ def upload_image(user):
             # else:
             #     graphType = "This is a " + img_class.graphType
             conv = ConvertFomat()
+            print(db_image)
             conv.covertImgFormat(db_image[4])
             return jsonify({'image': db_image[4], 'png': conv.getPng(), 'jpg': conv.getJpg(), 'graphType': ""})
         else:
