@@ -300,4 +300,23 @@ export class ConverterService {
 
     
   }
+
+  //graph gallery data
+  GraphGallaryData() {
+     
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+ 
+    return this.httpclient.get(
+      'http://46.101.46.219:5000/graphs',
+      httpOptions
+    );
+
+    
+  }
 }
