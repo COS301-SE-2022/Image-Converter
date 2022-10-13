@@ -75,6 +75,7 @@ def upload_image(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
+        comment = request.json['comment']
         # print(picture)
         if picture is not None:
             print("picture is not None")
@@ -96,7 +97,7 @@ def upload_image(user):
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
-            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
+            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType,comment)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -636,13 +637,16 @@ def graphs(user):
             graphType = request.json['graphType']
             db_image_array=db.getGraph(graphType)
             OriginalImagelist=[]
+            Comments=[]
             IndexArray=[]
             proccesedImagelist=[]
             for x in db_image_array:
                 IndexArray.append(x[0])
+                
                 OriginalImagelist.append(x[3]) 
                 proccesedImagelist.append(x[4]) 
-            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
+                Comments.append(x[5])
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments})
     else:
         return {'response': 'failed'}, 400
 
