@@ -166,6 +166,19 @@ class User:
             return False
 
     
+    def getGraph(self, graphType):
+        try:
+            sql = "SELECT * FROM history2 where graph_type=%s ORDER BY id DESC"
+            self.cur.execute(sql,([graphType]))
+            db_history = self.cur.fetchall()
+            self.conn.commit()
+            print("Unrecognized")
+            return db_history
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+
+    
 
     def delete_history(self,id):
         try:
