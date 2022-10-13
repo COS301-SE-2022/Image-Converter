@@ -619,6 +619,34 @@ def Activities(user):
     else:
         return {'response': 'failed'}, 400
 
+"""
+    graphs Function:
+        Get graphs of the same types
+    Parameters:
+        User array
+    HTTP method: POST
+    Returns:
+        JSON Object
+"""
+@app.route('/graphs', methods=["POST"])
+@token
+def graphs(user):
+    db = User()
+    if(db != None):
+            graphType = request.json['graphType']
+            db_image_array=db.getGraph(graphType)
+            OriginalImagelist=[]
+            IndexArray=[]
+            proccesedImagelist=[]
+            for x in db_image_array:
+                IndexArray.append(x[0])
+                OriginalImagelist.append(x[3]) 
+                proccesedImagelist.append(x[4]) 
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
+    else:
+        return {'response': 'failed'}, 400
+
+
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=5000)
