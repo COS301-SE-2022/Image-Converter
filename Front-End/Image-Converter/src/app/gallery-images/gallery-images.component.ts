@@ -22,7 +22,7 @@ export class GalleryImagesComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
     this.loading = true;
-    this.imgService.getUploadHistory().subscribe(
+    this.imgService.GraphGallaryData(this.selectedFolder).subscribe(
       responseData =>{
         this.loading = false;
         let respsonseBase64 = JSON.parse(JSON.stringify(responseData));
