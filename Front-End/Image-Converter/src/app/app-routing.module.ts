@@ -17,7 +17,6 @@ import { NavComponent } from './nav/nav.component';
 import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
 import { TrackerComponent } from './tracker/tracker.component';
 
-
 const routes: Routes = [
   /*{
     path: 'dashboard',
@@ -27,6 +26,7 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  
   {
     path: 'register',
     component: RegisterComponent
