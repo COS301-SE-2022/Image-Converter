@@ -24,4 +24,8 @@ export class GalleryComponent implements OnInit {
     this.graphFolderData.changeGraphFolder(name);
     this._router.navigateByUrl('/nav/galleryimages');
   }
+
+  onSubmitLineGraphs(){
+    this._router.navigateByUrl('/nav/galleryimages');
+  }
 }
