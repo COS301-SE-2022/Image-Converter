@@ -1,8 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import {ConverterService} from './../shared/converter.service';
 import { Observable, Subscriber } from 'rxjs';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Message } from '../classes/Message';
 
 @Component({
   selector: 'app-converter',
@@ -15,8 +17,21 @@ export class ConverterComponent implements OnInit {
   message!: string;
   dispBool!: boolean;
   subscription!: Subscription;
+
+
+  //These variables are used  in the comment sections
+  @Input() commentLabel!: string;
+  @Input() hasCancelLabel!: boolean;
+  @Input() intailComment!: string;
+  form!: FormGroup;
+  showDim: boolean = false;
+  uploadSuccess: boolean = false;
+  width!: number;
+  height!: number;
+  resizedHeight!: number;
+  resizedWidth!: number;
   
-  constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService) { }
+  constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService, private formBuilder: FormBuilder) { }
 
   // variables for file upload
   error: String='';
@@ -46,13 +61,34 @@ export class ConverterComponent implements OnInit {
         return;
       }
 
+      // let fr = new FileReader();
+      // fr.onload = () => { // when file has loaded
+      //   var img = new Image();
+      //   img.onload = () => {
+      //       this.width = img.width;
+      //       this.height = img.height;
+      //   };
+      // }
+
+
       const reader = new FileReader();
       let imagePath = files;
       let url;
       reader.readAsDataURL(files[0]); 
-      reader.onload = (_event) => { 
+      reader.onload = (_event: any) => { 
           this.displayImg = reader.result; 
+        const image = new Image();
+        image.src = _event.target.result;
+        image.onload = (rs: any) => {
+          this.height = rs.currentTarget['height'];
+          this.width = rs.currentTarget['width'];
+
+         
+        };
       }
+        console.log(this.width);
+        console.log(this.height);
+        this.showDim = true;
         this.isDisabled = false;
         this.saveFile=files;
       }
@@ -64,7 +100,16 @@ export class ConverterComponent implements OnInit {
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
     this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
 
+    this.hasCancelLabel = false;
+    this.showDim = false;
+    this.uploadSuccess = false;
+    this.commentLabel = "Comment"
+    this.form = this.formBuilder.group({
+      comment: [this.intailComment, Validators.required]
+    });
   }
+
+  
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -143,17 +188,21 @@ export class ConverterComponent implements OnInit {
         // console.log(data);
         
         this.imgService.postImg(data).subscribe(
-          responseData =>{
+          (responseData: any) =>{
             this.loading = false;
-            console.log(responseData);
+            this.uploadSuccess = true;
+            console.log('Res:', responseData['imageHeight'].toString());
+            this.resizedHeight = responseData['imageHeight'];
+            this.resizedWidth = responseData['imageWidth'];
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-             console.log(this.respsonseBase64);
+             console.log('ResJSn',this.respsonseBase64);
             this.imgData.changeMessage(this.respsonseBase64);
             this.imgData.changBool(true);
             document.getElementById("imageFilter")!.style.display = "block";
             document.getElementById("conversionFormat")!.style.display = "block";
           }
         );
+        
       });
     }
   }
@@ -176,6 +225,29 @@ export class ConverterComponent implements OnInit {
       subscriber.error(error);
       subscriber.complete();
     };
+  }
+  
+  get comment() {  
+    return this.form.get('comment');  
+  } 
+
+  onComment() {
+    console.log('onComment', this.comment!.value);
+    this.intailComment = this.comment!.value;
+    this.commentLabel = "Update";
+    
+    let comment: Message = {
+      feedback: this.comment!.value
+    };
+
+    this.imgService.sendAnnotations(comment).subscribe(responseData => {
+      let response = JSON.parse(JSON.stringify(responseData));
+
+      console.log("Respose:" ,response);
+      if(response.response == "success") {
+        alert("Comment updated successfully");
+      }
+    });
   }
 
 }

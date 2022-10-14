@@ -50,33 +50,42 @@
               </button>
             </mat-card-actions>
           </mat-card>
+          <div *ngIf="showDim" class="original-image-dimensions">
+            <h4>Original Image Dimensions</h4>
+            <p>Image height: {{height}}</p>
+            <p>Image width: {{width}}</p>
+          </div>
+          
             <!-- Image Filters -->
             <div id="imageFilter">
               <app-filter></app-filter>
            </div>
-           <!-- Conversion Formats -->
-           <div id="conversionFormat">
-             <app-conversion></app-conversion>
-           </div>
+           <div *ngIf="uploadSuccess" class="original-image-dimensions">
+            <h4>Resized Image Dimensions</h4>
+            <p>Image height: {{resizedHeight}}</p>
+            <p>Image width: {{resizedWidth}}</p>
+          </div>
 
           <!--Image Annotation-->
-          <div class="container">  
-            <h1>Comment   
+          <div *ngIf="uploadSuccess" class="comment-form-container">
+            <h1>Image Annotation   
             </h1>  
-            <hr />  
-            <div class="form-group" >  
-                <form ng-controller="commentControler">  
-                    <textarea class="form-control" rows="5" placeholder="Your Comment Please....."  ng-model="CommentText"></textarea>  
-                    <br />  
-                    <button class="btn btn-success pull-right" ng-click="addComment()">Comment.</button>  
-                    <br />  
-                    <hr />  
-                    <ul class="list-group" >  
-                        <li class="list-group-item" ng-repeat="cmt in commentArray">{{cmt}}  
-                            <a href="" ng-click="romoveComment($comText);" ><span class="glyphicon glyphicon-trash" style="float:right"> </span></a>  
-                        </li>  
-                    </ul>  
-                </form>  
-            </div>  
+            <!-- <hr />   -->
+            <div class="form-group container">
+              <form [formGroup]="form" (ngSubmit)="onComment()">
+                <textarea class="form-control" row="5" placeholder="Type your notes here please..." rows="5" formControlName="comment"></textarea>
+                <button class="btn btn-success pull-right" type="submit" [disabled]="form.invalid">
+                  {{commentLabel}}
+                </button>
+    
+                <button *ngIf="hasCancelLabel" type="button" class="comment-form-button comment-form-cancel-button">
+                  Cancel
+                </button>
+              </form>
+            </div>
+          </div>
+
+        <!-- Conversion Formats -->
+        <div id="conversionFormat">
+          <app-conversion></app-conversion>
         </div>
-        

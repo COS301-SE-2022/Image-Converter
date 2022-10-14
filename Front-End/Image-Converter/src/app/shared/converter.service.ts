@@ -56,7 +56,8 @@ export class ConverterService {
       data,{observe:'response'}
     );
   }
-   postImg(data: string) {
+
+  postImg(data: string) {
      
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
@@ -69,7 +70,7 @@ export class ConverterService {
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
-      'http://46.101.46.219:5000/picture',
+      'http://127.0.0.1:5000/picture',
       pic,httpOptions
     );
   }
@@ -105,6 +106,20 @@ export class ConverterService {
     return this.httpclient.post(
       'http://46.101.46.219:5000/deletehistory',
       pic,httpOptions
+    );
+  }
+
+  //sends users annotations on the image
+  sendAnnotations(comment: Message) {
+    var token = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    return this.httpclient.post(
+      'http://127.0.0.1:5000/imageAnnotation',
+      comment,httpOptions
     );
   }
 
