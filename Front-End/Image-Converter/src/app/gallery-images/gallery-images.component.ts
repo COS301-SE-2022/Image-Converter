@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
 import {ConverterService} from './../shared/converter.service';
+import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
+import { ImagePopupComponent } from '../image-popup/image-popup.component';
 
 @Component({
   selector: 'app-gallery-images',
@@ -16,8 +18,8 @@ export class GalleryImagesComponent implements OnInit {
 
   //holds processed images
   uploadedImgProcessed: string[] = [];
-
-  constructor(private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
+  uuid:BigInteger[]=[];
+  constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
 
   ngOnInit(): void {
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
@@ -40,5 +42,38 @@ export class GalleryImagesComponent implements OnInit {
         //if (err === 'Unauthorized') { this._router.navigateByUrl('/'); }
     });
   }
+
+    //sends clicked image to popup
+    imageClick(index:any){
+      console.log("clicked");
+       const configDialog = new MatDialogConfig();
+   
+       //send the processed version of the image (parameter)
+       const dialogRef = this.dialog.open(ImagePopupComponent, {
+         width: '40%',
+         height: '80%',
+         data: { img: '',imgProcessed:this.uploadedImgProcessed[index] },
+       });
+   
+      //  dialogRef.afterClosed().subscribe((data) => {
+      //    if (data != undefined) {
+      //      //returned message
+      //      console.log('returned message:'+data.request);
+      //      this.loading = true;
+      //      this.imgService.deleteImage(this.uuid[index]).subscribe(
+      //        responseData =>{
+      //              //response
+                   
+      //              this.uploadedImgProcessed=[];
+      //              this.ngOnInit();
+      //          }
+      //      );
+         
+      //    } else {
+      //      console.log('returned empty:');
+      //    } //dialog closed
+      //  });
+   
+     }
 
 }

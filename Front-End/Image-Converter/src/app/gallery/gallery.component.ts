@@ -12,7 +12,6 @@ export class GalleryComponent implements OnInit {
 
   constructor(private graphFolderData: ComponentCommunicationService,private _router: Router) { }
 
-  graphNames=["Line","Bar","Chart","graph","graph","graph"];
   subscription!: Subscription;
   selectedFolder!: String;
   ngOnInit(): void {
