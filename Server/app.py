@@ -94,9 +94,11 @@ def upload_image(user):
             print("#########################################")
 
             imageCleaner = smoothing(opencv_img)
-
             imageResult =imageCleaner.clean_noise()
-            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
+            imageHeight = imageCleaner.height
+            imageWidth = imageCleaner.width
+            print(imageHeight, ", ", imageWidth)
+            if(db.insert_image(opencv_img, imageResult, user[0],"")):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -106,7 +108,7 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType, 'imageHeight': imageHeight, 'imageWidth': imageWidth})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
@@ -618,6 +620,20 @@ def Activities(user):
         return jsonify({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
     else:
         return {'response': 'failed'}, 400
+
+# @app.route('/imageAnnotation' ,methods =['POST'])
+# @token
+# def imageAnnotation(user):
+#     db=User()
+#     if(db!=None):
+#         feedback = request.json['feedback']
+#         if feedback is not None:
+#             print(feedback)
+#             return jsonify({'response': 'success'})
+#         else:
+#             return {'response': 'failed'}, 400
+#     else:
+#         return {'response': 'failed'}, 400
 
 
 if __name__ == '__main__':
