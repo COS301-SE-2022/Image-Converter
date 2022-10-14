@@ -108,7 +108,7 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType, 'imageHeight': imageHeight, 'imageWidth': imageWidth})
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0]})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
@@ -651,16 +651,47 @@ def graphs(user):
             graphType = request.json['graphType']
             db_image_array=db.getGraph(graphType)
             OriginalImagelist=[]
+            Comments=[]
             IndexArray=[]
             proccesedImagelist=[]
             for x in db_image_array:
                 IndexArray.append(x[0])
+                
                 OriginalImagelist.append(x[3]) 
                 proccesedImagelist.append(x[4]) 
-            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
+                Comments.append(x[5])
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments})
     else:
         return {'response': 'failed'}, 400
 
+"""
+    Comment Function:
+        adds the user's comment to the database
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        comment
+    Returns:
+        JSON Object
+"""
+@app.route('/comment' ,methods =['POST'])
+@token
+def user_comment(user):
+    db=User()
+    if(db!=None):
+        comment = request.json['comment']
+        index = request.json['index']
+        if comment is not None:
+            if db.insert_comment(index, comment) is True:
+                print("comment inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
 
 
 if __name__ == '__main__':

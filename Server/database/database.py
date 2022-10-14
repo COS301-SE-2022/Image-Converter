@@ -190,10 +190,10 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    def insert_feedback(self, id, feedback):
+    def insert_comment(self, id, comment):
         try:
-            sql = "INSERT INTO feedback (user_id,feedback) VALUES(%s,%s)"
-            self.cur.execute(sql, (id, feedback))
+            sql = "UPDATE history2 SET comment =%s WHERE id= %s;"
+            self.cur.execute(sql, (comment, id))
             self.conn.commit()
             return True
         except Exception as e:
