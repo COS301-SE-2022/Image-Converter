@@ -11,7 +11,7 @@ import {ConverterService} from './shared/converter.service';
 import { ComponentCommunicationService } from './shared/component-communication.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register/register.component';  
 /*import { SideBarComponent } from './side-bar/side-bar.component';
 import { ConversionComponent } from './conversion/conversion.component';
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
@@ -20,22 +20,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { ImagePopupComponent } from './image-popup/image-popup.component';*/
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-// import { GalleryComponent } from './gallery/gallery.component';
-
-// import { FooterComponent } from './footer/footer.component';
-/*import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
-import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';
-import { UnrecognizedImagesComponent } from './unrecognized-images/unrecognized-images.component';
-import { AdminImagePopUpComponent } from './admin-image-pop-up/admin-image-pop-up.component';
-
-import { TrackerComponent } from './tracker/tracker.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-
-
-import { NavComponent } from './nav/nav.component';
-import { TrackerComponent } from './tracker/tracker.component';*/
-
 
 @NgModule({
   declarations: [
@@ -53,7 +37,10 @@ import { TrackerComponent } from './tracker/tracker.component';*/
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ConverterService,ComponentCommunicationService],
+  providers: [
+    ConverterService,
+    ComponentCommunicationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
