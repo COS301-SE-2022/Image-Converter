@@ -75,7 +75,6 @@ def upload_image(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
-        comment = request.json['comment']
         # print(picture)
         if picture is not None:
             print("picture is not None")
@@ -97,7 +96,7 @@ def upload_image(user):
             imageCleaner = smoothing(opencv_img)
 
             imageResult =imageCleaner.clean_noise()
-            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType,comment)):
+            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -107,7 +106,7 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0]})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
@@ -650,6 +649,34 @@ def graphs(user):
     else:
         return {'response': 'failed'}, 400
 
+"""
+    Comment Function:
+        adds the user's comment to the database
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        comment
+    Returns:
+        JSON Object
+"""
+@app.route('/comment' ,methods =['POST'])
+@token
+def user_comment(user):
+    db=User()
+    if(db!=None):
+        comment = request.json['comment']
+        index = request.json['index']
+        if comment is not None:
+            if db.insert_comment(index, comment) is True:
+                print("comment inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
 
 
 if __name__ == '__main__':
