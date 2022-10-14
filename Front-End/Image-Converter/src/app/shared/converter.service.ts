@@ -20,7 +20,7 @@ export class ConverterService {
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
     return this.httpclient.post(
-      'http://46.101.46.219:5000/login',
+      'http://127.0.0.1:5000/login',
       formData,{observe:'response'}
     );
   }
@@ -311,6 +311,25 @@ export class ConverterService {
     return this.httpclient.get(
       'http://46.101.46.219:5000/activities',
       httpOptions
+    );
+
+    
+  }
+
+  //graph gallery data
+  GraphGallaryData(data: String) {
+     console.log("data: "+data)
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    let graph = {graphType: data};
+    return this.httpclient.post(
+      'http://127.0.0.1:5000/graphs',
+      graph,httpOptions
     );
 
     

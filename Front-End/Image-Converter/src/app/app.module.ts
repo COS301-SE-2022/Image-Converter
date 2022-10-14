@@ -20,6 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { ImagePopupComponent } from './image-popup/image-popup.component';*/
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+// import { GalleryComponent } from './gallery/gallery.component';
+
 // import { FooterComponent } from './footer/footer.component';
 /*import { GraphPlottingComponent } from './graph-plotting/graph-plotting.component';
 import { LiveGraphing2Component } from './live-graphing2/live-graphing2.component';

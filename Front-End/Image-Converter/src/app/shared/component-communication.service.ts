@@ -15,6 +15,9 @@ export class ComponentCommunicationService {
   private imgFilter = new BehaviorSubject('revert');// this is sent to the image convertion buttons
   currentimgFilter = this.imgFilter.asObservable();
   
+  private typeOfGraph = new BehaviorSubject('none');// this shows the name of the folder 
+  currentGraph= this.typeOfGraph.asObservable();
+
   constructor() { }
 
   //used to change message between components
@@ -27,5 +30,8 @@ export class ComponentCommunicationService {
 
   changeFilter(filter: any){
     this.imgFilter.next(filter)
+  }
+  changeGraphFolder(folder: any){
+    this.typeOfGraph.next(folder)
   }
 }
