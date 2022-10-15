@@ -20,6 +20,8 @@ export class GalleryImagesComponent implements OnInit {
   uploadedImgProcessed: string[] = [];
   nameArr: string[] = [ "name1","name2", "name3", "name4", "name5", "name6"];
   tagArr: string[] = [ "tag1","tag2", "tag3", "tag4", "tag5", "tag6"];
+
+  
   
   uuid:BigInteger[]=[];
   constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
@@ -82,9 +84,10 @@ export class GalleryImagesComponent implements OnInit {
      }
 
      text: string='';
-     
+
      textEntered(searchVal: string){
       this.text = searchVal;
+      console.log(this.text);
      }
 
 }
