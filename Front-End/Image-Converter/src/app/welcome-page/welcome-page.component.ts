@@ -40,4 +40,8 @@ export class WelcomePageComponent implements OnInit {
     this._router.navigateByUrl('/nav/upload');
   }
 
+  onSubmitGallery(){
+    this._router.navigateByUrl('/nav/gallery');
+  }
+
 }

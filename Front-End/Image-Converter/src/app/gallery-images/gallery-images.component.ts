@@ -18,14 +18,19 @@ export class GalleryImagesComponent implements OnInit {
 
   //holds processed images
   uploadedImgProcessed: string[] = [];
+  nameArr: string[] = [ "name1","name2", "name3", "name4", "name5", "name6"];
+  tagArr: string[] = [ "tag1","tag2", "tag3", "tag4", "tag5", "tag6"];
+  
   uuid:BigInteger[]=[];
   constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
 
   ngOnInit(): void {
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
     this.loading = true;
+    // console.log("in gallery top");
     this.imgService.GraphGallaryData(this.selectedFolder).subscribe(
       responseData =>{
+        // console.log("in gallery");
         this.loading = false;
         let respsonseBase64 = JSON.parse(JSON.stringify(responseData));
 
@@ -74,6 +79,12 @@ export class GalleryImagesComponent implements OnInit {
       //    } //dialog closed
       //  });
    
+     }
+
+     text: string='';
+     
+     textEntered(searchVal: string){
+      this.text = searchVal;
      }
 
 }
