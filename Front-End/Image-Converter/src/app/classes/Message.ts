@@ -1,3 +1,4 @@
 export class Message {
-    feedback!: string;
-  }
+  feedback!: string;
+  id!: any;
+ }
