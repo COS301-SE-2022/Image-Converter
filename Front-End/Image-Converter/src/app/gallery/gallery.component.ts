@@ -12,7 +12,6 @@ export class GalleryComponent implements OnInit {
 
   constructor(private graphFolderData: ComponentCommunicationService,private _router: Router) { }
 
-  graphNames=["Line","Bar","Chart","graph","graph","graph"];
   subscription!: Subscription;
   selectedFolder!: String;
   ngOnInit(): void {
@@ -22,6 +21,10 @@ export class GalleryComponent implements OnInit {
   //opens folder of selected graphs
   fileSelection(name:string){
     this.graphFolderData.changeGraphFolder(name);
+    this._router.navigateByUrl('/nav/galleryimages');
+  }
+
+  onSubmitLineGraphs(){
     this._router.navigateByUrl('/nav/galleryimages');
   }
 }

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <div class="w3-container" id="uploadHistory" style="margin-top:5px">
-   <h1 class="text-heading"><b>{{selectedFolder}} Graphs</b></h1>
+   <h1 class="text-heading"><b>{{selectedFolder}}</b></h1>
    <!-- <hr style="width:50px;border:5px solid black" class="w3-round"> -->
 
     <!-- <h1>Recent Uploads</h1> -->
@@ -25,7 +25,7 @@
       <div class="w3-col s4  w3-center w3-padding-large">
         <div class="w3-card-4" >
           <div id="uploaded">
-            <button>
+            <button (click)="imageClick(i)">
               <img id="imgLink" src={{uploadedImgProcessed[i]}} alt="response img" width="210" height="200">
             </button>
            </div>

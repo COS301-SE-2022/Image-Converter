@@ -302,8 +302,8 @@ export class ConverterService {
   }
 
   //graph gallery data
-  GraphGallaryData() {
-     
+  GraphGallaryData(data: String) {
+     console.log("data: "+data)
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
   
@@ -311,10 +311,11 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
- 
-    return this.httpclient.get(
-      'http://localhost:5000/graphs',
-      httpOptions
+
+    let graph = {graphType: data};
+    return this.httpclient.post(
+      'http://127.0.0.1:5000/graphs',
+      graph,httpOptions
     );
 
     
