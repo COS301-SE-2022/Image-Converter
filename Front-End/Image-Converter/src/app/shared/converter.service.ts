@@ -20,7 +20,7 @@ export class ConverterService {
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
     return this.httpclient.post(
-      'http://127.0.0.1:5000/login',
+      'http://localhost:5000/login',
       formData,{observe:'response'}
     );
   }
@@ -36,7 +36,7 @@ export class ConverterService {
       };
       console.log(formData);
       return this.httpclient.post(
-        'http://46.101.46.219:5000/bargraph',
+        'http://localhost:5000/bargraph',
         formData,{observe:'response'}, 
       );
     }
@@ -52,7 +52,7 @@ export class ConverterService {
                 };
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000/register',
+      'http://localhost:5000/register',
       data,{observe:'response'}
     );
   }
@@ -69,7 +69,7 @@ export class ConverterService {
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
-      'http://46.101.46.219:5000/picture',
+      'http://localhost:5000/picture',
       pic,httpOptions
     );
   }
@@ -85,7 +85,7 @@ export class ConverterService {
     };
     let data = {data: ''};
     return this.httpclient.get(
-      'http://46.101.46.219:5000/uploadhistory',
+      'http://localhost:5000/uploadhistory',
       httpOptions
     );
   }
@@ -103,7 +103,7 @@ export class ConverterService {
     let pic = {index: id};
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000/deletehistory',
+      'http://localhost:5000/deletehistory',
       pic,httpOptions
     );
   }
@@ -118,7 +118,7 @@ export class ConverterService {
       headers: headers
     };
     return this.httpclient.post(
-      'http://46.101.46.219:5000/feedback',
+      'http://localhost:5000/feedback',
       messageDetails,httpOptions
     );
   }
@@ -129,7 +129,7 @@ export class ConverterService {
     console.log(JSON.stringify(email));
     let request = {email: email}
     return this.httpclient.post(
-      'http://46.101.46.219:5000/resetpasswordemail',
+      'http://localhost:5000/resetpasswordemail',
       email,{observe:'response'}
     );
   }
@@ -139,7 +139,7 @@ export class ConverterService {
     let request = {email: localStorage.getItem('codeEmail'),
                   code:code}
     return this.httpclient.post(
-      'http://46.101.46.219:5000/resetpasswordcode',
+      'http://localhost:5000/resetpasswordcode',
       request,{observe:'response'}
     );
   }
@@ -150,7 +150,7 @@ export class ConverterService {
     let request = {email: localStorage.getItem('codeEmail'),
                     password:pass}
     return this.httpclient.post(
-      'http://46.101.46.219:5000/resetpassword',
+      'http://localhost:5000/resetpassword',
       request,{observe:'response'}
     );
   }
@@ -159,7 +159,7 @@ export class ConverterService {
   registerEmailSend(email:any): Observable<any>
   { 
     return this.httpclient.post(
-      'http://46.101.46.219:5000/sendEmail',
+      'http://localhost:5000/sendEmail',
       email,{observe:'response'}
     );
   }
@@ -176,7 +176,7 @@ export class ConverterService {
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
-      'http://46.101.46.219:5000/plotting',
+      'http://localhost:5000/plotting',
       data,httpOptions
     );
   }
@@ -191,7 +191,7 @@ export class ConverterService {
     };
     let data = {data: ''};
     return this.httpclient.get(
-      'http://46.101.46.219:5000/unrecognizedgraphs',
+      'http://localhost:5000/unrecognizedgraphs',
       httpOptions
     );
   }
@@ -209,7 +209,7 @@ export class ConverterService {
     let pic = {index: id};
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000//deleteUnrecognisableImage',
+      'http://localhost:5000//deleteUnrecognisableImage',
       pic,httpOptions
        );
   }
@@ -223,7 +223,7 @@ export class ConverterService {
       headers: headers
     };
     return this.httpclient.get(
-      'http://46.101.46.219:5000/checkusertype',
+      'http://localhost:5000/checkusertype',
       httpOptions
     );
   }
@@ -240,7 +240,7 @@ export class ConverterService {
     let pic = {feedback:adminFeedback, index: id, image:ImgProcessed};
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000/adminFeedback',
+      'http://localhost:5000/adminFeedback',
       pic,httpOptions
     );
   }
@@ -258,7 +258,7 @@ export class ConverterService {
     let pic = {picture: data};
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000/addWatermark',
+      'http://localhost:5000/addWatermark',
       pic,httpOptions
     );
   }
@@ -277,7 +277,7 @@ export class ConverterService {
     let activity = {activity: data};
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000/incrementActivity',
+      'http://localhost:5000/incrementActivity',
       activity,httpOptions
     );
   }
@@ -294,7 +294,7 @@ export class ConverterService {
     };
  
     return this.httpclient.get(
-      'http://46.101.46.219:5000/activities',
+      'http://localhost:5000/activities',
       httpOptions
     );
 
@@ -311,6 +311,7 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
+
     let graph = {graphType: data};
     return this.httpclient.post(
       'http://127.0.0.1:5000/graphs',

@@ -15,6 +15,7 @@ from converter.ConvertFomat import ConvertFomat
 from converter.watermark import AddMark
 from flask import Response
 from flask_cors import CORS
+from flask_socketio import SocketIO,emit,send
 import base64
 import cv2
 import random
@@ -23,6 +24,7 @@ import PIL.Image as Image
 import numpy as np
 import urllib.request
 import uuid
+import socket
 from PIL import Image
 
 
@@ -30,7 +32,8 @@ from PIL import Image
 app = Flask(__name__)
 app.secret_key = "super secret key"
 CORS(app)
-
+socketio = SocketIO(app, cors_allowed_origins='*')
+clients2=0
 
 """
 Methos for creating a new token or checking if a token is valid.
@@ -87,15 +90,17 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
+            socketio.emit('data-tmp',"Image is classified")
             img_class = MultiClassification(picture)
             print("#########################################")
             print(img_class.graphType)
            
             print("#########################################")
-
+            socketio.emit('data-tmp',"image is getting cleaned")
             imageCleaner = smoothing(opencv_img)
-
+            
             imageResult =imageCleaner.clean_noise()
+            socketio.emit('data-tmp',"image is resized")
             if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
@@ -106,12 +111,26 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+            socketio.emit('data-tmp',"image is returning")
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0]})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
     else:
         return {'response': 'failed'}, 400
+
+@socketio.on('connect')
+def test_connect():
+    global clients2
+    clients2 += 1
+    # send_data()
+    print('Client connected test')
+
+# @socketio.on('new-message-s')
+# def send_data():
+#     print("Am sending a message to the client")
+#     emit('data-tmp', "Some is in the house")
+ 
 
 
 """
@@ -125,13 +144,19 @@ def upload_image(user):
     Returns:
         JSON Object
 """
+
 @app.route('/login', methods=['POST'])
 def auth_login():
     db = User()
     if(db != None):
         username = str(request.json['email'])
         password = str(request.json['password'])
+        # s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # s.bind((socket.gethostname,4200))
+        # address = s.accept()
+        # print("New Connection from: "+str(address))
         if db.getUserWithEmail(username) is not None:
+            socketio.emit('data-tmp',"hello again")
             if(db.login(username,password)):
                 token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
                 ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
@@ -636,16 +661,47 @@ def graphs(user):
             graphType = request.json['graphType']
             db_image_array=db.getGraph(graphType)
             OriginalImagelist=[]
+            Comments=[]
             IndexArray=[]
             proccesedImagelist=[]
             for x in db_image_array:
                 IndexArray.append(x[0])
+                
                 OriginalImagelist.append(x[3]) 
                 proccesedImagelist.append(x[4]) 
-            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
+                Comments.append(x[5])
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments})
     else:
         return {'response': 'failed'}, 400
 
+"""
+    Comment Function:
+        adds the user's comment to the database
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        comment
+    Returns:
+        JSON Object
+"""
+@app.route('/comment' ,methods =['POST'])
+@token
+def user_comment(user):
+    db=User()
+    if(db!=None):
+        comment = request.json['comment']
+        index = request.json['index']
+        if comment is not None:
+            if db.insert_comment(index, comment) is True:
+                print("comment inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
 
 
 if __name__ == '__main__':
