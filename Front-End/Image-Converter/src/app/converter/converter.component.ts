@@ -3,6 +3,8 @@ import {ConverterService} from './../shared/converter.service';
 import { Observable, Subscriber } from 'rxjs';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
+import { io, Socket } from 'socket.io-client';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-converter',
@@ -15,8 +17,15 @@ export class ConverterComponent implements OnInit {
   message!: string;
   dispBool!: boolean;
   subscription!: Subscription;
-  
-  constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService/*,private imageProgress: ImageProcessService*/) 
+  socketio: any;
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: [''],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: [''],
+  });
+
+  constructor(private _formBuilder: FormBuilder,private imgService: ConverterService,private imgData: ComponentCommunicationService/*,private imageProgress: ImageProcessService*/) 
   { }
 
   // variables for file upload
@@ -68,27 +77,38 @@ export class ConverterComponent implements OnInit {
 
    
     
-    const socket = new WebSocket('ws://localhost:5000');
+    // const socket = new WebSocket('http://localhost:5000');
 
-    // Connection opened
-    socket.addEventListener('open', function (event) {
-        console.log('Connected to WS Server')
-    });
+    // // Connection opened
+    // socket.addEventListener('open', function (event) {
+    //     console.log('Connected to WS Server')
+    // });
 
-    // Listen for messages
-    socket.addEventListener('message', function (event) {
-        console.log('Message from server ', event.data);
-        const node = document.createElement("h3");
-        // Create a text node:
-        let textnode = document.createTextNode(event.data);
+    // // Listen for messages
+    // socket.addEventListener('message', function (event) {
+    //     console.log('Message from server ', event.data);
+    //     const node = document.createElement("h3");
+    //     // Create a text node:
+    //     let textnode = document.createTextNode(event.data);
+    //     node.appendChild(textnode);
+    //     node.appendChild(document.createElement("br"));
+    //     document.getElementById("progress")!.appendChild(node);
+    // });
+
+    // const sendMessage = () => {
+    //     socket.send('Hello From Client1!');
+    // }
+    this.socketio = io('http://localhost:5000');
+    this.socketio.on('data-tmp', (data: any) => {
+
+      console.log(data);
+      const node = document.createElement("h3");
+        //Create a text node:
+        let textnode = document.createTextNode(data);
         node.appendChild(textnode);
         node.appendChild(document.createElement("br"));
         document.getElementById("progress")!.appendChild(node);
-    });
-
-    const sendMessage = () => {
-        socket.send('Hello From Client1!');
-    }
+      });
   }
 
   ngOnDestroy() {
