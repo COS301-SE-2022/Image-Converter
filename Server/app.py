@@ -4,6 +4,7 @@ from lib2to3.pytree import Node
 from typing import final
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
+from converter.nlp_tags import NLPTags
 from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
@@ -87,6 +88,8 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
+            img_tags = NLPTags(picture)
+            print(img_tags.dict_words)
             img_class = MultiClassification(picture)
             print("#########################################")
             print(img_class.graphType)
