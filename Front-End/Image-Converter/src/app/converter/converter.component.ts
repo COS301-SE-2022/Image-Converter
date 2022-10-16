@@ -30,6 +30,7 @@ export class ConverterComponent implements OnInit {
   height!: number;
   resizedHeight!: number;
   resizedWidth!: number;
+  imageID!: any;
   
   constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService, private formBuilder: FormBuilder) { }
 
@@ -194,6 +195,7 @@ export class ConverterComponent implements OnInit {
             console.log('Res:', responseData['imageHeight'].toString());
             this.resizedHeight = responseData['imageHeight'];
             this.resizedWidth = responseData['imageWidth'];
+            this.imageID = responseData['id']
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
              console.log('ResJSn',this.respsonseBase64);
             this.imgData.changeMessage(this.respsonseBase64);
@@ -237,7 +239,8 @@ export class ConverterComponent implements OnInit {
     this.commentLabel = "Update";
     
     let comment: Message = {
-      feedback: this.comment!.value
+      feedback: this.comment!.value,
+      id: this.imageID
     };
 
     this.imgService.sendAnnotations(comment).subscribe(responseData => {

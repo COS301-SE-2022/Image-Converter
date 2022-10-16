@@ -20,26 +20,25 @@ export class ConverterService {
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
     return this.httpclient.post(
-      'http://127.0.0.1:5000/login',
+      'http://46.101.46.219:5000/login',
       formData,{observe:'response'}
     );
   }
 
-
-     barGraph(formData: BarGraph): Observable<any> {
-      console.log(formData);
-      var tok = localStorage.getItem('token');
-      console.log(tok);
-      let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
-      const httpOptions:Object = {
-        headers: headers
-      };
-      console.log(formData);
-      return this.httpclient.post(
-        'http://46.101.46.219:5000/bargraph',
-        formData,{observe:'response'}, 
-      );
-    }
+  barGraph(formData: BarGraph): Observable<any> {
+    console.log(formData);
+    var tok = localStorage.getItem('token');
+    console.log(tok);
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    console.log(formData);
+    return this.httpclient.post(
+      'http://46.101.46.219:5000/bargraph',
+      formData,{observe:'response'}, 
+    );
+  }
 
   
   register(codePar:any) : Observable<any> {
@@ -70,7 +69,7 @@ export class ConverterService {
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
-      'http://127.0.0.1:5000/picture',
+      'http://46.101.46.219:5000/picture',
       pic,httpOptions
     );
   }
@@ -118,7 +117,7 @@ export class ConverterService {
       headers: headers
     };
     return this.httpclient.post(
-      'http://127.0.0.1:5000/imageAnnotation',
+      'http://46.101.46.219:5000/comment',
       comment,httpOptions
     );
   }
@@ -328,7 +327,7 @@ export class ConverterService {
     };
     let graph = {graphType: data};
     return this.httpclient.post(
-      'http://127.0.0.1:5000/graphs',
+      'http://46.101.46.219:5000/graphs',
       graph,httpOptions
     );
 

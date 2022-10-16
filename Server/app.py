@@ -98,7 +98,7 @@ def upload_image(user):
             imageHeight = imageCleaner.height
             imageWidth = imageCleaner.width
             print(imageHeight, ", ", imageWidth)
-            if(db.insert_image(opencv_img, imageResult, user[0],"")):
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -680,8 +680,8 @@ def graphs(user):
 def user_comment(user):
     db=User()
     if(db!=None):
-        comment = request.json['comment']
-        index = request.json['index']
+        comment = request.json['feedback']
+        index = request.json['id']
         if comment is not None:
             if db.insert_comment(index, comment) is True:
                 print("comment inserted")
