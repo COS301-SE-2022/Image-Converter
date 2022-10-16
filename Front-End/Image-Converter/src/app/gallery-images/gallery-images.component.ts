@@ -18,8 +18,8 @@ export class GalleryImagesComponent implements OnInit {
 
   //holds processed images
   uploadedImgProcessed: string[] = [];
-  nameArr: string[] = [ "name1","name2", "name3", "name4", "name5", "name6"];
-  tagArr: string[] = [ "tag1","tag2", "tag3", "tag4", "tag5", "tag6"];
+  nameArr: string[] = [ "line graph","name2", "name3", "name4", "name5", "name6"];
+  tagArr: string[] = [ "16 Oct","tag2", "tag3", "tag4", "tag5", "tag6"];
 
   
   
