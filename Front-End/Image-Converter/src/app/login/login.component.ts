@@ -4,6 +4,8 @@ import {ConverterService} from './../shared/converter.service';
 import { Observable, Subscriber } from 'rxjs';
 import { Login } from '../classes/Login';
 import { Router } from '@angular/router';
+// import * as io from 'socket.io-client';
+import { io, Socket } from 'socket.io-client';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +18,15 @@ export class LoginComponent implements OnInit {
   _match!: boolean;
   buttonLogin = "";
   loading=false;
+  socketio: any;
+  
   constructor(private loginService: ConverterService, private _router: Router) { }
 
   ngOnInit(): void {
+    this.socketio = io('http://localhost:5000');
+    this.socketio.on('data-tmp', (data: any) => {
+      console.log(data);
+      });
   }
   response!:{result:string,token:string};
   form = new FormGroup({  
@@ -27,6 +35,9 @@ export class LoginComponent implements OnInit {
     // submit: new FormControl()
   });
 
+  connect(){
+    this.socketio = io('http://10.42.0.19:5000');
+    }
   get username() {  
     return this.form.get('username');  
   } 
