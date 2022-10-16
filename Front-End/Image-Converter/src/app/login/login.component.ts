@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: ConverterService, private _router: Router) { }
 
   ngOnInit(): void {
-    this.socketio = io('http://localhost:5000');
+   /* this.socketio = io('http://localhost:5000');
     this.socketio.on('data-tmp', (data: any) => {
       console.log(data);
-      });
+      });*/
   }
   response!:{result:string,token:string};
   form = new FormGroup({  
