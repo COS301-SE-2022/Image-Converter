@@ -36,7 +36,7 @@ export class ConverterService {
       };
       console.log(formData);
       return this.httpclient.post(
-        'http://46.101.46.219:5000/bargraph',
+        'http://127.0.0.1:5000/bargraph',
         formData,{observe:'response'}, 
       );
     }
@@ -50,13 +50,13 @@ export class ConverterService {
                 password: localStorage.getItem('password'),
                 code: codePar
                 };
-
+                // 'http://46.101.46.219:5000/register',
     return this.httpclient.post(
-      'http://46.101.46.219:5000/register',
+      'http://127.0.0.1:5000/register',
       data,{observe:'response'}
     );
   }
-   postImg(data: string) {
+   postImg(data: string, name: string) {
      
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
@@ -66,10 +66,11 @@ export class ConverterService {
       headers: headers
     };
     console.log(httpOptions);
-    let pic = {picture: data};
+    let pic = {picture: data, imgName: name};
     // console.log("form: "+data);
+    console.log("image name: "+name);
     return this.httpclient.post(
-      'http://46.101.46.219:5000/picture',
+      'http://127.0.0.1:5000/picture',
       pic,httpOptions
     );
   }

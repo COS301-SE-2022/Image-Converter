@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import {ConverterService} from './../shared/converter.service';
 import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-gallery-images',
@@ -15,11 +16,14 @@ export class GalleryImagesComponent implements OnInit {
   subscription!: Subscription;
   selectedFolder!: String;
   loading=false;
+  dash: string = "-";
+  
 
   //holds processed images
   uploadedImgProcessed: string[] = [];
-  nameArr: string[] = [ "line graph","name2", "name3", "name4", "name5", "name6"];
-  tagArr: string[] = [ "16 Oct","tag2", "tag3", "tag4", "tag5", "tag6"];
+  nameArr: string[] = ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
+  tagArr: string[] = ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
+  dateArr:string[] = [];
 
   
   
@@ -38,8 +42,8 @@ export class GalleryImagesComponent implements OnInit {
 
       //  console.log("response here: "+JSON.stringify(responseData));
        
-        for(let i=0;i<6;i++){
-          // respsonseBase64.OriginalImage.length
+        for(let i=0;i<9;i++){ // respsonseBase64.OriginalImage.length
+          
             this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
             console.log("index: "+respsonseBase64.Index[i]);
            // this.uuid.push(respsonseBase64.Index[i]);
@@ -84,9 +88,10 @@ export class GalleryImagesComponent implements OnInit {
      }
 
      text: string='';
+     check: string = this.text.replace(/[^a-zA-Z ]/g,"");
 
      textEntered(searchVal: string){
-      this.text = searchVal;
+      this.text = searchVal.replaceAll(/[^a-zA-Z ]/g,' ');
       console.log(this.text);
      }
 

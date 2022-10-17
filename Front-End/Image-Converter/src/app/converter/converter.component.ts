@@ -142,7 +142,7 @@ export class ConverterComponent implements OnInit {
       this.myimage?.subscribe(data => {
         // console.log(data);
         
-        this.imgService.postImg(data).subscribe(
+        this.imgService.postImg(data, this.saveFile[0].name).subscribe(
           responseData =>{
             this.loading = false;
             console.log(responseData);
@@ -150,6 +150,8 @@ export class ConverterComponent implements OnInit {
              console.log(this.respsonseBase64);
             this.imgData.changeMessage(this.respsonseBase64);
             this.imgData.changBool(true);
+            // this.saveFile[0].name;
+            // console.log("Omo  "+this.saveFile[0].name);
             document.getElementById("imageFilter")!.style.display = "block";
             document.getElementById("conversionFormat")!.style.display = "block";
           }
