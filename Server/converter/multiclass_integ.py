@@ -5,11 +5,13 @@ import numpy as np
 from keras.models import load_model
 from numpy import byte
 import tensorflow as tf
+import app
 import base64
 
 
 class MultiClassification:
     def __init__(self,uploaded_image):
+        app.socketio.emit('data-tmp',"Image is classified")
         sliced_png = uploaded_image[22:]
 
         converted_base64= bytes(sliced_png, encoding='utf8')

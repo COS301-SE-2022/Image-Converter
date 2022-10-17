@@ -15,7 +15,7 @@ from converter.ConvertFomat import ConvertFomat
 from converter.watermark import AddMark
 from flask import Response
 from flask_cors import CORS
-from flask_socketio import SocketIO,emit,send
+from flask_socketio import SocketIO
 import base64
 import cv2
 import random
@@ -90,17 +90,17 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
-            socketio.emit('data-tmp',"Image is classified")
+            # socketio.emit('data-tmp',"Image is classified")
             img_class = MultiClassification(picture)
             print("#########################################")
             print(img_class.graphType)
            
             print("#########################################")
-            socketio.emit('data-tmp',"image is getting cleaned")
+            # socketio.emit('data-tmp',"image is getting cleaned")
             imageCleaner = smoothing(opencv_img)
             
             imageResult =imageCleaner.clean_noise()
-            socketio.emit('data-tmp',"image is resized")
+            # socketio.emit('data-tmp',"image is resized")
             if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
