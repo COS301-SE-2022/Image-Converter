@@ -60,7 +60,7 @@ export class ConverterComponent implements OnInit {
   //to indicate step we are at
   isStep=[false,false,false,false,false]
   isStepCounter=0;
-  
+
   displayImg: any='../../assets/drag.png';// url of img displayed on upload
   onFileChange(event: any) {// when uploaded using button not drag
     let files: FileList = event.target.files;
@@ -208,7 +208,9 @@ export class ConverterComponent implements OnInit {
   }
   //sends uploaded image to the backend for processing.
   saveFiles() {
+    this.loadingPercent=0;
     this.loading = true;
+    
     if(this.saveFile!=''){
       console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
 

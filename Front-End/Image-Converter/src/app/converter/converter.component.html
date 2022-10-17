@@ -65,19 +65,19 @@
          
           <mat-stepper labelPosition="bottom" linear #stepper>
             <mat-step [stepControl]="firstFormGroup" [editable]="false" >
-              <ng-template matStepLabel>Fill out your name</ng-template>
+              <ng-template matStepLabel>Classify Image</ng-template>
             </mat-step>
             <mat-step [stepControl]="secondFormGroup" [editable]="false">
-              <ng-template matStepLabel>Fill out your address</ng-template>
+              <ng-template matStepLabel>Clean Image</ng-template>
             </mat-step>
             <mat-step [stepControl]="secondFormGroup" [editable]="false">
-              <ng-template matStepLabel>Fill out your address</ng-template>
+              <ng-template matStepLabel>Resize Image</ng-template>
             </mat-step>
             <mat-step [stepControl]="secondFormGroup" [editable]="false">
-              <ng-template matStepLabel>Fill out your address</ng-template>
+              <ng-template matStepLabel>Add Watermark to Image</ng-template>
             </mat-step>
             <mat-step [stepControl]="secondFormGroup" [editable]="false">
-              <ng-template matStepLabel>Fill out your address</ng-template>
+              <ng-template matStepLabel>Extract keywords from image</ng-template>
             </mat-step>
             <mat-step>
               <ng-template matStepLabel>Done</ng-template>
@@ -86,7 +86,7 @@
         </div>
           
 
-          <div id="progress"></div>
+          <div id="progress" *ngIf="loading"></div>
             <!-- Image Filters -->
             <div id="imageFilter">
               <app-filter></app-filter>
