@@ -1,12 +1,3 @@
-:root {
-  --accent: #2ed573
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .text-heading{
   font-size:  50px;
   text-decoration: underline;
@@ -80,12 +71,8 @@
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-  position: fixed;
   font-family: 'Poppins', sans-serif;
   background: #fafafa;
-  display: -ms-grid;
-  place-items: center;
-  height: 100vh;
 }
 
 p {
@@ -323,12 +310,11 @@ bodY {
   --accent: #0e0a0d;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.fieldsetWrapper {
+// * {
+//   margin: 0;
+//   padding: 0;
+// }
+body {
   position: fixed;
   font-family: "Poppins", sans-serif;
   display: -ms-grid;
@@ -340,8 +326,8 @@ bodY {
 .fieldsetContainer {
   display: -ms-grid;
   display: grid;
-  width: 489px;
-  height: 500px;
+  width: 340px;
+  height: 300px;
 }
 
 fieldset {
@@ -354,7 +340,7 @@ fieldset {
 }
 
 fieldset:nth-of-type(1) {
-  background-image: url(/download.png);
+  // background-image: url(/download.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

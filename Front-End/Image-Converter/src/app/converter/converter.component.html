@@ -26,36 +26,38 @@
   <span id="drag">Drag files here
     <a href="javascript:void(0)" (click)="file.click()"> or click to open </a>
   </span>
-
-  <mat-card-content>
-    <input type="file" #file [multiple]="false" (change)="onFileChange($event)" style="display:none"/>
-    <br>
-    <hr>
-
-    <div class="fieldsetWrapper">
-      <div class="fieldsetContainer">
-          <fieldset>
-              <legend>Width: px</legend>
-          </fieldset>
-  
-          <fieldset>
-              <legend>Height: px</legend>
-          </fieldset>
+  <div class="fieldsetWrapper">
+    <div class="fieldsetContainer">
+        <fieldset>
+            <legend>Width: {{width}}px</legend>
+            <mat-card-content>
+              <input type="file" #file [multiple]="false" (change)="onFileChange($event)" style="display:none"/>
+              <br>
+              <hr>
           
-          <fieldset>
-              <legend>Width: px</legend>
-          </fieldset>
+              
+          
+              <div class="dragged-files-wrapper" >
+                <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Graph Image">
+              </div>
+            </mat-card-content>
+        </fieldset>
   
-          <fieldset>
-              <legend>Height: px</legend>
-          </fieldset>
-      </div>
+        <fieldset>
+            <legend>Height: {{height}}px</legend>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Width: {{width}}px</legend>
+        </fieldset>
+  
+        <fieldset>
+            <legend>Height: {{height}}px</legend>
+        </fieldset>
     </div>
-
-    <div class="dragged-files-wrapper" >
-      <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Graph Image">
-    </div>
-  </mat-card-content>
+  </div>
+  
+  
 
   <div class="error" *ngIf="error" style = "color:red;">{{error}}</div>
 
