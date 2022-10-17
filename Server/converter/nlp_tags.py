@@ -13,9 +13,9 @@ class NLPTags:
         sliced_png = uploaded_image[22:]
 
         converted_base64= bytes(sliced_png, encoding='utf8')
-        with open("img2.png", "wb") as fh:
+        with open("charts.png", "wb") as fh:
             fh.write((base64.decodebytes(converted_base64)))
-        self.uploaded_image = 'img2.png'
+        self.uploaded_image = 'charts.png'
         self.graphType = ""
         self.extract()
 
@@ -31,7 +31,7 @@ class NLPTags:
       # https://github.com/UB-Mannheim/tesseract/wiki
 
       #Define path to tessaract.exe
-      path_to_tesseract = (r'C:\Program Files\Tesseract-OCR\tesseract.exe')
+      path_to_tesseract = (r'/opt/homebrew/Cellar/tesseract/5.2.0/bin/tesseract')
 
       #Define path to image
       path_to_image = self.uploaded_image
@@ -53,9 +53,9 @@ class NLPTags:
 
       # Uncomment this section for running first time
       ############################################################################################################
-      # nltk.download('stopwords')
-      # nltk.download('punkt')
-      # nltk.download('words')
+    #   nltk.download('stopwords')
+    #   nltk.download('punkt')
+    #   nltk.download('words')
       ############################################################################################################
 
       #Convert text to lowercase
@@ -68,11 +68,11 @@ class NLPTags:
       text_under_two = re.sub(r'\b\w{1,2}\b', '', text_no_num)
 
       #Remove punctuation and special characters
-      tokenizer = RegexpTokenizer(r'\w+')   
+      tokenizer = RegexpTokenizer(r'\w+')
 
       #Tokenize text
       tokens = tokenizer.tokenize(text_under_two)
-      print(tokens)
+    #   print(tokens)
 
       #Remove non english words
       self.dict_words= []
@@ -90,5 +90,6 @@ class NLPTags:
       #Removing duplicate words
       final_tokens = list(set(tokens_no_stop))
 
-      print(final_tokens)
+    #   print(final_tokens)
       return self.dict_words
+

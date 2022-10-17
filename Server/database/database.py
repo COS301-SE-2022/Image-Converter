@@ -117,7 +117,7 @@ class User:
             print("Converted ")
             # print(link2)
             #sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
-            sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
+            sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted, names, tags) VALUES(%s,%s,%s,%s,%s,%s)"
             print("Executing")
             self.cur.execute(sql, (graphType, id, link,link2))
             self.conn.commit()
