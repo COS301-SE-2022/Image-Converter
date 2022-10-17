@@ -34,7 +34,7 @@ class NLPTags:
       path_to_tesseract = (r'C:\Program Files\Tesseract-OCR\tesseract.exe')
 
       #Define path to image
-      path_to_image = 'line-graph3.jpg'
+      path_to_image = self.uploaded_image
 
       #Point tessaract_cmd to tessaract.exe
       pytesseract.tesseract_cmd = path_to_tesseract
@@ -76,7 +76,8 @@ class NLPTags:
 
       #Remove non english words
       self.dict_words= []
-      with open("mieliestronk_dictionary.txt", "r") as a_file:
+      #Mieliestronk dictionary
+      with open("dictionary.txt", "r") as a_file:
         for line in a_file:
           stripped_line = line.strip()
           for n in tokens:
