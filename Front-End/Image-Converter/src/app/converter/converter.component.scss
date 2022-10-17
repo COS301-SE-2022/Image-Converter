@@ -1,3 +1,12 @@
+:root {
+  --accent: #2ed573
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .text-heading{
   font-size:  50px;
   text-decoration: underline;
@@ -71,8 +80,12 @@
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+  position: fixed;
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  display: -ms-grid;
+  place-items: center;
+  height: 100vh;
 }
 
 p {
@@ -300,4 +313,71 @@ bodY {
   100% {
     transform: scale(0);
   }
+}
+
+/* ---------------------------------------------------
+    ImageDimensions Border Styling
+----------------------------------------------------- */
+
+:root {
+  --accent: #0e0a0d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.fieldsetWrapper {
+  position: fixed;
+  font-family: "Poppins", sans-serif;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.fieldsetContainer {
+  display: -ms-grid;
+  display: grid;
+  width: 489px;
+  height: 500px;
+}
+
+fieldset {
+  width: inherit;
+  grid-area: 1 / 1;
+  border: solid 12px transparent;
+  border-top-color: var(--accent);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+fieldset:nth-of-type(1) {
+  background-image: url(/download.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: content-box;
+}
+
+fieldset:nth-of-type(2) {
+  transform: rotate(90deg);
+}
+
+fieldset:nth-of-type(3) {
+  transform: rotate(180deg);
+}
+
+fieldset:nth-of-type(4) {
+  transform: rotate(-90deg);
+}
+
+legend {
+  padding: 0 6px;
+  margin: auto;
+}
+
+fieldset:nth-of-type(3) > legend {
+  transform: rotate(180deg);
 }

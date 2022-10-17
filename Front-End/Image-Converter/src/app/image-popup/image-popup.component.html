@@ -19,7 +19,7 @@
         <div class="form-group container">
           <form [formGroup]="form" (ngSubmit)="onComment()">
             <textarea class="form-control" row="5" placeholder={{initialComment}} rows="5" formControlName="comment"></textarea>
-            <button class="btn btn-success pull-right" type="submit" [disabled]="form.invalid">
+            <button class="btn btn-success pull-right" type="submit" >
               {{commentLabel}}
             </button>
           </form>

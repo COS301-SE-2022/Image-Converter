@@ -22,7 +22,7 @@ export class ConverterComponent implements OnInit {
   //These variables are used  in the comment sections
   @Input() commentLabel!: string;
   @Input() hasCancelLabel!: boolean;
-  @Input() intailComment!: string;
+  @Input() initialComment: string = "";
   form!: FormGroup;
   showDim: boolean = false;
   uploadSuccess: boolean = false;
@@ -51,26 +51,22 @@ export class ConverterComponent implements OnInit {
   displayImg: any='../../assets/drag.png';// url of img displayed on upload
   onFileChange(event: any) {// when uploaded using button not drag
     let files: FileList = event.target.files;
+    this.uploadSuccess = false;
+    this.commentLabel = "Comment"
+    
+    this.showDim = false
+
+
    // this.saveFiles(files);
     
     this.checkifImg(files);
-      if(this.error == '')
-      {
-        const mimeType = files[0].type;
+    if(this.error == '')
+    {
+      const mimeType = files[0].type;
       if (mimeType.match(/image\/*/) == null) {
         this.error = "Only images are supported.";
         return;
       }
-
-      // let fr = new FileReader();
-      // fr.onload = () => { // when file has loaded
-      //   var img = new Image();
-      //   img.onload = () => {
-      //       this.width = img.width;
-      //       this.height = img.height;
-      //   };
-      // }
-
 
       const reader = new FileReader();
       let imagePath = files;
@@ -84,15 +80,15 @@ export class ConverterComponent implements OnInit {
           this.height = rs.currentTarget['height'];
           this.width = rs.currentTarget['width'];
 
-         
+        
         };
       }
-        console.log(this.width);
-        console.log(this.height);
-        this.showDim = true;
-        this.isDisabled = false;
-        this.saveFile=files;
-      }
+      console.log(this.width);
+      console.log(this.height);
+      this.showDim = true;
+      this.isDisabled = false;
+      this.saveFile=files;
+    }
   }
 
   ngOnInit() {
@@ -106,7 +102,7 @@ export class ConverterComponent implements OnInit {
     this.uploadSuccess = false;
     this.commentLabel = "Comment"
     this.form = this.formBuilder.group({
-      comment: [this.intailComment, Validators.required]
+      comment: [this.initialComment, Validators.required]
     });
   }
 
@@ -192,6 +188,7 @@ export class ConverterComponent implements OnInit {
           (responseData: any) =>{
             this.loading = false;
             this.uploadSuccess = true;
+            this.initialComment = ""
             console.log('Res:', responseData['imageHeight'].toString());
             this.resizedHeight = responseData['imageHeight'];
             this.resizedWidth = responseData['imageWidth'];
@@ -201,6 +198,7 @@ export class ConverterComponent implements OnInit {
             this.imgData.changeMessage(this.respsonseBase64);
             this.imgData.changBool(true);
             document.getElementById("imageFilter")!.style.display = "block";
+            (<HTMLInputElement>document.getElementById("commentSection"))!.value = '';
             document.getElementById("conversionFormat")!.style.display = "block";
           }
         );
@@ -235,7 +233,7 @@ export class ConverterComponent implements OnInit {
 
   onComment() {
     console.log('onComment', this.comment!.value);
-    this.intailComment = this.comment!.value;
+    this.initialComment = this.comment!.value;
     this.commentLabel = "Update";
     
     let comment: Message = {
