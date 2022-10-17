@@ -184,8 +184,8 @@ export class ConverterComponent implements OnInit {
       this.myimage?.subscribe(data => {
         // console.log(data);
         
-        this.imgService.postImg(data).subscribe(
-          (responseData: any) =>{
+        this.imgService.postImg(data, this.saveFile[0].name).subscribe(
+          responseData =>{
             this.loading = false;
             this.uploadSuccess = true;
             this.initialComment = ""
@@ -197,6 +197,8 @@ export class ConverterComponent implements OnInit {
              console.log('ResJSn',this.respsonseBase64);
             this.imgData.changeMessage(this.respsonseBase64);
             this.imgData.changBool(true);
+            // this.saveFile[0].name;
+            // console.log("Omo  "+this.saveFile[0].name);
             document.getElementById("imageFilter")!.style.display = "block";
             (<HTMLInputElement>document.getElementById("commentSection"))!.value = '';
             document.getElementById("conversionFormat")!.style.display = "block";

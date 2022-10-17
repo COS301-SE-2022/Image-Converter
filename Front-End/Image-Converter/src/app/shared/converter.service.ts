@@ -25,20 +25,21 @@ export class ConverterService {
     );
   }
 
-  barGraph(formData: BarGraph): Observable<any> {
-    console.log(formData);
-    var tok = localStorage.getItem('token');
-    console.log(tok);
-    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
-    const httpOptions:Object = {
-      headers: headers
-    };
-    console.log(formData);
-    return this.httpclient.post(
-      'http://46.101.46.219:5000/bargraph',
-      formData,{observe:'response'}, 
-    );
-  }
+
+     barGraph(formData: BarGraph): Observable<any> {
+      console.log(formData);
+      var tok = localStorage.getItem('token');
+      console.log(tok);
+      let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+      const httpOptions:Object = {
+        headers: headers
+      };
+      console.log(formData);
+      return this.httpclient.post(
+        'http://127.0.0.1:5000/bargraph',
+        formData,{observe:'response'}, 
+      );
+    }
 
   
   register(codePar:any) : Observable<any> {
@@ -49,14 +50,13 @@ export class ConverterService {
                 password: localStorage.getItem('password'),
                 code: codePar
                 };
-
+                // 'http://46.101.46.219:5000/register',
     return this.httpclient.post(
-      'http://46.101.46.219:5000/register',
+      'http://127.0.0.1:5000/register',
       data,{observe:'response'}
     );
   }
-
-  postImg(data: string) {
+   postImg(data: string, name: string) {
      
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
@@ -66,8 +66,9 @@ export class ConverterService {
       headers: headers
     };
     console.log(httpOptions);
-    let pic = {picture: data};
+    let pic = {picture: data, imgName: name};
     // console.log("form: "+data);
+    console.log("image name: "+name);
     return this.httpclient.post(
       'http://localhost:5000/picture',
       pic,httpOptions

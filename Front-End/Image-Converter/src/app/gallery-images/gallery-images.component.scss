@@ -1,0 +1,131 @@
+.values .box {
+  padding: 10px;
+  box-shadow: 0px 0 5px rgba(1, 41, 112, 0.6);
+  text-align: center;
+  transition: 0.2s;
+  height: 70%;
+  width: 70%;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 15px;
+  
+}
+
+.values .box img {
+  padding: 15px 25px;
+  transition: 0.5s;
+  transform: scale(1.1);
+  
+}
+
+.values .box h4 {
+  font-size: 20px;
+  color: #012970;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.values .box:hover {
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.5);
+}
+
+.values .box:hover img {
+  transform: scale(1);
+}
+
+
+.values .box #imgButton {
+  border-style: none;
+  background-color: #fff;
+}
+
+
+bodY {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .center {
+    height: 100%;
+    width: 100%;
+    margin-top: 160px;
+    margin-left: -10px;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+  .wave {
+    width: 10px;
+    height: 110px;
+    background: linear-gradient(45deg, #333333, rgb(64, 102, 184));
+    // background: linear-gradient(45deg, rgb(15, 21, 109), #fff);
+    margin: 10px;
+    animation: wave 1s linear infinite;
+    border-radius: 20px;
+  }
+  .wave:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .wave:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .wave:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  .wave:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .wave:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+  .wave:nth-child(7) {
+    animation-delay: 0.6s;
+  }
+  .wave:nth-child(8) {
+    animation-delay: 0.7s;
+  }
+  .wave:nth-child(9) {
+    animation-delay: 0.8s;
+  }
+  .wave:nth-child(10) {
+    animation-delay: 0.9s;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  
+  .headerDiv{
+    display:flex;
+  }
+
+  .headerDiv #heading{
+    width: 150px;
+  }
+
+  .headerDiv #searchDiv{
+    left:90%;
+    margin-bottom: 3%;
+  }
+
+  .headerDiv .dropdown{
+    left:20%;
+  }
+
+  // .container{
+  //   position:relative;
+  //   top:50%;
+  // }
+
+ 

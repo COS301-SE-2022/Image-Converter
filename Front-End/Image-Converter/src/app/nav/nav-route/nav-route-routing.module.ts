@@ -18,6 +18,7 @@ import { LandingPageComponent } from 'src/app/landing-page/landing-page.componen
 // import { FooterComponent } from 'src/app/footer/footer.component';
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
+import { SearchComponent } from './../../search/search.component';
 
 const routes: Routes = [
     {
@@ -56,6 +57,10 @@ const routes: Routes = [
           {
             path: 'landing',
             component: LandingPageComponent
+          },
+          {
+            path: 'search',
+            component: SearchComponent
           }
           
           // {

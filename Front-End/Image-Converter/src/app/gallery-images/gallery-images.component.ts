@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import {ConverterService} from './../shared/converter.service';
 import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-gallery-images',
@@ -15,26 +16,36 @@ export class GalleryImagesComponent implements OnInit {
   subscription!: Subscription;
   selectedFolder!: String;
   loading=false;
+  dash: string = "-";
+  
 
   //holds processed images
   uploadedImgProcessed: string[] = [];
   commentList: string[] = [];
   indexList: number[] = [];
+  nameArr: string[] = ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
+  tagArr: string[] = ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
+  dateArr:string[] = [];
+
+  
+  
   uuid:BigInteger[]=[];
   constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
 
   ngOnInit(): void {
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
     this.loading = true;
+    // console.log("in gallery top");
     this.imgService.GraphGallaryData(this.selectedFolder).subscribe(
       responseData =>{
+        // console.log("in gallery");
         this.loading = false;
         let respsonseBase64 = JSON.parse(JSON.stringify(responseData));
         console.log("Gallery:", respsonseBase64);
       //  console.log("response here: "+JSON.stringify(responseData));
        
-        for(let i=0;i<respsonseBase64.OriginalImage.length;i++){
-
+        for(let i=0;i<9;i++){ // respsonseBase64.OriginalImage.length
+          
             this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
             this.commentList.push(respsonseBase64.Comments[i]);
             this.indexList.push(respsonseBase64.Index[i]);
@@ -80,5 +91,13 @@ export class GalleryImagesComponent implements OnInit {
       //  });
    
     }
+
+     text: string='';
+     check: string = this.text.replace(/[^a-zA-Z ]/g,"");
+
+     textEntered(searchVal: string){
+      this.text = searchVal.replaceAll(/[^a-zA-Z ]/g,' ');
+      console.log(this.text);
+     }
 
 }
