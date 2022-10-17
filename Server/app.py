@@ -76,7 +76,7 @@ def upload_image(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
-        imgName = request.json['']
+        imgName = request.json['imgName']
         # print(picture)
         if picture is not None:
             print("picture is not None")
@@ -102,7 +102,7 @@ def upload_image(user):
             imageHeight = imageCleaner.height
             imageWidth = imageCleaner.width
             print(imageHeight, ", ", imageWidth)
-            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, ,img_tags)):
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
