@@ -38,8 +38,8 @@ export class GalleryImagesComponent implements OnInit {
 
       //  console.log("response here: "+JSON.stringify(responseData));
        
-        for(let i=0;i<respsonseBase64.OriginalImage.length;i++){
-
+        for(let i=0;i<6;i++){
+          // respsonseBase64.OriginalImage.length
             this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
             console.log("index: "+respsonseBase64.Index[i]);
            // this.uuid.push(respsonseBase64.Index[i]);
