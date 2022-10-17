@@ -1,10 +1,11 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import {ConverterService} from './../shared/converter.service';
 import { Observable, Subscriber } from 'rxjs';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-converter',
@@ -25,8 +26,21 @@ export class ConverterComponent implements OnInit {
     secondCtrl: [''],
   });
 
+  @ViewChild('stepper') private myStepper!: MatStepper;
+  
+  goForward(){
+    this.myStepper.next();
+}
+
+  myScriptElement!: HTMLScriptElement;
+  
   constructor(private _formBuilder: FormBuilder,private imgService: ConverterService,private imgData: ComponentCommunicationService/*,private imageProgress: ImageProcessService*/) 
-  { }
+  { 
+    this.myScriptElement = document.createElement("script");
+    this.myScriptElement.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
+    document.body.appendChild(this.myScriptElement);
+
+  }
 
   // variables for file upload
   error: String='';
@@ -41,7 +55,12 @@ export class ConverterComponent implements OnInit {
 
   //used for loadig spinner
   loading=false;
+  loadingPercent=0;
 
+  //to indicate step we are at
+  isStep=[false,false,false,false,false]
+  isStepCounter=0;
+  
   displayImg: any='../../assets/drag.png';// url of img displayed on upload
   onFileChange(event: any) {// when uploaded using button not drag
     let files: FileList = event.target.files;
@@ -68,6 +87,7 @@ export class ConverterComponent implements OnInit {
       }
   }
 
+  
   ngOnInit() {
     this.dragAreaClass = 'dragarea';
     //subscribe for communication between components
@@ -108,6 +128,16 @@ export class ConverterComponent implements OnInit {
         node.appendChild(textnode);
         node.appendChild(document.createElement("br"));
         document.getElementById("progress")!.appendChild(node);
+
+        //update loading bar
+        this.loadingPercent+=20;
+        console.log("per: "+this.loadingPercent);
+        document.getElementById("loadingBar")!.style.width ="";
+        document.getElementById("loadingBar")!.innerHTML= "";
+        document.getElementById("loadingBar")!.style.width = this.loadingPercent+"%";
+        document.getElementById("loadingBar")!.innerHTML= this.loadingPercent+"%";
+
+        this.goForward();
       });
   }
 
