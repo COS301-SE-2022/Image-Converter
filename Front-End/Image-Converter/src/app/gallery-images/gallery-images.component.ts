@@ -91,7 +91,7 @@ export class GalleryImagesComponent implements OnInit {
      check: string = this.text.replace(/[^a-zA-Z ]/g,"");
 
      textEntered(searchVal: string){
-      this.text = searchVal.replaceAll(/[^a-zA-Z ]/g,' ');
+      this.text = searchVal.replaceAll(/[^\w\s]/gi,' ');
       console.log(this.text);
      }
 
