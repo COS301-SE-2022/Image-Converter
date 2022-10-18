@@ -328,6 +328,7 @@ export class ConverterService {
     const httpOptions:Object = {
       headers: headers
     };
+
     let graph = {graphType: data};
     return this.httpclient.post(
       'http://localhost:5000/graphs',

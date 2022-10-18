@@ -4,7 +4,7 @@
 </div>
 
 
-<div class="center" *ngIf="loading">
+<!-- <div class="center" *ngIf="loading">
   <div class="wave"></div>
   <div class="wave"></div>
   <div class="wave"></div>
@@ -15,7 +15,7 @@
   <div class="wave"></div>
   <div class="wave"></div>
   <div class="wave"></div>
-</div>
+</div> -->
 
 <!-- <img id="load" *ngIf="loading" src="assets/loading.gif" width="400"/> -->
 <!-- <mat-spinner *ngIf="loading" id="spin" [diameter]="150" primary style="margin-top:50px;margin:0 auto;"></mat-spinner> -->
@@ -67,10 +67,42 @@
 </mat-card>
 </div>
 
-<div *ngIf="showDim" class="textBox">
+<div *ngIf="showDim && !loading"  class="textBox">
   <h4>Image Dimensions</h4>
   <p class="box-text-1">Image height: {{height}}px</p>
   <p class="box-text-1">Image width: {{width}}px</p>
+</div>
+<div class="m-4" *ngIf="loading">
+          
+  <div class="progress">
+      <div id="loadingBar" class="progress-bar" style="width: 0%">
+          0%
+      </div>
+  </div>
+</div>
+
+<div *ngIf="loading">
+ 
+  <mat-stepper labelPosition="bottom" linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="false" >
+      <ng-template matStepLabel>Classify Image</ng-template>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="false">
+      <ng-template matStepLabel>Clean Image</ng-template>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="false">
+      <ng-template matStepLabel>Resize Image</ng-template>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="false">
+      <ng-template matStepLabel>Add Watermark to Image</ng-template>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="false">
+      <ng-template matStepLabel>Extract keywords from image</ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+    </mat-step>
+  </mat-stepper>
 </div>
 
 <!-- Image Filters -->

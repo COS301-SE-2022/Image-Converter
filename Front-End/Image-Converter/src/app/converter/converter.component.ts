@@ -1,10 +1,12 @@
-import { Component, OnInit, HostListener, Input } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, Input } from '@angular/core';
 import {ConverterService} from './../shared/converter.service';
 import { Observable, Subscriber } from 'rxjs';
 import { ComponentCommunicationService } from './../shared/component-communication.service';
 import { Subscription } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Message } from '../classes/Message';
+import { io, Socket } from 'socket.io-client';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-converter',
@@ -32,7 +34,30 @@ export class ConverterComponent implements OnInit {
   resizedWidth!: number;
   imageID!: any;
   
-  constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService, private formBuilder: FormBuilder) { }
+  //constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService, private _formBuilder: FormBuilder) { }
+  socketio: any;
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: [''],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: [''],
+  });
+
+  @ViewChild('stepper') private myStepper!: MatStepper;
+  
+  goForward(){
+    this.myStepper.next();
+}
+
+  myScriptElement!: HTMLScriptElement;
+  
+  constructor(private _formBuilder: FormBuilder,private imgService: ConverterService,private imgData: ComponentCommunicationService/*,private imageProgress: ImageProcessService*/) 
+  { 
+    this.myScriptElement = document.createElement("script");
+    this.myScriptElement.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
+    document.body.appendChild(this.myScriptElement);
+
+  }
 
   // variables for file upload
   error: String='';
@@ -47,6 +72,11 @@ export class ConverterComponent implements OnInit {
 
   //used for loadig spinner
   loading=false;
+  loadingPercent=0;
+
+  //to indicate step we are at
+  isStep=[false,false,false,false,false]
+  isStepCounter=0;
 
   displayImg: any='../../assets/drag.png';// url of img displayed on upload
   onFileChange(event: any) {// when uploaded using button not drag
@@ -91,19 +121,65 @@ export class ConverterComponent implements OnInit {
     }
   }
 
+  
   ngOnInit() {
     this.dragAreaClass = 'dragarea';
     //subscribe for communication between components
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
     this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
+   
 
     this.hasCancelLabel = false;
     this.showDim = false;
     this.uploadSuccess = false;
     this.commentLabel = "Comment"
-    this.form = this.formBuilder.group({
+    this.form = this._formBuilder.group({
       comment: [this.initialComment, Validators.required]
     });
+   
+    
+    // const socket = new WebSocket('http://localhost:5000');
+
+    // // Connection opened
+    // socket.addEventListener('open', function (event) {
+    //     console.log('Connected to WS Server')
+    // });
+
+    // // Listen for messages
+    // socket.addEventListener('message', function (event) {
+    //     console.log('Message from server ', event.data);
+    //     const node = document.createElement("h3");
+    //     // Create a text node:
+    //     let textnode = document.createTextNode(event.data);
+    //     node.appendChild(textnode);
+    //     node.appendChild(document.createElement("br"));
+    //     document.getElementById("progress")!.appendChild(node);
+    // });
+
+    // const sendMessage = () => {
+    //     socket.send('Hello From Client1!');
+    // }
+    this.socketio = io('http://localhost:5000');
+    this.socketio.on('data-tmp', (data: any) => {
+
+      console.log(data);
+      const node = document.createElement("h3");
+        //Create a text node:
+        let textnode = document.createTextNode(data);
+        node.appendChild(textnode);
+        node.appendChild(document.createElement("br"));
+        document.getElementById("progress")!.appendChild(node);
+
+        //update loading bar
+        this.loadingPercent+=20;
+        console.log("per: "+this.loadingPercent);
+        document.getElementById("loadingBar")!.style.width ="";
+        document.getElementById("loadingBar")!.innerHTML= "";
+        document.getElementById("loadingBar")!.style.width = this.loadingPercent+"%";
+        document.getElementById("loadingBar")!.innerHTML= this.loadingPercent+"%";
+
+        this.goForward();
+      });
   }
 
   
@@ -175,7 +251,9 @@ export class ConverterComponent implements OnInit {
   }
   //sends uploaded image to the backend for processing.
   saveFiles() {
+    this.loadingPercent=0;
     this.loading = true;
+    
     if(this.saveFile!=''){
       console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
 
@@ -186,6 +264,7 @@ export class ConverterComponent implements OnInit {
         
         this.imgService.postImg(data, this.saveFile[0].name).subscribe(
           (responseData: any) =>{
+            document.getElementById("progress")!.innerHTML = "";
             this.loading = false;
             this.uploadSuccess = true;
             this.initialComment = ""
