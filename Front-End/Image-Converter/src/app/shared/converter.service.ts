@@ -86,7 +86,9 @@ export class ConverterService {
     };
     let data = {data: ''};
     return this.httpclient.get(
-      'http://localhost:5000/uploadhistory',
+
+      'http://127.0.0.1:5000/uploadhistory',
+
       httpOptions
     );
   }

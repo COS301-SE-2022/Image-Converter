@@ -104,4 +104,8 @@ export class NavComponent implements OnInit {
   onSubmitUpload(){
     this._router.navigateByUrl('/nav/upload');
   }
+
+  onSubmitHistory(){
+    this._router.navigateByUrl('/nav/uploadHistory');
+  }
 }

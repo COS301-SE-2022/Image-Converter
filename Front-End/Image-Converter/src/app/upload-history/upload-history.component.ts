@@ -17,6 +17,8 @@ export class UploadHistoryComponent implements OnInit {
   uploadedImg: string[] = [];
   //holds unprocessed images
   uploadedImgProcessed: string[] = [];
+  nameArr: string[] = ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
+  tagArr: string[] = ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
 
   uuid:BigInteger[]=[];
   //used for loadig spinner
@@ -47,7 +49,7 @@ export class UploadHistoryComponent implements OnInit {
   }
 
   //sends clicked image to popup
-  imageClick(index:any, arrayToUse:String){
+  imageClick(index:any){
 
    /* let image;
     if(arrayToUse=="uploaded"){
@@ -86,4 +88,6 @@ export class UploadHistoryComponent implements OnInit {
     });
 
   }
+
+  text: string='';
 }
