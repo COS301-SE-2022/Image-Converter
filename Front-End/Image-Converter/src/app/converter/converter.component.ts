@@ -185,7 +185,7 @@ export class ConverterComponent implements OnInit {
         // console.log(data);
         
         this.imgService.postImg(data, this.saveFile[0].name).subscribe(
-          responseData =>{
+          (responseData: any) =>{
             this.loading = false;
             this.uploadSuccess = true;
             this.initialComment = ""

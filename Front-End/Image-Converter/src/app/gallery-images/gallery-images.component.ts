@@ -49,6 +49,8 @@ export class GalleryImagesComponent implements OnInit {
             this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
             this.commentList.push(respsonseBase64.Comments[i]);
             this.indexList.push(respsonseBase64.Index[i]);
+            this.tagArr.push(respsonseBase64.Tags[i]);
+            this.nameArr.push(respsonseBase64.Names[i]);
             console.log("index: "+respsonseBase64.Index[i]);
            // this.uuid.push(respsonseBase64.Index[i]);
         }
