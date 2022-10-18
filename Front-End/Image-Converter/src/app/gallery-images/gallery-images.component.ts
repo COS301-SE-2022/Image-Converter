@@ -21,8 +21,12 @@ export class GalleryImagesComponent implements OnInit {
 
   //holds processed images
   uploadedImgProcessed: string[] = [];
-  nameArr: string[] = ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
-  tagArr: string[] = ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
+  commentList: string[] = [];
+  indexList: number[] = [];
+  // ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
+  // ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
+  nameArr: string[] = [];
+  tagArr: string[] = [];
   dateArr:string[] = [];
 
   
@@ -39,12 +43,16 @@ export class GalleryImagesComponent implements OnInit {
         // console.log("in gallery");
         this.loading = false;
         let respsonseBase64 = JSON.parse(JSON.stringify(responseData));
-
+        console.log("Gallery:", respsonseBase64);
       //  console.log("response here: "+JSON.stringify(responseData));
        
         for(let i=0;i<9;i++){ // respsonseBase64.OriginalImage.length
           
             this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
+            this.commentList.push(respsonseBase64.Comments[i]);
+            this.indexList.push(respsonseBase64.Index[i]);
+            this.tagArr.push(respsonseBase64.Tags[i]);
+            this.nameArr.push(respsonseBase64.Names[i]);
             console.log("index: "+respsonseBase64.Index[i]);
            // this.uuid.push(respsonseBase64.Index[i]);
         }
@@ -57,14 +65,15 @@ export class GalleryImagesComponent implements OnInit {
     //sends clicked image to popup
     imageClick(index:any){
       console.log("clicked");
-       const configDialog = new MatDialogConfig();
-   
-       //send the processed version of the image (parameter)
-       const dialogRef = this.dialog.open(ImagePopupComponent, {
-         width: '40%',
-         height: '80%',
-         data: { img: '',imgProcessed:this.uploadedImgProcessed[index] },
-       });
+      console.log('index', index);
+      const configDialog = new MatDialogConfig();
+      //send the processed version of the image (parameter)
+      const dialogRef = this.dialog.open(ImagePopupComponent, {
+        width: '40%',
+        height: '80%',
+        //Use the line of
+        data: { img: '',imgProcessed:this.uploadedImgProcessed[index] , comment:this.commentList[index], index:this.indexList[index]},
+      });
    
       //  dialogRef.afterClosed().subscribe((data) => {
       //    if (data != undefined) {
@@ -85,7 +94,7 @@ export class GalleryImagesComponent implements OnInit {
       //    } //dialog closed
       //  });
    
-     }
+    }
 
      text: string='';
      check: string = this.text.replace(/[^a-zA-Z ]/g,"");

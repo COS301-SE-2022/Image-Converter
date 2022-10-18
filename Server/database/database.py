@@ -101,7 +101,7 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    def insert_image(self, image_uploaded,image_converted, id,graphType):
+    def insert_image(self, image_uploaded,image_converted, id,graphType, names, tags):
         try: 
             
             value = self.countRows()
@@ -117,9 +117,9 @@ class User:
             print("Converted ")
             # print(link2)
             #sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
-            sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
+            sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted, name, tags) VALUES(%s,%s,%s,%s,%s,%s)"
             print("Executing")
-            self.cur.execute(sql, (graphType, id, link,link2))
+            self.cur.execute(sql, (graphType, id, link,link2, names, tags))
             self.conn.commit()
             return True
         except Exception as e:
@@ -190,10 +190,10 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    def insert_feedback(self, id, feedback):
+    def insert_comment(self, id, comment):
         try:
-            sql = "INSERT INTO feedback (user_id,feedback) VALUES(%s,%s)"
-            self.cur.execute(sql, (id, feedback))
+            sql = "UPDATE history2 SET comment =%s WHERE id= %s;"
+            self.cur.execute(sql, (comment, id))
             self.conn.commit()
             return True
         except Exception as e:

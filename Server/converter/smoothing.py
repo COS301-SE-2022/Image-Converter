@@ -9,6 +9,8 @@ sys.path.append('../')
 class smoothing:
     def __init__(self,uploaded_image):
         self.img = uploaded_image
+        self.width = -1
+        self.height = -1
 
     def clean_noise(self):
         #Image smoothing and sharpening
@@ -20,6 +22,9 @@ class smoothing:
         #Resizing the image
         resizedImage = imageResizing(open)
         resizedImage = resizedImage.resize()
+        self.height, self.width = resizedImage.shape[:2]
+        print('Resized image height:', self.height)
+        print('Resized image width:', self.width)
         print('Resized image:', resizedImage.shape)
 
         #Adding a watermark to the image

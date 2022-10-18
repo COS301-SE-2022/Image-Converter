@@ -9,4 +9,20 @@
     <div>
        <button class="w3-button w3-round w3-block w3-red" (click)="deleteImages()">Delete Images</button>
     </div>
+    <br>
+
+    <!--Image Annotation-->
+    <div class="comment-form-container">
+        <h1>Image Annotation   
+        </h1>  
+        <!-- <hr />   -->
+        <div class="form-group container">
+          <form [formGroup]="form" (ngSubmit)="onComment()">
+            <textarea class="form-control" row="5" placeholder={{initialComment}} rows="5" formControlName="comment"></textarea>
+            <button class="btn btn-success pull-right" type="submit" >
+              {{commentLabel}}
+            </button>
+          </form>
+        </div>
+      </div>
 </div>

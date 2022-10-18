@@ -4,6 +4,7 @@ from lib2to3.pytree import Node
 from typing import final
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
+from converter.nlp_tags import NLPTags
 from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
@@ -75,6 +76,7 @@ def upload_image(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
+        imgName = request.json['imgName']
         # print(picture)
         if picture is not None:
             print("picture is not None")
@@ -87,6 +89,9 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
+            img_tags = NLPTags(picture)
+            # img_tags = ""
+            print(img_tags.dict_words)
             img_class = MultiClassification(picture)
             print("#########################################")
             print(img_class.graphType)
@@ -94,9 +99,11 @@ def upload_image(user):
             print("#########################################")
 
             imageCleaner = smoothing(opencv_img)
-
             imageResult =imageCleaner.clean_noise()
-            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
+            imageHeight = imageCleaner.height
+            imageWidth = imageCleaner.width
+            print(imageHeight, ", ", imageWidth)
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -106,7 +113,7 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0], 'imageHeight': imageHeight, 'imageWidth': imageWidth})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
@@ -619,6 +626,19 @@ def Activities(user):
     else:
         return {'response': 'failed'}, 400
 
+# @app.route('/imageAnnotation' ,methods =['POST'])
+# @token
+# def imageAnnotation(user):
+#     db=User()
+#     if(db!=None):
+#         feedback = request.json['feedback']
+#         if feedback is not None:
+#             print(feedback)
+#             return jsonify({'response': 'success'})
+#         else:
+#             return {'response': 'failed'}, 400
+#     else:
+#         return {'response': 'failed'}, 400
 """
     graphs Function:
         Get graphs of the same types
@@ -636,16 +656,51 @@ def graphs(user):
             graphType = request.json['graphType']
             db_image_array=db.getGraph(graphType)
             OriginalImagelist=[]
+            Comments=[]
             IndexArray=[]
             proccesedImagelist=[]
+            Names = []
+            Tags = []
             for x in db_image_array:
                 IndexArray.append(x[0])
+                
                 OriginalImagelist.append(x[3]) 
                 proccesedImagelist.append(x[4]) 
-            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray})
+                Comments.append(x[5])
+                Names.append(x[6])
+                Tags.append(x[7])
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments, "Names": Names, "Tags": Tags})
     else:
         return {'response': 'failed'}, 400
 
+"""
+    Comment Function:
+        adds the user's comment to the database
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        comment
+    Returns:
+        JSON Object
+"""
+@app.route('/comment' ,methods =['POST'])
+@token
+def user_comment(user):
+    db=User()
+    if(db!=None):
+        comment = request.json['feedback']
+        index = request.json['id']
+        if comment is not None:
+            if db.insert_comment(index, comment) is True:
+                print("comment inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
 
 
 if __name__ == '__main__':
