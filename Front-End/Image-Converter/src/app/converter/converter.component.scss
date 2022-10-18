@@ -5,7 +5,8 @@
 }
 #uploadcard {
     max-width: 400px;
-    margin-left: auto;
+    // margin-left: 10px;
+    margin-left:0%;
     margin-right: auto;
     background-color: #333333;
   }
@@ -366,4 +367,44 @@ legend {
 
 fieldset:nth-of-type(3) > legend {
   transform: rotate(180deg);
+}
+
+.uploadBox{
+  // display: inline-block;
+  padding: 20px;
+}
+
+.textBox{
+  display: inline-block;
+  padding: 5px;
+  border: 5px solid black;
+  border-radius: 20px;  
+  }
+
+  // h4{
+  //   text-decoration:underline;
+  // }
+  h4 {
+    text-decoration: underline;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight:700;
+    line-height: 1.7em;
+    color: black;
+}
+
+.box-text{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight:400;
+  line-height: 1.7em;
+  color: black;
+}
+
+.box-text-1{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight:400;
+  line-height: 1.7em;
+  color: black;
 }

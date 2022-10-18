@@ -20,44 +20,42 @@
 <!-- <img id="load" *ngIf="loading" src="assets/loading.gif" width="400"/> -->
 <!-- <mat-spinner *ngIf="loading" id="spin" [diameter]="150" primary style="margin-top:50px;margin:0 auto;"></mat-spinner> -->
 
-
+<div class = uploadBox>
 <mat-card id="uploadcard" *ngIf="!loading" class="card" draggable="true" ngClass="{{ dragAreaClass }}">
 
   <span id="drag">Drag files here
     <a href="javascript:void(0)" (click)="file.click()"> or click to open </a>
   </span>
-  <div class="fieldsetWrapper">
-    <div class="fieldsetContainer">
-        <fieldset>
-            <legend>Width: {{width}}px</legend>
-            <mat-card-content>
-              <input type="file" #file [multiple]="false" (change)="onFileChange($event)" style="display:none"/>
-              <br>
-              <hr>
-          
-              
-          
-              <div class="dragged-files-wrapper" >
-                <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Graph Image">
-              </div>
-            </mat-card-content>
-        </fieldset>
+
+  <mat-card-content>
+    <input type="file" #file [multiple]="false" (change)="onFileChange($event)" style="display:none"/>
+    <br>
+    <hr>
+
+    <!-- <div class="fieldsetWrapper">
+      <div class="fieldsetContainer">
+          <fieldset>
+              <legend>Width: px</legend>
+          </fieldset>
   
-        <!-- <fieldset>
-            <legend>Height: {{height}}px</legend>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Width: {{width}}px</legend>
-        </fieldset>
+          <fieldset>
+              <legend>Height: px</legend>
+          </fieldset>
+          
+          <fieldset>
+              <legend>Width: px</legend>
+          </fieldset>
   
-        <fieldset>
-            <legend>Height: {{height}}px</legend>
-        </fieldset> -->
+          <fieldset>
+              <legend>Height: px</legend>
+          </fieldset>
+      </div>
+    </div> -->
+
+    <div class="dragged-files-wrapper" >
+      <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Graph Image">
     </div>
-  </div>
-  
-  
+  </mat-card-content>
 
   <div class="error" *ngIf="error" style = "color:red;">{{error}}</div>
 
@@ -67,21 +65,22 @@
     </button>
   </mat-card-actions>
 </mat-card>
+</div>
 
-<div *ngIf="showDim" class="original-image-dimensions">
-  <h4>Original Image Dimensions</h4>
-  <p>Image height: {{height}}px</p>
-  <p>Image width: {{width}}px</p>
+<div *ngIf="showDim" class="textBox">
+  <h4>Image Dimensions</h4>
+  <p class="box-text-1">Image height: {{height}}px</p>
+  <p class="box-text-1">Image width: {{width}}px</p>
 </div>
 
 <!-- Image Filters -->
-<div id="imageFilter">
+<div id="imageFilter" class="uploadBox">
   <app-filter></app-filter>
 </div>
-<div *ngIf="uploadSuccess" class="original-image-dimensions">
+<div *ngIf="uploadSuccess" class="textBox">
   <h4>Resized Image Dimensions</h4>
-  <p>Image height: {{resizedHeight}}px</p>
-  <p>Image width: {{resizedWidth}}px</p>
+  <p class="box-text">Image height: {{resizedHeight}}px</p>
+  <p class="box-text">Image width: {{resizedWidth}}px</p>
 </div>
 
 <!--Image Annotation-->
