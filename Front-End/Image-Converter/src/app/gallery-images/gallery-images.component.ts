@@ -23,8 +23,10 @@ export class GalleryImagesComponent implements OnInit {
   uploadedImgProcessed: string[] = [];
   commentList: string[] = [];
   indexList: number[] = [];
-  nameArr: string[] = ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
-  tagArr: string[] = ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
+  // ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
+  // ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
+  nameArr: string[] = [];
+  tagArr: string[] = [];
   dateArr:string[] = [];
 
   
@@ -98,7 +100,7 @@ export class GalleryImagesComponent implements OnInit {
      check: string = this.text.replace(/[^a-zA-Z ]/g,"");
 
      textEntered(searchVal: string){
-      this.text = searchVal.replaceAll(/[^a-zA-Z ]/g,' ');
+      this.text = searchVal.replaceAll(/[^\w\s]/gi,' ');
       console.log(this.text);
      }
 

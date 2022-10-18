@@ -90,6 +90,7 @@ def upload_image(user):
             
             image_uploaded = bytearray(base64_picture)
             img_tags = NLPTags(picture)
+            # img_tags = ""
             print(img_tags.dict_words)
             img_class = MultiClassification(picture)
             print("#########################################")
@@ -102,7 +103,7 @@ def upload_image(user):
             imageHeight = imageCleaner.height
             imageWidth = imageCleaner.width
             print(imageHeight, ", ", imageWidth)
-            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags)):
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -658,13 +659,17 @@ def graphs(user):
             Comments=[]
             IndexArray=[]
             proccesedImagelist=[]
+            Names = []
+            Tags = []
             for x in db_image_array:
                 IndexArray.append(x[0])
                 
                 OriginalImagelist.append(x[3]) 
                 proccesedImagelist.append(x[4]) 
                 Comments.append(x[5])
-            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments})
+                Names.append(x[6])
+                Tags.append(x[7])
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments, "Names": Names, "Tags": Tags})
     else:
         return {'response': 'failed'}, 400
 
