@@ -20,7 +20,7 @@ export class ConverterService {
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
     return this.httpclient.post(
-      'http://46.101.46.219:5000/login',
+      'http://localhost:5000/login',
       formData,{observe:'response'}
     );
   }
@@ -69,7 +69,7 @@ export class ConverterService {
     let pic = {picture: data};
     // console.log("form: "+data);
     return this.httpclient.post(
-      'http://46.101.46.219:5000/picture',
+      'http://localhost:5000/picture',
       pic,httpOptions
     );
   }
