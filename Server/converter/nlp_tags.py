@@ -31,7 +31,7 @@ class NLPTags:
       # https://github.com/UB-Mannheim/tesseract/wiki
 
       #Define path to tessaract.exe
-      path_to_tesseract = (r'/opt/homebrew/Cellar/tesseract/5.2.0/bin/tesseract')
+      path_to_tesseract = (r'C:\Program Files\Tesseract-OCR\tesseract.exe')
 
       #Define path to image
       path_to_image = self.uploaded_image
@@ -53,9 +53,9 @@ class NLPTags:
 
       # Uncomment this section for running first time
       ############################################################################################################
-    #   nltk.download('stopwords')
-    #   nltk.download('punkt')
-    #   nltk.download('words')
+      # nltk.download('stopwords')
+      # nltk.download('punkt')
+      # nltk.download('words')
       ############################################################################################################
 
       #Convert text to lowercase
