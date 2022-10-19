@@ -20,7 +20,20 @@ export class GalleryComponent implements OnInit {
 
   //opens folder of selected graphs
   fileSelection(name:string){
-    this.graphFolderData.changeGraphFolder(name);
+    console.log("GraphName: ", name)
+    let graphName = ""
+    if(name == "line graph")
+      graphName = "Line graphs"
+    else if(name == "bar chart")
+      graphName = "Bar charts";
+    else if(name == "pie chart")
+      graphName = "Pie charts";
+    else if(name == "table")
+      graphName = "Tables";
+    else if(name == "flow chart")
+      graphName = "Flow charts";
+
+    this.graphFolderData.changeGraphFolder(graphName);
     this._router.navigateByUrl('/nav/galleryimages');
   }
 
