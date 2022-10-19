@@ -38,6 +38,19 @@ export class GalleryImagesComponent implements OnInit {
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
     this.loading = true;
     // console.log("in gallery top");
+    console.log(this.selectedFolder);
+   
+    if(this.selectedFolder == "Line graphs")
+      this.selectedFolder = "line graph";
+    else if(this.selectedFolder == "Bar graphs")
+      this.selectedFolder = "bar graph";
+    else if(this.selectedFolder == "Pie charts")
+      this.selectedFolder = "pie chart";
+    else if(this.selectedFolder == "Tables")
+      this.selectedFolder = "table";
+    else if(this.selectedFolder == "Flow charts")
+      this.selectedFolder = "flow chart";
+
     this.imgService.GraphGallaryData(this.selectedFolder).subscribe(
       responseData =>{
         // console.log("in gallery");
@@ -54,6 +67,7 @@ export class GalleryImagesComponent implements OnInit {
             this.tagArr.push(respsonseBase64.Tags[i]);
             this.nameArr.push(respsonseBase64.Names[i]);
             console.log("index: "+respsonseBase64.Index[i]);
+            
            // this.uuid.push(respsonseBase64.Index[i]);
         }
       },//code below ensures that if token is invalid or expired user gets sent back to login
@@ -63,18 +77,18 @@ export class GalleryImagesComponent implements OnInit {
   }
 
     //sends clicked image to popup
-    imageClick(index:any){
-      console.log("clicked");
-      console.log('index', index);
-      const configDialog = new MatDialogConfig();
-      //send the processed version of the image (parameter)
-      const dialogRef = this.dialog.open(ImagePopupComponent, {
-        width: '40%',
-        height: '80%',
-        //Use the line of
-        data: { img: '',imgProcessed:this.uploadedImgProcessed[index] , comment:this.commentList[index], index:this.indexList[index]},
-      });
-   
+  imageClick(index:any){
+    console.log("clicked");
+    console.log('index', index);
+    const configDialog = new MatDialogConfig();
+    //send the processed version of the image (parameter)
+    const dialogRef = this.dialog.open(ImagePopupComponent, {
+      width: '40%',
+      height: '80%',
+      //Use the line of
+      data: { img: '',imgProcessed:this.uploadedImgProcessed[index] , comment:this.commentList[index], index:this.indexList[index]},
+    });
+  
       //  dialogRef.afterClosed().subscribe((data) => {
       //    if (data != undefined) {
       //      //returned message
@@ -93,14 +107,13 @@ export class GalleryImagesComponent implements OnInit {
       //      console.log('returned empty:');
       //    } //dialog closed
       //  });
-   
-    }
+  }
 
-     text: string='';
-     check: string = this.text.replace(/[^a-zA-Z ]/g,"");
+  text: string='';
+  check: string = this.text.replace(/[^a-zA-Z ]/g,"");
 
      textEntered(searchVal: string){
-      this.text = searchVal.replaceAll(/[^\w\s]/gi,' ');
+      this.text = searchVal.replaceAll(/[^\w\s.]/gi,' ');
       console.log(this.text);
      }
 
