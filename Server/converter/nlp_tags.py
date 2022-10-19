@@ -53,9 +53,9 @@ class NLPTags:
 
       # Uncomment this section for running first time
       ############################################################################################################
-    #   nltk.download('stopwords')
-    #   nltk.download('punkt')
-    #   nltk.download('words')
+      #   nltk.download('stopwords')
+      #   nltk.download('punkt')
+      #   nltk.download('words')
       ############################################################################################################
 
       #Convert text to lowercase
