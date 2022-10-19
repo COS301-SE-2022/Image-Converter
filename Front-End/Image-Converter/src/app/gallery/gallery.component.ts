@@ -24,8 +24,8 @@ export class GalleryComponent implements OnInit {
     let graphName = ""
     if(name == "line graph")
       graphName = "Line graphs"
-    else if(name == "bar chart")
-      graphName = "Bar charts";
+    else if(name == "bar graph")
+      graphName = "Bar graphs";
     else if(name == "pie chart")
       graphName = "Pie charts";
     else if(name == "table")

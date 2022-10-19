@@ -42,8 +42,8 @@ export class GalleryImagesComponent implements OnInit {
    
     if(this.selectedFolder == "Line graphs")
       this.selectedFolder = "line graph";
-    else if(this.selectedFolder == "Bar charts")
-      this.selectedFolder = "bar chart";
+    else if(this.selectedFolder == "Bar graphs")
+      this.selectedFolder = "bar graph";
     else if(this.selectedFolder == "Pie charts")
       this.selectedFolder = "pie chart";
     else if(this.selectedFolder == "Tables")
@@ -113,7 +113,7 @@ export class GalleryImagesComponent implements OnInit {
   check: string = this.text.replace(/[^a-zA-Z ]/g,"");
 
      textEntered(searchVal: string){
-      this.text = searchVal.replaceAll(/[^\w\s]/gi,' ');
+      this.text = searchVal.replaceAll(/[^\w\s.]/gi,' ');
       console.log(this.text);
      }
 
