@@ -9,7 +9,7 @@
 
    <div class="headerDiv">
     <div id="heading">
-      <h1 class="text-heading"><b>{{selectedFolder}}</b></h1>
+      <h1 class="text-heading"><b>{{selectedFolder +'s'}}</b></h1>
     </div>
 
     <div id="searchDiv">
@@ -66,6 +66,12 @@
                 
                     <h4>{{nameArr[i]}}</h4>
                     <p hidden>{{tagArr[i]}}</p>
+
+                    <div class = "container">
+                      <button class = "share-btn">
+                        share
+                      </button>
+                    </div> 
                     
                   </div>
                 </div>

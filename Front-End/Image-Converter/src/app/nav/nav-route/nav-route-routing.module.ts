@@ -15,6 +15,7 @@ import { ImagePopupComponent } from './../../image-popup/image-popup.component';
 import { GraphPlottingComponent } from './../../graph-plotting/graph-plotting.component';
 import { AdminImagePopUpComponent } from './../../admin-image-pop-up/admin-image-pop-up.component';
 import { LandingPageComponent } from 'src/app/landing-page/landing-page.component';
+import { SharingFeatureComponent } from 'src/app/sharing-feature/sharing-feature.component';
 // import { FooterComponent } from 'src/app/footer/footer.component';
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
