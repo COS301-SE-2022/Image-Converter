@@ -144,7 +144,7 @@ class User:
         try:
             sql = "SELECT * FROM history2 where user_id=%s ORDER BY id DESC"
             self.cur.execute(sql, ([id]))
-            db_history = self.cur.fetchmany(6)
+            db_history = self.cur.fetchall()
             self.conn.commit()
             return db_history
         except Exception as e:
