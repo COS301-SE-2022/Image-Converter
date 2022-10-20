@@ -20,15 +20,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateMatchingComponent } from './template-matching/template-matching.component';
 import { ImagePopupComponent } from './image-popup/image-popup.component';*/
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { SharingFeatureComponent } from './sharing-feature/sharing-feature.component';
+// import { SharingFeatureComponent } from './sharing-feature/sharing-feature.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    RegisterComponent,
-    SharingFeatureComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
