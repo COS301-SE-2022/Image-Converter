@@ -581,13 +581,13 @@ def adminFeedback(user):
         index = request.json['index']
         image = request.json['image']
         print(image)
-        myUUID = str(uuid.uuid4())
-        if(feedback=="straight line"):
-            urllib.request.urlretrieve(image,"./graph_dataset/line_graph/"+feedback+'_'+myUUID+"img.png")
-        elif(feedback=="bar graph"):
-            urllib.request.urlretrieve(image,"./graph_dataset/bar_chart/"+feedback+'_'+myUUID+"img.png")
-        elif(feedback=="pie chart"):
-            urllib.request.urlretrieve(image,"./graph_dataset/pie_chart/"+feedback+'_'+myUUID+"img.png")
+        # myUUID = str(uuid.uuid4())
+        # if(feedback=="straight line"):
+        #     urllib.request.urlretrieve(image,"./graph_dataset/line_graph/"+feedback+'_'+myUUID+"img.png")
+        # elif(feedback=="bar graph"):
+        #     urllib.request.urlretrieve(image,"./graph_dataset/bar_chart/"+feedback+'_'+myUUID+"img.png")
+        # elif(feedback=="pie chart"):
+        #     urllib.request.urlretrieve(image,"./graph_dataset/pie_chart/"+feedback+'_'+myUUID+"img.png")
         if feedback is not None:
             if db.updateGraphType(feedback,index) is True:
                 db.decrementActivity("Unrecognized")
