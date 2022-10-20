@@ -32,7 +32,8 @@ export class ContactComponent implements OnInit {
       this.loading = true;
 
       let messageDetails:Message = {
-        feedback : this.form.get('message')!.value
+        feedback : this.form.get('message')!.value,
+        id: ""
       } 
       let response;
       this.sendMessageService.sendMessage(messageDetails).subscribe(

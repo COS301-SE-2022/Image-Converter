@@ -4,16 +4,21 @@
   padding-bottom: 20px;
 }
 #uploadcard {
-    max-width: 400px;
-    margin-left: auto;
+    max-width: 450px;
+    // margin-left: 10px;
+    margin-left:0%;
     margin-right: auto;
     background-color: #333333;
   }
-  #uploadedImg{
-    max-height: 40%;
-  }
+  // #uploadedImg{
+  //   max-height: 40%;
+  // }
   #drag{
     color:white;
+  }
+  #dragged-files-wrapper{
+    border:#6d7fcc;
+    border: 50px
   }
   #load{
     display: flex;
@@ -71,8 +76,8 @@
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
 }
 
 p {
@@ -301,3 +306,151 @@ bodY {
     transform: scale(0);
   }
 }
+
+
+$pad: 0px;
+$space: 10px;
+$stroke: 8px;
+
+
+.box {
+  width: 400px;
+  height: 400px;
+  background: black;
+  margin: 48px auto;
+  padding: 16px;
+  position: relative;
+}
+
+.box > img {
+  width: 400px;
+  height: 300px;
+  opacity: .5;
+  object-fit: cover;
+}
+
+.box::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: $pad;
+  right: $pad;
+  left: $pad;
+  bottom: $pad - $space + 7px;
+  border: solid $stroke black;
+  border-bottom: 0;
+}
+
+.text {
+  color: black; 
+  position: absolute;
+  text-align: center;
+  bottom: $pad - $space;
+  left: $pad;
+  right: $pad;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'fjalla one', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+// .text > div {
+//   width: 2000px;
+//   margin-left: -1 * (2000px - (400px - $pad)) / 2;
+// }
+
+.innertext::before,
+.innertext::after {
+  content: '';
+  display: inline-block;
+  width: 600px;
+  height: $stroke;
+  background: black;
+  vertical-align: middle;
+}
+  
+.innertext::before {
+  margin-right: 16px;
+}
+
+.innertext::after {
+  margin-left: 16px;
+}
+
+
+.imgborder{
+  border: 20px solid black;
+}
+
+.imgtext-bottom{
+  position:absolute;
+  right:170px;
+  color: white;
+  top:467px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.imgtext-top{
+  position:absolute;
+  right:170px;
+  color: white;
+  top:84px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.imgtext-left{
+  position:absolute;
+  right:180px;
+  color: white;
+  // writing-mode: sideways-lr;
+  // text-orientation: mixed;
+  transform: rotate(-90deg);
+  top:90px;
+  left:-203px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.imgtext-right{
+  position:absolute;
+  right:180px;
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  top:180px;
+  right:21px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.textBox{
+  display: inline-block;
+  padding: 5px;
+  border: 5px solid black;
+  border-radius: 20px;  
+  }
+
+  .box-text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight:400;
+    line-height: 1.7em;
+    color: black;
+  }
+
+  .form-control{
+    border-radius: 20px;
+    border-style: black;
+    border: 3px solid black;
+    padding: 10px;
+    padding-left:20px;
+    width:50%;
+  }
+
+  .btn-success-pull-right{
+    color: black;
+    // padding-top:0px
+  }
+
+  .form-group-container{
+    margin:0%;
+  }

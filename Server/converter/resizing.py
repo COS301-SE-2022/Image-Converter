@@ -18,5 +18,6 @@ class imageResizing:
 
 if __name__ == '__main__':
     obj = imageResizing(cv2.imread('barGraph.jpeg'))
+    print(obj.resizedImage.shape)
     resizedImage = obj.resize()
     print(resizedImage.shape)

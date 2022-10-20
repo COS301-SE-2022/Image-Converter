@@ -1,0 +1,32 @@
+.values .box {
+    padding: 30px;
+    box-shadow: 0px 0 5px rgba(1, 41, 112, 0.6);
+    text-align: center;
+    transition: 0.2s;
+    height: 85%;
+    width: 87%;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .values .box img {
+    padding: 15px 25px;
+    transition: 0.5s;
+    transform: scale(1.0);
+  }
+  
+  .values .box h3 {
+    font-size: 24px;
+    color: #012970;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  
+  .values .box:hover {
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.5);
+  }
+  
+  .values .box:hover img {
+    transform: scale(1);
+  }
+  

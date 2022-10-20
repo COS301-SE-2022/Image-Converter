@@ -4,6 +4,7 @@ from lib2to3.pytree import Node
 from typing import final
 import jwt
 from flask import Flask, json, jsonify, render_template, request, session
+from converter.nlp_tags import NLPTags
 from converter.resizing import imageResizing
 from converter.graphPloting import GraphPloting
 from converter.smoothing import smoothing
@@ -15,6 +16,7 @@ from converter.ConvertFomat import ConvertFomat
 from converter.watermark import AddMark
 from flask import Response
 from flask_cors import CORS
+from flask_socketio import SocketIO
 import base64
 import cv2
 import random
@@ -23,6 +25,7 @@ import PIL.Image as Image
 import numpy as np
 import urllib.request
 import uuid
+import socket
 from PIL import Image
 
 
@@ -30,7 +33,8 @@ from PIL import Image
 app = Flask(__name__)
 app.secret_key = "super secret key"
 CORS(app)
-
+socketio = SocketIO(app, cors_allowed_origins='*')
+clients2=0
 
 """
 Methos for creating a new token or checking if a token is valid.
@@ -75,6 +79,7 @@ def upload_image(user):
     db=User()
     if(db!=None):
         picture = request.json['picture']
+        imgName = request.json['imgName']
         # print(picture)
         if picture is not None:
             print("picture is not None")
@@ -87,16 +92,22 @@ def upload_image(user):
             opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
             
             image_uploaded = bytearray(base64_picture)
+            img_tags = NLPTags(picture)
+            # img_tags = ""
+            print(img_tags.dict_words)
+            # socketio.emit('data-tmp',"Image is classified")
             img_class = MultiClassification(picture)
             print("#########################################")
             print(img_class.graphType)
            
             print("#########################################")
-
+            # socketio.emit('data-tmp',"image is getting cleaned")
             imageCleaner = smoothing(opencv_img)
-
             imageResult =imageCleaner.clean_noise()
-            if(db.insert_image(opencv_img, imageResult, user[0],img_class.graphType)):
+            imageHeight = imageCleaner.height
+            imageWidth = imageCleaner.width
+            print(imageHeight, ", ", imageWidth)
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -106,12 +117,25 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType})
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0], 'imageHeight': imageHeight, 'imageWidth': imageWidth})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
     else:
         return {'response': 'failed'}, 400
+
+@socketio.on('connect')
+def test_connect():
+    global clients2
+    clients2 += 1
+    # send_data()
+    print('Client connected test')
+
+# @socketio.on('new-message-s')
+# def send_data():
+#     print("Am sending a message to the client")
+#     emit('data-tmp', "Some is in the house")
+ 
 
 
 """
@@ -125,13 +149,19 @@ def upload_image(user):
     Returns:
         JSON Object
 """
+
 @app.route('/login', methods=['POST'])
 def auth_login():
     db = User()
     if(db != None):
         username = str(request.json['email'])
         password = str(request.json['password'])
+        # s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # s.bind((socket.gethostname,4200))
+        # address = s.accept()
+        # print("New Connection from: "+str(address))
         if db.getUserWithEmail(username) is not None:
+            socketio.emit('data-tmp',"hello again")
             if(db.login(username,password)):
                 token = jwt.encode({'email': username, 'exp': datetime.datetime.utcnow(
                 ) + datetime.timedelta(hours=2)}, 'secret', algorithm="HS256")
@@ -551,13 +581,13 @@ def adminFeedback(user):
         index = request.json['index']
         image = request.json['image']
         print(image)
-        myUUID = str(uuid.uuid4())
-        if(feedback=="straight line"):
-            urllib.request.urlretrieve(image,"./graph_dataset/line_graph/"+feedback+'_'+myUUID+"img.png")
-        elif(feedback=="bar graph"):
-            urllib.request.urlretrieve(image,"./graph_dataset/bar_chart/"+feedback+'_'+myUUID+"img.png")
-        elif(feedback=="pie chart"):
-            urllib.request.urlretrieve(image,"./graph_dataset/pie_chart/"+feedback+'_'+myUUID+"img.png")
+        # myUUID = str(uuid.uuid4())
+        # if(feedback=="straight line"):
+        #     urllib.request.urlretrieve(image,"./graph_dataset/line_graph/"+feedback+'_'+myUUID+"img.png")
+        # elif(feedback=="bar graph"):
+        #     urllib.request.urlretrieve(image,"./graph_dataset/bar_chart/"+feedback+'_'+myUUID+"img.png")
+        # elif(feedback=="pie chart"):
+        #     urllib.request.urlretrieve(image,"./graph_dataset/pie_chart/"+feedback+'_'+myUUID+"img.png")
         if feedback is not None:
             if db.updateGraphType(feedback,index) is True:
                 db.decrementActivity("Unrecognized")
@@ -616,6 +646,82 @@ def Activities(user):
     if(db!=None):
         data= db.getActivities()
         return jsonify({data[0][1]: data[0][2],data[1][1]: data[1][2] ,data[2][1]:data[2][2]})
+    else:
+        return {'response': 'failed'}, 400
+
+# @app.route('/imageAnnotation' ,methods =['POST'])
+# @token
+# def imageAnnotation(user):
+#     db=User()
+#     if(db!=None):
+#         feedback = request.json['feedback']
+#         if feedback is not None:
+#             print(feedback)
+#             return jsonify({'response': 'success'})
+#         else:
+#             return {'response': 'failed'}, 400
+#     else:
+#         return {'response': 'failed'}, 400
+"""
+    graphs Function:
+        Get graphs of the same types
+    Parameters:
+        User array
+    HTTP method: POST
+    Returns:
+        JSON Object
+"""
+@app.route('/graphs', methods=["POST"])
+@token
+def graphs(user):
+    db = User()
+    if(db != None):
+            graphType = request.json['graphType']
+            db_image_array=db.getGraph(graphType)
+            OriginalImagelist=[]
+            Comments=[]
+            IndexArray=[]
+            proccesedImagelist=[]
+            Names = []
+            Tags = []
+            for x in db_image_array:
+                IndexArray.append(x[0])
+                
+                OriginalImagelist.append(x[3]) 
+                proccesedImagelist.append(x[4]) 
+                Comments.append(x[5])
+                Names.append(x[6])
+                Tags.append(x[7])
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments, "Names": Names, "Tags": Tags})
+    else:
+        return {'response': 'failed'}, 400
+
+"""
+    Comment Function:
+        adds the user's comment to the database
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        comment
+    Returns:
+        JSON Object
+"""
+@app.route('/comment' ,methods =['POST'])
+@token
+def user_comment(user):
+    db=User()
+    if(db!=None):
+        comment = request.json['feedback']
+        index = request.json['id']
+        if comment is not None:
+            if db.insert_comment(index, comment) is True:
+                print("comment inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
     else:
         return {'response': 'failed'}, 400
 

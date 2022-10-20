@@ -20,6 +20,9 @@ import { AdminImagePopUpComponent } from './../../admin-image-pop-up/admin-image
 import { FilterComponent } from './../../filter/filter.component';
 import { ToolbarComponent } from './../../toolbar/toolbar.component';
 import { FooterComponent } from './../../footer/footer.component';
+import { GalleryComponent } from './../../gallery/gallery.component';
+import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
+import { SearchComponent } from './../../search/search.component';
 
 import { MaterialModule } from './../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,7 +46,10 @@ import { HttpClientModule } from '@angular/common/http';
     AdminImagePopUpComponent,
     FilterComponent,
     ToolbarComponent,
-    FooterComponent
+    FooterComponent,
+    GalleryComponent,
+    GalleryImagesComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
