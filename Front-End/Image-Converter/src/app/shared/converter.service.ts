@@ -36,7 +36,7 @@ export class ConverterService {
       };
       console.log(formData);
       return this.httpclient.post(
-        'http://46.101.46.219:5000/bargraph',
+        'http://127.0.0.1:5000/bargraph',
         formData,{observe:'response'}, 
       );
     }
@@ -50,13 +50,13 @@ export class ConverterService {
                 password: localStorage.getItem('password'),
                 code: codePar
                 };
-
+                // 'http://46.101.46.219:5000/register',
     return this.httpclient.post(
-      'http://46.101.46.219:5000/register',
+      'http://127.0.0.1:5000/register',
       data,{observe:'response'}
     );
   }
-   postImg(data: string) {
+   postImg(data: string, name: string) {
      
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
@@ -66,8 +66,9 @@ export class ConverterService {
       headers: headers
     };
     console.log(httpOptions);
-    let pic = {picture: data};
+    let pic = {picture: data, imgName: name};
     // console.log("form: "+data);
+    console.log("image name: "+name);
     return this.httpclient.post(
       'http://46.101.46.219:5000/picture',
       pic,httpOptions
@@ -85,7 +86,9 @@ export class ConverterService {
     };
     let data = {data: ''};
     return this.httpclient.get(
-      'http://46.101.46.219:5000/uploadhistory',
+
+      'http://127.0.0.1:5000/uploadhistory',
+
       httpOptions
     );
   }
@@ -105,6 +108,20 @@ export class ConverterService {
     return this.httpclient.post(
       'http://46.101.46.219:5000/deletehistory',
       pic,httpOptions
+    );
+  }
+
+  //sends users annotations on the image
+  sendAnnotations(comment: Message) {
+    var token = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    return this.httpclient.post(
+      'http://46.101.46.219:5000/comment',
+      comment,httpOptions
     );
   }
 
@@ -296,6 +313,26 @@ export class ConverterService {
     return this.httpclient.get(
       'http://46.101.46.219:5000/activities',
       httpOptions
+    );
+
+    
+  }
+
+  //graph gallery data
+  GraphGallaryData(data: String) {
+     console.log("data: "+data)
+    // var auth=sessionStorage.getItem('token');
+    var tok = localStorage.getItem('token');
+  
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+
+    let graph = {graphType: data};
+    return this.httpclient.post(
+      'http://46.101.46.219:5000/graphs',
+      graph,httpOptions
     );
 
     

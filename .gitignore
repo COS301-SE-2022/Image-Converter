@@ -21,3 +21,14 @@ Server/Multi_Class_Model/variables/variables.data-00000-of-00001
 *.png
 *.jpg
 Server/model/variables/variables.data-00000-of-00001
+Server/database/__pycache__/database.cpython-310.pyc
+Server/database/__pycache__/database.cpython-310.pyc
+*.DS_Store
+Server/model/keras_metadata.pb
+Server/model/keras_metadata.pb
+Server/model/saved_model.pb
+Server/model/keras_metadata.pb
+Server/model/saved_model.pb
+Server/model/saved_model.pb
+Server/model/keras_metadata.pb
+Server/Multi_Class_Model/keras_metadata.pb

@@ -89,8 +89,8 @@ export class NavComponent implements OnInit {
     this._router.navigateByUrl('/nav/livegraph');
   }
 
-  onSubmitHistory(){
-    this._router.navigateByUrl('/nav/uploadHistory');
+  onSubmitGallery(){
+    this._router.navigateByUrl('/nav/gallery');
   }
 
   onSubmitUnrecognized(){
@@ -103,5 +103,9 @@ export class NavComponent implements OnInit {
 
   onSubmitUpload(){
     this._router.navigateByUrl('/nav/upload');
+  }
+
+  onSubmitHistory(){
+    this._router.navigateByUrl('/nav/uploadHistory');
   }
 }

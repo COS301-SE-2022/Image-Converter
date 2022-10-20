@@ -16,6 +16,9 @@ import { GraphPlottingComponent } from './../../graph-plotting/graph-plotting.co
 import { AdminImagePopUpComponent } from './../../admin-image-pop-up/admin-image-pop-up.component';
 import { LandingPageComponent } from 'src/app/landing-page/landing-page.component';
 // import { FooterComponent } from 'src/app/footer/footer.component';
+import { GalleryComponent } from './../../gallery/gallery.component';
+import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
+import { SearchComponent } from './../../search/search.component';
 
 const routes: Routes = [
     {
@@ -25,6 +28,14 @@ const routes: Routes = [
           {
             path: 'upload',
             component: ConverterComponent
+          },
+          {
+            path: 'galleryimages',
+            component: GalleryImagesComponent
+          },
+          {
+            path: 'gallery',
+            component: GalleryComponent
           },
           {
             path: 'uploadHistory',
@@ -46,6 +57,10 @@ const routes: Routes = [
           {
             path: 'landing',
             component: LandingPageComponent
+          },
+          {
+            path: 'search',
+            component: SearchComponent
           }
           
           // {
