@@ -94,7 +94,13 @@ def upload_image(user):
             image_uploaded = bytearray(base64_picture)
             img_tags = NLPTags(picture)
             # img_tags = ""
-            print(img_tags.dict_words)
+         
+            tags =[]
+            for tag in img_tags.dict_words:
+                if tag not in tags:
+                    tags.append(tag)
+            tagStr = ", ".join(str(t) for t in tags)
+            print(tagStr)
             # socketio.emit('data-tmp',"Image is classified")
             img_class = MultiClassification(picture)
             print("#########################################")
@@ -107,7 +113,7 @@ def upload_image(user):
             imageHeight = imageCleaner.height
             imageWidth = imageCleaner.width
             print(imageHeight, ", ", imageWidth)
-            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words)):
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, tagStr)):
                 print("Image inserted")
             db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
@@ -684,6 +690,7 @@ def graphs(user):
             proccesedImagelist=[]
             Names = []
             Tags = []
+            t = []
             for x in db_image_array:
                 IndexArray.append(x[0])
                 

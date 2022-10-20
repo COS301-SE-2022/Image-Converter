@@ -23,10 +23,10 @@ import { FooterComponent } from './../../footer/footer.component';
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
 import { SearchComponent } from './../../search/search.component';
-
 import { MaterialModule } from './../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,8 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule, 
+    MatChipsModule
   ]
 })
 export class NavRouteModule { }

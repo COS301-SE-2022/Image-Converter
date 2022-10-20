@@ -19,7 +19,7 @@
 }
 
 .values .box h4 {
-  font-size: 20px;
+  font-size: 18px;
   color: #012970;
   font-weight: 700;
   margin-bottom: 10px;
@@ -128,4 +128,7 @@ bodY {
   //   top:50%;
   // }
 
- 
+.tag-list {
+  word-wrap: break-word;
+  width: 100%;
+}
