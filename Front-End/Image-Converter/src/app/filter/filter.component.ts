@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import {GlobalVariable} from './global';
 import {ConverterService} from './../shared/converter.service';
 
+
+
 declare const myTest:any;
 declare const uploadImage:any;
 // declare var temp: any;
@@ -20,6 +22,9 @@ export class FilterComponent implements OnInit {
   message!: any;
   dispBool!: boolean;
   subscription!: Subscription;
+  height!: any;
+  width!: any;
+
   private globalFilterVar = GlobalVariable.globalVar;
   
   constructor(private imgData: ComponentCommunicationService,private trackerService: ConverterService ) { }
@@ -28,7 +33,10 @@ export class FilterComponent implements OnInit {
     //subscribe for communication between components
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
     this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
-    
+    this.subscription = this.imgData.currentHeight.subscribe(height => this.height = height);
+    this.subscription = this.imgData.currentWidth.subscribe(width => this.width = width);
+    console.log("Filter"+this.height);
+    console.log("Filter"+this.width)
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
