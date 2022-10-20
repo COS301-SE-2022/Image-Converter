@@ -8,6 +8,7 @@ import { io, Socket } from 'socket.io-client';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 
+
 @Component({
   selector: 'app-converter',
   templateUrl: './converter.component.html',
@@ -19,6 +20,8 @@ export class ConverterComponent implements OnInit {
   message!: string;
   dispBool!: boolean;
   subscription!: Subscription;
+
+
 
 
   //These variables are used  in the comment sections
@@ -33,6 +36,8 @@ export class ConverterComponent implements OnInit {
   resizedHeight!: number;
   resizedWidth!: number;
   imageID!: any;
+  height2!: any;
+  width2!: any;
   
   //constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService, private _formBuilder: FormBuilder) { }
   socketio: any;
@@ -127,6 +132,9 @@ export class ConverterComponent implements OnInit {
     //subscribe for communication between components
     this.subscription = this.imgData.currentMessage.subscribe(message => this.message = message);
     this.subscription = this.imgData.currentDisplayDownload.subscribe(dispBool => this.dispBool = dispBool);
+
+    this.subscription = this.imgData.currentHeight.subscribe(height => this.height2 = height);
+    this.subscription = this.imgData.currentWidth.subscribe(width => this.width2 = width);
    
 
     this.hasCancelLabel = false;
@@ -271,6 +279,8 @@ export class ConverterComponent implements OnInit {
             console.log('Res:', responseData['imageHeight'].toString());
             this.resizedHeight = responseData['imageHeight'];
             this.resizedWidth = responseData['imageWidth'];
+            this.imgData.changeHeight( responseData['resizedHeight']);
+            this.imgData.changeWidth(responseData['resizedWidth']);
             this.imageID = responseData['id']
             this.respsonseBase64 = JSON.parse(JSON.stringify(responseData));
              console.log('ResJSn',this.respsonseBase64);

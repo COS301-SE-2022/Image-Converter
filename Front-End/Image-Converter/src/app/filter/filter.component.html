@@ -14,6 +14,7 @@ body {font-size:16px;}
 .w3-half img:hover{opacity:1}
 </style>
 </head>
+<!-- <body > -->
 <body *ngIf=dispBool>
   <style>
     body{
@@ -29,7 +30,12 @@ body {font-size:16px;}
     <!-- <hr style="width:50px;border:5px solid black" class="w3-round"> -->
       <div  id="processedImg">  
         <div class="w3-container w3-cell">
+          <div class="">
+            <!-- <img id="" style="border: solid black 20px" src="assets/img/wallpaper.jpg" alt="response img" width="400" height="400"><br/> -->
+            <!-- <span class='imgtext-top' >Image width: {{width}} px</span> -->
+          </div>
             <img id="imgLink" src={{message.image}} alt="response img" width="400" height="400"><br/>
+
             <p><b>{{message.graphType}}</b></p>
         </div>
           <div class="w3-container w3-cell">

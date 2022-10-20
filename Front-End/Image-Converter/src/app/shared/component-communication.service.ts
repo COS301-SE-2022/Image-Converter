@@ -18,6 +18,12 @@ export class ComponentCommunicationService {
   private typeOfGraph = new BehaviorSubject('none');// this shows the name of the folder 
   currentGraph= this.typeOfGraph.asObservable();
 
+  private resizedHeight = new BehaviorSubject('none');// this shows the name of the folder 
+  currentHeight= this.resizedHeight.asObservable();
+
+  private resizedWidth = new BehaviorSubject('none');// this shows the name of the folder 
+  currentWidth= this.resizedWidth.asObservable();
+
   constructor() { }
 
   //used to change message between components
@@ -33,5 +39,13 @@ export class ComponentCommunicationService {
   }
   changeGraphFolder(folder: any){
     this.typeOfGraph.next(folder)
+  }
+
+  changeWidth(width: any){
+    this.resizedWidth.next(width)
+  }
+
+  changeHeight(height: any){
+    this.resizedHeight.next(height)
   }
 }
