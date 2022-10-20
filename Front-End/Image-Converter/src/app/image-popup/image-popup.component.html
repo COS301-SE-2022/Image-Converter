@@ -1,7 +1,7 @@
 <div id = popUp>
     <div>
         <br/>
-        <h2>Image</h2>
+        <h1 style="text-decoration: underline">Image</h1>
         <button class="w3-button w3-round w3-block w3-black" (click)="downloadFile(imageProcessedUrl)">
             <img [src]="imageProcessedUrl" id="popupImg" alt="img" />
         </button>
@@ -13,13 +13,14 @@
 
     <!--Image Annotation-->
     <div class="comment-form-container">
-        <h1>Image Annotation   
+        <h1 style="text-decoration: underline">Image Annotation   
         </h1>  
         <!-- <hr />   -->
         <div class="form-group container">
           <form [formGroup]="form" (ngSubmit)="onComment()">
             <textarea class="form-control" row="5" placeholder={{initialComment}} rows="5" formControlName="comment"></textarea>
-            <button class="btn btn-success pull-right" type="submit" >
+            <div style="padding:5px"></div>
+            <button class="w3-button w3-blue w3-small" style="border-radius:5px" type="submit" >
               {{commentLabel}}
             </button>
           </form>

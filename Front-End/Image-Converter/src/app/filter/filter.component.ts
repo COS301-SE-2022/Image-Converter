@@ -36,7 +36,7 @@ export class FilterComponent implements OnInit {
     this.subscription = this.imgData.currentHeight.subscribe(height => this.height = height);
     this.subscription = this.imgData.currentWidth.subscribe(width => this.width = width);
     console.log("Filter"+this.height);
-    console.log("Filter"+this.width)
+    console.log("Filter"+this.width);
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

@@ -37,3 +37,62 @@
 	margin-left: auto !important;
     margin-right: auto !important;
 }
+
+
+  
+.innertext::before {
+  margin-right: 16px;
+}
+
+.innertext::after {
+  margin-left: 16px;
+}
+
+
+.imgborder{
+  border-style: 20px solid black;
+
+
+  .imgtext-bottom{
+	position:absolute;
+	right:170px;
+	color: white;
+	top:467px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
+  
+  .imgtext-top{
+	  overflow: hidden;
+	position:absolute;
+	right:170px;
+	color: black;
+	top: 100px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
+  
+  .imgtext-left{
+	position:absolute;
+	right:180px;
+	color: white;
+	// writing-mode: sideways-lr;
+	// text-orientation: mixed;
+	transform: rotate(-90deg);
+	top:90px;
+	left:-203px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
+  
+  .imgtext-right{
+	position:absolute;
+	right:180px;
+	color: white;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	top:180px;
+	right:21px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
+}
+
+
+
