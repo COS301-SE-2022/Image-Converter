@@ -34,11 +34,21 @@
 
 
     <div class="dragged-files-wrapper" >
+
       <img mat-card-image class="box"  src={{displayImg}} alt="Graph Image">
       <span class='imgtext-top' *ngIf="showDim && !loading">Image width: {{width}}px</span>
       <span class='imgtext-bottom' *ngIf="showDim && !loading">Image width: {{width}}px</span>
       <span class='imgtext-right' *ngIf="showDim && !loading">Image height: {{height}}px</span>
       <span class='imgtext-left' *ngIf="showDim && !loading">Image height: {{height}}px</span>
+
+      <style>
+        .wrapper{
+          background-image: url("assets/img/wallpaper.jpg");
+          background-attachment: fixed;
+        }
+      </style>
+      <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Graph Image">
+
     </div>
   </mat-card-content>
 
@@ -118,5 +128,13 @@
 
 <!-- Conversion Formats -->
 <div id="conversionFormat">
+
+  <style>
+    #conversionFormat{
+      background-image:url("assets/img/wallpaper.jpg");
+      background-attachment: fixed;
+    }
+  </style>
+  
   <app-conversion></app-conversion>
 </div>

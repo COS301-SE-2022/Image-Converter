@@ -46,7 +46,7 @@ export class UnrecognizedImagesComponent implements OnInit {
       );
   }
 
-  imageClick(index:any, arrayToUse:String){
+  imageClick(index:any){
 
     /* let image;
      if(arrayToUse=="uploaded"){
@@ -99,6 +99,9 @@ export class UnrecognizedImagesComponent implements OnInit {
      });
  
    }
+
+
+   
 
 
 }
