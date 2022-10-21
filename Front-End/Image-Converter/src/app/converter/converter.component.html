@@ -39,6 +39,12 @@
                           <!--<div class="file" *ngFor="let file of draggedFiles">
                             <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
                           </div>-->
+                          <style>
+                              .wrapper{
+                                background-image:url("assets/img/wallpaper.jpg");
+                                background-attachment: fixed;
+                              }
+                          </style>
                           <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Photo of a Shiba Inu">
                         </div>
                         
@@ -56,6 +62,13 @@
            </div>
            <!-- Conversion Formats -->
            <div id="conversionFormat">
+
+            <style>
+              #conversionFormat{
+                background-image:url("assets/img/wallpaper.jpg");
+                background-attachment: fixed;
+              }
+            </style>
              <app-conversion></app-conversion>
            </div>
         
