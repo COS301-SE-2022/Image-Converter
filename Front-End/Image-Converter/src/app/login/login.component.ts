@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   });
 
   connect(){
-    this.socketio = io('http://10.42.0.19:5000');
+    this.socketio = io('http://46.101.46.219:5000');
     }
   get username() {  
     return this.form.get('username');  

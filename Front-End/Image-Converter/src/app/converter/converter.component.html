@@ -32,28 +32,13 @@
     <br>
     <hr>
 
-    <!-- <div class="fieldsetWrapper">
-      <div class="fieldsetContainer">
-          <fieldset>
-              <legend>Width: px</legend>
-          </fieldset>
-  
-          <fieldset>
-              <legend>Height: px</legend>
-          </fieldset>
-          
-          <fieldset>
-              <legend>Width: px</legend>
-          </fieldset>
-  
-          <fieldset>
-              <legend>Height: px</legend>
-          </fieldset>
-      </div>
-    </div> -->
 
     <div class="dragged-files-wrapper" >
-      <img mat-card-image id="uploadedImg" src={{displayImg}} alt="Graph Image">
+      <img mat-card-image class="box"  src={{displayImg}} alt="Graph Image">
+      <span class='imgtext-top' *ngIf="showDim && !loading">Image width: {{width}}px</span>
+      <span class='imgtext-bottom' *ngIf="showDim && !loading">Image width: {{width}}px</span>
+      <span class='imgtext-right' *ngIf="showDim && !loading">Image height: {{height}}px</span>
+      <span class='imgtext-left' *ngIf="showDim && !loading">Image height: {{height}}px</span>
     </div>
   </mat-card-content>
 
@@ -67,11 +52,11 @@
 </mat-card>
 </div>
 
-<div *ngIf="showDim && !loading"  class="textBox">
+<!-- <div *ngIf="showDim && !loading"  class="textBox">
   <h4>Image Dimensions</h4>
   <p class="box-text-1">Image height: {{height}}px</p>
   <p class="box-text-1">Image width: {{width}}px</p>
-</div>
+</div> -->
 <div class="m-4" *ngIf="loading">
           
   <div class="progress">
@@ -109,21 +94,22 @@
 <div id="imageFilter" class="uploadBox">
   <app-filter></app-filter>
 </div>
+
+
 <div *ngIf="uploadSuccess" class="textBox">
-  <h4>Resized Image Dimensions</h4>
   <p class="box-text">Image height: {{resizedHeight}}px</p>
   <p class="box-text">Image width: {{resizedWidth}}px</p>
 </div>
 
 <!--Image Annotation-->
-<div *ngIf="uploadSuccess" class="comment-form-container">
-  <h1>Image Annotation
-  </h1>
+<div  *ngIf="uploadSuccess" class="comment-form-container">
+  <h1 class="text-heading" style="padding-top:20px"><b>Image Annotation</b></h1>
   <!-- <hr />   -->
-  <div class="form-group container">
+  <div class="form-group-container">
     <form [formGroup]="form" (ngSubmit)="onComment()">
-      <textarea id="commentsection" class="form-control" row="5" placeholder="Type your notes here please..." rows="5" formControlName="comment">{{initialComment}}</textarea>
-      <button class="btn btn-success pull-right" type="submit" [disabled]="form.invalid">
+      <textarea id="commentsection" class="form-control" row="5" placeholder="Type in annotation..." rows="5" formControlName="comment">{{initialComment}}</textarea>
+      <div style="padding:5px"></div>
+      <button class="w3-button w3-blue w3-small" style="border-radius:5px" type="submit" [disabled]="form.invalid">
         {{commentLabel}}
       </button>
     </form>
