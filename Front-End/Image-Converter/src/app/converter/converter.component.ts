@@ -167,7 +167,7 @@ export class ConverterComponent implements OnInit {
     // const sendMessage = () => {
     //     socket.send('Hello From Client1!');
     // }
-    this.socketio = io('http://localhost:5000');
+    this.socketio = io('http://46.101.46.219:5000');
     this.socketio.on('data-tmp', (data: any) => {
 
       console.log(data);

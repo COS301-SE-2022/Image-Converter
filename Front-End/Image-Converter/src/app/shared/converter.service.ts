@@ -36,7 +36,7 @@ export class ConverterService {
       };
       console.log(formData);
       return this.httpclient.post(
-        'http://127.0.0.1:5000/bargraph',
+        'http://46.101.46.219:5000/bargraph',
         formData,{observe:'response'}, 
       );
     }
@@ -52,7 +52,7 @@ export class ConverterService {
                 };
                 // 'http://46.101.46.219:5000/register',
     return this.httpclient.post(
-      'http://127.0.0.1:5000/register',
+      'http://46.101.46.219:5000/register',
       data,{observe:'response'}
     );
   }
@@ -87,7 +87,7 @@ export class ConverterService {
     let data = {data: ''};
     return this.httpclient.get(
 
-      'http://127.0.0.1:5000/uploadhistory',
+      'http://46.101.46.219:5000/uploadhistory',
 
       httpOptions
     );
