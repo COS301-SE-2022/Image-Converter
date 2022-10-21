@@ -1,5 +1,6 @@
 .text-heading{
-    font-size:  25px; 
+    font-size:  50px;
+    text-decoration: underline;
     padding-bottom: 20px;
   }
 
@@ -68,12 +69,4 @@ bodY {
   100% {
     transform: scale(0);
   }
-}
-
-
-#heading{
-  font-size:  20px;
-  // text-decoration: underline;
-  padding-bottom: 5px;
-  padding-top: 5px;
 }
