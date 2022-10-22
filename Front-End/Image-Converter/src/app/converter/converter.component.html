@@ -34,6 +34,15 @@
 
 
     <div class="dragged-files-wrapper" >
+
+      <style>
+        .wrapper{
+          background-image:url("assets/img/wallpaper.jpg");
+          background-attachment: fixed;
+          /* height:1000; */
+        }
+    </style>
+
       <img mat-card-image class="box"  src={{displayImg}} alt="Graph Image">
       <span class='imgtext-top' *ngIf="showDim && !loading">Image width: {{width}}px</span>
       <span class='imgtext-bottom' *ngIf="showDim && !loading">Image width: {{width}}px</span>
@@ -96,13 +105,36 @@
 </div>
 
 
-<div *ngIf="uploadSuccess" class="textBox">
-  <p class="box-text">Image height: {{resizedHeight}}px</p>
-  <p class="box-text">Image width: {{resizedWidth}}px</p>
+<div class="holder">
+
+  <style>
+    .holder{
+      background-image:url("assets/img/wallpaper.jpg");
+      background-attachment: fixed;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      top: 0;
+      left: 0;
+    }
+  </style>
+
+  <div *ngIf="uploadSuccess" class="textBox">
+  
+    <p class="box-text">Image height: {{resizedHeight}}px</p>
+    <p class="box-text">Image width: {{resizedWidth}}px</p>
+  </div>
 </div>
 
 <!--Image Annotation-->
-<div  *ngIf="uploadSuccess" class="comment-form-container">
+<div  *ngIf="uploadSuccess" class="commentForm">
+  <style>
+    .commentForm{
+      background-image:url("assets/img/wallpaper.jpg");
+     background-attachment: fixed;
+     height:300px;
+    }
+  </style>
   <h1 class="text-heading" style="padding-top:20px"><b>Image Annotation</b></h1>
   <!-- <hr />   -->
   <div class="form-group-container">
@@ -118,5 +150,14 @@
 
 <!-- Conversion Formats -->
 <div id="conversionFormat">
+
+  <style>
+    #conversionFormat{
+      background-image:url("assets/img/wallpaper.jpg");
+      background-attachment: fixed;
+      width:100%;
+    }
+  </style>
+
   <app-conversion></app-conversion>
 </div>
