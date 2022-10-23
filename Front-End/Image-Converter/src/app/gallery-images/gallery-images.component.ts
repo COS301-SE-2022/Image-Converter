@@ -59,7 +59,7 @@ export class GalleryImagesComponent implements OnInit {
         console.log("Gallery:", respsonseBase64);
       //  console.log("response here: "+JSON.stringify(responseData));
        
-        for(let i=0;i<9;i++){ // respsonseBase64.OriginalImage.length
+        for(let i=0;i<12;i++){ // respsonseBase64.OriginalImage.length
           
             this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
             this.commentList.push(respsonseBase64.Comments[i]);
