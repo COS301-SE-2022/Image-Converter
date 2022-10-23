@@ -19,6 +19,8 @@ import { LandingPageComponent } from 'src/app/landing-page/landing-page.componen
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
 import { SearchComponent } from './../../search/search.component';
+import { SharedImagesComponent } from './../../shared-images/shared-images.component';
+import { SharedImageComponent } from './../../shared-image/shared-image.component';
 
 const routes: Routes = [
     {
@@ -28,6 +30,16 @@ const routes: Routes = [
           {
             path: 'upload',
             component: ConverterComponent
+          }
+          ,
+          {
+            path: 'sharedmages',
+            component: SharedImagesComponent
+          }
+          ,
+          {
+            path: 'sharedmage',
+            component: SharedImageComponent
           },
           {
             path: 'galleryimages',
