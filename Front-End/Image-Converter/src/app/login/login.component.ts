@@ -67,7 +67,15 @@ export class LoginComponent implements OnInit {
         if(responseData.body.response == "success"){
           localStorage.setItem('token', responseData.body.token);
           localStorage.setItem('email', this.form.get('username')!.value);
+
+          //if user was redirected from shared image
+          if(!localStorage.getItem('imageParam') && localStorage.getItem('imageParam')=="")
+          {
+            this._router.navigateByUrl('/nav/sharedmage?image='+localStorage.getItem('imageParam'));
+          }
+          //else
           this._router.navigateByUrl('/welcome');
+          
         }else if(responseData.body.response =="UserDoesNotExist"){
           alert('User Does Not Exist in the system');
         }
