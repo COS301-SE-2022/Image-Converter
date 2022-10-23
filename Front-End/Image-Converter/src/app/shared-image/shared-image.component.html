@@ -1,3 +1,36 @@
 <div>
-    <img [src]="imageUrl" id="sharedImg" alt="img" />
+    <div id="heading">
+        <h1 class="text-heading"><b>Shared Image</b></h1>
+    </div>
+
+    <div class="center" *ngIf="loading">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    
+    </div>
+        <div *ngIf="!loading">
+        <img [src]="imageUrl" id="sharedImg" alt="img" />
+        <!--Image Annotation-->
+        <div   class="comment-form-container">
+            <h1 class="text-heading" style="padding-top:20px"><b>Image Annotation</b></h1>
+            <!-- <hr />   -->
+            <div class="form-group-container">
+            <form [formGroup]="form" (ngSubmit)="onComment()">
+                <textarea id="commentsection" class="form-control" row="5" placeholder="Type in annotation..." rows="5" formControlName="comment">{{initialComment}}</textarea>
+                <div style="padding:5px"></div>
+                <button class="w3-button w3-blue w3-small" style="border-radius:5px" type="submit" [disabled]="form.invalid">
+                {{commentLabel}}
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
 </div>
