@@ -1,10 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef,MAT_DIALOG_DATA,MatDialog } from '@angular/material/dialog';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Message } from '../classes/Message';
 import { ConverterService } from '../shared/converter.service';
 import { UploadHistoryComponent } from '../upload-history/upload-history.component';
-import { LinkPopupComponent } from './link-popup/link-popup.component';
 
 @Component({
   selector: 'app-image-popup',
@@ -23,11 +22,8 @@ export class ImagePopupComponent implements OnInit {
   imageUrl!: string;
   imageProcessedUrl!: string;
   
-  uuid!:any;
 
-  URL:string="http://localhost:4200/nav/sharedmage?image=";
-
-  constructor(private imgService: ConverterService, @Inject(MAT_DIALOG_DATA) public data: {img: string,imgProcessed:string, comment:string, index:number,uuid:any},public dialogRef: MatDialogRef<UploadHistoryComponent>, private formBuilder: FormBuilder,private dialog: MatDialog) { }
+  constructor(private imgService: ConverterService, @Inject(MAT_DIALOG_DATA) public data: {img: string,imgProcessed:string, comment:string, index:number},public dialogRef: MatDialogRef<UploadHistoryComponent>, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.imageUrl=this.data.img;
@@ -35,7 +31,7 @@ export class ImagePopupComponent implements OnInit {
     console.log("Data:", this.data);
     this.initialComment= this.data.comment;
     this.imageID=this.data.index;
-    this.uuid=this.data.uuid;
+
     console.log(this.imageUrl);
 
     this.uploadSuccess = false;
@@ -82,17 +78,5 @@ export class ImagePopupComponent implements OnInit {
   deleteImages()
   {
     this.dialogRef.close({request:"delete"});
-  }
-
-  shareImage()
-  {
-    this.URL=this.URL+this.uuid;
-    //send the processed version of the image (parameter)
-    const dialogRef = this.dialog.open(LinkPopupComponent, {
-      width: '40%',
-      height: '12%',
-      //Use the line of
-      data: {url:this.URL},
-    });
   }
 }
