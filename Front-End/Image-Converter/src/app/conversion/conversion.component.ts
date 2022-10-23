@@ -100,6 +100,22 @@ export class ConversionComponent implements OnInit {
     document.body.removeChild(a);
   }
 
+  downloadSVGFile() {
+    var a = document.createElement('a');
+    console.log("BMP: "+ this.message.bmp);
+
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+
+    this.incrementDownload();
+    a.href = this.message.svg;
+    var imgBckend = a.href;
+    a.download = "output.svg";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   //tracks number of downloads
   incrementDownload()
   {

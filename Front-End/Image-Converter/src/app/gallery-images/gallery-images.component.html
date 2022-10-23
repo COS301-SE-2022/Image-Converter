@@ -55,8 +55,8 @@
 
 
           <div *ngIf="!loading" class="w3-row w3-container">
-            <div *ngFor="let tag of tags;index as i;">
-              <div class="searchImages" *ngIf ="text ==='' || (nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null) || (tagArr[i].toLowerCase().includes(text)  && tagArr[i]!=null)">
+            <div *ngFor="let tag of temp;index as i;">
+              <div class="searchImages" *ngIf ="text ==='' || nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null">
                 <div class="w3-col s4  w3-center w3-padding-large" data-aos="fade-up" data-aos-delay="200">
                   <div class="box">
 
@@ -72,23 +72,23 @@
                         <mat-icon>cancel</mat-icon>
                       </button>
                     </mat-chip> -->
-                  
+
                     <mat-form-field class="tag-list" appearance="fill">
                       <mat-label>Extracted Tags</mat-label>
                       <mat-chip-list #chipList aria-label="Tag selection">
-                        
-                        <mat-chip *ngFor="let tag1 of tags4;index as j" (removed)="remove(tag)">
-                          {{tags[j].name}}
-                          <button matChipRemove>
-                            <mat-icon>cancel</mat-icon>
-                          </button>
+
+                        <mat-chip *ngFor="let tag1 of tag.tags;index as j" (removed)="remove(tag.name[j], tag.pos)" >
+                            {{tag.name[j]}}
+                            <button matChipRemove>
+                              <mat-icon>cancel</mat-icon>
+                            </button>
                         </mat-chip>
-                        
+
                         <input placeholder="Add a new tag..."
                                [matChipInputFor]="chipList"
                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                [matChipInputAddOnBlur]="addOnBlur"
-                               (matChipInputTokenEnd)="add($event)">
+                               (matChipInputTokenEnd)="add($event, tag.pos)">
                       </mat-chip-list>
                     </mat-form-field>
 
@@ -116,14 +116,14 @@
 <!-- <mat-form-field class="tag-list" appearance="fill">
   <mat-label>Extracted Tags</mat-label>
   <mat-chip-list #chipList aria-label="Tag selection">
-    
+
     <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
       {{tag.name}}
       <button matChipRemove>
         <mat-icon>cancel</mat-icon>
       </button>
     </mat-chip>
-    
+
     <input placeholder="Add a new tag..."
            [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"

@@ -21,6 +21,7 @@ class ConvertFomat:
         rgb_im.save('processedImg.tiff')
         rgb_im.save('processedImg.bmp')
         rgb_im.save('processedImg.jfif')
+
         print("abv")
 
         with open("processedImg.png", "rb") as img_file:
@@ -35,8 +36,8 @@ class ConvertFomat:
         self.png=str("data:image/png;base64,"+ bytes(convPng).decode('UTF-8'))
         self.jpg=str("data:image/jpg;base64,"+ bytes(cnvJpg).decode('UTF-8'))
         self.tiff = str("data:image/tiff;base64," + bytes(cnvTiff).decode('UTF-8'))
-        self.bmp = str("data:image/bmp;base64," + bytes(cnvTiff).decode('UTF-8'))
-
+        self.bmp = str("data:image/bmp;base64," + bytes(cnvBmp).decode('UTF-8'))
+       
     def getPng(self):
         return self.png
 

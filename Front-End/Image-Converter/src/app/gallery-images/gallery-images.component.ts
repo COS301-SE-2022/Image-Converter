@@ -7,11 +7,18 @@ import {ConverterService} from './../shared/converter.service';
 import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { Validators } from '@angular/forms';
+import {Message} from "../classes/Message";
+
 
 export interface Tag {
   name: string;
 }
 
+export interface TagList {
+  pos: number;
+  name: any[];
+  tags: any[];
+}
 
 @Component({
   selector: 'app-gallery-images',
@@ -21,7 +28,7 @@ export interface Tag {
 export class GalleryImagesComponent implements OnInit {
 
   subscription!: Subscription;
-  selectedFolder!: String;
+  selectedFolder!: string;
   loading=false;
   dash: string = "-";
 
@@ -30,23 +37,23 @@ export class GalleryImagesComponent implements OnInit {
   uploadedImgProcessed: string[] = [];
   commentList: string[] = [];
   indexList: number[] = [];
+  temp: TagList[] = [];
+
   // ["line graph","test graph", "name3", "name4", "name5", "name6", "name7" ,"name8", "name9"];
   // ["16 Oct","random tag", "tag3", "tag4", "tag5", "tag6","tag7", "tag8", "tag9"];
   nameArr: string[] = [];
   tagArr: string[] = [];
   dateArr:string[] = [];
-  tags: Tag[] = [];
-  tags4: string[] = ['', '', '', ''];
+  tags: string[] = [];
 
 
+  textT1: any[] = [];
   uuid:BigInteger[]=[];
   constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
 
   ngOnInit(): void {
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
     this.loading = true;
-    // console.log("in gallery top");
-    console.log(this.selectedFolder);
 
     if(this.selectedFolder == "Line graphs")
       this.selectedFolder = "line graph";
@@ -59,13 +66,12 @@ export class GalleryImagesComponent implements OnInit {
     else if(this.selectedFolder == "Flow charts")
       this.selectedFolder = "flow chart";
 
+
     this.imgService.GraphGallaryData(this.selectedFolder).subscribe(
       responseData =>{
-        // console.log("in gallery");
         this.loading = false;
         let respsonseBase64 = JSON.parse(JSON.stringify(responseData));
         console.log("Gallery:", respsonseBase64);
-      //  console.log("response here: "+JSON.stringify(responseData));
 
         for(let i=0;i<9;i++){ // respsonseBase64.OriginalImage.length
 
@@ -74,60 +80,33 @@ export class GalleryImagesComponent implements OnInit {
             this.indexList.push(respsonseBase64.Index[i]);
             this.tagArr.push(respsonseBase64.Tags[i]);
             this.nameArr.push(respsonseBase64.Names[i]);
-            // console.log("index: "+respsonseBase64.Tags[i]);
-            
+            console.log("index: "+respsonseBase64.Tags[i]);
+
            // this.uuid.push(respsonseBase64.Index[i]);
         }
         let textT: string[] = [];
+
         let data: string;
         for (let index = 0; index < this.tagArr.length; index++) {
-          console.log(this.tagArr[index]);
           let words = this.tagArr[index];
           data = "";
-          let num: number;
-          num = 0;
+          let num = 0;
           for (let j = 0; j < words.length && num < 4; j++) {
-            //  console.log(words[j]);
-            if(words[j] == '{' || words[j] == '}')
-            continue;
+            if(words[j] == '{' || words[j] == '}' || words[j] == ' ')
+              continue;
             else if(words[j] != ',')
               data += words[j];
             else if(words[j] == ',') {
-              if(num < 3)
-                data += ',';
-              num += 1;
+              textT.push(data);
+              this.textT1.push(data);
+              data = '';
+              num++;
             }
           }
-          textT.push(data);  
-        }
-        console.log(textT);
-        for (let index = 0; index < textT.length; index++) {
-          this.tags.push({name: textT[index]})
-          
-          
-        }
-        textT = [];
-        let s = '';
-        for (let i = 0; i < this.tags.length; i++) {
-          let w = this.tags[i].name;
-          s = "";
-          for (let j = 0; j < w.length; j++) {
-            if(w[j] != ',')
-              s += w[j];
-            else if(w[j] == ',') {
-              textT.push(s);
-              s = ''
-            }
-              
-          }
-          textT.push(s)
-        }
-        console.log(textT);
-        this.tags = []
-        for (let index = 0; index < textT.length; index++) {
-          this.tags.push({name: textT[index]})
-          
-          
+
+          this.temp.push({pos: index, name: textT, tags: [1, 2, 3, 4]});
+          textT = [];
+          // textT.push(data);
         }
       },//code below ensures that if token is invalid or expired user gets sent back to login
        (err) => {
@@ -170,51 +149,77 @@ export class GalleryImagesComponent implements OnInit {
 
   text: string='';
   check: string = this.text.replace(/[^a-zA-Z ]/g,"");
-
-  textEntered(searchVal: string){
+  flag: boolean = true;
+  ser: any;
+  textEntered(searchVal: string) {
     this.text = searchVal.replaceAll(/[^\w\s.]/gi,' ');
-    console.log(this.text);
   }
 
   textT: string='';
-  
-  
-  // textT = "";
-  // for (let= 0; i < this.tagArr; i++) {
-  //    let words = this.tagArr[i];
-  //     if(words[i] == '{' || words[i] == '}')
-  //       continue;
-  //     else if(words[i] != ',')
-  //       textT += words[i];
-  //     else if(words[i] == ',')
-  //       textT += ',';        
-  // }
-  // this.tagArr.push(textT);
 
   //Image tags
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  
-  
+
+
   addT: string[] = [];
-  add(event: MatChipInputEvent): void {
+  add(event: MatChipInputEvent, position: number): void {
+    console.log("TagNum", position)
     const value = (event.value || '').trim();
 
-    // Add our fruit
+
     if (value) {
-      this.tags.unshift({name: value})
-      this.tagArr.unshift(value)
+      for (const element of this.temp) {
+        if (element.pos == position) {
+          console.log(this.indexList[position]);
+          element.name.unshift(value);
+          let data = "";
+          for (let i = 0; i < element.name.length; i++) {
+            data += element.name;
+
+            if(i != element.name.length - 1)
+              data += ',';
+          }
+
+          let addTag: Message = {
+            feedback: value,
+            id: this.indexList[position]
+          };
+
+          this.imgService.sendTags(addTag).subscribe((resposeData: any) => {
+              let response = JSON.parse(JSON.stringify(resposeData));
+              console.log("Response:", response);
+            if(response.response == "success") {
+              alert("Tags updated successfully");
+            }
+          });
+
+          this.textT1.unshift(value);
+          break;
+        }
+      }
     }
 
     // Clear the input value
     event.chipInput!.clear();
+
   }
 
-  remove(tag: Tag): void {
-    const index = this.tags.indexOf(tag);
+  remove(tag: string, index: number): void {
+    console.log(this.indexList[index]);
+    console.log("Ren",index)
+    for (let i = 0; i < this.temp.length; i++) {
+      if(this.temp[i].pos == index) {
+        for (let j = 0; j < this.temp[i].name.length; j++) {
+          if(this.temp[i].name[j] == tag) {
+            this.temp[i].name.splice(j, 1);
+            this.textT1[i].splice(j, 1);
 
-    if (index >= 0) {
-      this.tags.splice(index, 1);
+            break;
+          }
+        }
+        break;
+      }
     }
   }
 
