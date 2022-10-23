@@ -9,6 +9,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore,storage
 import cv2
+import uuid
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 load_dotenv()
@@ -114,12 +115,14 @@ class User:
             link=fireStore1.uploadImage("images/original/Original.png",str(count)+"Original.jpg")
             link2=fireStore1.uploadImage("images/original/Converted.png",str(count)+"Converted.jpg")
             # print(link)
+            guid = uuid.uuid4()
+            print("guid "+ str(guid))
             print("Converted ")
             # print(link2)
             #sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
-            sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted, name, tags) VALUES(%s,%s,%s,%s,%s,%s)"
+            sql = "INSERT INTO history2 (graph_type,user_id,image_uploaded,image_converted, name, tags , guid) VALUES(%s,%s,%s,%s,%s,%s,%s)"
             print("Executing")
-            self.cur.execute(sql, (graphType, id, link,link2, names, tags))
+            self.cur.execute(sql, (graphType, id, link,link2, names, tags,str(guid)))
             self.conn.commit()
             return True
         except Exception as e:
@@ -139,12 +142,25 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
+    def get_image(self, guid):
+        try:
+            #sql = "SELECT * FROM history where user_id=%s;"
+            sql = "SELECT * FROM history2 where guid=%s ORDER BY id DESC LIMIT 1;"
+            self.cur.execute(sql, ([guid]))
+            db_history = self.cur.fetchone()
+            self.conn.commit()
+            # print(db_history)
+            return db_history
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
+
     #fetches previously uploaded images
     def get_image_history(self, id):
         try:
             sql = "SELECT * FROM history2 where user_id=%s ORDER BY id DESC"
             self.cur.execute(sql, ([id]))
-            db_history = self.cur.fetchall()
+            db_history = self.cur.fetchmany(9)
             self.conn.commit()
             return db_history
         except Exception as e:
@@ -157,7 +173,7 @@ class User:
             sql = "SELECT * FROM history2 where graph_type=%s ORDER BY id DESC"
             graphType="unrecognized"
             self.cur.execute(sql,([graphType]))
-            db_history = self.cur.fetchmany(6)
+            db_history = self.cur.fetchmany(9)
             self.conn.commit()
             print("Unrecognized")
             return db_history
