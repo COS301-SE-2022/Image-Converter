@@ -32,7 +32,7 @@ export class GalleryImagesComponent implements OnInit {
 
   
   
-  uuid:BigInteger[]=[];
+  uuid:any[]=[];
   constructor(private _router: Router,private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
 
   ngOnInit(): void {
@@ -72,8 +72,6 @@ export class GalleryImagesComponent implements OnInit {
             this.indexList.push(respsonseBase64.Index[i]);
             this.tagArr.push(respsonseBase64.Tags[i]);
             this.nameArr.push(respsonseBase64.Names[i]);
-            console.log("index: "+respsonseBase64.Index[i]);
-            
            this.uuid.push(respsonseBase64.Guids[i]);
         }
       },//code below ensures that if token is invalid or expired user gets sent back to login
