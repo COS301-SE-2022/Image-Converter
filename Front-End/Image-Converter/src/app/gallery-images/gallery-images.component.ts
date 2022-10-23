@@ -5,6 +5,7 @@ import {ConverterService} from './../shared/converter.service';
 import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery-images',
@@ -32,7 +33,7 @@ export class GalleryImagesComponent implements OnInit {
   
   
   uuid:BigInteger[]=[];
-  constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
+  constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService, private _router: Router) { }
 
   ngOnInit(): void {
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
@@ -116,5 +117,9 @@ export class GalleryImagesComponent implements OnInit {
       this.text = searchVal.replaceAll(/[^\w\s.]/gi,' ');
       console.log(this.text);
      }
+
+     onSubmitGallery(){
+      this._router.navigateByUrl('/nav/gallery');
+    }
 
 }
