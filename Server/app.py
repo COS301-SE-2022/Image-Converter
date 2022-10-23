@@ -684,6 +684,7 @@ def graphs(user):
             proccesedImagelist=[]
             Names = []
             Tags = []
+            Guids = []
             for x in db_image_array:
                 IndexArray.append(x[0])
                 
@@ -692,7 +693,8 @@ def graphs(user):
                 Comments.append(x[5])
                 Names.append(x[6])
                 Tags.append(x[7])
-            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments, "Names": Names, "Tags": Tags})
+                Guids.append(x[8])
+            return jsonify({"OriginalImage": OriginalImagelist,"proccesedImage": proccesedImagelist ,"Index":IndexArray,"Comments":Comments, "Names": Names, "Tags": Tags, "Guids":Guids})
     else:
         return {'response': 'failed'}, 400
 
