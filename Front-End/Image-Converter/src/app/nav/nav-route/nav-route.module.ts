@@ -23,8 +23,6 @@ import { FooterComponent } from './../../footer/footer.component';
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
 import { SearchComponent } from './../../search/search.component';
-import { SharePageComponent } from './../../share-page/share-page.component';
-import { SharedImagesComponent } from './../../shared-images/shared-images.component';
 import { SharedImageComponent } from './../../shared-image/shared-image.component';
 import { LinkPopupComponent } from './../../image-popup/link-popup/link-popup.component';
 import { MaterialModule } from './../../material/material.module';
@@ -53,8 +51,6 @@ import { HttpClientModule } from '@angular/common/http';
     GalleryComponent,
     GalleryImagesComponent,
     SearchComponent,
-    SharePageComponent,
-    SharedImagesComponent,
     SharedImageComponent,
     LinkPopupComponent
   ],

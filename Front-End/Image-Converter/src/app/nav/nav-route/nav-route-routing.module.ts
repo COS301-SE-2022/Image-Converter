@@ -14,13 +14,10 @@ import { ContactComponent } from './../../contact/contact.component';
 import { ImagePopupComponent } from './../../image-popup/image-popup.component';
 import { GraphPlottingComponent } from './../../graph-plotting/graph-plotting.component';
 import { AdminImagePopUpComponent } from './../../admin-image-pop-up/admin-image-pop-up.component';
-import { LandingPageComponent } from 'src/app/landing-page/landing-page.component';
 // import { FooterComponent } from 'src/app/footer/footer.component';
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
 import { SearchComponent } from './../../search/search.component';
-import { SharePageComponent } from './../../share-page/share-page.component';
-import { SharedImagesComponent } from './../../shared-images/shared-images.component';
 import { SharedImageComponent } from './../../shared-image/shared-image.component';
 import { LinkPopupComponent } from './../../image-popup/link-popup/link-popup.component';
 
@@ -37,11 +34,6 @@ const routes: Routes = [
             path: 'showlink',
             component: LinkPopupComponent
           },
-          {
-            path: 'sharedmages',
-            component: SharedImagesComponent
-          }
-          ,
           {
             path: 'sharedmage',
             component: SharedImageComponent
@@ -69,19 +61,10 @@ const routes: Routes = [
           {
             path: 'activitytracker',
             component: TrackerComponent
-          }
-          ,
-          {
-            path: 'landing',
-            component: LandingPageComponent
           },
           {
             path: 'search',
             component: SearchComponent
-          },
-          {
-            path: 'sharePage',
-            component: SharePageComponent
           }
           
           // {

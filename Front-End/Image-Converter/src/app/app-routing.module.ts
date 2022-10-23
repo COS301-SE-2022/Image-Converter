@@ -46,6 +46,11 @@ const routes: Routes = [
   },
   {
 
+    path: 'landing',
+    component: LandingPageComponent
+  },
+  {
+
     path: 'livegraph',
     component: LiveGraphing2Component
   },
