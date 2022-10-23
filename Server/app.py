@@ -117,7 +117,7 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0], 'imageHeight': imageHeight, 'imageWidth': imageWidth})
+            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0], 'imageHeight': imageHeight, 'imageWidth': imageWidth,'guid':db_image[8]})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200
@@ -720,6 +720,31 @@ def user_comment(user):
                 return jsonify({'response': 'success'})
             else:
                 return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
+"""
+    Get Image Function:
+        gets the image and the comment using uuid
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        guid
+    Returns:
+        JSON Object
+"""
+@app.route('/shared' ,methods =['POST'])
+@token
+def get_image(user):
+    db=User()
+    if(db!=None):
+        guid = request.json['guid']
+        if guid is not None:
+            img =db.get_image(guid)
+            return {'image': img[4],'comment':img[5]}
         else:
             return {'response': 'failed'}, 400
     else:
