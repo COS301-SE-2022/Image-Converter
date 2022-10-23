@@ -23,6 +23,7 @@ import { FooterComponent } from './../../footer/footer.component';
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
 import { SearchComponent } from './../../search/search.component';
+import { SharePageComponent } from './../../share-page/share-page.component';
 
 import { MaterialModule } from './../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     GalleryComponent,
     GalleryImagesComponent,
-    SearchComponent
+    SearchComponent,
+    SharePageComponent
   ],
   imports: [
     CommonModule,
