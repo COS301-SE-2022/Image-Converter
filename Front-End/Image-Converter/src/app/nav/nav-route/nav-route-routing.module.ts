@@ -19,6 +19,7 @@ import { LandingPageComponent } from 'src/app/landing-page/landing-page.componen
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
 import { SearchComponent } from './../../search/search.component';
+import { SharePageComponent } from './../../share-page/share-page.component';
 
 const routes: Routes = [
     {
@@ -61,6 +62,10 @@ const routes: Routes = [
           {
             path: 'search',
             component: SearchComponent
+          },
+          {
+            path: 'sharePage',
+            component: SharePageComponent
           }
           
           // {
