@@ -337,4 +337,40 @@ export class ConverterService {
 
     
   }
+
+  //shared image
+  getSharedImage(data: String) {
+    console.log("data: "+data)
+   // var auth=sessionStorage.getItem('token');
+   var tok = localStorage.getItem('token');
+ 
+   let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+   const httpOptions:Object = {
+     headers: headers
+   };
+
+   let guid = {guid: data};
+   return this.httpclient.post(
+     'http://localhost:5000/shared',
+     guid,httpOptions
+   );
+  }
+
+ //graph gallery data
+  getListSharedImages(data: String) {
+    console.log("data: "+data)
+  // var auth=sessionStorage.getItem('token');
+  var tok = localStorage.getItem('token');
+
+  let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
+  const httpOptions:Object = {
+    headers: headers
+  };
+
+  let graph = {graphType: data};
+  return this.httpclient.post(
+    'http://46.101.46.219:5000/graphs',
+    graph,httpOptions
+  );
+  }
 }
