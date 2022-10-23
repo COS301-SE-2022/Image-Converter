@@ -21,6 +21,7 @@ import { GalleryImagesComponent } from './../../gallery-images/gallery-images.co
 import { SearchComponent } from './../../search/search.component';
 import { SharedImagesComponent } from './../../shared-images/shared-images.component';
 import { SharedImageComponent } from './../../shared-image/shared-image.component';
+import { LinkPopupComponent } from './../../image-popup/link-popup/link-popup.component';
 
 const routes: Routes = [
     {
@@ -30,8 +31,11 @@ const routes: Routes = [
           {
             path: 'upload',
             component: ConverterComponent
-          }
-          ,
+          },
+          {
+            path: 'showlink',
+            component: LinkPopupComponent
+          },
           {
             path: 'sharedmages',
             component: SharedImagesComponent

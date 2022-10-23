@@ -349,10 +349,10 @@ export class ConverterService {
      headers: headers
    };
 
-   let graph = {graphType: data};
+   let guid = {guid: data};
    return this.httpclient.post(
-     'http://46.101.46.219:5000/graphs',
-     graph,httpOptions
+     'http://localhost:5000/shared',
+     guid,httpOptions
    );
   }
 
