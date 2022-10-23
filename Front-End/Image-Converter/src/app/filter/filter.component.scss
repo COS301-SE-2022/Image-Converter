@@ -2,7 +2,7 @@
 	font-size:  50px;
 	text-decoration: underline;
 	padding-bottom: 20px;
-	padding-top: 20px;
+	// padding-top: 20px;
   }
 
 .nav-header {
@@ -31,14 +31,6 @@
 	height: 400px;
 	display: none;
 }
-
-#imageFilters{
-	margin-top: 10%;
-	margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-
   
 .innertext::before {
   margin-right: 16px;
@@ -51,48 +43,85 @@
 
 .imgborder{
   border-style: 20px solid black;
-
-
-  .imgtext-bottom{
-	position:absolute;
-	right:170px;
-	color: white;
-	top:467px;
-	font-family: "Lucida Console", "Courier New", monospace;
-  }
-  
-  .imgtext-top{
-	  overflow: hidden;
-	position:absolute;
-	right:170px;
-	color: black;
-	top: 100px;
-	font-family: "Lucida Console", "Courier New", monospace;
-  }
-  
-  .imgtext-left{
-	position:absolute;
-	right:180px;
-	color: white;
-	// writing-mode: sideways-lr;
-	// text-orientation: mixed;
-	transform: rotate(-90deg);
-	top:90px;
-	left:-203px;
-	font-family: "Lucida Console", "Courier New", monospace;
-  }
-  
-  .imgtext-right{
-	position:absolute;
-	right:180px;
-	color: white;
-	writing-mode: vertical-rl;
-	text-orientation: mixed;
-	top:180px;
-	right:21px;
-	font-family: "Lucida Console", "Courier New", monospace;
-  }
 }
 
 
+  .imgtext-top-filter{
+	white-space: nowrap;
+	position:absolute ;
+	right:-20px;
+	color: white;
+	top:402px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
 
+  .imgtext-bottom-filter{
+	white-space: nowrap;
+	position:absolute ;
+	right:-20px;
+	color: white;
+	top:22px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
+
+  .imgtext-right-filter{
+	white-space: nowrap;
+	position:absolute;
+	right:-132px;
+	color: white;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	top:120px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
+
+  .imgtext-left-filter{
+	white-space: nowrap;
+	position:absolute;
+	right:180px;
+	color: white;
+	transform: rotate(-90deg);
+	top:220px;
+	left:-54px;
+	font-family: "Lucida Console", "Courier New", monospace;
+  }
+
+
+
+/* CSS */
+.button-1 {
+  background-color: black;
+  border-radius: 5px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 40px;
+  width:120px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: grey;
+}
+
+#processedImg{
+	padding-top: 24px;
+}

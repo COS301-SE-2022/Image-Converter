@@ -20,7 +20,7 @@ export class ConverterService {
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
     return this.httpclient.post(
-      'http://46.101.46.219:5000/login',
+      'http://localhost:5000/login',
       formData,{observe:'response'}
     );
   }
@@ -36,7 +36,7 @@ export class ConverterService {
       };
       console.log(formData);
       return this.httpclient.post(
-        'http://46.101.46.219:5000/bargraph',
+        'http://localhost:5000/bargraph',
         formData,{observe:'response'}, 
       );
     }
@@ -70,7 +70,7 @@ export class ConverterService {
     // console.log("form: "+data);
     console.log("image name: "+name);
     return this.httpclient.post(
-      'http://46.101.46.219:5000/picture',
+      'http://localhost:5000/picture',
       pic,httpOptions
     );
   }
@@ -87,7 +87,7 @@ export class ConverterService {
     let data = {data: ''};
     return this.httpclient.get(
 
-      'http://46.101.46.219:5000/uploadhistory',
+      'http://localhost:5000/uploadhistory',
 
       httpOptions
     );
@@ -106,7 +106,7 @@ export class ConverterService {
     let pic = {index: id};
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000/deletehistory',
+      'http://localhost:5000/deletehistory',
       pic,httpOptions
     );
   }
@@ -208,7 +208,7 @@ export class ConverterService {
     };
     let data = {data: ''};
     return this.httpclient.get(
-      'http://46.101.46.219:5000/unrecognizedgraphs',
+      'http://localhost:5000/unrecognizedgraphs',
       httpOptions
     );
   }
@@ -226,7 +226,7 @@ export class ConverterService {
     let pic = {index: id};
 
     return this.httpclient.post(
-      'http://46.101.46.219:5000//deleteUnrecognisableImage',
+      'http://localhost:5000//deleteUnrecognisableImage',
       pic,httpOptions
        );
   }
@@ -331,7 +331,7 @@ export class ConverterService {
 
     let graph = {graphType: data};
     return this.httpclient.post(
-      'http://46.101.46.219:5000/graphs',
+      'http://localhost:5000/graphs',
       graph,httpOptions
     );
 
