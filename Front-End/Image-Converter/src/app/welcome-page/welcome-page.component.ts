@@ -14,6 +14,11 @@ export class WelcomePageComponent implements OnInit {
    }
 
   ngOnInit(): void {
+     //if user was redirected from shared image
+      if(localStorage.getItem('imageParam') && localStorage.getItem('imageParam')!="")
+      {
+        this._router.navigateByUrl('/nav/sharedmage?image='+localStorage.getItem('imageParam'));
+      }
   }
 
   onSubmitUpload(){

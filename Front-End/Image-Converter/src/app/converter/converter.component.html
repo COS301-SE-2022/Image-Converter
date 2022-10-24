@@ -1,3 +1,4 @@
+
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> -->
 
@@ -21,6 +22,7 @@
 </div>
 
 
+
 <!-- <div class="center" *ngIf="loading">
   <div class="wave"></div>
   <div class="wave"></div>
@@ -36,6 +38,7 @@
 
 <!-- <img id="load" *ngIf="loading" src="assets/loading.gif" width="400"/> -->
 <!-- <mat-spinner *ngIf="loading" id="spin" [diameter]="150" primary style="margin-top:50px;margin:0 auto;"></mat-spinner> -->
+
 
 <mat-card id="uploadcard" *ngIf="!loading" class="card" draggable="true" ngClass="{{ dragAreaClass }}">
 
@@ -78,8 +81,38 @@
       <div id="loadingBar" class="progress-bar" style="width: 0%">
           0%
       </div>
-  </div>
-</div>
+    </div>
+    
+    <div *ngIf="loading">
+     
+      <mat-stepper labelPosition="bottom" linear #stepper>
+        <mat-step [stepControl]="firstFormGroup" [editable]="false" >
+          <ng-template matStepLabel>Classify Image</ng-template>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" [editable]="false">
+          <ng-template matStepLabel>Clean Image</ng-template>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" [editable]="false">
+          <ng-template matStepLabel>Resize Image</ng-template>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" [editable]="false">
+          <ng-template matStepLabel>Add Watermark to Image</ng-template>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" [editable]="false">
+          <ng-template matStepLabel>Extract keywords from image</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+        </mat-step>
+      </mat-stepper>
+    </div>
+    <div id="progress" *ngIf="loading"></div>
+    <!-- Image Filters -->
+    <div id="imageFilter" class="uploadBox">
+      <app-filter></app-filter>
+    </div>
+
+
 
 <div *ngIf="loading">
   <mat-stepper labelPosition="bottom" linear #stepper>
@@ -127,6 +160,7 @@
 
   <h1 class="text-heading-annotation" style="padding-top:20px"><b>Image Annotation</b></h1>
   <!-- <hr />   -->
+
   <div class="form-group-container">
     <form [formGroup]="form" (ngSubmit)="onComment()">
       <textarea id="commentsection" class="form-control" row="5" placeholder="Type in annotation..." rows="5" formControlName="comment">{{initialComment}}</textarea>

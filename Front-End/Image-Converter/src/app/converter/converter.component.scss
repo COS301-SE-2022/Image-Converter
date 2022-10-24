@@ -24,7 +24,6 @@
   padding-bottom: 20px;
   white-space: nowrap;
   margin-left: 130%; 
-
 }
 
 
@@ -453,6 +452,7 @@ $stroke: 8px;
   padding: 5px;
   border: 5px solid black;
   border-radius: 20px;  
+  // width:100%;
   }
 
   .box-text{
@@ -480,6 +480,7 @@ $stroke: 8px;
   .form-group-container{
     margin:0%;
   }
+
 
   .uploadBox{
     display: inline-block;
@@ -573,3 +574,29 @@ $stroke: 8px;
 .button-annotation:focus {
   background-color: grey;
 }
+
+
+  //.sameDiv{
+   // overflow:hidden;
+  //  display: inline-block;
+  //}
+ // .uploadBox{
+    // width:70%;
+ //   float: left;
+  //  display: inline-block;
+  //}
+
+  //#imageFilters{
+  //  left:50%;
+  //}
+
+ //#commentsection{
+  //  width:20%;
+  //}
+
+  //.comment-form-container{
+  //  left:80%;
+  //}
+
+
+
