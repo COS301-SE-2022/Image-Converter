@@ -27,6 +27,8 @@ import { MaterialModule } from './../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatChipsModule} from '@angular/material/chips';
+import { FilterPipe } from './../../gallery-images/filter.pipe'
+import {Ng2SearchPipe, Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import {MatChipsModule} from '@angular/material/chips';
     FooterComponent,
     GalleryComponent,
     GalleryImagesComponent,
-    SearchComponent
+    SearchComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -57,7 +60,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     MatChipsModule
   ]
 })

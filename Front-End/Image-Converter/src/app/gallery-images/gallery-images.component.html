@@ -1,23 +1,22 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <div class="w3-container" id="uploadHistory" style="margin-top:5px">
 
 
-
-
-   <div class="headerDiv">
+  <div class="headerDiv">
     <div id="heading">
-      <h1 class="text-heading"><b>{{selectedFolder +'s'}}</b></h1>
+      <h1 class="text-heading"><b>{{selectedFolder + 's'}}</b></h1>
     </div>
 
     <div id="searchDiv">
-      <app-search (searchText)="textEntered($event)"></app-search>
+      <input type="text" [(ngModel)]="text" (input)="textEntered(text)">
+<!--      <app-search [(ngModel)]="text" (searchText)="textEntered($event)"></app-search>-->
     </div>
 
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
         Sort by:
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -27,9 +26,9 @@
       </div>
     </div>
 
-   </div>
+  </div>
 
-   <div class="center" *ngIf="loading">
+  <div class="center" *ngIf="loading">
     <div class="wave"></div>
     <div class="wave"></div>
     <div class="wave"></div>
@@ -43,76 +42,69 @@
   </div>
 
 
+  <main id="main">
+    <section id="values" class="values">
 
-   <main id="main">
-   <section id="values" class="values">
-
-    <div class="container" data-aos="fade-up">
+      <div class="container" data-aos="fade-up">
 
 
-      <div class="row">
+        <div class="row">
 
 
           <div *ngIf="!loading" class="w3-row w3-container">
-            <div *ngFor="let tag of temp ; index as i;">
-              <div class="searchImages" *ngIf ="text ==='' || nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null ">
-                <div class="w3-col s4  w3-center w3-padding-large" data-aos="fade-up" data-aos-delay="200">
-                  <div class="box">
-                    <button id="imgButton" (click)="imageClick(i)">
-                      <img id="imgLink" src={{uploadedImgProcessed[i]}} alt="response img" width="210" height="200" border="0" class="img-fluid">
-                    </button>
+            <div *ngFor="let tag of temp | filter:text; index as i;">
+              <!--              <div class="searchImages"-->
+              <!--                   *ngIf="text ==='' || nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null ">-->
+              <div class="w3-col s4  w3-center w3-padding-large" data-aos="fade-up" data-aos-delay="200">
+                <div class="box">
+                  <button id="imgButton" (click)="imageClick(i)">
+                    <img id="imgLink" src={{uploadedImgProcessed[i]}} alt="response img" width="210" height="200"
+                         border="0" class="img-fluid">
+                  </button>
 
-                    <h4>{{nameArr[i]}}</h4>
-                    <!-- <p >{{tags[i].name}}</p> -->
-                    <!-- <mat-chip *ngFor="let tag1 of tags4;index as j" (removed)="remove(tag)">
-                      {{tags[j].name}}
-                      <button matChipRemove>
-                        <mat-icon>cancel</mat-icon>
-                      </button>
-                    </mat-chip> -->
+                  <h4>{{nameArr[i]}}</h4>
 
-                    <mat-form-field class="tag-list" appearance="fill">
-                      <mat-label>Extracted Tags</mat-label>
-                      <mat-chip-list #chipList aria-label="Tag selection">
+                  <mat-form-field class="tag-list" appearance="fill">
+                    <mat-label>Extracted Tags</mat-label>
+                    <mat-chip-list #chipList aria-label="Tag selection">
 
 
-                        <div *ngFor="let tag1 of tag.tags;index as j">
-                          <div *ngIf="tag.name[j] != undefined">
-                            <mat-chip (removed)="remove(tag.name[j], tag.pos)" >
+                      <div *ngFor="let tag1 of tag.tags;index as j">
+                        <div *ngIf="tag.name[j] != undefined">
+                          <mat-chip (removed)="remove(tag.name[j], tag.pos)">
 
-                              {{tag.name[j]}}
-                              <button matChipRemove>
-                                <mat-icon>cancel</mat-icon>
-                              </button>
+                            {{tag.name[j]}}
+                            <button matChipRemove>
+                              <mat-icon>cancel</mat-icon>
+                            </button>
 
-                            </mat-chip>
-                          </div>
+                          </mat-chip>
                         </div>
+                      </div>
 
-                        <input placeholder="Add a new tag..."
-                               [matChipInputFor]="chipList"
-                               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                               [matChipInputAddOnBlur]="addOnBlur"
-                               (matChipInputTokenEnd)="add($event, tag.pos)">
-                      </mat-chip-list>
-                    </mat-form-field>
+                      <input placeholder="Add a new tag..."
+                             [matChipInputFor]="chipList"
+                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                             [matChipInputAddOnBlur]="addOnBlur"
+                             (matChipInputTokenEnd)="add($event, tag.pos)">
+                    </mat-chip-list>
+                  </mat-form-field>
 
-                  </div>
                 </div>
-               </div>
+              </div>
+              <!--              </div>-->
             </div>
           </div>
 
 
+        </div>
+
+
       </div>
 
-
-    </div>
-
-  </section>
+    </section>
 
   </main>
-
 
 
 </div>
