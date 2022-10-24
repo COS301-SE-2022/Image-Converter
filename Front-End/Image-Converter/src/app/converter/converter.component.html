@@ -83,35 +83,6 @@
       </div>
     </div>
     
-    <div *ngIf="loading">
-     
-      <mat-stepper labelPosition="bottom" linear #stepper>
-        <mat-step [stepControl]="firstFormGroup" [editable]="false" >
-          <ng-template matStepLabel>Classify Image</ng-template>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" [editable]="false">
-          <ng-template matStepLabel>Clean Image</ng-template>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" [editable]="false">
-          <ng-template matStepLabel>Resize Image</ng-template>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" [editable]="false">
-          <ng-template matStepLabel>Add Watermark to Image</ng-template>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" [editable]="false">
-          <ng-template matStepLabel>Extract keywords from image</ng-template>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-        </mat-step>
-      </mat-stepper>
-    </div>
-    <div id="progress" *ngIf="loading"></div>
-    <!-- Image Filters -->
-    <div id="imageFilter" class="uploadBox">
-      <app-filter></app-filter>
-    </div>
-
 
 
 <div *ngIf="loading">
