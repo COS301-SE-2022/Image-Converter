@@ -38,7 +38,7 @@ export class ConversionComponent implements OnInit {
     var a = document.createElement('a');
     a.href = this.message.image;
     // myTest(a.href,this.filter,"jpg");
-    
+
     this.incrementDownload();
     a.href = this.message.jpg;
     var imgBckend = a.href;
@@ -52,11 +52,11 @@ export class ConversionComponent implements OnInit {
   downloadJpgFile()
   {
     var a = document.createElement('a');
-    console.log("jpeg: "+this.message.jpg);
+    console.log(this.message);
 
     a.href = this.message.image;
     // myTest(a.href,this.filter,"jpg");
-    
+
     this.incrementDownload();
     a.href = this.message.jpg;
     var imgBckend = a.href;
@@ -66,15 +66,65 @@ export class ConversionComponent implements OnInit {
     document.body.removeChild(a);
   }
 
+  //download TIFF function
+  downloadTIFFFile()
+  {
+    var a = document.createElement('a');
+    console.log("TIFF: "+ this.message.tiff);
+
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+
+    this.incrementDownload();
+    a.href = this.message.tiff;
+    var imgBckend = a.href;
+    a.download = "output.tiff";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  downloadBMPFile() {
+    var a = document.createElement('a');
+    console.log("BMP: "+ this.message.bmp);
+
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+
+    this.incrementDownload();
+    a.href = this.message.bmp;
+    var imgBckend = a.href;
+    a.download = "output.bmp";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  downloadSVGFile() {
+    var a = document.createElement('a');
+    console.log("BMP: "+ this.message.bmp);
+
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+
+    this.incrementDownload();
+    a.href = this.message.svg;
+    var imgBckend = a.href;
+    a.download = "output.svg";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   //tracks number of downloads
   incrementDownload()
   {
-    
+
     this.trackerService.activityTrackerIncrement("Downloads").subscribe(
       responseData =>{
             //response
             console.log(responseData);
-                
+
         }
     );
   }

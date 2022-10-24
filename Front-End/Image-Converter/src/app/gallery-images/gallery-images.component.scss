@@ -14,18 +14,18 @@
   background-color: #fff;
   cursor: pointer;
   border-radius: 15px;
-  
+
 }
 
 .values .box img {
   padding: 15px 25px;
   transition: 0.5s;
   transform: scale(1.1);
-  
+
 }
 
 .values .box h4 {
-  font-size: 15px;
+  font-size: 18px;
   color: #012970;
   font-weight: 700;
   margin-bottom: 10px;
@@ -61,7 +61,7 @@ bodY {
     display: flex;
     justify-content: center;
     align-items: center;
-   
+
   }
   .wave {
     width: 10px;
@@ -99,7 +99,7 @@ bodY {
   .wave:nth-child(10) {
     animation-delay: 0.9s;
   }
-  
+
   @keyframes wave {
     0% {
       transform: scale(0);
@@ -111,7 +111,7 @@ bodY {
       transform: scale(0);
     }
   }
-  
+
   .headerDiv{
     display:flex;
   }
@@ -139,4 +139,7 @@ bodY {
   //   top:50%;
   // }
 
- 
+.tag-list {
+  word-wrap: break-word;
+  width: 100%;
+}

@@ -28,6 +28,8 @@ import { LinkPopupComponent } from './../../image-popup/link-popup/link-popup.co
 import { MaterialModule } from './../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatChipsModule} from '@angular/material/chips';
+import { FilterPipe } from './../../gallery-images/filter.pipe'
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     GalleryComponent,
     GalleryImagesComponent,
     SearchComponent,
+    FilterPipe,
     SharedImageComponent,
     LinkPopupComponent
   ],
@@ -60,7 +63,8 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatChipsModule
   ]
 })
 export class NavRouteModule { }

@@ -38,7 +38,7 @@ export class ConverterComponent implements OnInit {
   imageID!: any;
   height2!: any;
   width2!: any;
-  
+
   //constructor(private imgService: ConverterService,private imgData: ComponentCommunicationService, private _formBuilder: FormBuilder) { }
   socketio: any;
   firstFormGroup = this._formBuilder.group({
@@ -49,15 +49,15 @@ export class ConverterComponent implements OnInit {
   });
 
   @ViewChild('stepper') private myStepper!: MatStepper;
-  
+
   goForward(){
     this.myStepper.next();
 }
 
   myScriptElement!: HTMLScriptElement;
-  
-  constructor(private _formBuilder: FormBuilder,private imgService: ConverterService,private imgData: ComponentCommunicationService/*,private imageProgress: ImageProcessService*/) 
-  { 
+
+  constructor(private _formBuilder: FormBuilder,private imgService: ConverterService,private imgData: ComponentCommunicationService/*,private imageProgress: ImageProcessService*/)
+  {
     this.myScriptElement = document.createElement("script");
     this.myScriptElement.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js";
     document.body.appendChild(this.myScriptElement);
@@ -71,7 +71,7 @@ export class ConverterComponent implements OnInit {
   myimage?: Observable<any>;
 
   respsonseBase64!:{image:string};
-  saveFile:any='';//used in saveFiles method to save image 
+  saveFile:any='';//used in saveFiles method to save image
   base64Picture: string ="";
   isDisabled = true;//upload button bool
 
@@ -88,12 +88,12 @@ export class ConverterComponent implements OnInit {
     let files: FileList = event.target.files;
     this.uploadSuccess = false;
     this.commentLabel = "Comment"
-    
+
     this.showDim = false
 
 
    // this.saveFiles(files);
-    
+
     this.checkifImg(files);
     if(this.error == '')
     {
@@ -106,16 +106,16 @@ export class ConverterComponent implements OnInit {
       const reader = new FileReader();
       let imagePath = files;
       let url;
-      reader.readAsDataURL(files[0]); 
-      reader.onload = (_event: any) => { 
-          this.displayImg = reader.result; 
+      reader.readAsDataURL(files[0]);
+      reader.onload = (_event: any) => {
+          this.displayImg = reader.result;
         const image = new Image();
         image.src = _event.target.result;
         image.onload = (rs: any) => {
           this.height = rs.currentTarget['height'];
           this.width = rs.currentTarget['width'];
 
-        
+
         };
       }
       console.log(this.width);
@@ -126,7 +126,7 @@ export class ConverterComponent implements OnInit {
     }
   }
 
-  
+
   ngOnInit() {
     this.dragAreaClass = 'dragarea';
     //subscribe for communication between components
@@ -135,7 +135,7 @@ export class ConverterComponent implements OnInit {
 
     this.subscription = this.imgData.currentHeight.subscribe(height => this.height2 = height);
     this.subscription = this.imgData.currentWidth.subscribe(width => this.width2 = width);
-   
+
 
     this.hasCancelLabel = false;
     this.showDim = false;
@@ -144,8 +144,8 @@ export class ConverterComponent implements OnInit {
     this.form = this._formBuilder.group({
       comment: [this.initialComment, Validators.required]
     });
-   
-    
+
+
     // const socket = new WebSocket('http://localhost:5000');
 
     // // Connection opened
@@ -190,7 +190,7 @@ export class ConverterComponent implements OnInit {
       });
   }
 
-  
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -214,15 +214,15 @@ export class ConverterComponent implements OnInit {
     this.dragAreaClass = 'dragarea';
     event.preventDefault();
   }
-  
+
   @HostListener('drop', ['$event']) onDrop(event: any) {
     this.dragAreaClass = 'dragarea';
     event.preventDefault();
     event.stopPropagation();
     if (event.dataTransfer.files) {
       let files: FileList = event.dataTransfer.files;
-      
-      
+
+
       this.checkifImg(files);
       if(this.error == '')
       {
@@ -235,9 +235,9 @@ export class ConverterComponent implements OnInit {
       const reader = new FileReader();
       let imagePath = files;
       let url;
-      reader.readAsDataURL(files[0]); 
-      reader.onload = (_event) => { 
-          this.displayImg = reader.result; 
+      reader.readAsDataURL(files[0]);
+      reader.onload = (_event) => {
+          this.displayImg = reader.result;
       }
         this.isDisabled = false;
          this.saveFile=files;
@@ -261,7 +261,7 @@ export class ConverterComponent implements OnInit {
   saveFiles() {
     this.loadingPercent=0;
     this.loading = true;
-    
+
     if(this.saveFile!=''){
       console.log(this.saveFile[0].size, this.saveFile[0].name, this.saveFile[0].type);
 
@@ -269,7 +269,7 @@ export class ConverterComponent implements OnInit {
       this.convertToBase64(this.saveFile[0]);
       this.myimage?.subscribe(data => {
         // console.log(data);
-        
+
         this.imgService.postImg(data, this.saveFile[0].name).subscribe(
           (responseData: any) =>{
             document.getElementById("progress")!.innerHTML = "";
@@ -293,7 +293,7 @@ export class ConverterComponent implements OnInit {
             document.getElementById("conversionFormat")!.style.display = "block";
           }
         );
-        
+
       });
     }
   }
@@ -317,16 +317,16 @@ export class ConverterComponent implements OnInit {
       subscriber.complete();
     };
   }
-  
-  get comment() {  
-    return this.form.get('comment');  
-  } 
+
+  get comment() {
+    return this.form.get('comment');
+  }
 
   onComment() {
     console.log('onComment', this.comment!.value);
     this.initialComment = this.comment!.value;
     this.commentLabel = "Update";
-    
+
     let comment: Message = {
       feedback: this.comment!.value,
       id: this.imageID
