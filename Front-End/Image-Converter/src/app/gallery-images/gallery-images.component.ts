@@ -8,7 +8,10 @@ import {MatDialogRef, MatDialog, MatDialogConfig} from '@angular/material/dialog
 import {ImagePopupComponent} from '../image-popup/image-popup.component';
 import {Validators} from '@angular/forms';
 import {Message} from "../classes/Message";
-
+import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
+import { ImagePopupComponent } from '../image-popup/image-popup.component';
+import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 export interface Tag {
   name: string;
@@ -51,17 +54,23 @@ export class GalleryImagesComponent implements OnInit {
   tags: string[] = [];
 
 
-  textT1: any[] = [];
-  uuid: BigInteger[] = [];
 
-  constructor(private dialog: MatDialog, private graphFolderData: ComponentCommunicationService, private imgService: ConverterService) {
-  }
+  textT1: any[] = [];
+  uuid:any[]=[];
+  constructor(private _router: Router,private dialog: MatDialog, private graphFolderData: ComponentCommunicationService,private imgService: ConverterService) { }
 
   ngOnInit(): void {
+
     this.subscription = this.graphFolderData.currentGraph.subscribe(selectedFolder => this.selectedFolder = selectedFolder);
     this.loading = true;
 
-    if (this.selectedFolder == "Line graphs")
+    //when not category has been selected
+    if(this.selectedFolder=='none')
+    {
+      this._router.navigateByUrl('/nav/gallery');
+    }
+
+    if(this.selectedFolder == "Line graphs")
       this.selectedFolder = "line graph";
     else if (this.selectedFolder == "Bar graphs")
       this.selectedFolder = "bar graph";
@@ -78,7 +87,7 @@ export class GalleryImagesComponent implements OnInit {
         let respsonseBase64 = JSON.parse(JSON.stringify(responseData));
         console.log("Gallery:", respsonseBase64);
 
-        for (let i = 0; i < 9; i++) { // respsonseBase64.OriginalImage.length
+        for (let i = 0; i < respsonseBase64.OriginalImage.length; i++) { // respsonseBase64.OriginalImage.length
           if (i == respsonseBase64.Tags.length)
             break;
           this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
@@ -86,6 +95,7 @@ export class GalleryImagesComponent implements OnInit {
           this.indexList.push(respsonseBase64.Index[i]);
           this.tagArr.push(respsonseBase64.Tags[i]);
           this.nameArr.push(respsonseBase64.Names[i]);
+          this.uuid.push(respsonseBase64.Guids[i]);
           console.log("index: " + respsonseBase64.Tags[i]);
 
           // this.uuid.push(respsonseBase64.Index[i]);
@@ -134,12 +144,7 @@ export class GalleryImagesComponent implements OnInit {
       width: '40%',
       height: '80%',
       //Use the line of
-      data: {
-        img: '',
-        imgProcessed: this.uploadedImgProcessed[index],
-        comment: this.commentList[index],
-        index: this.indexList[index]
-      },
+      data: { img: '',imgProcessed:this.uploadedImgProcessed[index] , comment:this.commentList[index], index:this.indexList[index],uuid:this.uuid[index]},
     });
 
     //  dialogRef.afterClosed().subscribe((data) => {

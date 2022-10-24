@@ -1,3 +1,9 @@
+.text-heading{
+  font-size:  25px;
+  text-decoration: underline;
+  padding-bottom: 20px;
+}
+
 .values .box {
   padding: 10px;
   box-shadow: 0px 0 5px rgba(1, 41, 112, 0.6);
@@ -8,14 +14,14 @@
   background-color: #fff;
   cursor: pointer;
   border-radius: 15px;
-  
+
 }
 
 .values .box img {
   padding: 15px 25px;
   transition: 0.5s;
   transform: scale(1.1);
-  
+
 }
 
 .values .box h4 {
@@ -55,7 +61,7 @@ bodY {
     display: flex;
     justify-content: center;
     align-items: center;
-   
+
   }
   .wave {
     width: 10px;
@@ -93,7 +99,7 @@ bodY {
   .wave:nth-child(10) {
     animation-delay: 0.9s;
   }
-  
+
   @keyframes wave {
     0% {
       transform: scale(0);
@@ -105,7 +111,7 @@ bodY {
       transform: scale(0);
     }
   }
-  
+
   .headerDiv{
     display:flex;
   }

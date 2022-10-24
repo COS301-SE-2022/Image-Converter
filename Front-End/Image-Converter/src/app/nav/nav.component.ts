@@ -32,7 +32,10 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    if(!localStorage.getItem('token') && localStorage.getItem('token')=="")
+    {
+      this._router.navigateByUrl('/login');
+    }
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
@@ -76,7 +79,8 @@ export class NavComponent implements OnInit {
     this._router.navigateByUrl('/welcome');
   }
 
-  onSubmitLogin(){
+  onSubmitLogout(){
+    localStorage.setItem('token', "");
     this._router.navigateByUrl('/login');
     // alert("button working");
   }

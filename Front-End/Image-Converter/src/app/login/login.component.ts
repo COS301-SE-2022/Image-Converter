@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   });
 
   connect(){
-    this.socketio = io('http://46.101.46.219:5000');
+    this.socketio = io('http://localhost:5000');
     }
   get username() {  
     return this.form.get('username');  
@@ -67,7 +67,9 @@ export class LoginComponent implements OnInit {
         if(responseData.body.response == "success"){
           localStorage.setItem('token', responseData.body.token);
           localStorage.setItem('email', this.form.get('username')!.value);
+         
           this._router.navigateByUrl('/welcome');
+          
         }else if(responseData.body.response =="UserDoesNotExist"){
           alert('User Does Not Exist in the system');
         }

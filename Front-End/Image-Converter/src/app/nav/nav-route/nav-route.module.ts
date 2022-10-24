@@ -23,6 +23,8 @@ import { FooterComponent } from './../../footer/footer.component';
 import { GalleryComponent } from './../../gallery/gallery.component';
 import { GalleryImagesComponent } from './../../gallery-images/gallery-images.component';
 import { SearchComponent } from './../../search/search.component';
+import { SharedImageComponent } from './../../shared-image/shared-image.component';
+import { LinkPopupComponent } from './../../image-popup/link-popup/link-popup.component';
 import { MaterialModule } from './../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -52,7 +54,9 @@ import {Ng2SearchPipe, Ng2SearchPipeModule} from "ng2-search-filter";
     GalleryComponent,
     GalleryImagesComponent,
     SearchComponent,
-    FilterPipe
+    FilterPipe,
+    SharedImageComponent,
+    LinkPopupComponent
   ],
   imports: [
     CommonModule,

@@ -1,15 +1,3 @@
-.text-heading{
-    font-size:  25px;
-    text-decoration: underline;
-    padding-bottom: 20px;
-  }
-
-  
-bodY {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 .center {
   height: 100%;
   width: 100%;
@@ -70,3 +58,8 @@ bodY {
     transform: scale(0);
   }
 }
+
+  #sharedImg
+  {
+    width: 40%;
+  }
