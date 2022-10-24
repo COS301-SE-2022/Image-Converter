@@ -733,5 +733,37 @@ def user_comment(user):
         return {'response': 'failed'}, 400
 
 
+"""
+     Function:
+        adds the user's image tags to the database
+    Parameters:
+        User array
+    HTTP method: POST
+    Request data:
+        comment
+    Returns:
+        JSON Object
+"""
+
+
+@app.route('/addTag', methods=['POST'])
+@token
+def addTag(user):
+    db = User()
+    if (db != None):
+        comment = request.json['feedback']
+        index = request.json['id']
+        print(index, comment)
+        if comment is not None:
+            if db.insert_tag(index, comment) is True:
+                print("comment inserted")
+                return jsonify({'response': 'success'})
+            else:
+                return jsonify({'response': 'failed'})
+        else:
+            return {'response': 'failed'}, 400
+    else:
+        return {'response': 'failed'}, 400
+
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=5000)

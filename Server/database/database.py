@@ -199,6 +199,16 @@ class User:
         except Exception as e:
             print(f"Database connection error: {e}")
             return False
+        
+    def insert_tag(self, id, tag):
+        try:
+            sql = "UPDATE history2 SET tags =%s WHERE id= %s;"
+            self.cur.execute(sql, (tag, id))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print(f"Database connection error: {e}")
+            return False
             
     def insert_code(self, email, code):
         try:
