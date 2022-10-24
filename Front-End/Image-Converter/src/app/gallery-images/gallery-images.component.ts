@@ -121,4 +121,8 @@ export class GalleryImagesComponent implements OnInit {
       console.log(this.text);
      }
 
+     onSubmitGallery(){
+      this._router.navigateByUrl('/nav/gallery');
+    }
+
 }
