@@ -117,11 +117,16 @@ bodY {
   }
 
   .headerDiv #heading{
-    width: 150px;
+    width: 350px;
   }
 
   .headerDiv #searchDiv{
-    left:90%;
+    right:700%;
+    margin-bottom: 3%;
+  }
+
+  .headerDiv .back{
+    width: 150px;
     margin-bottom: 3%;
   }
 

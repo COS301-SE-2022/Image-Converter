@@ -258,4 +258,8 @@ export class GalleryImagesComponent implements OnInit {
     }
   }
 
+     onSubmitGallery(){
+      this._router.navigateByUrl('/nav/gallery');
+    }
+
 }
