@@ -106,10 +106,12 @@ def upload_image(user):
             imageResult =imageCleaner.clean_noise()
             imageHeight = imageCleaner.height
             imageWidth = imageCleaner.width
+            guid = uuid.uuid4()
+            print("guid " + str(guid))
             print(imageHeight, ", ", imageWidth)
-            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words)):
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words, guid)):
                 print("Image inserted")
-            db_image = db.get_image(user[0])
+            db_image = db.get_image(guid)
             if(img_class.graphType=="unrecognized"):
                 db.incrementActivity("Unrecognized")
                 graphType = "This is an "+img_class.graphType+" graph"

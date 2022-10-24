@@ -102,7 +102,7 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    def insert_image(self, image_uploaded,image_converted, id,graphType, names, tags):
+    def insert_image(self, image_uploaded,image_converted, id,graphType, names, tags, guid):
         try: 
             
             value = self.countRows()
@@ -115,8 +115,8 @@ class User:
             link=fireStore1.uploadImage("images/original/Original.png",str(count)+"Original.jpg")
             link2=fireStore1.uploadImage("images/original/Converted.png",str(count)+"Converted.jpg")
             # print(link)
-            guid = uuid.uuid4()
-            print("guid "+ str(guid))
+            # guid = uuid.uuid4()
+            # print("guid "+ str(guid))
             print("Converted ")
             # print(link2)
             #sql = "INSERT INTO history (graph_type,user_id,image_uploaded,image_converted) VALUES(%s,%s,%s,%s)"
@@ -146,7 +146,7 @@ class User:
         try:
             #sql = "SELECT * FROM history where user_id=%s;"
             sql = "SELECT * FROM history2 where guid=%s ORDER BY id DESC LIMIT 1;"
-            self.cur.execute(sql, ([guid]))
+            self.cur.execute(sql, ([str(guid)]))
             db_history = self.cur.fetchone()
             self.conn.commit()
             # print(db_history)
