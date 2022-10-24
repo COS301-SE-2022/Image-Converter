@@ -1,34 +1,12 @@
-.heading-parent{
-  width: 50%; 
-  // padding-bottom: 50px;
-
-}
-.float-child{
-  float: left; 
-    width: 50%; 
-}
 .text-heading{
-  font-size:  30px;
+  font-size:  25px;
   text-decoration: underline;
   padding-bottom: 20px;
-  position: relative;
-  white-space: nowrap;
-  margin-left: 8%; 
-
-
+  width:50%;
 }
-
-.text-heading-p{
-  font-size:  30px;
-  text-decoration: underline;
-  padding-bottom: 20px;
-  white-space: nowrap;
-  margin-left: 130%; 
-}
-
-
 #uploadcard {
     max-width: 450px;
+    // margin-left: 10px;
     margin-left:0%;
     margin-right: auto;
     background-color: #333333;
@@ -408,17 +386,17 @@ $stroke: 8px;
 
 .imgtext-bottom{
   position:absolute;
-  right:145px;
+  right:170px;
   color: white;
-  top:437px;
+  top:467px;
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .imgtext-top{
   position:absolute;
-  right:145px;
+  right:170px;
   color: white;
-  top:56px;
+  top:84px;
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
@@ -430,7 +408,7 @@ $stroke: 8px;
   // text-orientation: mixed;
   transform: rotate(-90deg);
   top:90px;
-  left:-228px;
+  left:-203px;
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
@@ -441,11 +419,9 @@ $stroke: 8px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   top:180px;
-  right:10px;
+  right:21px;
   font-family: "Lucida Console", "Courier New", monospace;
 }
-
-
 
 .textBox{
   display: inline-block;
@@ -482,121 +458,28 @@ $stroke: 8px;
   }
 
 
-  .uploadBox{
+  .sameDiv{
+    overflow:hidden;
     display: inline-block;
-    padding: 1rem 1rem;
-    vertical-align: middle;
+  }
+  .uploadBox{
+    // width:70%;
+    float: left;
+    display: inline-block;
   }
 
-  .filterBox{
-      display: inline-block;
-      padding: 1rem 1rem;
-      vertical-align: middle;
-      margin-left: 80%; 
-    }
-  
-    .button-1 {
-      background-color: black;
-      border-radius: 5px;
-      border-style: none;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      cursor: pointer;
-      display: inline-block;
-      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      height: 40px;
-      width:430px;
-      line-height: 20px;
-      list-style: none;
-      margin: 0;
-      outline: none;
-      padding: 10px 16px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: color 100ms;
-      vertical-align: baseline;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
+  #imageFilters{
+    left:50%;
+  }
+
+  #commentsection{
+    width:20%;
+  }
+
+  .comment-form-container{
+    left:80%;
+  }
+
+  .socketLoader{
     
-    .button-1:hover,
-    .button-1:focus {
-      background-color: grey;
-    }
-
-.dragged-files-wrapper{
-  padding-left: 10px;
-  padding-right: 10px;
-
-}
-
-.text-heading-annotation{
-  font-size:  30px;
-  text-decoration: underline;
-  padding-bottom: 20px;
-  position: relative;
-  white-space: nowrap;
-}
-
-.button-annotation {
-  background-color: #1E90FF;
-  border-radius: 5px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  height: 40px;
-  width:160px;
-  line-height: 20px;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-annotation:hover,
-.button-annotation:focus {
-  background-color: grey;
-}
-
-
-  //.sameDiv{
-   // overflow:hidden;
-  //  display: inline-block;
-  //}
- // .uploadBox{
-    // width:70%;
- //   float: left;
-  //  display: inline-block;
-  //}
-
-  //#imageFilters{
-  //  left:50%;
-  //}
-
- //#commentsection{
-  //  width:20%;
-  //}
-
-  //.comment-form-container{
-  //  left:80%;
-  //}
-
-
-
+  }
