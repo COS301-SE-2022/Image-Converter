@@ -52,8 +52,7 @@
 
           <div *ngIf="!loading" class="w3-row w3-container">
             <div *ngFor="let tag of temp | filter:text; index as i;">
-              <!--              <div class="searchImages"-->
-              <!--                   *ngIf="text ==='' || nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null ">-->
+              <!--              <div class="searchImages"                   *ngIf="text ==='' || nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null ">-->
               <div class="w3-col s4  w3-center w3-padding-large" data-aos="fade-up" data-aos-delay="200">
                 <div class="box">
                   <button id="imgButton" (click)="imageClick(i)">
@@ -91,7 +90,7 @@
 
                 </div>
               </div>
-              <!--              </div>-->
+
             </div>
           </div>
 

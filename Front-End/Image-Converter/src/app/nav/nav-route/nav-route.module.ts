@@ -30,7 +30,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatChipsModule} from '@angular/material/chips';
 import { FilterPipe } from './../../gallery-images/filter.pipe'
-import {Ng2SearchPipe, Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [

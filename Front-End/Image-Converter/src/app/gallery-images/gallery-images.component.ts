@@ -4,9 +4,6 @@ import {Subscription} from 'rxjs';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {ConverterService} from './../shared/converter.service';
-import {MatDialogRef, MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {ImagePopupComponent} from '../image-popup/image-popup.component';
-import {Validators} from '@angular/forms';
 import {Message} from "../classes/Message";
 import {MatDialogRef,MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
@@ -21,8 +18,7 @@ export interface TagList {
   pos: number;
   name: any[];
   imgName: string;
-  check
-    : string;
+  check: string;
   tags: any[];
 }
 
