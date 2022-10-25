@@ -94,13 +94,7 @@ def upload_image(user):
             image_uploaded = bytearray(base64_picture)
             img_tags = NLPTags(picture)
             # img_tags = ""
-         
-            tags =[]
-            for tag in img_tags.dict_words:
-                if tag not in tags:
-                    tags.append(tag)
-            tagStr = ", ".join(str(t) for t in tags)
-            print(tagStr)
+            print(img_tags.dict_words)
             # socketio.emit('data-tmp',"Image is classified")
             img_class = MultiClassification(picture)
             print("#########################################")
@@ -112,12 +106,10 @@ def upload_image(user):
             imageResult =imageCleaner.clean_noise()
             imageHeight = imageCleaner.height
             imageWidth = imageCleaner.width
-            guid = uuid.uuid4()
-            print("guid " + str(guid))
             print(imageHeight, ", ", imageWidth)
-            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words, guid)):
+            if(db.insert_image(opencv_img, imageResult, user[0], img_class.graphType, imgName, img_tags.dict_words)):
                 print("Image inserted")
-            db_image = db.get_image(guid)
+            db_image = db.get_image(user[0])
             if(img_class.graphType=="unrecognized"):
                 db.incrementActivity("Unrecognized")
                 graphType = "This is an "+img_class.graphType+" graph"
@@ -692,7 +684,6 @@ def graphs(user):
             proccesedImagelist=[]
             Names = []
             Tags = []
-            t = []
             Guids = []
             for x in db_image_array:
                 IndexArray.append(x[0])
@@ -761,38 +752,6 @@ def get_image(user):
     else:
         return {'response': 'failed'}, 400
 
-
-"""
-     Function:
-        adds the user's image tags to the database
-    Parameters:
-        User array
-    HTTP method: POST
-    Request data:
-        comment
-    Returns:
-        JSON Object
-"""
-
-
-@app.route('/addTag', methods=['POST'])
-@token
-def addTag(user):
-    db = User()
-    if (db != None):
-        comment = request.json['feedback']
-        index = request.json['id']
-        print(index, comment)
-        if comment is not None:
-            if db.insert_tag(index, comment) is True:
-                print("comment inserted")
-                return jsonify({'response': 'success'})
-            else:
-                return jsonify({'response': 'failed'})
-        else:
-            return {'response': 'failed'}, 400
-    else:
-        return {'response': 'failed'}, 400
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=5000)

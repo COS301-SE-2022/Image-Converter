@@ -11,7 +11,7 @@ import {ConverterService} from './shared/converter.service';
 import { ComponentCommunicationService } from './shared/component-communication.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register/register.component';  
 /*import { SideBarComponent } from './side-bar/side-bar.component';
 import { ConversionComponent } from './conversion/conversion.component';
 import { UploadHistoryComponent } from './upload-history/upload-history.component';
@@ -27,7 +27,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AppComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
