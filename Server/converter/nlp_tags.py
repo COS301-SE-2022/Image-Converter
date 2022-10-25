@@ -31,7 +31,7 @@ class NLPTags:
       # https://github.com/UB-Mannheim/tesseract/wiki
 
       #Define path to tessaract.exe
-      path_to_tesseract = (r'C:\Program Files\Tesseract-OCR\tesseract.exe')
+      path_to_tesseract = (r'C:/Program Files/Tesseract-OCR/tesseract.exe')
 
       #Define path to image
       path_to_image = self.uploaded_image
