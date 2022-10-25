@@ -8,18 +8,13 @@
   
 
    <div class="headerDiv">
-
-    <div class ="back">
-      <button type="button" (click)='onSubmitGallery()'  class="btn btn-dark">Back</button>
-    </div>
-
     <div id="heading">
-      <h1 class="text-heading"><b>{{selectedFolder}}</b></h1>
+      <h1 class="text-heading"><b>Shared Images</b></h1>
     </div>
 
-    <div id="searchDiv">
+    <!-- <div id="searchDiv">
       <app-search (searchText)="textEntered($event)"></app-search>
-    </div>
+    </div> -->
 
     <!-- <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,7 +56,7 @@
 
           <div *ngIf="!loading" class="w3-row w3-container">
             <div *ngFor="let image of uploadedImgProcessed;index as i;">
-              <div class="searchImages" *ngIf ="text ==='' || (nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null) || (tagArr[i].toLowerCase().includes(text)  && tagArr[i]!=null)">
+              <!-- <div class="searchImages" *ngIf ="text ==='' || (nameArr[i].toLowerCase().includes(text) && nameArr[i]!=null) || (tagArr[i].toLowerCase().includes(text)  && tagArr[i]!=null)"> -->
                 <div class="w3-col s4  w3-center w3-padding-large" data-aos="fade-up" data-aos-delay="200">
                   <div class="box">
                     
@@ -69,12 +64,12 @@
                       <img id="imgLink" src={{uploadedImgProcessed[i]}} alt="response img" width="210" height="200" border="0" class="img-fluid">
                     </button>
                 
-                    <h4>{{nameArr[i]}}</h4>
-                    <p hidden>{{tagArr[i]}}</p>
+                    <!-- <h4>{{nameArr[i]}}</h4>
+                    <p hidden>{{tagArr[i]}}</p> -->
                     
                   </div>
                 </div>
-               </div>
+               <!-- </div> -->
             </div>
           </div>
 

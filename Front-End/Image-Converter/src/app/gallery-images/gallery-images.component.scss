@@ -1,3 +1,9 @@
+.text-heading{
+  font-size:  25px;
+  text-decoration: underline;
+  padding-bottom: 20px;
+}
+
 .values .box {
   padding: 10px;
   box-shadow: 0px 0 5px rgba(1, 41, 112, 0.6);
@@ -19,7 +25,7 @@
 }
 
 .values .box h4 {
-  font-size: 20px;
+  font-size: 15px;
   color: #012970;
   font-weight: 700;
   margin-bottom: 10px;
@@ -111,11 +117,16 @@ bodY {
   }
 
   .headerDiv #heading{
-    width: 150px;
+    width: 350px;
   }
 
   .headerDiv #searchDiv{
-    left:90%;
+    right:700%;
+    margin-bottom: 3%;
+  }
+
+  .headerDiv .back{
+    width: 150px;
     margin-bottom: 3%;
   }
 

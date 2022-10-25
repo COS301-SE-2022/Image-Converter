@@ -35,7 +35,7 @@ const routes: Routes = [
             component: LinkPopupComponent
           },
           {
-            path: 'sharedmage',
+            path: 'sharedImage',
             component: SharedImageComponent
           },
           {

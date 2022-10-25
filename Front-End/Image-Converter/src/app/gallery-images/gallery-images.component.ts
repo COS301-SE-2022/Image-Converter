@@ -65,7 +65,7 @@ export class GalleryImagesComponent implements OnInit {
         console.log("Gallery:", respsonseBase64);
       //  console.log("response here: "+JSON.stringify(responseData));
        
-        for(let i=0;i<9;i++){ // respsonseBase64.OriginalImage.length
+        for(let i=0;i<respsonseBase64.OriginalImage.length;i++){ // respsonseBase64.OriginalImage.length
           
             this.uploadedImgProcessed.push(respsonseBase64.proccesedImage[i]);
             this.commentList.push(respsonseBase64.Comments[i]);
@@ -120,5 +120,9 @@ export class GalleryImagesComponent implements OnInit {
       this.text = searchVal.replaceAll(/[^\w\s.]/gi,' ');
       console.log(this.text);
      }
+
+     onSubmitGallery(){
+      this._router.navigateByUrl('/nav/gallery');
+    }
 
 }
