@@ -142,18 +142,18 @@ class User:
             print(f"Database connection error: {e}")
             return False
 
-    def get_image(self, guid):
-        try:
-            #sql = "SELECT * FROM history where user_id=%s;"
-            sql = "SELECT * FROM history2 where guid=%s ORDER BY id DESC LIMIT 1;"
-            self.cur.execute(sql, ([guid]))
-            db_history = self.cur.fetchone()
-            self.conn.commit()
-            # print(db_history)
-            return db_history
-        except Exception as e:
-            print(f"Database connection error: {e}")
-            return False
+    # def get_image(self, guid):
+    #     try:
+    #         #sql = "SELECT * FROM history where user_id=%s;"
+    #         sql = "SELECT * FROM history2 where guid=%s ORDER BY id DESC LIMIT 1;"
+    #         self.cur.execute(sql, ([guid]))
+    #         db_history = self.cur.fetchone()
+    #         self.conn.commit()
+    #         # print(db_history)
+    #         return db_history
+    #     except Exception as e:
+    #         print(f"Database connection error: {e}")
+    #         return False
 
     #fetches previously uploaded images
     def get_image_history(self, id):
