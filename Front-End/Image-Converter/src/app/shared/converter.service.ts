@@ -16,7 +16,7 @@ export class ConverterService {
   constructor(private httpclient: HttpClient) { }
 
    // postImg sends request to back end to upload img
-  
+
    //send request to back end to validate user login details
   login(formData: Login): Observable<any> {
     return this.httpclient.post(
@@ -37,11 +37,11 @@ export class ConverterService {
       console.log(formData);
       return this.httpclient.post(
         'http://localhost:5000/bargraph',
-        formData,{observe:'response'}, 
+        formData,{observe:'response'},
       );
     }
 
-  
+
   register(codePar:any) : Observable<any> {
 
     let data = {name: localStorage.getItem('name'),
@@ -57,7 +57,7 @@ export class ConverterService {
     );
   }
    postImg(data: string, name: string) {
-     
+
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
     console.log(tok);
@@ -79,7 +79,7 @@ export class ConverterService {
   getUploadHistory(){
 
     let token = localStorage.getItem('token');
-    
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
     const httpOptions:Object = {
       headers: headers
@@ -97,12 +97,12 @@ export class ConverterService {
   deleteImage(id:any){
 
     var tok = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
     };
-    
+
     let pic = {index: id};
 
     return this.httpclient.post(
@@ -114,7 +114,7 @@ export class ConverterService {
   //sends users annotations on the image
   sendAnnotations(comment: Message) {
     var token = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
     const httpOptions:Object = {
       headers: headers
@@ -125,11 +125,25 @@ export class ConverterService {
     );
   }
 
+  //Adds tags to the database
+  sendTags(tags: Message) {
+    var token = localStorage.getItem('token');
+
+    let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
+    const httpOptions:Object = {
+      headers: headers
+    };
+    return this.httpclient.post(
+      'http://127.0.0.1:5000/addTag',
+      tags,httpOptions
+    );
+  }
+
   //sends users message
   sendMessage(messageDetails:Message){
 
     var token = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
     const httpOptions:Object = {
       headers: headers
@@ -142,7 +156,7 @@ export class ConverterService {
 
   //sends users email to where reset code will be sent
   ResetPassword(email:any): Observable<any>
-  { 
+  {
     console.log(JSON.stringify(email));
     let request = {email: email}
     return this.httpclient.post(
@@ -152,7 +166,7 @@ export class ConverterService {
   }
 
   resetPasswordCode(code:any): Observable<any>
-  { 
+  {
     let request = {email: localStorage.getItem('codeEmail'),
                   code:code}
     return this.httpclient.post(
@@ -174,7 +188,7 @@ export class ConverterService {
 
   //sends users email to where code will be sent
   registerEmailSend(email:any): Observable<any>
-  { 
+  {
     return this.httpclient.post(
       'http://localhost:5000/sendEmail',
       email,{observe:'response'}
@@ -182,7 +196,7 @@ export class ConverterService {
   }
 
   postFormula(data: any) {
-     
+
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
@@ -201,7 +215,7 @@ export class ConverterService {
   getUnrecognizedGraphs(){
 
     let token = localStorage.getItem('token');
-    
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
     const httpOptions:Object = {
       headers: headers
@@ -212,12 +226,12 @@ export class ConverterService {
       httpOptions
     );
   }
- 
+
   //sends request to delete unrecognisable images
   deleteUnrecognisableImage(id:any){
 
     var tok = localStorage.getItem('token');
- 
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
@@ -234,7 +248,7 @@ export class ConverterService {
   userType(){
 
     let token = localStorage.getItem('token');
-    
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': token!});
     const httpOptions:Object = {
       headers: headers
@@ -248,12 +262,12 @@ export class ConverterService {
   AdminFeedback(adminFeedback:any, id:any, ImgProcessed:any){
 
     var tok = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
     };
-    
+
     let pic = {feedback:adminFeedback, index: id, image:ImgProcessed};
 
     return this.httpclient.post(
@@ -263,10 +277,10 @@ export class ConverterService {
   }
 
   savePlottedImg(data: string) {
-     
+
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
@@ -279,13 +293,13 @@ export class ConverterService {
       pic,httpOptions
     );
   }
-  
+
   //activity tracker(increment/decrement)
   activityTrackerIncrement(data: string) {
-     
+
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
@@ -301,21 +315,21 @@ export class ConverterService {
 
   //graph data
   activityTrackerGraphData() {
-     
+
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
     };
- 
+
     return this.httpclient.get(
       'http://localhost:5000/activities',
       httpOptions
     );
 
-    
+
   }
 
   //graph gallery data
@@ -323,7 +337,7 @@ export class ConverterService {
      console.log("data: "+data)
     // var auth=sessionStorage.getItem('token');
     var tok = localStorage.getItem('token');
-  
+
     let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
     const httpOptions:Object = {
       headers: headers
@@ -335,7 +349,7 @@ export class ConverterService {
       graph,httpOptions
     );
 
-    
+
   }
 
   //shared image
@@ -343,7 +357,7 @@ export class ConverterService {
     console.log("data: "+data)
    // var auth=sessionStorage.getItem('token');
    var tok = localStorage.getItem('token');
- 
+
    let headers: HttpHeaders = new HttpHeaders({'x-access-token': tok!});
    const httpOptions:Object = {
      headers: headers
