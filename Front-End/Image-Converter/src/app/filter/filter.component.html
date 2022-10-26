@@ -1,44 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title></title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> -->
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+/* body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-.w3-half img:hover{opacity:1}
+.w3-half img:hover{opacity:1} */
 </style>
 </head>
 <!-- <body > -->
 <body *ngIf=dispBool>
-  <style>
+
+<style>
     body{
         background-image:url("assets/img/wallpaper.jpg");
         background-attachment: fixed;
+        overflow:hidden"
         /* background-repeat:no-repeat;
         background-size: cover; */
     }
   </style>
   <!--Image Filters-->  
-  <div class="w3-container" id="imageFilters" style="margin-top:5px">
-    <h1 class="text-heading"><b>Processed Image</b></h1>
-    <!-- <hr style="width:50px;border:5px solid black" class="w3-round"> -->
-      <div  id="processedImg">  
+    <div class="w3-container" id="imageFilters" >
+
+   
+      <div  id="processedImg" class="col-sm-8">  
         <div class="w3-container w3-cell">
-          <div class="">
-            <!-- <img id="" style="border: solid black 20px" src="assets/img/wallpaper.jpg" alt="response img" width="400" height="400"><br/> -->
-            <!-- <span class='imgtext-top' >Image width: {{width}} px</span> -->
+          <div class="cd">
+            <!-- <img  style="border: solid black 20px" src="assets/img/wallpaper.jpg" alt="response img" width="400" height="400"><br/> -->
+
           </div>
-            <img id="imgLink" src={{message.image}} alt="response img" width="400" height="400"><br/>
+            <img id="imgLink" style="border: solid black 20px" src={{message.image}} alt="response img" width="400" height="400"><br/>
+            <span class='imgtext-top-filter' >Image width: 800 px</span>
+            <span class='imgtext-bottom-filter' >Image width: 800 px</span>
+            <span class='imgtext-right-filter'>Image height: 800 px</span>
+            <span class='imgtext-left-filter'>Image height: 800 px</span>
+
 
             <p><b>{{message.graphType}}</b></p>
         </div>
-          <div class="w3-container w3-cell">
+          <!-- <div class="w3-container w3-cell"> -->
             <!-- <div class="w3-panel" style="width:100%">
                 <button class="w3-button w3-block w3-blue" (click)="original()">Original</button>
               </div>
@@ -54,14 +60,16 @@ body {font-size:16px;}
             <div class="w3-panel" style="width:100%">
                 <button class="w3-button w3-block w3-blue" (click)="hueRotate()">Hue Rotate</button>
             </div> -->
-          </div>
+          <!-- </div> -->
       </div> 
-      <div class="w3-panel" style="width:40%">
-        <a id='dwnldLnk' download='output.png' style="display:none;" ></a>
-        <a id='dwnldLnk2' download='output.jpg' style="display:none;" ></a>
-        <button class="w3-button w3-round w3-block w3-black" (click)="downloadPngFile()">Download</button>
+
+      <div class="w3-panel" style="width:15%; padding-left: 15px;">
+        <a id='dwnldLnk' download='output.png' ></a>
+        <a id='dwnldLnk2' download='output.jpg'  ></a>
+        <button class="button-1"  (click)="downloadPngFile()">Download</button>
+
         <div >
-          <canvas id="myCanvas" ></canvas>
+          <!-- <canvas id="myCanvas" ></canvas> -->
         </div>
       </div>
       
@@ -72,10 +80,8 @@ body {font-size:16px;}
 		<canvas id="myCanvas"></canvas>
 	</div> -->
    </div>
-  <script src="assets/js/custom.js"></script>
+  <!-- <script src="assets/js/custom.js"></script> -->
 
 
 </body> 
 </html>
-
-
