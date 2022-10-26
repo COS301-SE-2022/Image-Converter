@@ -17,7 +17,7 @@ export class WelcomePageComponent implements OnInit {
      //if user was redirected from shared image
       if(localStorage.getItem('imageParam') && localStorage.getItem('imageParam')!="")
       {
-        this._router.navigateByUrl('/nav/sharedmage?image='+localStorage.getItem('imageParam'));
+        this._router.navigateByUrl('/nav/sharedimage?image='+localStorage.getItem('imageParam'));
       }
   }
 

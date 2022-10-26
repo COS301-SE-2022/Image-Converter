@@ -25,7 +25,7 @@ export class ImagePopupComponent implements OnInit {
   
   uuid!:any;
 
-  URL:string="http://localhost:4200/nav/sharedmage?image=";
+  URL:string="http://localhost:4200/nav/sharedimage?image=";
 
   constructor(private imgService: ConverterService, @Inject(MAT_DIALOG_DATA) public data: {img: string,imgProcessed:string, comment:string, index:number,uuid:any},public dialogRef: MatDialogRef<UploadHistoryComponent>, private formBuilder: FormBuilder,private dialog: MatDialog) { }
 

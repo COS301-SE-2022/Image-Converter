@@ -44,7 +44,7 @@ export class SharedImageComponent implements OnInit {
     }
    
     //check if user is logged in
-    if(!localStorage.getItem('token') && localStorage.getItem('token')=="")
+    if(!localStorage.getItem('token') || localStorage.getItem('token')=="")
     {
       this._router.navigateByUrl('/');
     }
