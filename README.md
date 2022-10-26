@@ -22,8 +22,8 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 ## System Requirements Specification
 [SRS Document](https://drive.google.com/file/d/1w-jS-2xv21549DzbAdenfn62-Wqz8XJg/view?usp=sharing)
 
-## Deployment Diagram
-[Deployment Diagram](https://drive.google.com/file/d/1JcKCmY-K3CXK1k3RmECPAtbi0cnMcx18/view?usp=sharing)
+## Deployment
+[System Deployment](https://drive.google.com/file/d/1mWYn9LqNyPEkAmlBKIxr1jBxPZ5qGJvZ/view?usp=sharing)
 
 
 ## Architectural Requirements
