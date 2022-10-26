@@ -38,7 +38,7 @@ export class ConversionComponent implements OnInit {
     var a = document.createElement('a');
     a.href = this.message.image;
     // myTest(a.href,this.filter,"jpg");
-    
+
     this.incrementDownload();
     a.href = this.message.jpg;
     var imgBckend = a.href;
@@ -56,7 +56,7 @@ export class ConversionComponent implements OnInit {
 
     a.href = this.message.image;
     // myTest(a.href,this.filter,"jpg");
-    
+
     this.incrementDownload();
     a.href = this.message.jpg;
     var imgBckend = a.href;
@@ -66,15 +66,46 @@ export class ConversionComponent implements OnInit {
     document.body.removeChild(a);
   }
 
+ //download bmp function
+  downloadBmpFile()
+  {
+    var a = document.createElement('a');
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+
+    this.incrementDownload();
+    a.href = this.message.bmp;
+    var imgBckend = a.href;
+    a.download = "output.bmp";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  //download tiff function
+  downloadTiffFile()
+  {
+    var a = document.createElement('a');
+    a.href = this.message.image;
+    // myTest(a.href,this.filter,"jpg");
+
+    this.incrementDownload();
+    a.href = this.message.tiff;
+    var imgBckend = a.href;
+    a.download = "output.tiff";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   //tracks number of downloads
   incrementDownload()
   {
-    
+
     this.trackerService.activityTrackerIncrement("Downloads").subscribe(
       responseData =>{
             //response
             console.log(responseData);
-                
+
         }
     );
   }

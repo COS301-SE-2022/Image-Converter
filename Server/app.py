@@ -123,7 +123,7 @@ def upload_image(user):
                 graphType = "This is a "+img_class.graphType
             conv=ConvertFomat()
             conv.covertImgFormat(db_image[4])
-            return jsonify({'image': db_image[4], 'png':conv.getPng(),'jpg':conv.getJpg(), 'graphType': graphType,'id':db_image[0], 'imageHeight': imageHeight, 'imageWidth': imageWidth,'guid':db_image[8]})
+            return jsonify({'image': db_image[4], 'png':conv.png,'jpg':conv.jpg, 'bmp': conv.bmp, 'tiff': conv.tiff, 'graphType': graphType,'id':db_image[0], 'imageHeight': imageHeight, 'imageWidth': imageWidth,'guid':db_image[8]})
         else:
             print("picture is None")
             return {'response': 'Picture is None!'},200

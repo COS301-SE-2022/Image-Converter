@@ -19,7 +19,7 @@
                 <header class="w3-container w3-blue">
                   <h1>Convert to SVG</h1>
                 </header>
-            
+
                 <div class="w3-container">
                   <p>Convert image to SVG format</p>
                 </div>
@@ -28,9 +28,9 @@
 
 
       <!-- <div class="container">
-  
+
         <div class="col">
-      
+
           <div class="card-container" (click)="downloadPngFile()">
             <div class="overlay"></div>
             <div class="overlay"></div>
@@ -41,7 +41,7 @@
               <span class="chev">&rsaquo;</span>
             </div>
           </div>
-          
+
           <div class="card-container">
             <div class="overlay"></div>
             <div class="overlay"></div>
@@ -54,11 +54,11 @@
         </div>-->
       <!-- </div>
           </div>
-          
+
         </div>
-        
+
         <div class="col">
-      
+
           <div class="card-container">
             <div class="overlay"></div>
             <div class="overlay"></div>
@@ -69,7 +69,7 @@
               <span class="chev">&rsaquo;</span>
             </div>
           </div>
-          
+
           <div class="card-container" (click)="downloadJpgFile()">
             <div class="overlay"></div>
             <div class="overlay"></div>
@@ -80,17 +80,17 @@
               <span class="chev">&rsaquo;</span>
             </div>
           </div>
-          
+
         </div> -->
-        
+
 
 
       <div class="convert-section">
         <div class="brands">
           <div class="brand" (click)="downloadPngFile()"><img src="png.png" width="150"/></div>
-          <div class="brand"><img src="tiff.png" width="150"/></div>
+          <div class="brand" (click)="downloadTiffFile()"><img src="tiff.png" width="150"/></div>
           <div class="brand"><img src="svg.png" width="150"/></div>
-          <div class="brand"><img src="bmp.png" width="150"/></div>
+          <div class="brand" (click)="downloadBmpFile()"><img src="bmp.png" width="150"/></div>
           <div class="brand" (click)="downloadJpgFile()"><img src="jpg.png" width="150"/></div>
         </div>
     </div>
