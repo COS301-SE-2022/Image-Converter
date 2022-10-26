@@ -751,7 +751,7 @@ def get_image(user):
     if(db!=None):
         guid = request.json['guid']
         if guid is not None:
-            img =db.get_image(guid)
+            img =db.get_image_uuid(guid)
             return {'image': img[4],'comment':img[5]}
         else:
             return {'response': 'failed'}, 400
