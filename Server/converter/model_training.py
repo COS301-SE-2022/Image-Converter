@@ -11,18 +11,19 @@ from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras import Model
-from keras.models import load_model
+from tensorflow.keras.models import load_model
+
 
 def trainModel():
 
 #######################################################################################
 ####### Dataset Collection ############################################################
 #######################################################################################
-    data_dir = (r"C:\Users\moemo\Downloads/graph_dataset") #Set path for dataset
+    data_dir = (r"C:\Users\moemo\Downloads/graph_dataset")
 
     img_height,img_width=90,90
     batch_size=32
-
+    #Preprocessing module deprecated, switch to tf.keras.utils.image_dataset_from_directory
     train_ds = tf.keras.preprocessing.image_dataset_from_directory(
       data_dir,
       validation_split=0.2,
@@ -40,7 +41,6 @@ def trainModel():
       batch_size=batch_size)
 
     class_names = train_ds.class_names
-
 
 #######################################################################################
 ####### Model Training ################################################################
@@ -64,19 +64,14 @@ def trainModel():
     resnet_model.add(Dense(128, activation='relu'))
     resnet_model.add(Dense(64, activation='relu'))
 
+    resnet_model.add(Dense(6, activation='softmax'))
 
-    resnet_model.add(Dense(6))
-
-    loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
     callbacks = [tf.keras.callbacks.EarlyStopping(monitor='val_loss',
-    patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model",save_best_weights=True),tf.keras.callbacks.TensorBoard()]
+    patience=3), tf.keras.callbacks.ModelCheckpoint(filepath="model_III",save_best_weights=True),tf.keras.callbacks.TensorBoard()]
 
-    resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss=loss_fn,metrics=['accuracy'])
+    resnet_model.compile(optimizer=Adam(learning_rate=0.001),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
 
-    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=30)
-
-    resnet_model.save("Multi_Class_Model")  #Change to path in VM directory where current model is stored
-
-
+    history = resnet_model.fit(train_ds, validation_data=val_ds, epochs=30, callbacks=callbacks)
+    
 
 
