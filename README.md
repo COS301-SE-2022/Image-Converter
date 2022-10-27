@@ -19,7 +19,7 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 [Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
 
 ## Project Day Demo Video
-[Full Demo Video](https://drive.google.com/file/d/1rVIBI7HCBdLsSWMiJx_RgKS15xj4A1US/view?usp=sharing)
+[Full Demo Video](https://drive.google.com/file/d/1rVIBI7HCBdLsSWMiJx_RgKS15xj4A1US/view?usp=sharing)<br/>
 [Slides](https://www.canva.com/design/DAFPmV8E4bU/SHVCC8TPev1gx0uwusPAKQ/edit?utm_content=DAFPmV8E4bU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## System Requirements Specification
