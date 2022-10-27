@@ -32,7 +32,7 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 [Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
 
 ## User Manual
-[Manual](https://drive.google.com/file/d/1eTZhkYAKVOxBN3B2hynJgSoHuf3JOOZF/view?usp=sharing)
+[Manual](https://drive.google.com/file/d/1l6HxlCZIPMnvjEwP6GMHtGoG3iaP30AW/view?usp=sharing)
 
 ## Technical Installation Manual
 [TechnicalManual](https://drive.google.com/file/d/1PYll45FZF9yuEJLTHFyySPbtFCbvW7d9/view?usp=sharing)
