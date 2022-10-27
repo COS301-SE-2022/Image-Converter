@@ -59,7 +59,7 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 [Deployed System]()
 
 ## Tutorial
-[Video Tutorial]()
+[Video Tutorial](https://drive.google.com/file/d/1qVvVGKiUYvG2bkbdJFfhoSfNZrfwgCZQ/view?usp=sharing)
 
 ## Contributing to the project
 [Contributing guidelines](https://github.com/COS301-SE-2022/Image-Converter/wiki/Contribute)
