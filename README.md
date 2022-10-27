@@ -56,7 +56,7 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 
 ## System Deployment
 [System Deployment](https://drive.google.com/file/d/1mWYn9LqNyPEkAmlBKIxr1jBxPZ5qGJvZ/view?usp=sharing)
-[Deployed Systme]()
+[Deployed System]()
 
 ## Tutorial
 [Video Tutorial]()
