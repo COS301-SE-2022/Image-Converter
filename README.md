@@ -58,6 +58,9 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 ## Testing Policy
 [Testing Policy](https://drive.google.com/file/d/1OWnpzDbrxdE0wB6wJeu-xuDompegJquD/view?usp=sharing)
 
+## Contributing to the project
+[Contributing guidelines](https://github.com/COS301-SE-2022/Image-Converter/wiki/Contribute)
+
 ## Usability Testing
 [Usability Testing](https://drive.google.com/file/d/1W9O6KDEwehZsslzHIwWtalZNSDJejTQS/view?usp=sharing)
 
