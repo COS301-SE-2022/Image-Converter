@@ -14,32 +14,6 @@
 With our current climate of easy access to information, we are faced with the problem of information overload. Therefore it is important that we are able to view data in a concise format. This will allow us to understand the data in a comprehensive manner without getting distracted by unnecessary information. Graphing is a way to counter the problem effectively. However, mismatched or unclear graphs fail to help us understand the data adequately. 
 The Image converter is a tool created for a Content Management System (CMS). It hosts a variety of functions of image manipulation, such as image cleaning, classification and filtering. The tool also manages uploaded images in a concise and efficient way.  The tool will be used solely by administrators of the CMS
 
-## Project Board
-[Project Boards](https://github.com/COS301-SE-2022/Image-Converter/wiki/Project-Boards)
-
-## Project Day
-[Project Day Links](https://github.com/COS301-SE-2022/Image-Converter/wiki/Project-Day)
-
-## System Requirements Specification
-[SRS Document](https://drive.google.com/file/d/1w-jS-2xv21549DzbAdenfn62-Wqz8XJg/view?usp=sharing)
-
-## Deployment
-[System Deployment](https://drive.google.com/file/d/1mWYn9LqNyPEkAmlBKIxr1jBxPZ5qGJvZ/view?usp=sharing)
-
-
-## Architectural Requirements
-[Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
-
-## User Manual
-[Manual](https://drive.google.com/file/d/1l6HxlCZIPMnvjEwP6GMHtGoG3iaP30AW/view?usp=sharing)
-
-## Technical Installation Manual
-[TechnicalManual](https://drive.google.com/file/d/1PYll45FZF9yuEJLTHFyySPbtFCbvW7d9/view?usp=sharing)
-
-## Coding Standards
-[Standards](https://drive.google.com/file/d/1y4fxapy0Obc0-7xggG2OFrleq6K91kSf/view?usp=sharing)
-
-
 ## Project Branch Structure
     .
     ├── main                    
@@ -52,6 +26,27 @@ The Image converter is a tool created for a Content Management System (CMS). It 
     │   |   └── ...                 
     |   └── ...
     └── ...
+
+## Project Board
+[Project Boards](https://github.com/COS301-SE-2022/Image-Converter/wiki/Project-Boards)
+
+## Project Day
+[Project Day Links](https://github.com/COS301-SE-2022/Image-Converter/wiki/Project-Day)
+
+## System Requirements Specification
+[SRS Document](https://drive.google.com/file/d/1w-jS-2xv21549DzbAdenfn62-Wqz8XJg/view?usp=sharing)
+
+## Deployment
+[System Deployment](https://drive.google.com/file/d/1mWYn9LqNyPEkAmlBKIxr1jBxPZ5qGJvZ/view?usp=sharing)
+
+## Architectural Requirements
+[Requirements](https://drive.google.com/file/d/1-yv-Ep1Df98Y7AWi6NHTBwGkostk80df/view?usp=sharing)
+
+## Manuals
+[Technical & User Manuals](https://github.com/COS301-SE-2022/Image-Converter/wiki/Manuals)
+
+## Coding Standards
+[Standards](https://drive.google.com/file/d/1y4fxapy0Obc0-7xggG2OFrleq6K91kSf/view?usp=sharing)
 
 ## Testing
 [Testing](https://github.com/COS301-SE-2022/Image-Converter/wiki/Testing)
