@@ -15,12 +15,10 @@ With our current climate of easy access to information, we are faced with the pr
 The Image converter is a tool created for a Content Management System (CMS). It hosts a variety of functions of image manipulation, such as image cleaning, classification and filtering. The tool also manages uploaded images in a concise and efficient way.  The tool will be used solely by administrators of the CMS
 
 ## Project Board
-[Project Board (Github)](https://github.com/COS301-SE-2022/Image-Converter/projects/1)<br/>
-[Project Board (Trello)](https://trello.com/userworkspace48105720)&nbsp;
+[Project Boards](https://github.com/COS301-SE-2022/Image-Converter/wiki/Project-Boards)
 
-## Project Day Demo 
-[Full Demo Video](https://drive.google.com/file/d/1rVIBI7HCBdLsSWMiJx_RgKS15xj4A1US/view?usp=sharing)<br/>
-[Slides](https://drive.google.com/file/d/1CMYpefoiAib6Kp49p5ZpU49hkvgJvyzI/view?usp=sharing)
+## Project Day
+[Project Day Links](https://github.com/COS301-SE-2022/Image-Converter/wiki/Project-Day)
 
 ## System Requirements Specification
 [SRS Document](https://drive.google.com/file/d/1w-jS-2xv21549DzbAdenfn62-Wqz8XJg/view?usp=sharing)
@@ -55,27 +53,15 @@ The Image converter is a tool created for a Content Management System (CMS). It 
     |   └── ...
     └── ...
 
-## Testing Policy
-[Testing Policy](https://drive.google.com/file/d/1OWnpzDbrxdE0wB6wJeu-xuDompegJquD/view?usp=sharing)
+## Testing
+[Testing](https://github.com/COS301-SE-2022/Image-Converter/wiki/Testing)
 
 ## Contributing to the project
 [Contributing guidelines](https://github.com/COS301-SE-2022/Image-Converter/wiki/Contribute)
 
-## Usability Testing
-[Usability Testing](https://drive.google.com/file/d/1W9O6KDEwehZsslzHIwWtalZNSDJejTQS/view?usp=sharing)
 
-## Recorded Demo
-<a href="#" target="_blank">
-  ➛ Demo 1<br>
-</a> 
-
-<a href="https://drive.google.com/file/d/1x7NEmJd97rNSyF2K_QLNUmPYAlGTXEG_/view?usp=sharing" target="_blank">
-  ➛ Demo 2<br>
-</a>
-
-<a href="https://drive.google.com/file/d/1nr3-aYvJZjlOTAmOrXmLl5FQIRJ-xZ6Q/view?usp=sharing" target="_blank">
-  ➛ Demo 3<br>
-</a>
+## Recorded Demos
+[Videos of recorded demos](https://github.com/COS301-SE-2022/Image-Converter/wiki/Recorder-Demos)
 
 ## Omolemo Mashigo - Team Leader
 <img src="https://user-images.githubusercontent.com/73942516/166416196-4030f700-6c32-4d43-a7fb-d6c06667a9fa.jpg" width="250" height="300">
