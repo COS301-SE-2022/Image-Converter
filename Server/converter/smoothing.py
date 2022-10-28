@@ -110,3 +110,12 @@ if __name__ == '__main__':
     img = cv2.imread(src)
     object = smoothing(img)
     object.clean_noise()
+    
+"""
+@InProceedings{wang2021realesrgan,
+    author    = {Xintao Wang and Liangbin Xie and Chao Dong and Ying Shan},
+    title     = {Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data},
+    booktitle = {International Conference on Computer Vision Workshops (ICCVW)},
+    date      = {2021}
+}
+"""
