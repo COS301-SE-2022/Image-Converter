@@ -89,7 +89,10 @@ def upload_image(user):
             imgdata = base64.b64decode(str(picture[picture.find(",")+1:]))
             
             img = Image.open(io.BytesIO(imgdata))
-            opencv_img= cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+            img.save("torch.png")
+            
+            opencv_img= cv2.imread('torch.png',
+                       cv2.IMREAD_UNCHANGED).astype(np.float32)
             
             image_uploaded = bytearray(base64_picture)
             img_tags = NLPTags(picture)
