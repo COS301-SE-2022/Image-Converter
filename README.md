@@ -49,7 +49,8 @@ The Image converter is a tool created for a Content Management System (CMS). It 
 [Videos of recorded demos](https://github.com/COS301-SE-2022/Image-Converter/wiki/Recorder-Demos)
 
 ## Project Slideshow
-[Slideshow]()
+[Slideshow(mp4)](https://drive.google.com/file/d/15l_ormhMGvT9Lb7ME_pvdPh4MF22sA9e/view?usp=sharing)
+[Slideshow(pdf)](https://drive.google.com/file/d/15l_ormhMGvT9Lb7ME_pvdPh4MF22sA9e/view?usp=sharing)
 
 ## Video Advert
 [Advert](https://drive.google.com/file/d/1Jvok4JMsb61JDuB4PNfFU-xqocFkf05A/view?usp=sharing)
