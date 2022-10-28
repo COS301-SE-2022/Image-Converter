@@ -21,7 +21,8 @@ class smoothing:
 
         # initialize gpu acceleration
         if torch.backends.mps.is_available():
-            device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+            device = torch.device(
+                'mps' if torch.backends.mps.is_available() else 'cpu')
         else:
             device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         model = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32)
@@ -90,7 +91,9 @@ class smoothing:
         return imageWatermark
 
 if __name__ == '__main__':
-    obj = smoothing('/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/download.png')
+    
+    obj = smoothing(cv2.imread('/Users/neoseefane/Documents/GitHub/Image-Converter/Server/converter/download.png',
+                               cv2.IMREAD_UNCHANGED).astype(np.float32))
     img = obj.clean_noise()
 
 """
